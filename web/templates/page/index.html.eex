@@ -1,11 +1,16 @@
 <div class="jumbotron">
-  <h2><%= gettext "The Phoenix Tutorial" %></h2>
-  <p>Finally, a Phoenix book for beginners.</p>
-  <p>No Elixir or Ruby on Rails knowledge required!</p>
+  <h2>The Phoenix Tutorial</h2>
+
+  <h4>For all skill levels.  <em>No Elixir or Ruby on Rails knowledge required!</em></h4>
 </div>
 
 <%= render TutorialSite.PageView, "mailchimp.html", conn: @conn %>
 
+<h2>What is it?</h2>
+
+<p>There are lots of great resources for intermediate and advanced developers to learn Elixir and Phoenix, but relatively little for beginners.  In addition, the resources that do exist tend to rush past the core web framework features in order to get to the cool advanced features that set the framework apart, like Channels and OTP.</p>
+
+<p>This book aims to be your first Elixir and Phoenix book, but not your last.  We'll go into the basics of the language and the framework, giving you a solid foundation so you can crank out simple web apps and be prepared to read and understand the books written on more advanced topics.</p>
 
 <h2>What can I do while I'm waiting?</h2>
 
