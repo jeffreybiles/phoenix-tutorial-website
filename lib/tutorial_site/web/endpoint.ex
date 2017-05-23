@@ -1,7 +1,7 @@
-defmodule TutorialSite.Endpoint do
+defmodule TutorialSite.Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :tutorial_site
 
-  socket "/socket", TutorialSite.UserSocket
+  socket "/socket", TutorialSite.Web.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -38,5 +38,5 @@ defmodule TutorialSite.Endpoint do
     key: "_tutorial_site_key",
     signing_salt: "w3BW4Uyx"
 
-  plug TutorialSite.Router
+  plug TutorialSite.Web.Router
 end

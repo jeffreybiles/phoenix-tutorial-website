@@ -1,4 +1,4 @@
-defmodule TutorialSite.ErrorView do
+defmodule TutorialSite.Web.ErrorView do
   use TutorialSite.Web, :view
 
   def render("404.html", _assigns) do

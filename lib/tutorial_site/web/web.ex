@@ -28,20 +28,21 @@ defmodule TutorialSite.Web do
 
   def controller do
     quote do
-      use Phoenix.Controller
+      use Phoenix.Controller, namespace: TutorialSite.Web
 
       alias TutorialSite.Repo
       import Ecto
       import Ecto.Query
 
-      import TutorialSite.Router.Helpers
-      import TutorialSite.Gettext
+      import TutorialSite.Web.Router.Helpers
+      import TutorialSite.Web.Gettext
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "web/templates"
+      use Phoenix.View, root: "lib/tutorial_site/web/templates",
+                        namespace: TutorialSite.Web
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
@@ -49,9 +50,9 @@ defmodule TutorialSite.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import TutorialSite.Router.Helpers
-      import TutorialSite.ErrorHelpers
-      import TutorialSite.Gettext
+      import TutorialSite.Web.Router.Helpers
+      import TutorialSite.Web.ErrorHelpers
+      import TutorialSite.Web.Gettext
     end
   end
 
@@ -68,7 +69,7 @@ defmodule TutorialSite.Web do
       alias TutorialSite.Repo
       import Ecto
       import Ecto.Query
-      import TutorialSite.Gettext
+      import TutorialSite.Web.Gettext
     end
   end
 

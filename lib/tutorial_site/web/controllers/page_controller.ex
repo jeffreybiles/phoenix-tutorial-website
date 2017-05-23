@@ -1,4 +1,4 @@
-defmodule TutorialSite.PageController do
+defmodule TutorialSite.Web.PageController do
   use TutorialSite.Web, :controller
 
   def index(conn, _params) do

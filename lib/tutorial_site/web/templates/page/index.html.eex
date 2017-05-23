@@ -4,7 +4,7 @@
   <h4>For all skill levels.  <em>No Elixir or Ruby on Rails knowledge required!</em></h4>
 </div>
 
-<%= render TutorialSite.PageView, "mailchimp.html", conn: @conn %>
+<%= render TutorialSite.Web.PageView, "mailchimp.html", conn: @conn %>
 
 <h2>What is it?</h2>
 

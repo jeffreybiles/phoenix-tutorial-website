@@ -10,10 +10,10 @@ config :tutorial_site,
   ecto_repos: [TutorialSite.Repo]
 
 # Configures the endpoint
-config :tutorial_site, TutorialSite.Endpoint,
+config :tutorial_site, TutorialSite.Web.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "m90lOmRhiFElbuld46HfOGzoGJ/9Hqp8+acEq/+ZQsyELGy+15Rweim+VO9hXsPe",
-  render_errors: [view: TutorialSite.ErrorView, accepts: ~w(html json)],
+  render_errors: [view: TutorialSite.Web.ErrorView, accepts: ~w(html json)],
   pubsub: [name: TutorialSite.PubSub,
            adapter: Phoenix.PubSub.PG2]
 

@@ -11,7 +11,7 @@ defmodule TutorialSite do
       # Start the Ecto repository
       supervisor(TutorialSite.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(TutorialSite.Endpoint, []),
+      supervisor(TutorialSite.Web.Endpoint, []),
       # Start your own worker by calling: TutorialSite.Worker.start_link(arg1, arg2, arg3)
       # worker(TutorialSite.Worker, [arg1, arg2, arg3]),
     ]
@@ -20,12 +20,5 @@ defmodule TutorialSite do
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: TutorialSite.Supervisor]
     Supervisor.start_link(children, opts)
-  end
-
-  # Tell Phoenix to update the endpoint configuration
-  # whenever the application is updated.
-  def config_change(changed, _new, removed) do
-    TutorialSite.Endpoint.config_change(changed, removed)
-    :ok
   end
 end

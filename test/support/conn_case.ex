@@ -1,4 +1,4 @@
-defmodule TutorialSite.ConnCase do
+defmodule TutorialSite.Web.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -25,10 +25,10 @@ defmodule TutorialSite.ConnCase do
       import Ecto.Changeset
       import Ecto.Query
 
-      import TutorialSite.Router.Helpers
+      import TutorialSite.Web.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint TutorialSite.Endpoint
+      @endpoint TutorialSite.Web.Endpoint
     end
   end
 
