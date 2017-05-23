@@ -17,6 +17,8 @@ defmodule TutorialSite.Web.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/read", PageController, :read_book
+    get "/read/:section/:chapter", PageController, :read_chapter
   end
 
   # Other scopes may use custom stacks.

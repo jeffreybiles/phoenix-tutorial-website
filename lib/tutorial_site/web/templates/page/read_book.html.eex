@@ -1,0 +1,10 @@
+<h1>The Phoenix Tutorial</h1>
+
+<%= for section <- @book do %>
+  <h3><%= section.title %></h3>
+  <ul>
+    <%= for chapter <- section.chapters do %>
+      <li><%= chapter.title %></li>
+    <% end %>
+  </ul>
+<% end %>
