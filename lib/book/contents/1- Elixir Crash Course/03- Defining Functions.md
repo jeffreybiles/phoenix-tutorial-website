@@ -1,0 +1,152 @@
+# Functions
+
+So far in our exploration of Elixir we've typed our code directly into the Elixir interpreter, but for complex functions- not to mention building an entire program- we'll want a place to store our functions.
+
+In this chapter we'll learn how to store our code by defining modules and functions.
+
+## Storing Code: defmodule and def
+
+Start by creating a file.  I'm going to call mine `basic_elixir.ex`, but the only part of this name that you are required to copy is the `.ex` file extension, which signals that this is an Elixir file.
+
+Then we'll create the minimum viable module in this file:
+
+```elixir
+defmodule LearningElixir do
+  def hello do
+    "boldly going where no man has gone before"
+  end
+end
+```
+
+Our module, defined by `defmodule`, is `LearningElixir`.  Attached to that we have a `do` and its closing `end`.  This pair of "delimiters" indicates that anything in between them is part of the `LearningElixir` module.  Some languages use whitespace or curly braces as their delimiters, but Elixir has copied Ruby and uses the more descriptive `do` and `end` keywords.
+
+Our function `hello` is defined by `def`.  It also has a do/end delimiting block.  Inside that block is the string "boldly going where no man has gone before", which is what is returned when we call that function.
+
+Let's go ahead and load that file in the Interpreter.
+
+```elixir
+iex(1)> import_file "basic_elixir.ex"
+{:module, LearningElixir,
+ <<70, 79, 82, 49, 0, 0, 5, 0, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 128,
+   131, 104, 2, 100, 0, 14, 101, 108, 105, 120, 105, 114, 95, 100, 111, 99, 115,
+   95, 118, 49, 108, 0, 0, 0, 4, 104, 2, ...>>, {:hello, 0}}
+iex(2)> LearningElixir.hello
+"boldly going where no man has gone before"
+```
+
+We load the file into the Interpreter with the command `import_file`.  We can ignore the output for now- only notice that we see both `LearningElixir` and `hello` in various forms.
+
+Then we call our function with `LearningElixir.hello` and get back the expected string.
+
+> Note that we precede the function name with the name of the module within which it resides.  Apply the logic to our commands from the previous chapter and we can see that `String.split` was calling the `split` function on the `String` module.
+
+Next let's define a new function, which has the code that we had previously inputted directly into the command line:
+
+```elixir
+defmodule LearningElixir do
+  def phrase do
+    "boldly going where no man has gone before"
+  end
+
+  def recombine do
+    phrase |> String.split |> Enum.join("-")
+  end
+end
+```
+
+We've renamed `hello` to `phrase`, then used it in our `recombine` function.  Note that since we're within the `LearningElixir` module we don't need to precede `phrase` with `LearningElixir`- `phrase` is currently directly available because it's "within scope".
+
+---
+
+> **Captain's Log: Scope**
+
+> Scope can be a scary word, but here's a basic way to think about it.  If you're in your living room, and you say "I would like to sit on the couch", you don't have to specify which of the millions of couches you're sitting on.  You're in the living room scope, so when you're trying to think of couches, the one in the living room comes to mind first.  It's the same reason that if you talk to someone in the United States about "the civil war", they'll immediately think of the American Civil War, not the Spanish Civil War, the American Revolution, or Marvel Comic's Civil War (tm).  That's because they're scoped to the United States[^2].
+
+> Scope isn't as big a deal in Elixir as it is in Object-Oriented languages, but it's still important to understand.
+
+[^2]: (Okay, maybe some nerds here are scoped to Marvel Comics.  I won't judge.)
+
+The rest of our `recombine` function is just like what we previously did directly in the interpreter.
+
+Let's load and call this in the interpreter.
+
+```elixir
+iex(3)> import_file "basic_elixir.ex"
+warning: redefining module LearningElixir (current version defined in memory)
+  iex:1
+
+warning: variable "phrase" does not exist and is being expanded to "phrase()",
+please use parentheses to remove the ambiguity or change the variable name
+  iex:7
+
+{:module, LearningElixir,
+ <<70, 79, 82, 49, 0, 0, 6, 8, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 162,
+   131, 104, 2, 100, 0, 14, 101, 108, 105, 120, 105, 114, 95, 100, 111, 99, 115,
+   95, 118, 49, 108, 0, 0, 0, 4, 104, 2, ...>>, {:recombine, 0}}
+iex(4)> LearningElixir.recombine
+"boldly-going-where-no-man-has-gone-before"
+```
+
+The result of `LearningElixir.recombine` is what we would expect if we straightforwardly combined what we previously knew.
+
+Less expected are the two warnings.  
+
+The first warning is the result of importing the same file (and thus defining the same module) twice in one interpreter session.  If we had restarted the interpreter in between loading the file then this warning would not show up.  
+
+The second warning is because `phrase` is somewhat ambiguous- it could be either a variable or a function.  The interpreter automatically (and correctly) expands it to `phrase()`, which is the less ambiguous way to call a function.  While the language creator recommends changing all ambiguous instances to using the parentheses, you'll likely see a lot of production code without those parentheses because this warning was added relatively recently, in late 2016 (with Elixir 1.4).
+
+There are two ways to solve the ambiguity:
+
+```elixir
+defmodule LearningElixir do
+  def phrase do
+    "boldly going where no man has gone before"
+  end
+
+  def recombine1 do
+    phrase() |> String.split |> Enum.join("-")
+  end
+
+  def recombine2 do
+    LearningElixir.phrase |> String.split |> Enum.join("-")
+  end
+end
+```
+
+The first is exactly what's suggested by the warning- add in the parentheses.  The second makes explicit the fact that `phrase` is defined on the `LearningElixir` module- thus removing the ambiguity.  I personally prefer the second solution (it makes the function more portable because you don't have to worry about scope), but either works.
+
+Finally, now that we're in a proper file we don't have to define everything on one line.
+
+```elixir
+defmodule LearningElixir do
+  def phrase do
+    "boldly going where no man has gone before"
+  end
+
+  def recombine do
+    LearningElixir.phrase
+    |> String.split
+    |> Enum.join("-")
+  end
+end
+```
+
+This version of `recombine` does exactly the same as our last version, but now instead of having everything in one line we have the pipes lined up vertically.  This can be very convenient for seeing at a glance how a function is composed.
+
+## Exercises
+
+1. Create the `LearningElixir` module, with the `phrase` and `recombine` functions in it.  Import it on the command line, then run `LearningElixir.recombine`.
+2. Within that module, create the `upcase_phrase` function, which returns the phrase, but all in upper case letters.  Use the `phrase` function in your solution- you're cheating if you just type out the phrase manually in upper case.
+
+```elixir
+> iex(1)> LearningElixir.upcase_phrase
+"BOLDLY GOING WHERE NO MAN HAS GONE BEFORE"
+```
+
+We introduced the relevant `String` function in the last chapter.
+
+## Conclusion
+
+Now you know how to create a module that organizes your functions.  This increases your ability to organize your code aesthetically (lining up pipe operators) and opens up many new possibilities.  However, our current understanding is still very limited.
+
+In the next chapter, we'll show how to create more flexible functions by giving them arguments- and by introducing our first instance of Pattern Matching, the functional programming design pattern that you'll soon grow to love.

@@ -14,7 +14,14 @@ defmodule Book do
           %{ord: 4, title: "Pattern Matching"},
           %{ord: 5, title: "Maps"},
           %{ord: 6, title: "Atoms, Tuples, and Case"}
+          %{ord: 7, title: "Conclusion"}
         ]
     }]
+  end
+
+  def get_html(section, chapter) do
+    # grab the markdown file using section and title (grab the ord by filtering by title?)
+    # parse it using earmark
+    # Later: do some syntax highlighting
   end
 end

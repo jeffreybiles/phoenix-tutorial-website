@@ -4,7 +4,10 @@
   <h3><%= section.title %></h3>
   <ul>
     <%= for chapter <- section.chapters do %>
-      <li><%= chapter.title %></li>
+      <li>
+        <%= link chapter.title,
+                 to: "/read/#{hyphenate section.title}/#{hyphenate chapter.title}" %>
+      </li>
     <% end %>
   </ul>
 <% end %>
