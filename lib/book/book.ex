@@ -13,7 +13,7 @@ defmodule Book do
           %{ord: 3, title: "Defining Functions"},
           %{ord: 4, title: "Pattern Matching"},
           %{ord: 5, title: "Maps"},
-          %{ord: 6, title: "Atoms, Tuples, and Case"}
+          %{ord: 6, title: "Atoms, Tuples, and Case"},
           %{ord: 7, title: "Conclusion"}
         ]
     }]

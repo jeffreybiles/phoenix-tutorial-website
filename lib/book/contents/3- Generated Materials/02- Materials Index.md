@@ -138,7 +138,7 @@ Finally, we get to the template file itself, in `web/templates/material/index.ht
         <td class="text-right">
           <%= link "Show", to: material_path(@conn, :show, material), class: "btn btn-default btn-xs" %>
           <%= link "Edit", to: material_path(@conn, :edit, material), class: "btn btn-default btn-xs" %>
-          <%= link "Delete", to: material_path(@conn, :delete, material), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+          <%= link "Delete", to: material_path(@conn, :delete, material), function: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
         </td>
       </tr>
     <% end %>
@@ -196,7 +196,7 @@ So for every material we create a table row (`tr`), and within the table row we 
 <td class="text-right">
   <%= link "Show", to: material_path(@conn, :show, material), class: "btn btn-default btn-xs" %>
   <%= link "Edit", to: material_path(@conn, :edit, material), class: "btn btn-default btn-xs" %>
-  <%= link "Delete", to: material_path(@conn, :delete, material), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+  <%= link "Delete", to: material_path(@conn, :delete, material), function: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
 </td>
 ```
 
@@ -265,14 +265,14 @@ The `edit` link helper is very similar to the `show` link helper and has no new 
 The `delete` link helper does introduce several new things:
 
 ```elixir
-<%= link "Delete", to: material_path(@conn, :delete, material), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+<%= link "Delete", to: material_path(@conn, :delete, material), function: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
 ```
 
-The first new thing is `method: :delete`.  By default, the method is `:get`, and that's what's been in all the links we've gone over so far- it's what we use when we want to view data.  However, to make changes to the data we'll need to use `:post`, `:patch`, or `:delete`.  Our router will recognize the method used and direct us to the correct action.
+The first new thing is `function: :delete`.  By default, the function is `:get`, and that's what's been in all the links we've gone over so far- it's what we use when we want to view data.  However, to make changes to the data we'll need to use `:post`, `:patch`, or `:delete`.  Our router will recognize the function used and direct us to the correct action.
 
 Then we have `data: [confirm: "Are you sure?"]`.  This makes it so that when we click on the button, it will pop up a confirmation box with the text "Are you sure?".  If you hit "OK" it will continue on.  If you hit "Cancel" it will stop and not perform the deletion.  Try it for yourself in the browser!
 
-Note that data confirmation will not work for `:get` methods- try putting it in the `:show` link and you'll see that nothing happens.
+Note that data confirmation will not work for `:get` functions- try putting it in the `:show` link and you'll see that nothing happens.
 
 Finally, we have one last link at the bottom of the page, for `new`.
 

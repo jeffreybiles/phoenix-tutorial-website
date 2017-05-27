@@ -2,7 +2,7 @@
 
 ## Maps
 
-Maps (not to be confused with the `Enum.map` method) are a very common programming construct, although they might be called "hashes" or "dictionaries" in other languages (or even, confusingly, "objects" in Javascript).
+Maps (not to be confused with the `Enum.map` function) are a very common programming construct, although they might be called "hashes" or "dictionaries" in other languages (or even, confusingly, "objects" in Javascript).
 
 Here's a basic map:
 
@@ -20,7 +20,7 @@ end
 
 It's started with a `%{`, ended with a `}`, and in between consists of key-value pairs separated by commas.  Each key-value pair has a key (such as "name") before the `=>` symbol (sometimes called the "rocket") and a value (such as "Enterprise") after the `=>` symbol.
 
-We can interact with this map using the methods in the `Map` module.
+We can interact with this map using the functions in the `Map` module.
 
 ```elixir
 iex(1)> Map.get(LearningElixir.my_map, "mission")
@@ -123,7 +123,7 @@ def four do
 end
 ```
 
-Be sure to check your work by copying the methods into a file and then running them.
+Be sure to check your work by copying the functions into a file and then running them.
 
 ## Conclusion
 

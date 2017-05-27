@@ -2,7 +2,7 @@
 
 One of the most important tasks in any programming environment is bringing in code from elsewhere- it lets you reuse functionality and keep everything clean.  Elixir and Phoenix have a series of elegant tools available to do that.
 
-In this chapter we're going to focus on the `use`, `import`, and `alias` keywords and what they specifically bring to our Router and Controller files.  There are, of course, methods beyond this (config files, mix, etc.) that we'll cover later.
+In this chapter we're going to focus on the `use`, `import`, and `alias` keywords and what they specifically bring to our Router and Controller files.  There are, of course, functions beyond this (config files, mix, etc.) that we'll cover later.
 
 If you start to feel lost during this chapter, that's okay.  Just power on through, then come back later when you've had more exposure to the framework.  The main goal with this chapter is that our uses of `use` and `import` feel less magical and arbitrary, so knowing that there is a logic is almost as good as understanding the logic.
 
@@ -77,7 +77,7 @@ There are lots of cool complicated things you can do with `quote`, but in this f
 
 So, in this case, the effect of putting `use StarTracker.Web, :router` in your file is the same as putting in `use Phoenix.Router`, since that's the only thing within the quote block.
 
-Why the added layer of indirection?  Two reasons.  First of all, `router` is the only method within the `Web` macro that's only one line- everything else brings in several imports as well.  Second, having this indirection allows us to put in "standard" things that will show up in every instance where the macro is used.  Which, once again, is less useful in `router` than in the other uses of this macro because generally there's one Router per Phoenix app.
+Why the added layer of indirection?  Two reasons.  First of all, `router` is the only function within the `Web` macro that's only one line- everything else brings in several imports as well.  Second, having this indirection allows us to put in "standard" things that will show up in every instance where the macro is used.  Which, once again, is less useful in `router` than in the other uses of this macro because generally there's one Router per Phoenix app.
 
 ---
 
@@ -107,8 +107,8 @@ Here's a simplified version of that file:
 
 ```elixir
 defmodule Phoenix.Router do
-  @http_methods [:get, :post, :put, :patch, :delete, :options, :connect, :trace, :head]
-  for verb <- @http_methods do #...
+  @http_functions [:get, :post, :put, :patch, :delete, :options, :connect, :trace, :head]
+  for verb <- @http_functions do #...
 
   defmacro __using__(_) do #...
   defmacro match(verb, path, plug, plug_opts, options \\ []) do #...
@@ -172,7 +172,7 @@ We see that `controller` is a bit more complex than `router`. Within the `quote`
 
 ## use Phoenix.Controller
 
-Here's a highly-compacted version of `Phoenix.Controller`, with 90% of the method names and 100% of the actual code redacted for simplicity's sake (the actual file is 1073 lines long, as of this writing).
+Here's a highly-compacted version of `Phoenix.Controller`, with 90% of the function names and 100% of the actual code redacted for simplicity's sake (the actual file is 1073 lines long, as of this writing).
 
 ```elixir
 defmodule Phoenix.Controller do
@@ -196,13 +196,13 @@ defmodule Phoenix.Controller do
 end
 ```
 
-Here we see 7 different definitions of `render` (the one Controller method we've used so far), each differentiated by the number of arguments (arity) as well as some `when` clauses (a particular definition of `render` will only be used if its `when` clause is true).
+Here we see 7 different definitions of `render` (the one Controller function we've used so far), each differentiated by the number of arguments (arity) as well as some `when` clauses (a particular definition of `render` will only be used if its `when` clause is true).
 
 There are lots more definitions in this file, including `html` and `redirect`, but for now there's nothing else for us to learn here.  Time to look at the other things brought in by `use StarTracker.Web, :controller`.
 
 ## alias
 
-The next line is the `controller` method is `alias StarTracker.Repo`.  We haven't used this yet, but the explanation is easy *if you don't worry about what `StarTracker.Repo` actually does*.
+The next line is the `controller` function is `alias StarTracker.Repo`.  We haven't used this yet, but the explanation is easy *if you don't worry about what `StarTracker.Repo` actually does*.
 
 Simply put: you can access a set of functions from the `StarTracker.Repo` module, such as `StarTracker.Repo.get`.  With the alias given above, you can leave off the `StarTracker` part, leaving only `Repo.get`.  This makes things more convenient.
 

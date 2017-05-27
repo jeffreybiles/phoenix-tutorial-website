@@ -96,7 +96,7 @@ The first argument is the base url- `/` here, so effectively nil- and the second
 
 `pipe_through :browser` says that within this scope, we'll be using the `browser` pipeline that we defined earlier.
 
-`get` takes 3 arguments- the url, the controller, and the method.  Here the url is `/`, the controller is `PageController`, and the method is `:index`.  What this means is that if a GET request is sent to the url `/`, then we'll respond with the index function on PageController.
+`get` takes 3 arguments- the url, the controller, and the function.  Here the url is `/`, the controller is `PageController`, and the function is `:index`.  What this means is that if a GET request is sent to the url `/`, then we'll respond with the index function on PageController.
 
 ---
 
@@ -112,7 +112,7 @@ The first argument is the base url- `/` here, so effectively nil- and the second
 
 ## Our New Route
 
-Let's define our own route now- `info`.  It'll be a `get` request, since we don't need the server to make any changes.  We'll want the url to be `/info`, we can re-use the `PageController`, and we'll call our method `:info`.
+Let's define our own route now- `info`.  It'll be a `get` request, since we don't need the server to make any changes.  We'll want the url to be `/info`, we can re-use the `PageController`, and we'll call our function `:info`.
 
 ```elixir
 scope "/", StarTracker do
@@ -147,7 +147,7 @@ The `defmodule` is `StarTracker.PageController`- the naming of which is, once ag
 
 ## Don't Change the Name
 
-Even if you also change the name in the `get` method, it will still complain.  Let's change it in both places to `PageTroller` (both in the Controller `defmodule` and in the `get` method for `:index`) and see what happens.
+Even if you also change the name in the `get` function, it will still complain.  Let's change it in both places to `PageTroller` (both in the Controller `defmodule` and in the `get` function for `:index`) and see what happens.
 
 ![](../images/09/wrong-controller-name.png)
 
@@ -155,9 +155,9 @@ The error is "function StarTracker.PageTrollerView.render/2 is undefined (module
 
 So the moral of this story is: don't mess with the names.  There's rarely a good reason to stray from the conventions that Phoenix recommends- or at least not a reason good enough to justify losing all the magical niceties that Phoenix provides.
 
-## Our Current Controller Method
+## Our Current Controller Function
 
-We'll once again skip over the line with `use` (`use StarTracker.Web, :controller`), leaving it to the next chapter, and move on to our `index` method.
+We'll once again skip over the line with `use` (`use StarTracker.Web, :controller`), leaving it to the next chapter, and move on to our `index` function.
 
 ```elixir
 def index(conn, _params) do
@@ -165,13 +165,13 @@ def index(conn, _params) do
 end
 ```
 
-Each Phoenix Controller method takes two arguments- connection and parameters (`conn` and `_params` in this example).  We'll go over the connection in more detail in later chapters, but right now we just need it to feed to the `render` method.  `_params`, on the other hand, is not needed.  Starting an argument name with `_` is a great way to signal to future readers of your code that you don't intend to use it, while still being more descriptive than just a plain `_`.  If we decided to use that argument, we would change it to `params`.
+Each Phoenix Controller function takes two arguments- connection and parameters (`conn` and `_params` in this example).  We'll go over the connection in more detail in later chapters, but right now we just need it to feed to the `render` function.  `_params`, on the other hand, is not needed.  Starting an argument name with `_` is a great way to signal to future readers of your code that you don't intend to use it, while still being more descriptive than just a plain `_`.  If we decided to use that argument, we would change it to `params`.
 
-We then use the render method and feed it two arguments- the connection and then a string- `index.html`.  The string indicates where we'll get the template to display our page.  This is partly Phoenix Magic- through naming conventions it knows that `index.html` in the PageController means `web/templates/page/index.html.eex`.
+We then use the render function and feed it two arguments- the connection and then a string- `index.html`.  The string indicates where we'll get the template to display our page.  This is partly Phoenix Magic- through naming conventions it knows that `index.html` in the PageController means `web/templates/page/index.html.eex`.
 
-## Our New Controller Method
+## Our New Controller Function
 
-Our controller method won't be too much different.
+Our controller function won't be too much different.
 
 ```elixir
 defmodule StarTracker.PageController do
@@ -245,12 +245,12 @@ And with that, we have our page!
 
 1. Bring your local app up to where we are.
 2. There are many places where naming is important to Phoenix, but other places where it isn't.  Try changing naming in the following two places:
-  a) The Controller method name- try changing `:info` to `:about` in the `get` helper in the Router, and then change the method name in the Controller to `about` as well.
-  b) The template name- change `info.html` to `information.html` in the Controller method, then change the template filename to match (`web/templates/page/information.html.eex`).
+  a) The Controller function name- try changing `:info` to `:about` in the `get` helper in the Router, and then change the function name in the Controller to `about` as well.
+  b) The template name- change `info.html` to `information.html` in the Controller function, then change the template filename to match (`web/templates/page/information.html.eex`).
 You'll know you've succeeded once you've made the changes and the page at `/info` still works as before.  If you want to check that it's actually doing something and not just coasting off an old version of the app, feel free to check halfway through each change- when you've changed one of the parts but not the other.  You should, at that point, see an error message.
 
 ## Conclusion
 
-In this chapter we've create a new Page at the url `/info`.  To do this we had to create a new Route in the Router, a new method in the Controller, and a new template.  Although we'll expand on it later, Route -> Controller -> Template is the basic path that all requests take when being served by Phoenix.
+In this chapter we've create a new Page at the url `/info`.  To do this we had to create a new Route in the Router, a new function in the Controller, and a new template.  Although we'll expand on it later, Route -> Controller -> Template is the basic path that all requests take when being served by Phoenix.
 
 In Chapter 11 we'll explore further the connections between the Router, the Controller, and the Template, but first in Chapter 10 we're going to go back and look at the `use` construct and see where all of those handy macros come from.

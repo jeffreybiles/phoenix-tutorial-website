@@ -75,7 +75,7 @@ This can occasionally cause frustration for those coming from an Object-Oriented
 
 The focus of this book is not installing stuff, but I'll provide quick instructions for the major platforms and links to more detailed instructions where needed.
 
-Installing Elixir is the most system-dependent installation step of this entire book.  Each method shared will install both Elixir and Erlang, the language which Elixir builds on top of.
+Installing Elixir is the most system-dependent installation step of this entire book.  Each function shared will install both Elixir and Erlang, the language which Elixir builds on top of.
 
 ### Mac
 

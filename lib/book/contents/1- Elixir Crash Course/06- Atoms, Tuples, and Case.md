@@ -126,7 +126,7 @@ iex(1)> my_tuple = {"Babylon", 5}
 
 As you can see, the values can be of any type- including multiple types within one tuple.  They can also be of any length, although lengths of 2 to 4 are most common.
 
-You can access an element within a tuple using the `elem` method:
+You can access an element within a tuple using the `elem` function:
 
 ```elixir
 iex(2)> elem(my_tuple, 0)
@@ -171,7 +171,7 @@ defmodule LearningElixir do
 end
 ```
 
-Here both variations on the method have two arguments, the second of which is a ship and the first of which is a tuple.  The tuple has two values- an atom and a string.  The atom is either `:ok` or `:error`, and the string is used when the action is a failure but thrown away when the action is successful.
+Here both variations on the function have two arguments, the second of which is a ship and the first of which is a tuple.  The tuple has two values- an atom and a string.  The atom is either `:ok` or `:error`, and the string is used when the action is a failure but thrown away when the action is successful.
 
 ```elixir
 iex(1)> LearningElixir.take_action({:ok, "Make it so"}, "Enterprise")

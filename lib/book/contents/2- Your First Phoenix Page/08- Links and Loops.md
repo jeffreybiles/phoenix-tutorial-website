@@ -132,7 +132,7 @@ The above is equivalent to
 <a href="/info/<%= name %>"><%= name %></a>
 ```
 
-So it's a little shorter.  There are other benefits to it that we'll see later on, such as being able to choose a different HTTP method than "get", but for now it's just shorter and more "Phoenix-y".
+So it's a little shorter.  There are other benefits to it that we'll see later on, such as being able to choose a different HTTP function than "get", but for now it's just shorter and more "Phoenix-y".
 
 So let's analyze each part of it.
 
@@ -144,7 +144,7 @@ First, the structure of the helper.  It doesn't have a `do` at the end, so this 
 
 The first argument is what will be displayed- in this case, the value in the `name` variable.  The second argument is a Map containing one key-value pair.  The key is `to`, and the value is the URL that we're linking to.  You'll notice that we use Elixir-style string interpolation (`"#{name}"`) rather than Embedded-Elixir-style string interpolation (`<%= name %>`).  That's because this is already inside an Elixir block (the `link` helper).
 
-Two other options are available within the hash: `method` and `form`.
+Two other options are available within the hash: `function` and `form`.
 
 It's worth noting that there is second form of the `link` helper that does have a `do` block (for more complex link text).  There's also other ways to define the url in the `to` option.  We'll cover those when we need them.
 

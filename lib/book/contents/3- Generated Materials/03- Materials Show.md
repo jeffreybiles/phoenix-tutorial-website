@@ -84,7 +84,7 @@ The problem here- Joe has no mission.  Hard to inspire people without a mission!
 
 > The careful observer will note that we used Strings to match instead of atoms.  If you try to match a URL parameter with atoms, it will give the "no function clause matching" error.
 
-## Repo.get! and exclamation point methods
+## Repo.get! and exclamation point functions
 
 Back to our `show` action:
 
@@ -97,13 +97,13 @@ end
 
 The next line is about how we get the selected Material.  `Repo.get!` takes two required arguments- the record type (`Material`) and the id of the record we're trying to get.  Remember, `id` is automatically assigned when we create a record and is unique per type of record- so the two pieces of information we're giving `Repo.get!` is always enough information to uniquely identify a record.
 
-If you look at the list of functions on `Repo`, you may notice something funny- in addition to `Repo.get!` there's also a `Repo.get` method- the same name, but without the exclamation point.  This is a shorthand adopted from Ruby; an exclamation point tells the user that the method will throw an error if doesn't work instead of failing silently.  
+If you look at the list of functions on `Repo`, you may notice something funny- in addition to `Repo.get!` there's also a `Repo.get` function- the same name, but without the exclamation point.  This is a shorthand adopted from Ruby; an exclamation point tells the user that the function will throw an error if doesn't work instead of failing silently.  
 
 Let's test this out by putting in an id that we don't have yet:
 
 ![](../images/15/get!-error.png)
 
-What a nice error!  It points to the exact line with our failing `Repo.get!` call and gives us the information that we fed into the method.  Plenty of information to reconstruct what went wrong.
+What a nice error!  It points to the exact line with our failing `Repo.get!` call and gives us the information that we fed into the function.  Plenty of information to reconstruct what went wrong.
 
 Now let's try removing the exclamation point, and see what happens if we feed in a bad ID with `Repo.get`:
 
@@ -149,13 +149,13 @@ The only new thing is the `<strong>` tag, and it's pretty simple- it bolds the t
 
 ## Conclusion
 
-In addition to reviewing the core Phoenix pattern, we saw two important new techniques- exclamation point methods and pattern matching on Map keys.  You'll see both of these a lot throughout your Phoenix app and grow to appreciate their usefulness.
+In addition to reviewing the core Phoenix pattern, we saw two important new techniques- exclamation point functions and pattern matching on Map keys.  You'll see both of these a lot throughout your Phoenix app and grow to appreciate their usefulness.
 
 ## Exercises
 
 1. Add the `id` property to the top of the list, above the name.
 2. Add the `updatedAt` and `createdAt` properties to the bottom of the list, below `latinum_per_1k`.
-3. Make a version of the `inspire` method that doesn't require a mission.  Not very inspiring, is it?  Now make one that requires a mission but doesn't require a spaceship name or type.  Test each of them in the command line, making sure that the version with all three keys is triggered when all three keys are available, but the other two versions are triggered when keys are missing.
+3. Make a version of the `inspire` function that doesn't require a mission.  Not very inspiring, is it?  Now make one that requires a mission but doesn't require a spaceship name or type.  Test each of them in the command line, making sure that the version with all three keys is triggered when all three keys are available, but the other two versions are triggered when keys are missing.
 
 These are the results you should get:
 
