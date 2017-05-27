@@ -1,5 +1,6 @@
 defmodule Book do
   def contents do
+    # TODO: Add changelog and acknowledgements
     [%{
         ord: 0,
         title: "Introduction",
