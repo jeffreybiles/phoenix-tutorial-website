@@ -34,6 +34,18 @@ iex(2)> LearningElixir.hello
 "boldly going where no man has gone before"
 ```
 
+---
+
+> **Captain's Log: Loading Elixir Files**
+
+> It took much experimentation, but we have finally discovered how to load code into the ship's interpreter.
+
+> Our error was that we were in the wrong folder- the computer didn't know how to find `basic_elixir.ex`.  Our solution: be in the same folder as the file when we start the Elixir interpreter.
+
+> Our scientists have reported that we may be able to access the file from a different folder by specifying the path but, truth be told, I prefer the simple way
+
+---
+
 We load the file into the Interpreter with the command `import_file`.  We can ignore the output for now- only notice that we see both `LearningElixir` and `hello` in various forms.
 
 Then we call our function with `LearningElixir.hello` and get back the expected string.
@@ -60,11 +72,13 @@ We've renamed `hello` to `phrase`, then used it in our `recombine` function.  No
 
 > **Captain's Log: Scope**
 
-> Scope can be a scary word, but here's a basic way to think about it.  If you're in your living room, and you say "I would like to sit on the couch", you don't have to specify which of the millions of couches you're sitting on.  You're in the living room scope, so when you're trying to think of couches, the one in the living room comes to mind first.  It's the same reason that if you talk to someone in the United States about "the civil war", they'll immediately think of the American Civil War, not the Spanish Civil War, the American Revolution, or Marvel Comic's Civil War (tm).  That's because they're scoped to the United States[^2].
+> Scope can be a scary word, but here's a basic way to think about it.  If you're in your ship's common room, and you say "I would like to sit on the couch", you don't have to specify which of the millions of couches you're sitting on.  You're in the common room scope, so when you're trying to think of couches, the one in the ship's common room comes to mind first.
+
+> It's the same reason that if you talked to someone in the old United States about "the civil war", they'll immediately think of the American Civil War, not the Spanish Civil War, the American Revolution, or the Klingon Civil War.  That's because they're scoped to the United States.
 
 > Scope isn't as big a deal in Elixir as it is in Object-Oriented languages, but it's still important to understand.
 
-[^2]: (Okay, maybe some nerds here are scoped to Marvel Comics.  I won't judge.)
+---
 
 The rest of our `recombine` function is just like what we previously did directly in the interpreter.
 

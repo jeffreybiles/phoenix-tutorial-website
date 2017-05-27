@@ -55,10 +55,10 @@ The above demonstrate numbers, basic math, order of operations with parentheses 
 
 What is displayed when you type each of these into the command line?  After thinking about it, test your answer.
 
-1. 2 * 10
-2. (2 * 10) + 3
-3. 2 * (10 + 3)
-4. numTacos = 2 + 3; pepperPerTaco = 3; numTacos * pepperPerTaco
+1. `2 * 10`
+2. `(2 * 10) + 3`
+3. `2 * (10 + 3)`
+4. `numTacos = 2 + 3; pepperPerTaco = 3; numTacos * pepperPerTaco`
 
 (If you can't guess what `;` does, just go ahead and play around with it. Playing and testing your hypotheses is cheap in the command line!)
 
@@ -81,7 +81,7 @@ For the purposes of this book we'll be using double-quoted strings (sometimes ca
 
 > Single-quoted strings are Lists of Characters and double-quoted strings are UTF-8 encoded binaries represented by a series of graphemes.  Even though we think of both of them as "Strings", we use different sets of functions on each.
 
-> For a fun demonstration a quirk of Char Lists, try putting `[111, 111, 112, 115]` in the command line.
+> For a fun demonstration of a quirk of Char Lists, try putting `[111, 111, 112, 115]` in the command line.
 
 ---
 
@@ -129,9 +129,9 @@ If this doesn't make sense to you, that's okay- just move on.  We'll cover modul
 
 What is displayed when you type each of these into the command line?  After thinking about it, test your answer.
 
-1. String.split("hello amazing universe", " ")
-2. String.split("hello amazing universe", "i")
-3. setting = "stun"; "set phasers to #{setting}"
+1. `String.split("hello amazing universe", " ")`
+2. `String.split("hello amazing universe", "i")`
+3. `setting = "stun"; "set phasers to #{setting}"`
 
 ## Enum
 
@@ -179,10 +179,10 @@ iex(4)> String.split "hello universe"
 
 What is displayed when you type each of these into the command line?  After thinking about it, test your answer.
 
-1. Enum.member?(["hello", "vast", "universe"], "hello")
-2. Enum.member?(["hello", "vast", "universe"], "hello vast universe")
-3. Enum.join(["hello", "vast", "universe"], "! ")
-4. Enum.join(["hello", "vast", "universe"], "joining with this string is a very bad idea")
+1. `Enum.member?(["hello", "vast", "universe"], "hello")`
+2. `Enum.member?(["hello", "vast", "universe"], "hello vast universe")`
+3. `Enum.join(["hello", "vast", "universe"], "! ")`
+4. `Enum.join(["hello", "vast", "universe"], "joining with this string is a very bad idea")`
 
 
 ## Chaining functions together
@@ -237,9 +237,9 @@ Working with pipes is a core part of the Elixir experience, and so most function
 
 What is displayed when you type each of these into the command line?  After thinking about it, test your answer.
 
-1. "boldly going where no man has gone before" |> String.length
-2. "boldly going where no man has gone before" |> String.split(" ") |> Enum.member?("boldly")
-3. "boldly going where no man has gone before" |> String.upcase |> String.split(" ") |> Enum.join("... ")
+1. `"boldly going where no man has gone before" |> String.length`
+2. `"boldly going where no man has gone before" |> String.split(" ") |> Enum.member?("boldly")`
+3. `"boldly going where no man has gone before" |> String.upcase |> String.split(" ") |> Enum.join("... ")`
 
 ## Conclusion
 

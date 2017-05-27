@@ -25,7 +25,7 @@ iex(2)> LearningElixir.recombinePhraseRequired "hello world"
 
 Next we'll figure out how to make that argument *optional*.
 
-There are several ways to do that.  The first solution we show, having a default value, will be typical of non-functional languages.  The second solution, which be modeled after a common Javascript pattern, will show us how different the two language's capabilities are and introduce us to the concept of Arity.  Finally, the third solution will take advantage of Elixir's functional abilities and give us our first taste of Pattern Matching.
+There are several ways to do that.  The first solution we show, having a default value, will be typical of non-functional languages.  The second solution, which is modeled after a common Javascript pattern, will show us how different the two language's capabilities are and introduce us to the concept of Arity.  Finally, the third solution will take advantage of Elixir's functional abilities and give us our first taste of Pattern Matching.
 
 ## Default Value
 
@@ -113,8 +113,8 @@ end
 Here we're defining two versions of recombine- the first with an arity of 1 and the second with an arity of 0.  When we call it with an argument, we get the first version of `recombine`.  When we call it without an argument, we get the second version- which then calls the first version and feeds it the phrase we defined earlier.
 
 ```elixir
-iex(1)> LearningElixir.recombine "hello universe"
-"hello-universe"
+iex(1)> LearningElixir.recombine "hello world, universe"
+"hello-world,-universe"
 iex(2)> LearningElixir.recombine
 "boldly-going-where-no-man-has-gone-before"
 ```
@@ -126,8 +126,8 @@ Pretty cool, right?  There are lots of other ways you can employ pattern matchin
 1.  Use pattern matching to add a 2-arity version of `recombine` which lets you input the join string.
 
 ```elixir
-iex(1)> LearningElixir.recombine("hello universe", " vast ")
-"hello vast universe"
+iex(1)> LearningElixir.recombine("hello world, universe", " vast ")
+"hello vast world, vast universe"
 iex(2)> LearningElixir.recombine("hello universe")
 "hello-universe"
 ```
