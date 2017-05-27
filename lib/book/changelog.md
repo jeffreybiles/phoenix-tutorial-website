@@ -1,14 +1,15 @@
 # Changelog
 
 
+* Redid immutability section, starting with simpler examples and showing an example of mutable data
+* Redid the case statement section, starting with a simpler example
+* Demarcated all code samples in exercises as code (so they are easier to copy/paste)
 * Fixed many typos
 * Turned all usages of "method" to "function"
+* Made pattern matching exercises a bit more clear
 * Added a captain's log about the command line conventions
 * Added a captain's log about loading elixir files
-* Made pattern matching exercises a bit more clear
-* Demarcated all code samples in exercises as code (inline monospace, unhighlighted)
 * Added flavor bits to captain's logs, to hint at a story
-* Completely redid immutability section, starting with simpler examples and showing an example of mutability
 
 ## 0.1
 

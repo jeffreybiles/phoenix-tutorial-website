@@ -186,6 +186,31 @@ Matching a tuple with an `:ok` or `:error` atom as the first value is very commo
 
 There are many other ways we could go about coding `take_action`.  Probably the most fitting is the `case` statement.
 
+Here's a super simple example of a case statement:
+
+```elixir
+def rabbit_counting(number) do
+  case number do
+    0 -> "none"
+    1 -> "one"
+    2 -> "two"
+    3 -> "three"
+    4 -> "four"
+    _ -> "many"
+  end
+end
+```
+
+A case statement has two parts- the expression and the clauses.  In this case statement, the expression is `number`, and there are six clauses.
+
+Each clause has a head and a body.  The head (such as `1` or `_`) is before the arrow `->`, and is what matches against the expression.  The body is what's after the arrow `->`.  When a head matches, the body of that clause is returned.
+
+So if you pass in `1`, you get `"one"` returned.  If you pass in `4`, you get `"four"` returned.  
+
+What happens if you pass in `5`?  The underscore (`_`) in the head acts as a default, accepting anything.  So if we pass in `5`, it will be caught by the underscore and return `"many"`.  Be careful about that, though- if you put the underscore as the first clause, then it will catch *everything*, not letting any of the other more specific clauses match.
+
+Now let's apply the case statement to our tuple pattern-matching example:
+
 ```elixir
 defmodule LearningElixir do
   def take_action(tup, ship) do
@@ -197,11 +222,7 @@ defmodule LearningElixir do
 end
 ```
 
-A case statement has two parts- the expression and the clauses.  In this case statement, the expression is `tup`, and there are two clauses.  
-
-Each clause has a head and a body.  The head (such as `{:ok, _}`) is before the arrow `->`, and is what matches against the expression.  The body is what's after the arrow `->`.  When a head matches, the body of that clause is returned.  
-
-So if `{:ok, _}` matches, then `"Great job, #{ship}"` will be returned, with `ship` being filled in with whatever was passed in to the function.
+If `{:ok, _}` matches, then `"Great job, #{ship}"` will be returned, with `ship` being filled in with whatever was passed in to the function.
 
 Case statements of this form are very common in Phoenix apps, so you'll have plenty of time to get used to how they work.
 
@@ -228,8 +249,8 @@ Learning the common error modes is important- better that you do it now while yo
 ```elixir
 iex(1)> LearningElixir.take_action({:ok, "I have made it so", "Enterprise"})
 "Great job, Enterprise"
-iex(2)> LearningElixir.take_action({:error, "Phasers not set to stun :(", "Enterprise"})
-"Problem with Enterprise.  Phasers not set to stun :("
+iex(2)> LearningElixir.take_action({:error, "Phasers not set to stun", "Enterprise"})
+"Problem with Enterprise.  Phasers not set to stun"
 ```
 
 ## Conclusion
