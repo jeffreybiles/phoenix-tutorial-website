@@ -102,7 +102,7 @@ defmodule LearningElixir do
 end
 ```
 
-Now we're matching not just on arity (number of arguments), but also on the value of the argument given (for versions with arity 1).
+Now we're matching not just on arity (number of arguments), but also on the value of the argument given (for versions with arity of 1).
 
 ```elixir
 iex(1)> LearningElixir.my_map
@@ -234,7 +234,17 @@ This may be a bit of a shock to people from other languages who are used to usin
 
 ## Exercises
 
-1. Type out our final version of the `take_action` function.  What happens when you call it as follows?  Why?
+1. For the following code:
+
+```elixir
+{:ok, phaser_setting, _} = {:ok, "stun", "thank you"}
+%{name: my_name} = %{rank: "Captain", name: "Picard"}
+```
+
+What is the value of `phaser_setting` and `my_name`?
+
+2. Type out our final version of the `take_action` function.  What happens when you call it as follows?  Why?
+
 a. `LearningElixir.take_action({:err_bear, "Doctor, why is tummy glowing, is that cancer?"}, "Enterprise")`
 b. `LearningElixir.take_action("no tuple here", "Enterprise")`
 c. `LearningElixir.take_action({"ok", "I have made it so"}, "Enterprise")`
@@ -244,7 +254,7 @@ f. `LearningElixir.take_action({:ok, "I have made it so"}, "Enterprise")`
 
 Learning the common error modes is important- better that you do it now while your program is small.
 
-2. Modify `take_action` so that the ship is passed as a third part of the tuple.
+3. Modify `take_action` so that the ship is passed as a third part of the tuple.
 
 ```elixir
 iex(1)> LearningElixir.take_action({:ok, "I have made it so", "Enterprise"})
