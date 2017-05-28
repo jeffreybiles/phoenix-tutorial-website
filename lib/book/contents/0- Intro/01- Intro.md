@@ -22,11 +22,15 @@ There are lots of great resources for intermediate and advanced developers to le
 
 This book aims to be your first Elixir and Phoenix book (and maybe even your first web development book), but not your last.  We'll go into the basics of the language and the framework, giving you a solid foundation so you can crank out simple web apps and be prepared to read and understand the books written on more advanced topics.
 
-That said, this is not meant to be your first introduction to programming.  While I don't expect you to have familiarity with Elixir or web programming, I do expect you to know how to put together a simple program in *some* language.  If you don't meet that standard, use one of the following resources and come back when you're reading:
+That said, this is not meant to be your first introduction to programming.
 
-### Beginner Resources
+## Prerequisites
 
-TODO: Put the list of beginner resources back in
+While I don't expect you to have familiarity with Elixir or web programming, I do expect you to know how to put together a simple program in *some* language.  If you don't meet that standard, here are some good (free) resources:
+
+* [Intro to Computer Science](https://www.udacity.com/course/intro-to-computer-science--cs101) (A video course that teaches Python basics)
+* [How to Design Programs](http://www.htdp.org/2003-09-26/) (this Lisp book is how I learned)
+* [Invent With Python](http://inventwithpython.com/) (Book series that involves making lots of games)
 
 ## Why Phoenix and Elixir?
 
