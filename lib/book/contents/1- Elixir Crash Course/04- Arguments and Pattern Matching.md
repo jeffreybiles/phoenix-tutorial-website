@@ -2,7 +2,7 @@
 
 ## Using Arguments
 
-The `recombine` function is a pretty cool, but it always uses the default phrase defined elsewhere in the module.  What if we wanted to allow the user the option of putting in their own phrase?
+The `recombine` function is pretty cool, but it always uses the default phrase defined elsewhere in the module.  What if we wanted to allow the user the option of putting in their own phrase?
 
 First we'll see how to *make* them input their own phrase:
 
@@ -133,6 +133,16 @@ iex(2)> LearningElixir.recombine("hello universe")
 ```
 
 2. Redefine the 1-arity version of `recombine` in terms of the 2-arity version (like we redefined the 0-arity version in terms of the 1-arity version).
+
+---
+
+> **Captain's Log: Function Ordering**
+
+> Our scientists have arranged the above functions of different arities in many orders, and have found no difference in how the program runs.
+
+> However, in other situations the order does matter- Elixir will check the functions in order and use the first one that matches.  So we have made it a habit to put the more specific cases earlier in the file and the more general cases later in the file.
+
+---
 
 ## Conclusion
 

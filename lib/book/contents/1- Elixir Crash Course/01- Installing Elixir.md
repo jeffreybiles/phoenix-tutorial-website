@@ -8,7 +8,9 @@ Welcome to The Phoenix Tutorial.  I'm so glad you decided to join us!
 
 > **Captain's Log: The Introduction**
 
-> Stardate: far future.  I have just discovered the first fragments of this fascinating manuscript detailing the Phoenix technology that underlies our fleet.
+> Stardate: far future.
+
+> I have just discovered the first fragments of this fascinating manuscript detailing the Phoenix technology that underlies our fleet.
 
 > At first I wasn't sure what I was reading, since it seemed to jump straight into technical instructions, but then I went back and read the Introduction and it all made sense.
 

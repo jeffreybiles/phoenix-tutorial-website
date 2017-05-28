@@ -8,7 +8,9 @@
 * Turned all usages of "method" to "function"
 * Made pattern matching exercises a bit more clear
 * Added a captain's log about the command line conventions
+* Added a captain's log about the interpreter
 * Added a captain's log about loading elixir files
+* Added a captain's log about function ordering
 * Added flavor bits to captain's logs, to hint at a story
 
 ## 0.1

@@ -51,9 +51,21 @@ iex(5)> numTacos + numBurritos
 
 The above demonstrate numbers, basic math, order of operations with parentheses (this will apply to more than just math), and the assignment and use of variables.
 
+---
+
+> **Captain's Log: Command Line Interpreter**
+
+> Our scientists have discovered how to access the Command Line Interpreter (iex) that this manuscript speaks of.  
+
+> At first we thought that we had forever trapped out computers in the interpreter, but we eventually discovered that we could exit by hitting Ctrl + C twice in a row.  This is good for when you're done, or if you get the interpreter into a weird state you don't understand.
+
+> Exiting and re-entering also solved another mystery- the numbers in the interpreter prompt.  A few more superstitious in our crew thought them at first some sort of sinister countdown, but they are simply the number of lines since the interpreter started.
+
+---
+
 ## Interpreter Exercises
 
-What is displayed when you type each of these into the command line?  After thinking about it, test your answer.
+What is displayed when you type each of these into the command line interpreter?  After thinking about it, test your answer.
 
 1. `2 * 10`
 2. `(2 * 10) + 3`
