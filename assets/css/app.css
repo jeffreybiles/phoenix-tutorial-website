@@ -1,1 +1,8 @@
 /* This file is for your main application css. */
+
+html blockquote {
+  padding: 0;
+  margin: 14px 40px;
+  border-left: 0;
+  font-size: 13px;
+}

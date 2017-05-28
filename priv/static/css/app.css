@@ -1,4 +1,12 @@
 /* This file is for your main application css. */
+
+html blockquote {
+  padding: 0;
+  margin: 14px 40px;
+  border-left: 0;
+  font-size: 13px;
+}
+
 /* Includes Bootstrap as well as some default style for the starter
  * application. This can be safely deleted to start fresh.
  */
