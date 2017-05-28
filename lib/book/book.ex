@@ -1,10 +1,13 @@
 defmodule Book do
   def contents do
-    # TODO: Add changelog and acknowledgements
     [%{
         ord: 0,
-        title: "Introduction",
-        chapters: [%{order: 1, title: "Intro"}]
+        title: "Frontmatter",
+        chapters: [
+          %{order: 1, title: "Introduction (Read this first)"}
+          %{order: 2, title: "Changelog"},
+          %{order: 3, title: "Acknowledgements"},
+        ]
       }, %{
         ord: 1,
         title: "Elixir Crash Course",

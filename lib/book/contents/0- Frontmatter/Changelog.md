@@ -1,5 +1,10 @@
 # Changelog
 
+* Added acknowledgements
+* Added changelog
+
+### 0.1.1
+
 * Rewrote the introduction
 * Rewrote immutability section, starting with simpler examples and showing an example of mutable data
 * Rewrote the case statement section, starting with a simpler example
