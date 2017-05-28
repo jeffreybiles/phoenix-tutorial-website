@@ -11,6 +11,6 @@ defmodule TutorialSite.Web.PageView do
   end
 
   def content(section, chapter) do
-    Book.get_html(section, chapter)
+    raw Book.get_html(unhyphenate(section), unhyphenate(chapter))
   end
 end

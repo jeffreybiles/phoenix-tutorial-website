@@ -4,7 +4,6 @@
   </div>
   <div class="col-md-9">
     <h3><%= unhyphenate @section %></h3>
-    <h1><%= unhyphenate @chapter %></h1>
     <%= content @section, @chapter %>
   </div>
 </div>

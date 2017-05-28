@@ -1,4 +1,8 @@
 defmodule Book do
+  def main_path do
+    "lib/book"
+  end
+
   def contents do
     [%{
         ord: 0,
@@ -23,9 +27,25 @@ defmodule Book do
     }]
   end
 
-  def get_html(section, chapter) do
-    # grab the markdown file using section and title (grab the ord by filtering by title?)
-    # parse it using earmark
-    # Later: do some syntax highlighting
+  def get_html(section_title, chapter_title) do
+    {section, chapter} = find_by_title(section_title, chapter_title)
+    filepath = "#{main_path}/contents/#{section.ord}- #{section.title}/#{chapter.ord}- #{chapter.title}.md"
+    markdown = File.read!(filepath)
+    Earmark.as_html!(markdown)
+  end
+
+  defp contents_by_title do
+    Enum.reduce(Book.contents, %{}, (fn(section, acc) ->
+      new_section = Enum.reduce(section.chapters, section, (fn(chapter, acc) ->
+        Map.put(acc, chapter.title, chapter)
+      end))
+      Map.put(acc, section.title, new_section)
+    end))
+  end
+
+  defp find_by_title(section_title, chapter_title) do
+    section = contents_by_title[section_title]
+    chapter = section[chapter_title]
+    {section, chapter}
   end
 end
