@@ -1,8 +1,8 @@
 # Changelog
 
-
-* Redid immutability section, starting with simpler examples and showing an example of mutable data
-* Redid the case statement section, starting with a simpler example
+* Rewrote the introduction
+* Rewrote immutability section, starting with simpler examples and showing an example of mutable data
+* Rewrote the case statement section, starting with a simpler example
 * Demarcated all code samples in exercises as code (so they are easier to copy/paste)
 * Fixed many typos
 * Turned all usages of "method" to "function"

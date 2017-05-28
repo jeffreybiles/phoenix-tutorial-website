@@ -30,7 +30,7 @@ TODO: Put the list of beginner resources back in
 
 ## Why Phoenix and Elixir?
 
-> This section uses advanced terminology in order to compare Phoenix and Elixir to other tools.  If you don't understand something here that's okay- just read to get the general gist of it.
+> This section uses advanced terminology in order to compare Phoenix and Elixir to other tools.  If you don't understand something here that's okay- just read to get the general gist of it.  There will be a summary at the end.
 
 The current king of the backend Web Framework world is Ruby on Rails- it's what is taught at hundreds of Coder Bootcamps and used at thousands of startups (as well as some large companies).  However, many of the leading lights of the Ruby and Rails worlds have moved on, and a significant number of them have moved to Elixir and Phoenix.  Why is that?
 
