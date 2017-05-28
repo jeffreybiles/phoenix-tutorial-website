@@ -4,9 +4,9 @@ defmodule Book do
         ord: 0,
         title: "Frontmatter",
         chapters: [
-          %{order: 1, title: "Introduction (Read this first)"}
-          %{order: 2, title: "Changelog"},
-          %{order: 3, title: "Acknowledgements"},
+          %{ord: 1, title: "Introduction (Read this first)"},
+          %{ord: 2, title: "Changelog"},
+          %{ord: 3, title: "Acknowledgements"}
         ]
       }, %{
         ord: 1,

@@ -2,7 +2,7 @@
 
 This book will focus on teaching you the fundamentals of web development.
 
-Web development is a powerful tool that can help you in many endeavors- whether it's building a startup that can change the world, getting a job to provide for your family, making a web app as a creative expression, or using web development as a secret weapon to increase your effectiveness in your current career.
+Web development is a powerful tool that can help you in many endeavors- whether it's building a startup that can change the world, getting a job to provide for your family, making a web app as a creative expression, or using web development as a secret weapon to increase your effectiveness in your current career, I think that you'll be glad you invested the time into learning this valuable skill.
 
 We’re going to learn web development using what I believe are some of the best tools available- Elixir (a blazing-fast programming language with friendly syntax), Phoenix (a modern web framework that combines functional programming with the best of Ruby on Rails), and Ecto (a maintainable system for interacting with the database).  (More on that later in this introduction)
 

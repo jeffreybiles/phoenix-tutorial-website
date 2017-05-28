@@ -13,42 +13,13 @@ header-includes:
 
 # Intro
 
-There are lots of great resources for intermediate and advanced developers to learn Elixir and Phoenix, but relatively little for beginners.  In addition, the resources that do exist tend to rush past the core web framework features in order to get to the cool advanced features that set the framework apart, like Channels and OTP.
+This book will focus on teaching you the fundamentals of web development.
 
-This book aims to be your first Elixir and Phoenix book, but not your last.  We'll go into the basics of the language and the framework, giving you a solid foundation so you can crank out simple web apps and be prepared to read and understand the books written on more advanced topics.
+Web development is a powerful tool that can help you in many endeavors- whether it's building a startup that can change the world, getting a job to provide for your family, making a web app as a creative expression, or using web development as a secret weapon to increase your effectiveness in your current career.
 
-Some of the advanced developers may be thinking: if you're not going to do Channels and OTP, what's the point of using Elixir and Phoenix?  Let's compare a Phoenix app to an app written in the popular Ruby on Rails framework.  Compared to that app, the Phoenix app is
+We’re going to learn web development using what I believe are some of the best tools available- Elixir (a blazing-fast programming language with friendly syntax), Phoenix (a modern web framework that combines functional programming with the best of Ruby on Rails), and Ecto (a maintainable system for interacting with the database).  (More on that later in this introduction)
 
-* An order of magnitude faster (due to Elixir's use of the Erlang VM)
-* Significantly less likely to descend into spaghetti code (due to functional programming)
-* Prepared to take advantage of advanced features *when their use becomes necessary*
-
-Much of the complexity in your typical Ruby on Rails app comes from trying to coax more performance out of the framework or to mitigate the harmful effects of bad Object-Oriented practices.  Thus, although Phoenix has sometimes been seen as a choice only for more advanced users due to its amazing advanced features (and, when the framework was younger, its relatively rough edges), it actually allows you to stick with the basics for longer into your app's life than most comparable web frameworks.
-
-That said, this is not meant to be your first introduction to programming.  While I don't expect you to have familiarity with Elixir or web programming, I do expect you to know how to put together a simple program in *some* language.  If you don't meet that standard, go [here](page with links to beginner resources) and come back when you're ready.
-
-I hope you're as excited as I am to start writing your first Phoenix app!
-
----
-
-> **Technobabble: When to use Phoenix vs Other web frameworks?**
-
-> Phoenix is still a newer technology, but it's well past 1.0 and stable enough to run production apps (and the underlying technologies- Elixir and Erlang- are rock solid).
-
-> If you're starting a new project, choose Phoenix!  But if you have a legacy project then there are more tradeoffs to consider.
-
-> I'd say that if you are having performance problems which can't be solved with basic solutions (such as fixing n+1 database queries) then it may be worth it to switch to Phoenix.  High availability requirements are another good reason.  It also may be worth it if your project involves lots of concurrency or sockets- stuff that most languages and frameworks do poorly, but Elixir and Phoenix do really really well.
-
-> If you're investigating Phoenix, then it's likely that you fall into one of those camps.  However, if you're happy with your current tech, or if you're unhappy for different reasons, consider whether the benefits of Phoenix will be worth the cost of a rewrite.
-
-
- \pagebreak 
-
-# Hello World
-
-## Intro
-
-Welcome to Phoenix Tutorial!
+## What are we building?
 
 We'll be taking a **hands-on approach** to learning, which means you'll be practicing each concept quickly after you learn it, applying it in a real application when possible.  In addition to the code given in each chapter (which you should type into your computer and run), there will also be exercises, which I highly recommend you do- if you want to remember what you're learning.
 
@@ -58,41 +29,31 @@ Throughout this book we're going to be building the Star Tracker app, which bold
 
 It's not super fancy, but it gives us many opportunities to solidify the core concepts you'll need to start creating your own Phoenix apps (and understand the more advanced Elixir and Phoenix books, should you choose to read them).
 
+## Why this book, and not Learning Phoenix or another book?
+
+There are lots of great resources for intermediate and advanced developers to learn Elixir and Phoenix, but relatively little for beginners.  In addition, the resources that do exist tend to rush past the core web framework features in order to get to the cool advanced features that set the framework apart, like Channels and OTP.
+
+This book aims to be your first Elixir and Phoenix book (and maybe even your first web development book), but not your last.  We'll go into the basics of the language and the framework, giving you a solid foundation so you can crank out simple web apps and be prepared to read and understand the books written on more advanced topics.
+
+That said, this is not meant to be your first introduction to programming.
+
 ## Prerequisites
 
-This book is designed for beginners, and as of this writing is the most beginner-friendly Phoenix book, but it is not meant as a "learn to program" book.  If you want to learn to program, here are some good (free) resources:
+While I don't expect you to have familiarity with Elixir or web programming, I do expect you to know how to put together a simple program in *some* language.  If you don't meet that standard, here are some good (free) resources:
 
 * [Intro to Computer Science](https://www.udacity.com/course/intro-to-computer-science--cs101) (A video course that teaches Python basics)
 * [How to Design Programs](http://www.htdp.org/2003-09-26/) (this Lisp book is how I learned)
 * [Invent With Python](http://inventwithpython.com/) (Book series that involves making lots of games)
 
-If you already know how to program, here are some other things that are recommended before diving into this book:
+## Why Phoenix and Elixir?
 
-* Command line basics (cd, ls, mkdir, rm -rf, etc.)
-* Html and CSS basics (tags, classes, ids, etc.)
-* Git and Github
-* Navigating your favorite text editor
-
-If you don't know some of the above and want to struggle through anyways, that's fine too- I'll try and provide cursory explanations of them when they come up, but these explanations will not be the main focus of the book.
-
-## Should I Know Elixir?
-
-One thing you may think is a prerequisite- but isn't- is the Elixir language. I'll cover the basic building blocks in the rest of Part 1, then introduce concepts in a "just in time" manner after that.
-
-The biggest downside to this approach is that it can result in conflating Phoenix with Elixir, and being at a loss when looking at a non-Phoenix Elixir applications.  I don't think this is that big of a problem (I learned Ruby through Rails, where language/framework conflation is rampant, and I did fine), but if you're worried then you can check out these great Elixir learning resources:
-
-* [Try Elixir](https://www.codeschool.com/courses/try-elixir)
-* [Programming Elixir 1.3](https://pragprog.com/book/elixir13/programming-elixir-1-3)
-
-## Why Phoenix? Why Elixir?
-
-(This section is more advanced than the rest of the introduction.  It's also aimed at differentiating Phoenix from its predecessor/inspiration Ruby on Rails.  Feel free to skim.)
+> This section uses advanced terminology in order to compare Phoenix and Elixir to other tools.  If you don't understand something here that's okay- just read to get the general gist of it.  There will be a summary at the end.
 
 The current king of the backend Web Framework world is Ruby on Rails- it's what is taught at hundreds of Coder Bootcamps and used at thousands of startups (as well as some large companies).  However, many of the leading lights of the Ruby and Rails worlds have moved on, and a significant number of them have moved to Elixir and Phoenix.  Why is that?
 
 ![Twitter joke about Rails and Phoenix](./contents/images/01/ruby-to-phoenix-joke.png)
 
-The simple answer is that Elixir combines the power, speed, and reliability of the Erlang VM with the beauty and expressiveness of Ruby syntax.  In one stroke it fixes the biggest complaint about each language- speed for Ruby and syntax for Erlang.
+The answer is that Elixir combines the power, speed, and reliability of the Erlang VM with the beauty and expressiveness of Ruby syntax.  In one stroke it fixes the biggest complaint about each language- speed for Ruby and syntax for Erlang.
 
 The Elixir ecosystem has also learned a lot from both languages.  From Ruby it takes many of the most popular tools and combines them into one tool with a consistent interface: Mix.  From Erlang it takes... the entire Erlang ecosystem; you can use any Erlang package you want in Elixir (just be prepared to look at some not-as-beautiful code).
 
@@ -116,12 +77,96 @@ Channels/Sockets that are just as easy as in Node (the current Sockets king), bu
 
 This can occasionally cause frustration for those coming from an Object-Oriented language (such as Ruby), but once you become acclimated it means fewer bugs and more readable code.  You also get really cool features like Pattern Matching and piping that are not available in Object-Oriented languages.
 
+---
 
-## Installing Elixir
+> **Technobabble: When to use Phoenix vs Other web frameworks?**
 
-The focus of this book is not installing stuff, but I'll provide quick instructions for the major platforms and links to more detailed instructions where needed.
+> Phoenix is still a newer technology, but it's well past 1.0 and stable enough to run production apps (and the underlying technologies- Elixir and Erlang- are rock solid).
+
+> If you're starting a new project, choose Phoenix!  But if you have a legacy project then there are more tradeoffs to consider.
+
+> I'd say that if you are having performance problems which can't be solved with basic solutions (such as fixing n+1 database queries) then it may be worth it to switch to Phoenix.  High availability requirements are another good reason.  It also may be worth it if your project involves lots of concurrency or sockets- stuff that most languages and frameworks do poorly, but Elixir and Phoenix do really really well.
+
+> If you're investigating Phoenix, then it's likely that you fall into one of those camps.  However, if you're happy with your current tech, or if you're unhappy for different reasons, consider whether the benefits of Phoenix will be worth the cost of a rewrite.
+
+---
+
+## Why Phoenix? (for beginners)
+
+If you're a beginner that didn't quite understand all of the last section, here's the tl;dr on why Elixir/Phoenix/Ecto can be a better choice than Ruby/Ruby on Rails/ActiveRecord or other popular web programming tools:
+
+* Phoenix is an order of magnitude faster (due to Elixir's use of the Erlang VM)
+* Your Phoenix code is significantly less likely to descend into spaghetti code (due both to Elixir’s functional programming and Phoenix and Ecto’s learning many lessons from how web apps can go wrong)
+* You'll be prepared to take advantage of Elixir's advanced features *when their use becomes necessary*
+
+## Conclusion
+
+I hope you're as excited as I am to begin!  Turn the page and we'll start installing Elixir.
+
+
+ \pagebreak 
+
+# Changelog
+
+* Added acknowledgements
+* Added changelog
+
+### 0.1.1
+
+* Rewrote the introduction
+* Rewrote immutability section, starting with simpler examples and showing an example of mutable data
+* Rewrote the case statement section, starting with a simpler example
+* Demarcated all code samples in exercises as code (so they are easier to copy/paste)
+* Fixed many typos
+* Turned all usages of "method" to "function"
+* Made pattern matching exercises a bit more clear
+* Added a captain's log about the command line conventions
+* Added a captain's log about the interpreter
+* Added a captain's log about loading elixir files
+* Added a captain's log about function ordering
+* Added flavor bits to captain's logs, to hint at a story
+
+## 0.1
+
+* **Introduction and first section created.**
+
+
+ \pagebreak 
+
+# Acknowledgements
+
+A huge thanks to those who have offered feedback on the manuscript: Derek Wook, Franco Barbeite, Giuseppe Caruso, and Richard Poole.  This book would be much worse without them.
+
+
+ \pagebreak 
+
+# Installing Elixir
+
+## Hello World
+
+Welcome to The Phoenix Tutorial.  I'm so glad you decided to join us!
+
+---
+
+> **Captain's Log: The Introduction**
+
+> Stardate: far future.
+
+> I have just discovered the first fragments of this fascinating manuscript detailing the Phoenix technology that underlies our fleet.
+
+> At first I wasn't sure what I was reading, since it seemed to jump straight into technical instructions, but then I went back and read the Introduction and it all made sense.
+
+> I'll be recording my observations, both for myself, and so that others my continue my research should anything... happen.
+
+---
+
+As we said in the intro, we'll be taking a **hands-on approach** to learning.  And that means that before we can do anything, you're going to have to get Elixir installed on your computer.
+
+## Installation
 
 Installing Elixir is the most system-dependent installation step of this entire book.  Each function shared will install both Elixir and Erlang, the language which Elixir builds on top of.
+
+Check which operating system you are using and follow the associated instructions.
 
 ---
 
@@ -242,9 +287,21 @@ iex(5)> numTacos + numBurritos
 
 The above demonstrate numbers, basic math, order of operations with parentheses (this will apply to more than just math), and the assignment and use of variables.
 
+---
+
+> **Captain's Log: Command Line Interpreter**
+
+> Our scientists have discovered how to access the Command Line Interpreter (iex) that this manuscript speaks of.  
+
+> At first we thought that we had forever trapped out computers in the interpreter, but we eventually discovered that we could exit by hitting Ctrl + C twice in a row.  This is good for when you're done, or if you get the interpreter into a weird state you don't understand.
+
+> Exiting and re-entering also solved another mystery- the numbers in the interpreter prompt.  A few more superstitious in our crew thought them at first some sort of sinister countdown, but they are simply the number of lines since the interpreter started.
+
+---
+
 ## Interpreter Exercises
 
-What is displayed when you type each of these into the command line?  After thinking about it, test your answer.
+What is displayed when you type each of these into the command line interpreter?  After thinking about it, test your answer.
 
 1. `2 * 10`
 2. `(2 * 10) + 3`
@@ -459,7 +516,7 @@ defmodule LearningElixir do
 end
 ```
 
-Our module, defined by `defmodule`, is `LearningElixir`.  Attached to that we have a `do` and its closing `end`.  This pair of "delimiters" indicates that anything in between them is part of the `LearningElixir` module.  Some languages use whitespace or curly braces as their delimiters, but Elixir has copied Ruby and uses the more descriptive `do` and `end` keywords.
+Our module, defined by `defmodule` (DEFine MODULE), is `LearningElixir`.  Attached to that we have a `do` and its closing `end`.  This pair of "delimiters" indicates that anything in between them is part of the `LearningElixir` module.  Some languages use whitespace or curly braces as their delimiters, but Elixir has copied Ruby and uses the more descriptive `do` and `end` keywords.
 
 Our function `hello` is defined by `def`.  It also has a do/end delimiting block.  Inside that block is the string "boldly going where no man has gone before", which is what is returned when we call that function.
 
@@ -483,7 +540,7 @@ iex(2)> LearningElixir.hello
 
 > Our error was that we were in the wrong folder- the computer didn't know how to find `basic_elixir.ex`.  Our solution: be in the same folder as the file when we start the Elixir interpreter.
 
-> Our scientists have reported that we may be able to access the file from a different folder by specifying the path but, truth be told, I prefer the simple way
+> Our scientists have reported that we may be able to access the file from a different folder by specifying the path but, truth be told, I prefer the simple way.
 
 ---
 
@@ -613,7 +670,7 @@ In the next chapter, we'll show how to create more flexible functions by giving 
 
 ## Using Arguments
 
-The `recombine` function is a pretty cool, but it always uses the default phrase defined elsewhere in the module.  What if we wanted to allow the user the option of putting in their own phrase?
+The `recombine` function is pretty cool, but it always uses the default phrase defined elsewhere in the module.  What if we wanted to allow the user the option of putting in their own phrase?
 
 First we'll see how to *make* them input their own phrase:
 
@@ -744,6 +801,16 @@ iex(2)> LearningElixir.recombine("hello universe")
 ```
 
 2. Redefine the 1-arity version of `recombine` in terms of the 2-arity version (like we redefined the 0-arity version in terms of the 1-arity version).
+
+---
+
+> **Captain's Log: Function Ordering**
+
+> Our scientists have arranged the above functions of different arities in many orders, and have found no difference in how the program runs.
+
+> However, in other situations the order does matter- Elixir will check the functions in order and use the first one that matches.  So we have made it a habit to put the more specific cases earlier in the file and the more general cases later in the file.
+
+---
 
 ## Conclusion
 
@@ -1046,7 +1113,7 @@ defmodule LearningElixir do
 end
 ```
 
-Now we're matching not just on arity (number of arguments), but also on the value of the argument given (for versions with arity 1).
+Now we're matching not just on arity (number of arguments), but also on the value of the argument given (for versions with arity of 1).
 
 ```elixir
 iex(1)> LearningElixir.my_map
@@ -1178,7 +1245,17 @@ This may be a bit of a shock to people from other languages who are used to usin
 
 ## Exercises
 
-1. Type out our final version of the `take_action` function.  What happens when you call it as follows?  Why?
+1. For the following code:
+
+```elixir
+{:ok, phaser_setting, _} = {:ok, "stun", "thank you"}
+%{name: my_name} = %{rank: "Captain", name: "Picard"}
+```
+
+What is the value of `phaser_setting` and `my_name`?
+
+2. Type out our final version of the `take_action` function.  What happens when you call it as follows?  Why?
+
 a. `LearningElixir.take_action({:err_bear, "Doctor, why is tummy glowing, is that cancer?"}, "Enterprise")`
 b. `LearningElixir.take_action("no tuple here", "Enterprise")`
 c. `LearningElixir.take_action({"ok", "I have made it so"}, "Enterprise")`
@@ -1188,7 +1265,7 @@ f. `LearningElixir.take_action({:ok, "I have made it so"}, "Enterprise")`
 
 Learning the common error modes is important- better that you do it now while your program is small.
 
-2. Modify `take_action` so that the ship is passed as a third part of the tuple.
+3. Modify `take_action` so that the ship is passed as a third part of the tuple.
 
 ```elixir
 iex(1)> LearningElixir.take_action({:ok, "I have made it so", "Enterprise"})
