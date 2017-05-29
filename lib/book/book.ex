@@ -10,7 +10,8 @@ defmodule Book do
         chapters: [
           %{ord: 1, title: "Introduction (Read this first)"},
           %{ord: 2, title: "Changelog"},
-          %{ord: 3, title: "Acknowledgements"}
+          %{ord: 3, title: "Acknowledgements"},
+          %{ord: 4, title: "Copyright and License"}
         ]
       }, %{
         ord: 1,
