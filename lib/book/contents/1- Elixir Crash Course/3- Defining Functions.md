@@ -24,14 +24,14 @@ Our function `hello` is defined by `def`.  It also has a do/end delimiting block
 
 Let's go ahead and load that file in the Interpreter.
 
-```elixir
+```
 iex(1)> import_file "basic_elixir.ex"
-{:module, LearningElixir,
- <<70, 79, 82, 49, 0, 0, 5, 0, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 128,
-   131, 104, 2, 100, 0, 14, 101, 108, 105, 120, 105, 114, 95, 100, 111, 99, 115,
-   95, 118, 49, 108, 0, 0, 0, 4, 104, 2, ...>>, {:hello, 0}}
+        {:module, LearningElixir,
+         <<70, 79, 82, 49, 0, 0, 5, 0, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 128,
+           131, 104, 2, 100, 0, 14, 101, 108, 105, 120, 105, 114, 95, 100, 111, 99,
+          115, 95, 118, 49, 108, 0, 0, 0, 4, 104, 2, ...>>, {:hello, 0}}
 iex(2)> LearningElixir.hello
-"boldly going where no man has gone before"
+        "boldly going where no man has gone before"
 ```
 
 ---
@@ -84,21 +84,21 @@ The rest of our `recombine` function is just like what we previously did directl
 
 Let's load and call this in the interpreter.
 
-```elixir
+```
 iex(3)> import_file "basic_elixir.ex"
-warning: redefining module LearningElixir (current version defined in memory)
-  iex:1
+        warning: redefining module LearningElixir (current version defined in memory)
+          iex:1
 
-warning: variable "phrase" does not exist and is being expanded to "phrase()",
-please use parentheses to remove the ambiguity or change the variable name
-  iex:7
+        warning: variable "phrase" does not exist and is being expanded to "phrase()",
+        please use parentheses to remove the ambiguity or change the variable name
+          iex:7
 
-{:module, LearningElixir,
- <<70, 79, 82, 49, 0, 0, 6, 8, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 162,
-   131, 104, 2, 100, 0, 14, 101, 108, 105, 120, 105, 114, 95, 100, 111, 99, 115,
-   95, 118, 49, 108, 0, 0, 0, 4, 104, 2, ...>>, {:recombine, 0}}
+        {:module, LearningElixir,
+         <<70, 79, 82, 49, 0, 0, 6, 8, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 162,
+           131, 104, 2, 100, 0, 14, 101, 108, 105, 120, 105, 114, 95, 100, 111, 99,
+           115, 95, 118, 49, 108, 0, 0, 0, 4, 104, 2, ...>>, {:recombine, 0}}
 iex(4)> LearningElixir.recombine
-"boldly-going-where-no-man-has-gone-before"
+        "boldly-going-where-no-man-has-gone-before"
 ```
 
 The result of `LearningElixir.recombine` is what we would expect if we straightforwardly combined what we previously knew.
@@ -152,9 +152,9 @@ This version of `recombine` does exactly the same as our last version, but now i
 1. Create the `LearningElixir` module, with the `phrase` and `recombine` functions in it.  Import it on the command line, then run `LearningElixir.recombine`.
 2. Within that module, create the `upcase_phrase` function, which returns the phrase, but all in upper case letters.  Use the `phrase` function in your solution- you're cheating if you just type out the phrase manually in upper case.
 
-```elixir
+```
 > iex(1)> LearningElixir.upcase_phrase
-"BOLDLY GOING WHERE NO MAN HAS GONE BEFORE"
+          "BOLDLY GOING WHERE NO MAN HAS GONE BEFORE"
 ```
 
 We introduced the relevant `String` function in the last chapter.

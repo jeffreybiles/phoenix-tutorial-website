@@ -14,7 +14,8 @@ $ iex
 
 Now you should see something like the following:
 
-```elixir
+<hr>
+```
 $ iex
 Erlang/OTP 19 [erts-8.3] [source] [64-bit] [smp:8:8] [async-threads:10]
 [hipe] [kernel-poll:false] [dtrace]
@@ -22,31 +23,34 @@ Erlang/OTP 19 [erts-8.3] [source] [64-bit] [smp:8:8] [async-threads:10]
 Interactive Elixir (1.4.2) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)>
 ```
+<hr>
 
 This is good!  That means it's working.  Now you can type Elixir code in and it'll run right there (after you hit the Enter key).
 
-```elixir
+```
 iex(1)> 2 + 3
-5
+        5
 ```
 
 Boom.  Type in `2 + 3`, hit enter, and it shows the result `5` in the line below.
 
+> Your interpreter will show the results all the way to the left, but I've indented the results in this book so input/output lines are easier to differentiate and so output is easier to match up with the input that produced it.
+
 When we build our Phoenix app we'll spend the majority of our time interacting with it in other ways, but we'll always have the option to drop back to the interpreter and play around.
 
-```elixir
+```
 iex(1)> 2 + 3
-5
+        5
 iex(2)> (2 + 3) * 3
-15
+        15
 iex(3)> 2 + (3 * 3)
-11
+        11
 iex(3)> numTacos = 3
-3
+        3
 iex(4)> numBurritos = 3 * 5
-15
+        15
 iex(5)> numTacos + numBurritos
-18
+        18
 ```
 
 The above demonstrate numbers, basic math, order of operations with parentheses (this will apply to more than just math), and the assignment and use of variables.
@@ -80,9 +84,9 @@ There are two types of Strings in Elixir.
 
 ```elixir
 iex(1)> "hello universe"
-"hello universe"
+        "hello universe"
 iex(2)> 'hello universe'
-'hello universe'
+        'hello universe'
 ```
 
 For the purposes of this book we'll be using double-quoted strings (sometimes called Binaries).  Single-quoted strings (sometimes called Char Lists) are mostly used when interfacing with old Elixir libraries.
@@ -99,28 +103,28 @@ For the purposes of this book we'll be using double-quoted strings (sometimes ca
 
 Here's some basic inline usages of strings
 
-```elixir
+```
 iex(1)> "hello" <> "universe"
-"hellouniverse"
+        "hellouniverse"
 iex(2)> "hello" <> " universe"
-"hello universe"
+        "hello universe"
 iex(3)> place = "universe"
-"universe"
+        "universe"
 iex(4)> "hello #{place}"
-"hello universe"
+        "hello universe"
 ```
 
 Aside from these inline usages, most action on strings happens via functions being applied to them.  Here's an example:
 
-```elixir
+```
 iex(5)> phrase = "hello vast universe"
-"hello vast universe"
+        "hello vast universe"
 iex(6)> String.split(phrase, " ")
-["hello", "vast", "universe"]
+        ["hello", "vast", "universe"]
 iex(7)> upcase_phrase = String.upcase(phrase)
-"HELLO VAST UNIVERSE"
+        "HELLO VAST UNIVERSE"
 iex(8)> phrase <> " -> " <> upcase_phrase
-"hello vast universe -> HELLO VAST UNIVERSE"
+        "hello vast universe -> HELLO VAST UNIVERSE"
 ```
 
 The string usage above is simple but allows us to demonstrate many facets of how Elixir works.
@@ -149,16 +153,17 @@ What is displayed when you type each of these into the command line?  After thin
 
 The `Enum` module meant for working with Enumerables.  Although there are others, the most common type of Enumerable is a list, so that's what we'll be working with today.
 
-```elixir
+```
 iex(1)> split_phrase = ["hello", "vast", "universe"]
+        ["hello", "vast", "universe"]
 iex(2)> Enum.count split_phrase
-3
+        3
 iex(3)> Enum.join split_phrase, "-"
-"hello-vast-universe"
+        "hello-vast-universe"
 iex(4)> Enum.member? split_phrase, "universe"
-true
+        true
 iex(4)> Enum.member? split_phrase, "univers"
-false
+        false
 ```
 
 Once again we have our functions which are organized by module (`Enum`), which are then applied to the data (`split_phrase`).
@@ -169,22 +174,22 @@ We're also demonstrating a parentheses-free function syntax.  It's equivalent to
 
 As an aside, remember how we have single-quoted strings (arrays of Chars) and double-quoted strings (binaries)?  Those types end up being important.  We use `Enum` functions on single-quoted Strings, and `String` functions on double-quoted Strings.
 
-```elixir
+```
 iex(1)> Enum.count 'hello'
-5
+        5
 iex(2)> Enum.count "hello"
-** (Protocol.UndefinedError) protocol Enumerable not implemented for "hello"
-    (elixir) lib/enum.ex:1: Enumerable.impl_for!/1
-    (elixir) lib/enum.ex:146: Enumerable.count/1
-    (elixir) lib/enum.ex:467: Enum.count/1
+        ** (Protocol.UndefinedError) protocol Enumerable not implemented for "hello"
+            (elixir) lib/enum.ex:1: Enumerable.impl_for!/1
+            (elixir) lib/enum.ex:146: Enumerable.count/1
+            (elixir) lib/enum.ex:467: Enum.count/1
 iex(3)> String.split 'hello universe'
-** (ArgumentError) argument error
-    (stdlib) :binary.split('hello universe',
-    ["　", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", <<194, 133>>, " ", "\t", "\n", "\v", "\f", "\r"], [:global])
-    (elixir) unicode/unicode.ex:506: String.Break.split/1
+        ** (ArgumentError) argument error
+            (stdlib) :binary.split('hello universe',
+            ["　", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
+            " ", <<194, 133>>, " ", "\t", "\n", "\v", "\f", "\r"], [:global])
+            (elixir) unicode/unicode.ex:506: String.Break.split/1
 iex(4)> String.split "hello universe"
-["hello", "universe"]
+        ["hello", "universe"]
 ```
 
 ## Enum Exercises
@@ -203,20 +208,20 @@ Let's say we wanted to count how many words are in a certain phrase.  We don't h
 
 There are several ways we could do this.  Here's the first.
 
-```elixir
+```
 iex(1)> phrase = "boldly going where no man has gone before"
-"boldly going where no man has gone before"
+        "boldly going where no man has gone before"
 iex(2)> split_phrase = String.split(phrase)
-["boldly", "going", "where", "no", "man", "has", "gone", "before"]
+        ["boldly", "going", "where", "no", "man", "has", "gone", "before"]
 iex(3)> count = Enum.count split_phrase
-8
+        8
 ```
 
 If you're unsure of where you're going and what to check at every step, that's probably the best way to go.  However, for production code it can look a bit messy.  Here's another way that's a bit more compact:
 
-```elixir
+```
 iex(1)> Enum.count(String.split("boldly going where no man has gone before"))
-8
+        8
 ```
 
 Here we're nesting the function calls so the result of one gets fed into the other.  This is more compact, but it can still look messy.
@@ -227,18 +232,18 @@ A great solution to this is the pipe syntax.
 
 In the pipe syntax, we can take the results of one function and "pipe" it as the first argument of the next function.
 
-```elixir
+```
 iex(1)> "boldly going where no man has gone before" |> String.split |> Enum.count
-8
+        8
 ```
 
 It's a couple more characters than the previous one, but it's far more readable.  You have the subject first (the phrase), and then you pass that phrase to `String.split`, then pass the results of that to `Enum.count`.
 
 If you have multiple arguments, you just pass the second (and third and fourth, etc.) arguments with the function.
 
-```elixir
+```
 iex(1)> "boldly going where no man has gone before" |> String.split |> Enum.join("-")
-"boldly-going-where-no-man-has-gone-before"
+        "boldly-going-where-no-man-has-gone-before"
 ```
 
 When you're piping functions, be sure to use parentheses for your arguments- the compiler can usually infer them, but the pipe syntax makes that more difficult and so it's best to be explicit.

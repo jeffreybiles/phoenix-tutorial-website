@@ -26,18 +26,18 @@ end
 
 Now when we want to access the code, we use an atom instead of a String:
 
-```elixir
+```
 iex(1)> LearningElixir.my_map[:name]
-"Enterprise"
+        "Enterprise"
 iex(2)> LearningElixir.my_map["name"]
-nil
+        nil
 ```
 
 But here's the first convenience that atoms unlock:
 
-```elixir
+```
 iex(3)> LearningElixir.my_map.name
-"Enterprise"
+        "Enterprise"
 ```
 
 This is much nicer than the clunky `["string"]` and `[:atom]` syntax.
@@ -104,11 +104,11 @@ end
 
 Now we're matching not just on arity (number of arguments), but also on the value of the argument given (for versions with arity of 1).
 
-```elixir
+```
 iex(1)> LearningElixir.my_map
-%{mission: "Code Boldly", name: "Enterprise", type: "CodeShip"}
+        %{mission: "Code Boldly", name: "Enterprise", type: "CodeShip"}
 iex(2)> LearningElixir.my_map(:ds9)
-%{mission: "Protect Bajor", name: "Terok Nor", type: "Station"}
+        %{mission: "Protect Bajor", name: "Terok Nor", type: "Station"}
 ```
 
 Pattern matching is common with atoms, but it could be done with any datatype- Strings, numbers, even Maps.
@@ -119,40 +119,40 @@ One of the other common pattern-matching data-types is a Tuple.
 
 Tuples are simply collections of values, surrounded by curly braces:
 
-```elixir
+```
 iex(1)> my_tuple = {"Babylon", 5}
-{"Babylon", 5}
+        {"Babylon", 5}
 ```
 
 As you can see, the values can be of any type- including multiple types within one tuple.  They can also be of any length, although lengths of 2 to 4 are most common.
 
 You can access an element within a tuple using the `elem` function:
 
-```elixir
+```
 iex(2)> elem(my_tuple, 0)
-"Babylon"
+        "Babylon"
 ```
 
 As you can see, it's zero-indexed.
 
 You can also decompose a tuple into its component parts:
 
-```elixir
+```
 iex(3)> {name, num} = my_tuple
-{"Babylon", 5}
+        {"Babylon", 5}
 iex(4)> name
-"Babylon"
+        "Babylon"
 ```
 
 This is a new form of pattern matching, where the intent is to destructure the tuple into its component parts (sometimes this specific technique is just called "destructuring").
 
 If you don't need one part of it, you don't have to name it- you can just use the underscore symbol:
 
-```elixir
+```
 iex(5)> {name, _} = my_tuple
-{"Babylon", 5}
+        {"Babylon", 5}
 iex(6)> name
-"Babylon"
+        "Babylon"
 ```
 
 We're essentially throwing away the number by using the underscore.  This saves us the trouble of naming it, and also communicates to future readers of our code which parts of the tuple will be used.
@@ -173,11 +173,11 @@ end
 
 Here both variations on the function have two arguments, the second of which is a ship and the first of which is a tuple.  The tuple has two values- an atom and a string.  The atom is either `:ok` or `:error`, and the string is used when the action is a failure but thrown away when the action is successful.
 
-```elixir
+```
 iex(1)> LearningElixir.take_action({:ok, "Make it so"}, "Enterprise")
-"Great job, Enterprise"
+        "Great job, Enterprise"
 iex(2)> LearningElixir.take_action({:error, "Shields are at 38 percent!"}, "Enterprise")
-"Problem with Enterprise.  Shields are at 38 percent!"
+        "Problem with Enterprise.  Shields are at 38 percent!"
 ```
 
 Matching a tuple with an `:ok` or `:error` atom as the first value is very common in Phoenix apps.
@@ -256,11 +256,11 @@ Learning the common error modes is important- better that you do it now while yo
 
 3. Modify `take_action` so that the ship is passed as a third part of the tuple.
 
-```elixir
+```
 iex(1)> LearningElixir.take_action({:ok, "I have made it so", "Enterprise"})
-"Great job, Enterprise"
+        "Great job, Enterprise"
 iex(2)> LearningElixir.take_action({:error, "Phasers not set to stun", "Enterprise"})
-"Problem with Enterprise.  Phasers not set to stun"
+        "Problem with Enterprise.  Phasers not set to stun"
 ```
 
 ## Conclusion

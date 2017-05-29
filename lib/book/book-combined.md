@@ -287,7 +287,7 @@ $ iex
 
 Now you should see something like the following:
 
-```elixir
+```
 $ iex
 Erlang/OTP 19 [erts-8.3] [source] [64-bit] [smp:8:8] [async-threads:10]
 [hipe] [kernel-poll:false] [dtrace]
@@ -298,28 +298,30 @@ iex(1)>
 
 This is good!  That means it's working.  Now you can type Elixir code in and it'll run right there (after you hit the Enter key).
 
-```elixir
+```
 iex(1)> 2 + 3
-5
+        5
 ```
 
 Boom.  Type in `2 + 3`, hit enter, and it shows the result `5` in the line below.
 
+> Your interpreter will show the results all the way to the left, but I've indented the results in this book so input/output lines are easier to differentiate and so output is easier to match up with the input that produced it.
+
 When we build our Phoenix app we'll spend the majority of our time interacting with it in other ways, but we'll always have the option to drop back to the interpreter and play around.
 
-```elixir
+```
 iex(1)> 2 + 3
-5
+        5
 iex(2)> (2 + 3) * 3
-15
+        15
 iex(3)> 2 + (3 * 3)
-11
+        11
 iex(3)> numTacos = 3
-3
+        3
 iex(4)> numBurritos = 3 * 5
-15
+        15
 iex(5)> numTacos + numBurritos
-18
+        18
 ```
 
 The above demonstrate numbers, basic math, order of operations with parentheses (this will apply to more than just math), and the assignment and use of variables.
@@ -353,9 +355,9 @@ There are two types of Strings in Elixir.
 
 ```elixir
 iex(1)> "hello universe"
-"hello universe"
+        "hello universe"
 iex(2)> 'hello universe'
-'hello universe'
+        'hello universe'
 ```
 
 For the purposes of this book we'll be using double-quoted strings (sometimes called Binaries).  Single-quoted strings (sometimes called Char Lists) are mostly used when interfacing with old Elixir libraries.
@@ -372,28 +374,28 @@ For the purposes of this book we'll be using double-quoted strings (sometimes ca
 
 Here's some basic inline usages of strings
 
-```elixir
+```
 iex(1)> "hello" <> "universe"
-"hellouniverse"
+        "hellouniverse"
 iex(2)> "hello" <> " universe"
-"hello universe"
+        "hello universe"
 iex(3)> place = "universe"
-"universe"
+        "universe"
 iex(4)> "hello #{place}"
-"hello universe"
+        "hello universe"
 ```
 
 Aside from these inline usages, most action on strings happens via functions being applied to them.  Here's an example:
 
-```elixir
+```
 iex(5)> phrase = "hello vast universe"
-"hello vast universe"
+        "hello vast universe"
 iex(6)> String.split(phrase, " ")
-["hello", "vast", "universe"]
+        ["hello", "vast", "universe"]
 iex(7)> upcase_phrase = String.upcase(phrase)
-"HELLO VAST UNIVERSE"
+        "HELLO VAST UNIVERSE"
 iex(8)> phrase <> " -> " <> upcase_phrase
-"hello vast universe -> HELLO VAST UNIVERSE"
+        "hello vast universe -> HELLO VAST UNIVERSE"
 ```
 
 The string usage above is simple but allows us to demonstrate many facets of how Elixir works.
@@ -422,16 +424,17 @@ What is displayed when you type each of these into the command line?  After thin
 
 The `Enum` module meant for working with Enumerables.  Although there are others, the most common type of Enumerable is a list, so that's what we'll be working with today.
 
-```elixir
+```
 iex(1)> split_phrase = ["hello", "vast", "universe"]
+        ["hello", "vast", "universe"]
 iex(2)> Enum.count split_phrase
-3
+        3
 iex(3)> Enum.join split_phrase, "-"
-"hello-vast-universe"
+        "hello-vast-universe"
 iex(4)> Enum.member? split_phrase, "universe"
-true
+        true
 iex(4)> Enum.member? split_phrase, "univers"
-false
+        false
 ```
 
 Once again we have our functions which are organized by module (`Enum`), which are then applied to the data (`split_phrase`).
@@ -442,22 +445,22 @@ We're also demonstrating a parentheses-free function syntax.  It's equivalent to
 
 As an aside, remember how we have single-quoted strings (arrays of Chars) and double-quoted strings (binaries)?  Those types end up being important.  We use `Enum` functions on single-quoted Strings, and `String` functions on double-quoted Strings.
 
-```elixir
+```
 iex(1)> Enum.count 'hello'
-5
+        5
 iex(2)> Enum.count "hello"
-** (Protocol.UndefinedError) protocol Enumerable not implemented for "hello"
-    (elixir) lib/enum.ex:1: Enumerable.impl_for!/1
-    (elixir) lib/enum.ex:146: Enumerable.count/1
-    (elixir) lib/enum.ex:467: Enum.count/1
+        ** (Protocol.UndefinedError) protocol Enumerable not implemented for "hello"
+            (elixir) lib/enum.ex:1: Enumerable.impl_for!/1
+            (elixir) lib/enum.ex:146: Enumerable.count/1
+            (elixir) lib/enum.ex:467: Enum.count/1
 iex(3)> String.split 'hello universe'
-** (ArgumentError) argument error
-    (stdlib) :binary.split('hello universe',
-    ["　", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", <<194, 133>>, " ", "\t", "\n", "\v", "\f", "\r"], [:global])
-    (elixir) unicode/unicode.ex:506: String.Break.split/1
+        ** (ArgumentError) argument error
+            (stdlib) :binary.split('hello universe',
+            ["　", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
+            " ", <<194, 133>>, " ", "\t", "\n", "\v", "\f", "\r"], [:global])
+            (elixir) unicode/unicode.ex:506: String.Break.split/1
 iex(4)> String.split "hello universe"
-["hello", "universe"]
+        ["hello", "universe"]
 ```
 
 ## Enum Exercises
@@ -476,20 +479,20 @@ Let's say we wanted to count how many words are in a certain phrase.  We don't h
 
 There are several ways we could do this.  Here's the first.
 
-```elixir
+```
 iex(1)> phrase = "boldly going where no man has gone before"
-"boldly going where no man has gone before"
+        "boldly going where no man has gone before"
 iex(2)> split_phrase = String.split(phrase)
-["boldly", "going", "where", "no", "man", "has", "gone", "before"]
+        ["boldly", "going", "where", "no", "man", "has", "gone", "before"]
 iex(3)> count = Enum.count split_phrase
-8
+        8
 ```
 
 If you're unsure of where you're going and what to check at every step, that's probably the best way to go.  However, for production code it can look a bit messy.  Here's another way that's a bit more compact:
 
-```elixir
+```
 iex(1)> Enum.count(String.split("boldly going where no man has gone before"))
-8
+        8
 ```
 
 Here we're nesting the function calls so the result of one gets fed into the other.  This is more compact, but it can still look messy.
@@ -500,18 +503,18 @@ A great solution to this is the pipe syntax.
 
 In the pipe syntax, we can take the results of one function and "pipe" it as the first argument of the next function.
 
-```elixir
+```
 iex(1)> "boldly going where no man has gone before" |> String.split |> Enum.count
-8
+        8
 ```
 
 It's a couple more characters than the previous one, but it's far more readable.  You have the subject first (the phrase), and then you pass that phrase to `String.split`, then pass the results of that to `Enum.count`.
 
 If you have multiple arguments, you just pass the second (and third and fourth, etc.) arguments with the function.
 
-```elixir
+```
 iex(1)> "boldly going where no man has gone before" |> String.split |> Enum.join("-")
-"boldly-going-where-no-man-has-gone-before"
+        "boldly-going-where-no-man-has-gone-before"
 ```
 
 When you're piping functions, be sure to use parentheses for your arguments- the compiler can usually infer them, but the pipe syntax makes that more difficult and so it's best to be explicit.
@@ -559,14 +562,14 @@ Our function `hello` is defined by `def`.  It also has a do/end delimiting block
 
 Let's go ahead and load that file in the Interpreter.
 
-```elixir
+```
 iex(1)> import_file "basic_elixir.ex"
-{:module, LearningElixir,
- <<70, 79, 82, 49, 0, 0, 5, 0, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 128,
-   131, 104, 2, 100, 0, 14, 101, 108, 105, 120, 105, 114, 95, 100, 111, 99, 115,
-   95, 118, 49, 108, 0, 0, 0, 4, 104, 2, ...>>, {:hello, 0}}
+        {:module, LearningElixir,
+         <<70, 79, 82, 49, 0, 0, 5, 0, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 128,
+           131, 104, 2, 100, 0, 14, 101, 108, 105, 120, 105, 114, 95, 100, 111, 99,
+          115, 95, 118, 49, 108, 0, 0, 0, 4, 104, 2, ...>>, {:hello, 0}}
 iex(2)> LearningElixir.hello
-"boldly going where no man has gone before"
+        "boldly going where no man has gone before"
 ```
 
 ---
@@ -619,21 +622,21 @@ The rest of our `recombine` function is just like what we previously did directl
 
 Let's load and call this in the interpreter.
 
-```elixir
+```
 iex(3)> import_file "basic_elixir.ex"
-warning: redefining module LearningElixir (current version defined in memory)
-  iex:1
+        warning: redefining module LearningElixir (current version defined in memory)
+          iex:1
 
-warning: variable "phrase" does not exist and is being expanded to "phrase()",
-please use parentheses to remove the ambiguity or change the variable name
-  iex:7
+        warning: variable "phrase" does not exist and is being expanded to "phrase()",
+        please use parentheses to remove the ambiguity or change the variable name
+          iex:7
 
-{:module, LearningElixir,
- <<70, 79, 82, 49, 0, 0, 6, 8, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 162,
-   131, 104, 2, 100, 0, 14, 101, 108, 105, 120, 105, 114, 95, 100, 111, 99, 115,
-   95, 118, 49, 108, 0, 0, 0, 4, 104, 2, ...>>, {:recombine, 0}}
+        {:module, LearningElixir,
+         <<70, 79, 82, 49, 0, 0, 6, 8, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 162,
+           131, 104, 2, 100, 0, 14, 101, 108, 105, 120, 105, 114, 95, 100, 111, 99,
+           115, 95, 118, 49, 108, 0, 0, 0, 4, 104, 2, ...>>, {:recombine, 0}}
 iex(4)> LearningElixir.recombine
-"boldly-going-where-no-man-has-gone-before"
+        "boldly-going-where-no-man-has-gone-before"
 ```
 
 The result of `LearningElixir.recombine` is what we would expect if we straightforwardly combined what we previously knew.
@@ -687,9 +690,9 @@ This version of `recombine` does exactly the same as our last version, but now i
 1. Create the `LearningElixir` module, with the `phrase` and `recombine` functions in it.  Import it on the command line, then run `LearningElixir.recombine`.
 2. Within that module, create the `upcase_phrase` function, which returns the phrase, but all in upper case letters.  Use the `phrase` function in your solution- you're cheating if you just type out the phrase manually in upper case.
 
-```elixir
+```
 > iex(1)> LearningElixir.upcase_phrase
-"BOLDLY GOING WHERE NO MAN HAS GONE BEFORE"
+          "BOLDLY GOING WHERE NO MAN HAS GONE BEFORE"
 ```
 
 We introduced the relevant `String` function in the last chapter.
@@ -721,11 +724,11 @@ end
 
 This is the first function we've created that requires an argument, but we've used functions with arguments before.  When we call it we must feed it a phrase as input (with or without parentheses)
 
-```elixir
+```
 iex(1)> LearningElixir.recombinePhraseRequired("hello world")
-"hello-world"
+        "hello-world"
 iex(2)> LearningElixir.recombinePhraseRequired "hello world"
-"hello-world"
+        "hello-world"
 ```
 
 Next we'll figure out how to make that argument *optional*.
@@ -744,11 +747,11 @@ end
 
 Here the argument has a *default value* of `LearningElixir.phrase`.  When defining an argument, you can put `\\` after an argument name and then give a default value- in this case, `LearningElixir.phrase`
 
-```elixir
+```
 iex(1)> LearningElixir.recombine
-"boldly-going-where-no-man-has-gone-before"
+        "boldly-going-where-no-man-has-gone-before"
 iex(2)> LearningElixir.recombine "hello universe"
-"hello-universe"
+        "hello-universe"
 ```
 
 > Note: We skipped the `import_file "basic_elixir.ex"` line this time for brevity's sake, and we will continue to skip it, but you should keep calling `import_file` when you make changes.
@@ -771,14 +774,14 @@ end
 
 In many languages, if you don't give a default value for an argument the default will automatically be `nil`.  However, this is not the case in Elixir.  Here's what happens if you try that:
 
-```elixir
+```
 iex(1)> LearningElixir.recombine()
-** (UndefinedFunctionError) function LearningElixir.recombine/0 is undefined or private.
-Did you mean one of:
+        ** (UndefinedFunctionError) function LearningElixir.recombine/0 is undefined or private.
+        Did you mean one of:
 
-      * recombine/1
+              * recombine/1
 
-    LearningElixir.recombine()
+            LearningElixir.recombine()
 ```
 
 It's saying that `LearningElixir.recombine/0` is undefined or private... what does that mean?  Didn't we define `recombine`?  And what's that `0` afterwards?  The answer, as you may have guessed from this section header, is "arity".
@@ -817,11 +820,11 @@ end
 
 Here we're defining two versions of recombine- the first with an arity of 1 and the second with an arity of 0.  When we call it with an argument, we get the first version of `recombine`.  When we call it without an argument, we get the second version- which then calls the first version and feeds it the phrase we defined earlier.
 
-```elixir
+```
 iex(1)> LearningElixir.recombine "hello world, universe"
-"hello-world,-universe"
+        "hello-world,-universe"
 iex(2)> LearningElixir.recombine
-"boldly-going-where-no-man-has-gone-before"
+        "boldly-going-where-no-man-has-gone-before"
 ```
 
 Pretty cool, right?  There are lots of other ways you can employ pattern matching beyond simple number of arguments, and we'll go over those as they come up.
@@ -830,11 +833,11 @@ Pretty cool, right?  There are lots of other ways you can employ pattern matchin
 
 1.  Use pattern matching to add a 2-arity version of `recombine` which lets you input the join string.
 
-```elixir
+```
 iex(1)> LearningElixir.recombine("hello world, universe", " vast ")
-"hello vast world, vast universe"
+        "hello vast world, vast universe"
 iex(2)> LearningElixir.recombine("hello universe")
-"hello-universe"
+        "hello-universe"
 ```
 
 2. Redefine the 1-arity version of `recombine` in terms of the 2-arity version (like we redefined the 0-arity version in terms of the 1-arity version).
@@ -882,11 +885,11 @@ It's started with a `%{`, ended with a `}`, and in between consists of key-value
 
 We can interact with this map using the functions in the `Map` module.
 
-```elixir
+```
 iex(1)> Map.get(LearningElixir.my_map, "mission")
-"Code Boldly"
+        "Code Boldly"
 iex(2)> Map.get(LearningElixir.my_map, "bad_key")
-nil
+        nil
 ```
 
 Our first (and most common) Map function, `Map.get`, takes two arguments: the map (`LearningElixir.my_map`) and a key ("mission").  It will then grab the value attached to that key in the map.  If the key given doesn't exist in the hash, it will return `nil`.
@@ -900,12 +903,13 @@ iex(1)> LearningElixir.my_map["mission"]
 
 The next most common Map function is to add new values to the map with `put`.
 
-```elixir
+```
 iex(1)> Map.put(LearningElixir.my_map, "captain", "Picard")
-%{"captain" => "Picard", "mission" => "Code Boldly", "name" => "Enterprise",
-  "type" => "CodeShip"}
+        %{"captain" => "Picard", "mission" => "Code Boldly",
+          "name" => "Enterprise", "type" => "CodeShip"}
 iex(2)> LearningElixir.my_map
-%{"mission" => "Code Boldly", "name" => "Enterprise", "type" => "CodeShip"}
+        %{"mission" => "Code Boldly", "name" => "Enterprise",
+        "type" => "CodeShip"}
 ```
 
 When we use `put`, it uses the second and third arguments as the key and value respectively, and adds them to the map.  The result is seen after the first line.  However, you'll notice that when we call `LearningElixir.my_map` again, the new key-value isn't there.
@@ -918,11 +922,11 @@ To understand what "immutable" means, we'll have to contrast it with data in a m
 
 ```javascript
 > var mutableArray = ["Don't", "try", "this", "at", "home"];
-undefined
+  undefined
 > mutableArray.shift()
-"Don't"
+  "Don't"
 > mutableArray
-["try", "this", "at", "home"]
+  ["try", "this", "at", "home"]
 ```
 
 Above, we're assigning 5 strings to the variable `mutableArray`.  Then we call the `shift` method on the `mutableArray`, which returns the first value in the array and has the *side effect* of removing that string from the array.  The array now only has 4 elements.
@@ -931,76 +935,76 @@ Contrast that with immutable data, where there will never be side effects- no ma
 
 Of course, the return value of the function can be something other than 5 items.
 
-```elixir
+```
 iex(1)> immutableArray = ["Immutability", "is", "great", "don't", "you", "agree"]
-["Immutability", "is", "great", "don't", "you", "agree"]
+        ["Immutability", "is", "great", "don't", "you", "agree"]
 iex(2)> Enum.slice(immutableArray, 4, 2)
-["you", "agree"]
+        ["you", "agree"]
 iex(3)> immutableArray
-["Immutability", "is", "great", "don't", "you", "agree"]
+        ["Immutability", "is", "great", "don't", "you", "agree"]
 ```
 
 So even though you call `Enum.slice` with `immutableArray` and get back an array with 2 items, `immutableArray` is still what it started as.  There are no side effects.
 
 Of course, there's a trick you can play with the data- take the result of the calculation an *immediately reassign it* to the variable you used.
 
-```elixir
+```
 iex(1)> immutableArray = ["Immutability", "is", "great", "don't", "you", "agree"]
-["Immutability", "is", "great", "don't", "you", "agree"]
+        ["Immutability", "is", "great", "don't", "you", "agree"]
 iex(2)> immutableArray = Enum.slice(immutableArray, 4, 2)
-["you", "agree"]
+        ["you", "agree"]
 iex(3)> immutableArray
-["you", "agree"]
+        ["you", "agree"]
 ```
 
 Oh no!  Even naming it `immutableArray` didn't stop that disaster!  How is this immutable data?
 
 The array that `immutableArray` originally pointed to is still 5 items long.  It's just that we told `immutableArray` to point to a new, different array- one that was the result of calling `Enum.slice` on the original `immutableArray`.
 
-Imagine if you could start calling yourself Germany and then the entire country of Germany could not longer be found.  Germany would still exist- you didn't mutate it- but everyone that was looking for Germany found you instead.
+Imagine if you could start calling yourself Germany and then the entire country of Germany could no longer be found.  Germany would still exist- you didn't mutate it- but everyone that was looking for Germany found you instead.
 
 That's what it's like reassigning a variable.
 
 One way around this is to keep on assigning stuff to new variables:
 
-```elixir
+```
 iex(1)> phrase = "boldly going where no man has gone before"
-"boldly going where no man has gone before"
+        "boldly going where no man has gone before"
 iex(2)> phrase2 = String.split(phrase, " ")
-["boldly", "going", "where", "no", "man", "has", "gone", "before"]
+        ["boldly", "going", "where", "no", "man", "has", "gone", "before"]
 iex(3)> phrase3 = Enum.join(phrase2, "... ")
-"boldly... going... where... no... man... has... gone... before"
+        "boldly... going... where... no... man... has... gone... before"
 iex(4)> phrase
-"boldly going where no man has gone before"
+        "boldly going where no man has gone before"
 iex(5)> phrase3
-"boldly... going... where... no... man... has... gone... before"
+        "boldly... going... where... no... man... has... gone... before"
 ```
 
 That method, however, can get tedious.  That's one reason why the pipe (`|>`) construct is so popular in Elixir- it allows you to pass on the output of a function and use it as the first argument in the next function call, without the bother of naming it
 
-```elixir
+```
 iex(1)> phrase =
 ...(1)> "boldly going where no man has gone before" |>
 ...(1)> String.split(" ") |>
 ...(1)> Enum.join("... ")
-"boldly... going... where... no... man... has... gone... before"
+        "boldly... going... where... no... man... has... gone... before"
 iex(2)> phrase
-"boldly... going... where... no... man... has... gone... before"
+        "boldly... going... where... no... man... has... gone... before"
 ```
 
 Remember: in the command line we put the pipe at the end of the line, to let the Elixir interpreter know that we have more coming on the next line.
 
 Now let's apply this to `Map.put`:
 
-```elixir
+```
 iex(1)> my_map = LearningElixir.my_map |>
 ...(1)> Map.put("captain", "Picard") |>
 ...(1)> Map.put("spock replacement", "Data")
-%{"captain" => "Picard", "mission" => "Code Boldly", "name" => "Enterprise",
-  "spock replacement" => "Data", "type" => "CodeShip"}
+        %{"captain" => "Picard", "mission" => "Code Boldly", "name" => "Enterprise",
+          "spock replacement" => "Data", "type" => "CodeShip"}
 iex(2)> my_map
-%{"captain" => "Picard", "mission" => "Code Boldly", "name" => "Enterprise",
-  "spock replacement" => "Data", "type" => "CodeShip"}
+        %{"captain" => "Picard", "mission" => "Code Boldly", "name" => "Enterprise",
+          "spock replacement" => "Data", "type" => "CodeShip"}
 ```
 
 We were able to feed the results of each line into the first argument of `Map.put`, then assign the whole thing to `my_map` without intermediate steps or explicit reassigns.  This approach gives us a syntax as convenient as mutability, but with the stability and long-term simplicity of immutability.
@@ -1074,18 +1078,18 @@ end
 
 Now when we want to access the code, we use an atom instead of a String:
 
-```elixir
+```
 iex(1)> LearningElixir.my_map[:name]
-"Enterprise"
+        "Enterprise"
 iex(2)> LearningElixir.my_map["name"]
-nil
+        nil
 ```
 
 But here's the first convenience that atoms unlock:
 
-```elixir
+```
 iex(3)> LearningElixir.my_map.name
-"Enterprise"
+        "Enterprise"
 ```
 
 This is much nicer than the clunky `["string"]` and `[:atom]` syntax.
@@ -1152,11 +1156,11 @@ end
 
 Now we're matching not just on arity (number of arguments), but also on the value of the argument given (for versions with arity of 1).
 
-```elixir
+```
 iex(1)> LearningElixir.my_map
-%{mission: "Code Boldly", name: "Enterprise", type: "CodeShip"}
+        %{mission: "Code Boldly", name: "Enterprise", type: "CodeShip"}
 iex(2)> LearningElixir.my_map(:ds9)
-%{mission: "Protect Bajor", name: "Terok Nor", type: "Station"}
+        %{mission: "Protect Bajor", name: "Terok Nor", type: "Station"}
 ```
 
 Pattern matching is common with atoms, but it could be done with any datatype- Strings, numbers, even Maps.
@@ -1167,40 +1171,40 @@ One of the other common pattern-matching data-types is a Tuple.
 
 Tuples are simply collections of values, surrounded by curly braces:
 
-```elixir
+```
 iex(1)> my_tuple = {"Babylon", 5}
-{"Babylon", 5}
+        {"Babylon", 5}
 ```
 
 As you can see, the values can be of any type- including multiple types within one tuple.  They can also be of any length, although lengths of 2 to 4 are most common.
 
 You can access an element within a tuple using the `elem` function:
 
-```elixir
+```
 iex(2)> elem(my_tuple, 0)
-"Babylon"
+        "Babylon"
 ```
 
 As you can see, it's zero-indexed.
 
 You can also decompose a tuple into its component parts:
 
-```elixir
+```
 iex(3)> {name, num} = my_tuple
-{"Babylon", 5}
+        {"Babylon", 5}
 iex(4)> name
-"Babylon"
+        "Babylon"
 ```
 
 This is a new form of pattern matching, where the intent is to destructure the tuple into its component parts (sometimes this specific technique is just called "destructuring").
 
 If you don't need one part of it, you don't have to name it- you can just use the underscore symbol:
 
-```elixir
+```
 iex(5)> {name, _} = my_tuple
-{"Babylon", 5}
+        {"Babylon", 5}
 iex(6)> name
-"Babylon"
+        "Babylon"
 ```
 
 We're essentially throwing away the number by using the underscore.  This saves us the trouble of naming it, and also communicates to future readers of our code which parts of the tuple will be used.
@@ -1221,11 +1225,11 @@ end
 
 Here both variations on the function have two arguments, the second of which is a ship and the first of which is a tuple.  The tuple has two values- an atom and a string.  The atom is either `:ok` or `:error`, and the string is used when the action is a failure but thrown away when the action is successful.
 
-```elixir
+```
 iex(1)> LearningElixir.take_action({:ok, "Make it so"}, "Enterprise")
-"Great job, Enterprise"
+        "Great job, Enterprise"
 iex(2)> LearningElixir.take_action({:error, "Shields are at 38 percent!"}, "Enterprise")
-"Problem with Enterprise.  Shields are at 38 percent!"
+        "Problem with Enterprise.  Shields are at 38 percent!"
 ```
 
 Matching a tuple with an `:ok` or `:error` atom as the first value is very common in Phoenix apps.
@@ -1304,11 +1308,11 @@ Learning the common error modes is important- better that you do it now while yo
 
 3. Modify `take_action` so that the ship is passed as a third part of the tuple.
 
-```elixir
+```
 iex(1)> LearningElixir.take_action({:ok, "I have made it so", "Enterprise"})
-"Great job, Enterprise"
+        "Great job, Enterprise"
 iex(2)> LearningElixir.take_action({:error, "Phasers not set to stun", "Enterprise"})
-"Problem with Enterprise.  Phasers not set to stun"
+        "Problem with Enterprise.  Phasers not set to stun"
 ```
 
 ## Conclusion
