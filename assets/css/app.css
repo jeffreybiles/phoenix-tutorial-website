@@ -6,3 +6,11 @@ html blockquote {
   border-left: 0;
   font-size: 13px;
 }
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}

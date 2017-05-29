@@ -27,25 +27,52 @@ defmodule Book do
     }]
   end
 
-  def get_html(section_title, chapter_title) do
-    {section, chapter} = find_by_title(section_title, chapter_title)
-    filepath = "#{main_path}/contents/#{section.ord}- #{section.title}/#{chapter.ord}- #{chapter.title}.md"
-    markdown = File.read!(filepath)
-    Earmark.as_html!(markdown)
+  defp filepath(chapter_title) do
+    chapter = find_by_title(chapter_title)
+    filepath = "#{main_path}/contents/#{chapter.section_ord}- #{chapter.section_title}/#{chapter.chapter_ord}- #{chapter.chapter_title}.md"
   end
 
-  defp contents_by_title do
-    Enum.reduce(Book.contents, %{}, (fn(section, acc) ->
-      new_section = Enum.reduce(section.chapters, section, (fn(chapter, acc) ->
-        Map.put(acc, chapter.title, chapter)
-      end))
-      Map.put(acc, section.title, new_section)
-    end))
+  def get_html(chapter_title) do
+    filepath(chapter_title)
+    |> File.read!
+    |> Earmark.as_html!
   end
 
-  defp find_by_title(section_title, chapter_title) do
-    section = contents_by_title[section_title]
-    chapter = section[chapter_title]
-    {section, chapter}
+  # TODO: Make these work on first and last pages
+  def next(chapter_title) do
+    next_index = current_index(chapter_title) + 1
+
+    contents_ordered
+    |> List.to_tuple
+    |> elem(next_index)
+  end
+
+  def previous(chapter_title) do
+    previous_index = current_index(chapter_title) - 1
+
+    contents_ordered
+    |> List.to_tuple
+    |> elem(previous_index)
+  end
+
+  defp contents_ordered do
+    Book.contents
+    |> Enum.map(fn(section) ->
+      Enum.map(section.chapters, fn(chapter) ->
+        %{section_ord: section.ord,
+          section_title: section.title,
+          chapter_ord: chapter.ord,
+          chapter_title: chapter.title}
+      end)
+    end)
+    |> List.flatten
+  end
+
+  defp current_index(chapter_title) do
+    Enum.find_index(contents_ordered(), fn(chapter) -> chapter.chapter_title == chapter_title end)
+  end
+
+  defp find_by_title(chapter_title) do
+    Enum.find(contents_ordered(), fn(chapter) -> chapter.chapter_title == chapter_title end)
   end
 end

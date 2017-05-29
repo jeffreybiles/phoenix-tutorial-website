@@ -10,6 +10,6 @@ defmodule TutorialSite.Web.PageController do
   end
 
   def read_chapter(conn, %{"section" => section, "chapter" => chapter}) do
-    render conn, "read_chapter.html", section: section, chapter: chapter
+    render conn, "read_chapter.html", section: section, chapter: chapter, book: Book.contents
   end
 end
