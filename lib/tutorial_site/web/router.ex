@@ -19,6 +19,8 @@ defmodule TutorialSite.Web.Router do
     get "/", PageController, :index
     get "/read", PageController, :read_book
     get "/read/:section/:chapter", PageController, :read_chapter
+    get "/mailing_list", PageController, :mailing_list
+    get "/contact", PageController, :contact
   end
 
   # Other scopes may use custom stacks.

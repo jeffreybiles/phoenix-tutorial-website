@@ -7,19 +7,24 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Jeffrey Biles' Phoenix Tutorial</title>
+    <title>The Phoenix Tutorial, by Jeffrey Biles</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
     <div class="container">
-      <!-- <header class="header">
+      <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/read">Read Online</a></li>
+            <li class="not-ready"><a href="/">Buy eBook</a></li>
+            <li class="not-ready"><a href="/">Buy videos</a></li>
+            <li><a href="/mailing_list">Mailing List</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
         </nav>
-      </header> -->
+      </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>

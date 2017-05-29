@@ -15,6 +15,19 @@ html blockquote {
   text-align: center;
 }
 
+li.not-ready a {
+  color: black;
+  cursor: default;
+}
+
+.nav > li.not-ready > a:hover {
+  background-color: inherit;
+}
+
+li.not-ready {
+  &:hover: inherit;
+}
+
 /* Includes Bootstrap as well as some default style for the starter
  * application. This can be safely deleted to start fresh.
  */

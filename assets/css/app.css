@@ -14,3 +14,16 @@ html blockquote {
 .center {
   text-align: center;
 }
+
+li.not-ready a {
+  color: black;
+  cursor: default;
+}
+
+.nav > li.not-ready > a:hover {
+  background-color: inherit;
+}
+
+li.not-ready {
+  &:hover: inherit;
+}
