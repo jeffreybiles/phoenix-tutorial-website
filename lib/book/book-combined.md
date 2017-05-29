@@ -953,7 +953,7 @@ So even though you call `Enum.slice` with `immutableArray` and get back an array
 
 Of course, there's a trick you can play with the data- take the result of the calculation an *immediately reassign it* to the variable you used.
 
-```
+```bash
 iex(1)> immutableArray = ["Immutability", "is", "great", "don't", "you", "agree"]
         ["Immutability", "is", "great", "don't", "you", "agree"]
 iex(2)> immutableArray = Enum.slice(immutableArray, 4, 2)

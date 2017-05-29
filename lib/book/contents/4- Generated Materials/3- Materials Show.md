@@ -16,7 +16,7 @@ resources "/materials", MaterialController
 
 This route macro could expand out to seven different routes, including the show route:
 
-```
+```elixir
 get "/materials/:id", MaterialController, :show
 ```
 

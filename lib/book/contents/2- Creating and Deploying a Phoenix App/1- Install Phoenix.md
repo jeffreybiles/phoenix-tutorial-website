@@ -46,7 +46,7 @@ $ mix phoenix.new star_tracker
 
 This will create a bare-bones app
 
-```
+```bash
 * creating star_tracker/config/config.exs
 * creating star_tracker/config/dev.exs
 ....
