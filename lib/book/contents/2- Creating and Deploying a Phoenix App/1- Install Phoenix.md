@@ -18,23 +18,23 @@ You can install the latest version by slightly altering the command:
 
 ## Node
 
-We rely on Brunch (http://brunch.io/) to compile static assets, and Brunch relies on Node.
+We rely on [Brunch](http://brunch.io/) to compile static assets, and Brunch relies on Node.
 
-Go to their site (https://nodejs.org/en/download/) and download version 5.0 or later.  The current stable release (recommended) is 6.10.2.
+Go to [the NodeJS site](https://nodejs.org/en/download/) and download version 5.0 or later.  The current stable release (recommended) is 6.10.2.
 
 ## Postgres
 
 Postgres is the database we'll be using for this tutorial, although you're free to choose another SQL database if you're more comfortable there.
 
-Installation guides are found here: https://wiki.postgresql.org/wiki/Detailed_installation_guides
+Installation guides are found [on the Postgres wiki](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
 
 ## Your First App
 
 ---
 
-> Much of this section is taken from the Up and Running docs: http://www.phoenixframework.org/docs/up-and-running
+> Much of this section is taken from [the Up and Running docs](http://www.phoenixframework.org/docs/up-and-running).
 
-> In general these first two chapters of setup and tooling are gluing together a bunch of Getting Started Guides, but after that we'll get to the more exciting Original Content.
+> In general, the chapters in Section 2 are gluing together a bunch of Getting Started Guides, but after that we'll get to the more exciting Original Content.
 
 ---
 

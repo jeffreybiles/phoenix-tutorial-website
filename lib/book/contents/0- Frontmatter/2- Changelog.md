@@ -16,6 +16,8 @@
 * Added flavor bits to captain's logs, to hint at a story
 * Added acknowledgements
 * Added changelog
+* Added copyright and license
+* Pdf version: links in footnotes
 * Many small improvements/rewordings
 
 ## 0.1

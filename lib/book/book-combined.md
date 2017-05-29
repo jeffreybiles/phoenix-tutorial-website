@@ -124,6 +124,8 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 * Added flavor bits to captain's logs, to hint at a story
 * Added acknowledgements
 * Added changelog
+* Added copyright and license
+* Pdf version: links in footnotes
 * Many small improvements/rewordings
 
 ## 0.1
@@ -239,20 +241,20 @@ $ brew install elixir
 
 ### Windows
 
-Download the Installer and run it: https://repo.hex.pm/elixir-websetup.exe
+Download the Installer and run it: [https://repo.hex.pm/elixir-websetup.exe](https://repo.hex.pm/elixir-websetup.exe)
 
 If you're using Windows, make sure you have the Bash shell installed (https://msdn.microsoft.com/en-us/commandline/wsl/about).  This new feature, available on Windows 10 and above, will allow you to use the same shell commands as Linux and Mac users.
 
 ### Other
 
-You can find instructions for other platforms (mostly Linux flavors) at http://elixir-lang.org/install.html.
+You can find instructions for other platforms (mostly Linux flavors) at [http://elixir-lang.org/install.html](http://elixir-lang.org/install.html).
 
 If your Linux is Debian-based, be sure to explicitly install Erlang so you can get all the necessary packages (instructions here:
-http://www.phoenixframework.org/docs/installation#section-erlang)
+[http://www.phoenixframework.org/docs/installation#section-erlang](http://www.phoenixframework.org/docs/installation#section-erlang))
 
 ## Installing Hex
 
-From here on out things get (generally) platform-agnostic.  There are a couple of extra commands for those on Debian-based systems, which can be found on the Phoenix Installation Guide: http://www.phoenixframework.org/docs/installation
+From here on out things get (generally) platform-agnostic.  There are a couple of extra commands for those on Debian-based systems, which can be found on the Phoenix Installation Guide: [http://www.phoenixframework.org/docs/installation](http://www.phoenixframework.org/docs/installation)
 
 Hex is the Erlang package manager, which lets us specify and download our dependencies.  Mix is our Elixir task runner.  We'll use Mix (which came with Elixir) to install Hex.
 

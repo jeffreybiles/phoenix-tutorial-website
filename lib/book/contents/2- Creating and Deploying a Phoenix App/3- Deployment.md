@@ -2,10 +2,10 @@
 
 For the purposes of this tutorial we recommend using Heroku.
 
-The official Phoenix documentation for deploying to Heroku is quite good: http://www.phoenixframework.org/docs/heroku
+[The official Phoenix documentation for deploying to Heroku](http://www.phoenixframework.org/docs/heroku) is quite good.
 
 Go there and follow the instruction, because I have nothing useful to add to them.  Just make sure to replace all instances of hello_phoenix and HelloPhoenix with the name of your app.
 
-If this book ever makes it to a paper edition then I'll write something up at that time.  Until then, use the official docs: http://www.phoenixframework.org/docs/heroku
+If this book ever makes it to a paper edition then I'll write something up at that time.  Until then, use [the official docs](http://www.phoenixframework.org/docs/heroku).
 
 See you in the next chapter, where we start customizing our app.
