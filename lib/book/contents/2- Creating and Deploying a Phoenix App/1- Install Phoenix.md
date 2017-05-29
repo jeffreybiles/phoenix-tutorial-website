@@ -139,8 +139,8 @@ Finally, we run our app.
 
 ```bash
 $ mix phoenix.server
-[info] Running StarTracker.Endpoint with Cowboy using http://localhost:4000
-05 Apr 05:33:34 - info: compiled 6 files into 2 files, copied 3 in 1.7 sec
+  [info] Running StarTracker.Endpoint with Cowboy using http://localhost:4000
+  05 Apr 05:33:34 - info: compiled 6 files into 2 files, copied 3 in 1.7 sec
 ```
 
 In your web browser, visit http://localhost:4000/.  There you should see the Phoenix Welcome page.

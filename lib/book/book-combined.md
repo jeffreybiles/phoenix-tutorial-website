@@ -287,18 +287,22 @@ $ iex
 
 Now you should see something like the following:
 
-```
+```zsh
 $ iex
-Erlang/OTP 19 [erts-8.3] [source] [64-bit] [smp:8:8] [async-threads:10]
-[hipe] [kernel-poll:false] [dtrace]
+  Erlang/OTP 19 [erts-8.3] [source] [64-bit] [smp:8:8] [async-threads:10]
+  [hipe] [kernel-poll:false] [dtrace]
 
-Interactive Elixir (1.4.2) - press Ctrl+C to exit (type h() ENTER for help)
-iex(1)>
+  Interactive Elixir (1.4.2) - press Ctrl+C to exit (type h() ENTER for help)
+  iex(1)>
 ```
 
-This is good!  That means it's working.  Now you can type Elixir code in and it'll run right there (after you hit the Enter key).
+This is good!  That means it's working.
 
-```
+> Pdf readers: I realize that the code sometimes goes outside the block.  If you have used markdown -> LaTeX -> PDF before with pandoc and have a solution, please contact me: personal.bilesjeffrey@gmail.com.
+
+Now you can type Elixir code in and it'll run right there (after you hit the Enter key).
+
+```bash
 iex(1)> 2 + 3
         5
 ```
@@ -309,7 +313,7 @@ Boom.  Type in `2 + 3`, hit enter, and it shows the result `5` in the line below
 
 When we build our Phoenix app we'll spend the majority of our time interacting with it in other ways, but we'll always have the option to drop back to the interpreter and play around.
 
-```
+```bash
 iex(1)> 2 + 3
         5
 iex(2)> (2 + 3) * 3
@@ -374,7 +378,7 @@ For the purposes of this book we'll be using double-quoted strings (sometimes ca
 
 Here's some basic inline usages of strings
 
-```
+```bash
 iex(1)> "hello" <> "universe"
         "hellouniverse"
 iex(2)> "hello" <> " universe"
@@ -387,7 +391,7 @@ iex(4)> "hello #{place}"
 
 Aside from these inline usages, most action on strings happens via functions being applied to them.  Here's an example:
 
-```
+```bash
 iex(5)> phrase = "hello vast universe"
         "hello vast universe"
 iex(6)> String.split(phrase, " ")
@@ -424,7 +428,7 @@ What is displayed when you type each of these into the command line?  After thin
 
 The `Enum` module meant for working with Enumerables.  Although there are others, the most common type of Enumerable is a list, so that's what we'll be working with today.
 
-```
+```bash
 iex(1)> split_phrase = ["hello", "vast", "universe"]
         ["hello", "vast", "universe"]
 iex(2)> Enum.count split_phrase
@@ -445,7 +449,7 @@ We're also demonstrating a parentheses-free function syntax.  It's equivalent to
 
 As an aside, remember how we have single-quoted strings (arrays of Chars) and double-quoted strings (binaries)?  Those types end up being important.  We use `Enum` functions on single-quoted Strings, and `String` functions on double-quoted Strings.
 
-```
+```bash
 iex(1)> Enum.count 'hello'
         5
 iex(2)> Enum.count "hello"
@@ -479,7 +483,7 @@ Let's say we wanted to count how many words are in a certain phrase.  We don't h
 
 There are several ways we could do this.  Here's the first.
 
-```
+```bash
 iex(1)> phrase = "boldly going where no man has gone before"
         "boldly going where no man has gone before"
 iex(2)> split_phrase = String.split(phrase)
@@ -490,7 +494,7 @@ iex(3)> count = Enum.count split_phrase
 
 If you're unsure of where you're going and what to check at every step, that's probably the best way to go.  However, for production code it can look a bit messy.  Here's another way that's a bit more compact:
 
-```
+```bash
 iex(1)> Enum.count(String.split("boldly going where no man has gone before"))
         8
 ```
@@ -503,7 +507,7 @@ A great solution to this is the pipe syntax.
 
 In the pipe syntax, we can take the results of one function and "pipe" it as the first argument of the next function.
 
-```
+```bash
 iex(1)> "boldly going where no man has gone before" |> String.split |> Enum.count
         8
 ```
@@ -512,7 +516,7 @@ It's a couple more characters than the previous one, but it's far more readable.
 
 If you have multiple arguments, you just pass the second (and third and fourth, etc.) arguments with the function.
 
-```
+```bash
 iex(1)> "boldly going where no man has gone before" |> String.split |> Enum.join("-")
         "boldly-going-where-no-man-has-gone-before"
 ```
@@ -562,7 +566,7 @@ Our function `hello` is defined by `def`.  It also has a do/end delimiting block
 
 Let's go ahead and load that file in the Interpreter.
 
-```
+```zsh
 iex(1)> import_file "basic_elixir.ex"
         {:module, LearningElixir,
          <<70, 79, 82, 49, 0, 0, 5, 0, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 128,
@@ -622,7 +626,7 @@ The rest of our `recombine` function is just like what we previously did directl
 
 Let's load and call this in the interpreter.
 
-```
+```zsh
 iex(3)> import_file "basic_elixir.ex"
         warning: redefining module LearningElixir (current version defined in memory)
           iex:1
@@ -690,7 +694,7 @@ This version of `recombine` does exactly the same as our last version, but now i
 1. Create the `LearningElixir` module, with the `phrase` and `recombine` functions in it.  Import it on the command line, then run `LearningElixir.recombine`.
 2. Within that module, create the `upcase_phrase` function, which returns the phrase, but all in upper case letters.  Use the `phrase` function in your solution- you're cheating if you just type out the phrase manually in upper case.
 
-```
+```bash
 > iex(1)> LearningElixir.upcase_phrase
           "BOLDLY GOING WHERE NO MAN HAS GONE BEFORE"
 ```
@@ -724,7 +728,7 @@ end
 
 This is the first function we've created that requires an argument, but we've used functions with arguments before.  When we call it we must feed it a phrase as input (with or without parentheses)
 
-```
+```bash
 iex(1)> LearningElixir.recombinePhraseRequired("hello world")
         "hello-world"
 iex(2)> LearningElixir.recombinePhraseRequired "hello world"
@@ -747,7 +751,7 @@ end
 
 Here the argument has a *default value* of `LearningElixir.phrase`.  When defining an argument, you can put `\\` after an argument name and then give a default value- in this case, `LearningElixir.phrase`
 
-```
+```bash
 iex(1)> LearningElixir.recombine
         "boldly-going-where-no-man-has-gone-before"
 iex(2)> LearningElixir.recombine "hello universe"
@@ -774,9 +778,10 @@ end
 
 In many languages, if you don't give a default value for an argument the default will automatically be `nil`.  However, this is not the case in Elixir.  Here's what happens if you try that:
 
-```
+```bash
 iex(1)> LearningElixir.recombine()
-        ** (UndefinedFunctionError) function LearningElixir.recombine/0 is undefined or private.
+        ** (UndefinedFunctionError) function LearningElixir.recombine/0
+        is undefined or private.
         Did you mean one of:
 
               * recombine/1
@@ -820,7 +825,7 @@ end
 
 Here we're defining two versions of recombine- the first with an arity of 1 and the second with an arity of 0.  When we call it with an argument, we get the first version of `recombine`.  When we call it without an argument, we get the second version- which then calls the first version and feeds it the phrase we defined earlier.
 
-```
+```bash
 iex(1)> LearningElixir.recombine "hello world, universe"
         "hello-world,-universe"
 iex(2)> LearningElixir.recombine
@@ -833,7 +838,7 @@ Pretty cool, right?  There are lots of other ways you can employ pattern matchin
 
 1.  Use pattern matching to add a 2-arity version of `recombine` which lets you input the join string.
 
-```
+```bash
 iex(1)> LearningElixir.recombine("hello world, universe", " vast ")
         "hello vast world, vast universe"
 iex(2)> LearningElixir.recombine("hello universe")
@@ -885,7 +890,7 @@ It's started with a `%{`, ended with a `}`, and in between consists of key-value
 
 We can interact with this map using the functions in the `Map` module.
 
-```
+```bash
 iex(1)> Map.get(LearningElixir.my_map, "mission")
         "Code Boldly"
 iex(2)> Map.get(LearningElixir.my_map, "bad_key")
@@ -903,7 +908,7 @@ iex(1)> LearningElixir.my_map["mission"]
 
 The next most common Map function is to add new values to the map with `put`.
 
-```
+```bash
 iex(1)> Map.put(LearningElixir.my_map, "captain", "Picard")
         %{"captain" => "Picard", "mission" => "Code Boldly",
           "name" => "Enterprise", "type" => "CodeShip"}
@@ -935,7 +940,7 @@ Contrast that with immutable data, where there will never be side effects- no ma
 
 Of course, the return value of the function can be something other than 5 items.
 
-```
+```bash
 iex(1)> immutableArray = ["Immutability", "is", "great", "don't", "you", "agree"]
         ["Immutability", "is", "great", "don't", "you", "agree"]
 iex(2)> Enum.slice(immutableArray, 4, 2)
@@ -967,7 +972,7 @@ That's what it's like reassigning a variable.
 
 One way around this is to keep on assigning stuff to new variables:
 
-```
+```bash
 iex(1)> phrase = "boldly going where no man has gone before"
         "boldly going where no man has gone before"
 iex(2)> phrase2 = String.split(phrase, " ")
@@ -982,7 +987,7 @@ iex(5)> phrase3
 
 That method, however, can get tedious.  That's one reason why the pipe (`|>`) construct is so popular in Elixir- it allows you to pass on the output of a function and use it as the first argument in the next function call, without the bother of naming it
 
-```
+```bash
 iex(1)> phrase =
 ...(1)> "boldly going where no man has gone before" |>
 ...(1)> String.split(" ") |>
@@ -996,7 +1001,7 @@ Remember: in the command line we put the pipe at the end of the line, to let the
 
 Now let's apply this to `Map.put`:
 
-```
+```bash
 iex(1)> my_map = LearningElixir.my_map |>
 ...(1)> Map.put("captain", "Picard") |>
 ...(1)> Map.put("spock replacement", "Data")
@@ -1078,7 +1083,7 @@ end
 
 Now when we want to access the code, we use an atom instead of a String:
 
-```
+```bash
 iex(1)> LearningElixir.my_map[:name]
         "Enterprise"
 iex(2)> LearningElixir.my_map["name"]
@@ -1087,7 +1092,7 @@ iex(2)> LearningElixir.my_map["name"]
 
 But here's the first convenience that atoms unlock:
 
-```
+```bash
 iex(3)> LearningElixir.my_map.name
         "Enterprise"
 ```
@@ -1156,7 +1161,7 @@ end
 
 Now we're matching not just on arity (number of arguments), but also on the value of the argument given (for versions with arity of 1).
 
-```
+```bash
 iex(1)> LearningElixir.my_map
         %{mission: "Code Boldly", name: "Enterprise", type: "CodeShip"}
 iex(2)> LearningElixir.my_map(:ds9)
@@ -1171,7 +1176,7 @@ One of the other common pattern-matching data-types is a Tuple.
 
 Tuples are simply collections of values, surrounded by curly braces:
 
-```
+```bash
 iex(1)> my_tuple = {"Babylon", 5}
         {"Babylon", 5}
 ```
@@ -1180,7 +1185,7 @@ As you can see, the values can be of any type- including multiple types within o
 
 You can access an element within a tuple using the `elem` function:
 
-```
+```bash
 iex(2)> elem(my_tuple, 0)
         "Babylon"
 ```
@@ -1189,7 +1194,7 @@ As you can see, it's zero-indexed.
 
 You can also decompose a tuple into its component parts:
 
-```
+```bash
 iex(3)> {name, num} = my_tuple
         {"Babylon", 5}
 iex(4)> name
@@ -1200,7 +1205,7 @@ This is a new form of pattern matching, where the intent is to destructure the t
 
 If you don't need one part of it, you don't have to name it- you can just use the underscore symbol:
 
-```
+```bash
 iex(5)> {name, _} = my_tuple
         {"Babylon", 5}
 iex(6)> name
@@ -1225,7 +1230,7 @@ end
 
 Here both variations on the function have two arguments, the second of which is a ship and the first of which is a tuple.  The tuple has two values- an atom and a string.  The atom is either `:ok` or `:error`, and the string is used when the action is a failure but thrown away when the action is successful.
 
-```
+```bash
 iex(1)> LearningElixir.take_action({:ok, "Make it so"}, "Enterprise")
         "Great job, Enterprise"
 iex(2)> LearningElixir.take_action({:error, "Shields are at 38 percent!"}, "Enterprise")
@@ -1308,7 +1313,7 @@ Learning the common error modes is important- better that you do it now while yo
 
 3. Modify `take_action` so that the ship is passed as a third part of the tuple.
 
-```
+```bash
 iex(1)> LearningElixir.take_action({:ok, "I have made it so", "Enterprise"})
         "Great job, Enterprise"
 iex(2)> LearningElixir.take_action({:error, "Phasers not set to stun", "Enterprise"})

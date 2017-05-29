@@ -26,7 +26,7 @@ end
 
 Now when we want to access the code, we use an atom instead of a String:
 
-```
+```bash
 iex(1)> LearningElixir.my_map[:name]
         "Enterprise"
 iex(2)> LearningElixir.my_map["name"]
@@ -35,7 +35,7 @@ iex(2)> LearningElixir.my_map["name"]
 
 But here's the first convenience that atoms unlock:
 
-```
+```bash
 iex(3)> LearningElixir.my_map.name
         "Enterprise"
 ```
@@ -104,7 +104,7 @@ end
 
 Now we're matching not just on arity (number of arguments), but also on the value of the argument given (for versions with arity of 1).
 
-```
+```bash
 iex(1)> LearningElixir.my_map
         %{mission: "Code Boldly", name: "Enterprise", type: "CodeShip"}
 iex(2)> LearningElixir.my_map(:ds9)
@@ -119,7 +119,7 @@ One of the other common pattern-matching data-types is a Tuple.
 
 Tuples are simply collections of values, surrounded by curly braces:
 
-```
+```bash
 iex(1)> my_tuple = {"Babylon", 5}
         {"Babylon", 5}
 ```
@@ -128,7 +128,7 @@ As you can see, the values can be of any type- including multiple types within o
 
 You can access an element within a tuple using the `elem` function:
 
-```
+```bash
 iex(2)> elem(my_tuple, 0)
         "Babylon"
 ```
@@ -137,7 +137,7 @@ As you can see, it's zero-indexed.
 
 You can also decompose a tuple into its component parts:
 
-```
+```bash
 iex(3)> {name, num} = my_tuple
         {"Babylon", 5}
 iex(4)> name
@@ -148,7 +148,7 @@ This is a new form of pattern matching, where the intent is to destructure the t
 
 If you don't need one part of it, you don't have to name it- you can just use the underscore symbol:
 
-```
+```bash
 iex(5)> {name, _} = my_tuple
         {"Babylon", 5}
 iex(6)> name
@@ -173,7 +173,7 @@ end
 
 Here both variations on the function have two arguments, the second of which is a ship and the first of which is a tuple.  The tuple has two values- an atom and a string.  The atom is either `:ok` or `:error`, and the string is used when the action is a failure but thrown away when the action is successful.
 
-```
+```bash
 iex(1)> LearningElixir.take_action({:ok, "Make it so"}, "Enterprise")
         "Great job, Enterprise"
 iex(2)> LearningElixir.take_action({:error, "Shields are at 38 percent!"}, "Enterprise")
@@ -256,7 +256,7 @@ Learning the common error modes is important- better that you do it now while yo
 
 3. Modify `take_action` so that the ship is passed as a third part of the tuple.
 
-```
+```bash
 iex(1)> LearningElixir.take_action({:ok, "I have made it so", "Enterprise"})
         "Great job, Enterprise"
 iex(2)> LearningElixir.take_action({:error, "Phasers not set to stun", "Enterprise"})
