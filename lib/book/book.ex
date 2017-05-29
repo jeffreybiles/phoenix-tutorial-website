@@ -41,18 +41,12 @@ defmodule Book do
   # TODO: Make these work on first and last pages
   def next(chapter_title) do
     next_index = current_index(chapter_title) + 1
-
-    contents_ordered
-    |> List.to_tuple
-    |> elem(next_index)
+    Enum.at(contents_ordered, next_index)
   end
 
   def previous(chapter_title) do
     previous_index = current_index(chapter_title) - 1
-
-    contents_ordered
-    |> List.to_tuple
-    |> elem(previous_index)
+    if (previous_index < 0), do: nil, else: Enum.at(contents_ordered, previous_index)
   end
 
   defp contents_ordered do

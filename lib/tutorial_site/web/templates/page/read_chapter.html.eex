@@ -1,7 +1,7 @@
 <div class="row">
-  <div class="col-xs-4"><< <%= link "Previous", to: previous(@chapter) %></div>
+  <div class="col-xs-4"><%= raw previous(@chapter) %></div>
   <div class="col-xs-4 center"><a href="/read">^Table of Contents^</a></div>
-  <div class="col-xs-4 right"><%= link "Next", to: next(@chapter) %> >></div>
+  <div class="col-xs-4 right"><%= raw next(@chapter) %></div>
 </div>
 <h3><%= unhyphenate @section %></h3>
 <%= content @chapter %>
