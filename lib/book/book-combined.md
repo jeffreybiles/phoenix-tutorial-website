@@ -11,11 +11,11 @@ header-includes:
 ---
 
 
-# Intro
+# Introduction
 
 This book will focus on teaching you the fundamentals of web development.
 
-Web development is a powerful tool that can help you in many endeavors- whether it's building a startup that can change the world, getting a job to provide for your family, making a web app as a creative expression, or using web development as a secret weapon to increase your effectiveness in your current career.
+Web development is a powerful tool that can help you in many endeavors- whether it's building a startup that can change the world, getting a job to provide for your family, making a web app as a creative expression, or using web development as a secret weapon to increase your effectiveness in your current career, I think that you'll be glad you invested the time into learning this valuable skill.
 
 We’re going to learn web development using what I believe are some of the best tools available- Elixir (a blazing-fast programming language with friendly syntax), Phoenix (a modern web framework that combines functional programming with the best of Ruby on Rails), and Ecto (a maintainable system for interacting with the database).  (More on that later in this introduction)
 
@@ -108,9 +108,6 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 
 # Changelog
 
-* Added acknowledgements
-* Added changelog
-
 ### 0.1.1
 
 * Rewrote the introduction
@@ -125,6 +122,9 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 * Added a captain's log about loading elixir files
 * Added a captain's log about function ordering
 * Added flavor bits to captain's logs, to hint at a story
+* Added acknowledgements
+* Added changelog
+* Many small improvements/rewordings
 
 ## 0.1
 
@@ -746,7 +746,7 @@ Did you mean one of:
 
 It's saying that `LearningElixir.recombine/0` is undefined or private... what does that mean?  Didn't we define `recombine`?  And what's that `0` afterwards?  The answer, as you may have guessed from this section header, is "arity".
 
-"Arity" is a fancy word for the number of arguments a given function requires.  So we've defined `LearningElixir.recombine/1`, but not `LearningElixir.recombine/0`.  This can be annoying when we're used to looser languages that default to `nil` automatically, but it's really helpful for when we accidentally forget an argument- Elixir will help us catch that bug right at the start.
+"Arity" is a fancy word for the number of arguments a given function requires.  So we've defined `LearningElixir.recombine/1` (a version of `recombine` with 1 argument), but not `LearningElixir.recombine/0` (a version of `recombine` with 0 arguments).  This can be annoying when we're used to looser languages that default to `nil` automatically, but it's really helpful for when we accidentally forget an argument- Elixir will help us catch that bug right at the start.
 
 We can, of course, "cheat" the arity system by providing default values:
 
