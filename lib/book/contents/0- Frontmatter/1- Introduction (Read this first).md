@@ -1,4 +1,4 @@
-# Intro
+# Introduction
 
 This book will focus on teaching you the fundamentals of web development.
 

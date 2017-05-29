@@ -1,8 +1,5 @@
 # Changelog
 
-* Added acknowledgements
-* Added changelog
-
 ### 0.1.1
 
 * Rewrote the introduction
@@ -17,6 +14,9 @@
 * Added a captain's log about loading elixir files
 * Added a captain's log about function ordering
 * Added flavor bits to captain's logs, to hint at a story
+* Added acknowledgements
+* Added changelog
+* Many small improvements/rewordings
 
 ## 0.1
 
