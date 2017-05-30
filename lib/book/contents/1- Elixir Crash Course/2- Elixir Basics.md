@@ -20,7 +20,7 @@ $ iex
   [hipe] [kernel-poll:false] [dtrace]
 
   Interactive Elixir (1.4.2) - press Ctrl+C to exit (type h() ENTER for help)
-  iex(1)>
+iex(1)>
 ```
 
 This is good!  That means it's working.

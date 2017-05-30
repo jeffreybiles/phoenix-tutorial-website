@@ -27,7 +27,7 @@ defmodule EbookGenerator do
 
   def generate_pdf do
     # The following doesn't seem to work here, but it runs fine from the shell:
-    System.cmd("pandoc book-combined.md -o 'The Phoenix Tutorial.pdf' -V links-as-notes=true --latex-engine=/Library/TeX/texbin/xelatex --highlight-style=tango", [])
+    System.cmd("pandoc book-combined.md -o 'The Phoenix Tutorial.pdf' -V links-as-notes=true --latex-engine=/Library/TeX/texbin/xelatex --highlight-style=tango -V geometry:margin=1in", [])
   end
 
   def generate do
