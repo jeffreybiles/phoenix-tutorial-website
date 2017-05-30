@@ -51,7 +51,7 @@ While I don't expect you to have familiarity with Elixir or web programming, I d
 
 The current king of the backend Web Framework world is Ruby on Rails- it's what is taught at hundreds of Coder Bootcamps and used at thousands of startups (as well as some large companies).  However, many of the leading lights of the Ruby and Rails worlds have moved on, and a significant number of them have moved to Elixir and Phoenix.  Why is that?
 
-![Twitter joke about Rails and Phoenix](./contents/images/01/ruby-to-phoenix-joke.png)
+![Twitter joke about Rails and Phoenix](./contents/images/01/ruby-to-phoenix-joke.png){ width=50% }
 
 The answer is that Elixir combines the power, speed, and reliability of the Erlang VM with the beauty and expressiveness of Ruby syntax.  In one stroke it fixes the biggest complaint about each language- speed for Ruby and syntax for Erlang.
 
@@ -114,8 +114,6 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 * Rewrote immutability section, starting with simpler examples and showing an example of mutable data
 * Rewrote the case statement section, starting with a simpler example
 * Demarcated all code samples in exercises as code (so they are easier to copy/paste)
-* Changed code style so it's highlighted
-* Decreased margins on pdf so code fit
 * Indent iex output lines so they're easier to read
 * Fixed many typos
 * Turned all usages of "method" to "function"
@@ -129,6 +127,8 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 * Added changelog
 * Added copyright and license
 * Pdf version: links in footnotes
+* Pdf version: Give codeblocks a background color
+* Pdf version: Decreased margins so codeblocks fit
 * Many small improvements/rewordings
 
 ## 0.1

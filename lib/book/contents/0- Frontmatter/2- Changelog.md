@@ -6,8 +6,6 @@
 * Rewrote immutability section, starting with simpler examples and showing an example of mutable data
 * Rewrote the case statement section, starting with a simpler example
 * Demarcated all code samples in exercises as code (so they are easier to copy/paste)
-* Changed code style so it's highlighted
-* Decreased margins on pdf so code fit
 * Indent iex output lines so they're easier to read
 * Fixed many typos
 * Turned all usages of "method" to "function"
@@ -21,6 +19,8 @@
 * Added changelog
 * Added copyright and license
 * Pdf version: links in footnotes
+* Pdf version: Give codeblocks a background color
+* Pdf version: Decreased margins so codeblocks fit
 * Many small improvements/rewordings
 
 ## 0.1
