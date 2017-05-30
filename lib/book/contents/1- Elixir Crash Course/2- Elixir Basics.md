@@ -25,8 +25,6 @@ iex(1)>
 
 This is good!  That means it's working.
 
-> Pdf readers: I realize that the code sometimes goes outside the block.  If you have used markdown -> LaTeX -> PDF before with pandoc and have a solution, please contact me: personal.bilesjeffrey@gmail.com.
-
 Now you can type Elixir code in and it'll run right there (after you hit the Enter key).
 
 ```bash

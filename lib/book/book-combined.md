@@ -114,6 +114,9 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 * Rewrote immutability section, starting with simpler examples and showing an example of mutable data
 * Rewrote the case statement section, starting with a simpler example
 * Demarcated all code samples in exercises as code (so they are easier to copy/paste)
+* Changed code style so it's highlighted
+* Decreased margins on pdf so code fit
+* Indent iex output lines so they're easier to read
 * Fixed many typos
 * Turned all usages of "method" to "function"
 * Made pattern matching exercises a bit more clear
@@ -293,12 +296,10 @@ $ iex
   [hipe] [kernel-poll:false] [dtrace]
 
   Interactive Elixir (1.4.2) - press Ctrl+C to exit (type h() ENTER for help)
-  iex(1)>
+iex(1)>
 ```
 
 This is good!  That means it's working.
-
-> Pdf readers: I realize that the code sometimes goes outside the block.  If you have used markdown -> LaTeX -> PDF before with pandoc and have a solution, please contact me: personal.bilesjeffrey@gmail.com.
 
 Now you can type Elixir code in and it'll run right there (after you hit the Enter key).
 
