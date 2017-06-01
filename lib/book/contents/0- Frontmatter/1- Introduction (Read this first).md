@@ -38,7 +38,7 @@ While I don't expect you to have familiarity with Elixir or web programming, I d
 
 The current king of the backend Web Framework world is Ruby on Rails- it's what is taught at hundreds of Coder Bootcamps and used at thousands of startups (as well as some large companies).  However, many of the leading lights of the Ruby and Rails worlds have moved on, and a significant number of them have moved to Elixir and Phoenix.  Why is that?
 
-![Twitter joke about Rails and Phoenix](../images/01/ruby-to-phoenix-joke.png){ width=50% }
+![Twitter joke about Rails and Phoenix](../images/01/ruby-to-phoenix-joke.png){ width=60% }
 
 The answer is that Elixir combines the power, speed, and reliability of the Erlang VM with the beauty and expressiveness of Ruby syntax.  In one stroke it fixes the biggest complaint about each language- speed for Ruby and syntax for Erlang.
 

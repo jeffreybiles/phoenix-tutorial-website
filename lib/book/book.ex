@@ -37,8 +37,14 @@ defmodule Book do
     filepath(chapter_title)
     |> File.read!
     |> Earmark.as_html!
+    |> html_processing
+  end
+
+  def html_processing(html) do
+    html
     |> String.replace("\"", "'")
     |> String.replace(~r/<img src='\.\.\/images\/(\d+)\/([^']+)'/u, "<img src='/images/\\g{1}/\\g{2}'")
+    |> String.replace(~r/<img ([^>]+)>\s*{ width=(\d+)% }/, "<img \\g{1} style='width: \\g{2}%'>")
   end
 
   # TODO: Make these work on first and last pages
