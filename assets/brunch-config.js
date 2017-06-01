@@ -62,6 +62,6 @@ exports.config = {
 
   npm: {
     enabled: true,
-    styles: {"highlight.js": ["styles/github.css"]}
+    styles: {"highlight.js": ["styles/atom-one-light.css"]}
   }
 };

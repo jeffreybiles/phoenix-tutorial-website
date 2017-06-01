@@ -35,3 +35,11 @@ a.subtle_link {
 a.subtle_link:hover {
   color: black;
 }
+
+main pre {
+  padding: 0;
+}
+
+code.inline {
+  color: black;
+}

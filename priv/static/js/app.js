@@ -19349,8 +19349,8 @@ exports.default = socket;
 });
 
 ;require.alias("phoenix_html/priv/static/phoenix_html.js", "phoenix_html");
-require.alias("highlight.js/lib/index.js", "highlight.js");
-require.alias("phoenix/priv/static/phoenix.js", "phoenix");require.register("___globals___", function(exports, require, module) {
+require.alias("phoenix/priv/static/phoenix.js", "phoenix");
+require.alias("highlight.js/lib/index.js", "highlight.js");require.register("___globals___", function(exports, require, module) {
   
 });})();require('___globals___');
 
