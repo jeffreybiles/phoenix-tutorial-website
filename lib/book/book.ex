@@ -37,6 +37,8 @@ defmodule Book do
     filepath(chapter_title)
     |> File.read!
     |> Earmark.as_html!
+    |> String.replace("\"", "'")
+    |> String.replace(~r/<img src='\.\.\/images\/(\d+)\/([^']+)'/u, "<img src='/images/\\g{1}/\\g{2}'")
   end
 
   # TODO: Make these work on first and last pages
