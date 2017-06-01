@@ -27,3 +27,11 @@ li.not-ready a {
 li.not-ready {
   &:hover: inherit;
 }
+
+a.subtle_link {
+  color: black;
+}
+
+a.subtle_link:hover {
+  color: black;
+}

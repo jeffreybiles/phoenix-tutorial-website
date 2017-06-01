@@ -28,6 +28,14 @@ li.not-ready {
   &:hover: inherit;
 }
 
+a.subtle_link {
+  color: black;
+}
+
+a.subtle_link:hover {
+  color: black;
+}
+
 /* Includes Bootstrap as well as some default style for the starter
  * application. This can be safely deleted to start fresh.
  */

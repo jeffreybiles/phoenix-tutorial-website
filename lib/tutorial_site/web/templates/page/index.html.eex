@@ -1,10 +1,12 @@
-<div class="jumbotron">
-  <h2>The Phoenix Tutorial</h2>
+<%= link to: "/read", class: "subtle_link" do %>
+  <div class="jumbotron">
+    <h2>The Phoenix Tutorial</h2>
 
-  <h4>For all skill levels.  <em>No Elixir or Ruby on Rails knowledge required!</em></h4>
-</div>
+    <h4>For all skill levels.  <em>No Elixir or Ruby on Rails knowledge required!</em></h4>
+  </div>
+<% end %>
 
-<%= render TutorialSite.Web.PageView, "mailchimp.html", conn: @conn %>
+<h3><strong>The book is about 10% done</strong>.  You can <a href="/read">read what I've written so far</a>.</h3>
 
 <h2>What is it?</h2>
 
@@ -24,3 +26,5 @@
   <li>Learn EmberJS from Jeffrey through <a href="https://www.emberschool.com/" target="_blank">EmberSchool</a>
             and <a href="http://www.emberscreencasts.com/" target="_blank">EmberScreencasts</a></li>
 </ul>
+
+<%= render TutorialSite.Web.PageView, "mailchimp.html", conn: @conn %>

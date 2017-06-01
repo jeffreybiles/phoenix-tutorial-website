@@ -1,10 +1,10 @@
 <h1>The Phoenix Tutorial</h1>
 
-<p>The entirety of The Phoenix Tutorial is free forever online.</p>
+<p>The entirety of The Phoenix Tutorial will be free forever online.</p>
 
 <p>Soon there will be an ebook available for you to buy, for on-the-go reading.  If things go well, I'd like to make a physical copy and a set of videos available to buy as well.</p>
 
-<p>To get notified when the free version is updated, or when new versions are available, <a href="/mailing_list">sign up for our mailing list</a>.</p>
+<p>The stuff here is about 10% of what I intend to write.  To get notified when the free version is updated, or when new versions are available, <a href="/mailing_list">sign up for the mailing list</a>.</p>
 <%= for section <- @book do %>
   <h3><%= section.title %></h3>
   <ul>
