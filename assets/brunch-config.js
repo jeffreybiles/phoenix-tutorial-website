@@ -56,11 +56,12 @@ exports.config = {
 
   modules: {
     autoRequire: {
-      "js/app.js": ["js/app"]
+      "js/app.js": ["app"]
     }
   },
 
   npm: {
-    enabled: true
+    enabled: true,
+    styles: {"highlight.js": ["styles/github.css"]}
   }
 };
