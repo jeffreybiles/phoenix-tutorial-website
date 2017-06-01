@@ -13,6 +13,14 @@ defmodule TutorialSite.Web.PageController do
     render conn, "read_chapter.html", section: section, chapter: chapter, book: Book.contents
   end
 
+  def buy_ebook(conn, _params) do
+    render conn, "buy_ebook.html"
+  end
+
+  def buy_videos(conn, _params) do
+    render conn, "buy_videos.html"
+  end
+
   def mailing_list(conn, _params) do
     render conn, "mailing_list.html"
   end

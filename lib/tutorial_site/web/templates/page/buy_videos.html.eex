@@ -1,0 +1,8 @@
+<h1>Screencasts are possible!</h1>
+
+<p>I have <a href="https://www.emberscreencasts.com/library">a lot</a> of
+  <a href="https://www.emberschool.com/demo">experience</a> with creating videos and screencasts.</p>
+<p>I'm currently focusing on writing the book,
+  but if it gets popular enough then screencasts are next.</p>
+
+<%= render TutorialSite.Web.PageView, "mailchimp.html", conn: @conn %>

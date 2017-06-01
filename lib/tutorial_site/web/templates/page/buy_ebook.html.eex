@@ -1,0 +1,3 @@
+<h1>Ebook coming soon!</h1>
+
+<%= render TutorialSite.Web.PageView, "mailchimp.html", conn: @conn %>

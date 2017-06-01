@@ -16,3 +16,7 @@
     <% end %>
   </ul>
 <% end %>
+
+<h2>More coming soon!</h2>
+
+<%= render TutorialSite.Web.PageView, "mailchimp.html", conn: @conn %>

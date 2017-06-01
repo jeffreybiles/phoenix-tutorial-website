@@ -4,3 +4,5 @@
 <%= content @chapter %>
 <hr>
 <%= render TutorialSite.Web.PageView, "book_navigation_links.html", conn: @conn, book: @book, chapter: @chapter %>
+
+<%= render TutorialSite.Web.PageView, "mailchimp.html", conn: @conn %>
