@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>The Phoenix Tutorial, by Jeffrey Biles</title>
+    <title><%= assigns[:page_title] || "The Phoenix Tutorial- Learn Web Development with Elixir and Phoenix" %></title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
