@@ -1,5 +1,10 @@
 /* This file is for your main application css. */
 
+@media (min-width: 920px) {
+  .container {
+    max-width: 900px;  
+  }
+}
 html blockquote {
   padding: 0;
   margin: 14px 40px;

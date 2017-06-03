@@ -97,6 +97,11 @@ hue-6-2: #c18401
 
 /* This file is for your main application css. */
 
+@media (min-width: 920px) {
+  .container {
+    max-width: 900px;  
+  }
+}
 html blockquote {
   padding: 0;
   margin: 14px 40px;
@@ -223,5 +228,24 @@ form.link, form.button {
     border-bottom: 0;
   }
 }
+/* Testimonials */
+.testimonial-wrapper {
+  margin-bottom: 15px; }
+
+.testimonial {
+  margin-left: 20px;
+  background-color: white;
+  margin-bottom: 5px;
+  color: black;
+  height: 100%;
+  border: 1px black solid;
+  border-radius: 5px; }
+  .testimonial p {
+    color: black; }
+  .testimonial img {
+    max-width: 100%;
+    padding: 10px;
+    padding-left: 0px; }
+
 
 /*# sourceMappingURL=app.css.map*/
