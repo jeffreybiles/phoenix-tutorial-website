@@ -97,11 +97,10 @@ hue-6-2: #c18401
 
 /* This file is for your main application css. */
 
-@media (min-width: 920px) {
-  .container {
-    max-width: 900px;  
-  }
+.container {
+  max-width: 900px !important;
 }
+
 html blockquote {
   padding: 0;
   margin: 14px 40px;
@@ -144,6 +143,12 @@ main pre {
 
 code.inline {
   color: black;
+}
+
+.vertical-center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 /* Includes Bootstrap as well as some default style for the starter
@@ -233,9 +238,8 @@ form.link, form.button {
   margin-bottom: 15px; }
 
 .testimonial {
-  margin-left: 20px;
   background-color: white;
-  margin-bottom: 5px;
+  margin: 0;
   color: black;
   height: 100%;
   border: 1px black solid;
@@ -244,8 +248,13 @@ form.link, form.button {
     color: black; }
   .testimonial img {
     max-width: 100%;
-    padding: 10px;
-    padding-left: 0px; }
+    padding: 10px; }
+  @media (min-width: 64em) {
+    .testimonial {
+      min-height: 150px; } }
+  @media (max-width: 64em) and (min-width: 48em) {
+    .testimonial {
+      min-height: 185px; } }
 
 
 /*# sourceMappingURL=app.css.map*/

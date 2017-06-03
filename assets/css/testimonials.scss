@@ -5,11 +5,11 @@
 }
 
 .testimonial {
-  margin-left: 20px;
   background-color: white;
-  margin-bottom: 5px;
+  margin: 0;
   color: black;
   height: 100%;
+
   p {
     color: black;
   }
@@ -19,6 +19,13 @@
   img {
     max-width: 100%;
     padding: 10px;
-    padding-left: 0px;
+  }
+
+  @media (min-width: 64em) {
+    min-height: 150px;
+  }
+
+  @media (max-width: 64em) and (min-width: 48em) {
+    min-height: 185px;
   }
 }
