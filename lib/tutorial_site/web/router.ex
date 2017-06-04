@@ -19,8 +19,8 @@ defmodule TutorialSite.Web.Router do
     get "/", PageController, :index
     get "/read", PageController, :read_book
     get "/read/:section/:chapter", PageController, :read_chapter
-    get "/buy_ebook", PageController, :buy_ebook
-    get "/buy_videos", PageController, :buy_videos    
+    get "/buy_ebook", PaymentController, :buy_ebook
+    get "/buy_videos", PaymentController, :buy_videos    
     get "/mailing_list", PageController, :mailing_list
     get "/contact", PageController, :contact
   end

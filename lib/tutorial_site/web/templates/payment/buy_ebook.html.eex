@@ -18,8 +18,8 @@
   </script>
 </form>
 
-<p>You've already perused the released parts of the book online, so you know it's worth the money...
-  but if you don't believe your own eyes, here's some testimonials:</p>
+<p>You've already perused the released parts of the book online, so you know how good it is...
+  but if you don't believe your eyes, here's some testimonials:</p>
 
 <div class="row">
   <%= for testimonial <- @phoenix_testimonials do %>
