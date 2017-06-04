@@ -1,5 +1,14 @@
 # Changelog
 
+* **Website Created**
+
+### 0.1.2
+
+* Add Captain's Log for snake_case vs CamelCase
+* Added a note on tab auto-complete in iex
+* Updated Maps exercise to not accidentally resemble a Ruby on Rails convention
+* Fixed a typo
+
 ### 0.1.1
 
 * Rewrote the introduction

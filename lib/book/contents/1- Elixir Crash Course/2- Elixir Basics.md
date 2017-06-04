@@ -192,6 +192,10 @@ iex(4)> String.split "hello universe"
         ["hello", "universe"]
 ```
 
+> Want to see something cool?  Press 'tab' in iex to trigger an autocomplete.  So you type in "Stri", hit 'tab', and it'll complete it to "String".
+
+> Even better, if there are multiple options, it will show you all of them that match your search.  Try hitting tab after typing in "String." (make sure to include the dat)- it'll show you all of the functions available on that module.
+
 ## Enum Exercises
 
 What is displayed when you type each of these into the command line?  After thinking about it, test your answer.

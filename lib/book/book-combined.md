@@ -108,6 +108,15 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 
 # Changelog
 
+* **Website Created**
+
+### 0.1.2
+
+* Add Captain's Log for snake_case vs CamelCase
+* Added a note on tab auto-complete in iex
+* Updated Maps exercise to not accidentally resemble a Ruby on Rails convention
+* Fixed a typo
+
 ### 0.1.1
 
 * Rewrote the introduction
@@ -140,7 +149,7 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 
 # Acknowledgements
 
-A huge thanks to those who have offered feedback on the manuscript: Derek Wook, Franco Barbeite, Giuseppe Caruso, and Richard Poole.  This book would be much worse without them.
+A huge thanks to those who have offered feedback on the manuscript: Derek Wook, Franco Barbeite, Giuseppe Caruso, Richard Poole, and Matthew Davis.  This book would be much worse without them.
 
 
  \pagebreak 
@@ -467,6 +476,10 @@ iex(3)> String.split 'hello universe'
 iex(4)> String.split "hello universe"
         ["hello", "universe"]
 ```
+
+> Want to see something cool?  Press 'tab' in iex to trigger an autocomplete.  So you type in "Stri", hit 'tab', and it'll complete it to "String".
+
+> Even better, if there are multiple options, it will show you all of them that match your search.  Try hitting tab after typing in "String." (make sure to include the dat)- it'll show you all of the functions available on that module.
 
 ## Enum Exercises
 
