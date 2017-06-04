@@ -5,7 +5,9 @@
   </div>
 <% end %>
 
-<h3><strong>The book is about 10% done</strong>.  Web copy is 100% free forever, and you can <a href="/read">read what I've written so far</a>.</h3>
+<h3>Web version 100% free forever.</h3>
+
+<h3>The book is about 10% done, and you can <a href="/read">read what I've written so far</a>.</h3>
 
 <h2>What is it?</h2>
 
@@ -13,8 +15,15 @@
 
 <p>This book aims to be your first Elixir and Phoenix book, but not your last.  We'll go into the basics of the language and the framework, giving you a solid foundation so you can crank out simple web apps and be prepared to read and understand the books written on more advanced topics.</p>
 
-<h2>Praise for The Phoenix Tutorial</h2>
+<h2>Advance Praise for The Phoenix Tutorial</h2>
 
+<p>Reviews based off a preview version of Elixir Crash Course section</p>
+
+<div class="row">
+  <%= for testimonial <- @phoenix_testimonials do %>
+    <%= render TutorialSite.Web.PageView, "testimonial.html", conn: @conn, testimonial: testimonial %>
+  <% end %>
+</div>
 
 <h2>Praise for Jeffrey's <a href="https://www.emberschool.com/" target="_blank">previous work</a></h2>
 

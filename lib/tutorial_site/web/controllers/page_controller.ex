@@ -72,6 +72,14 @@ defmodule TutorialSite.Web.PageController do
   end
 
   def phoenix_testimonials do
-    []
+    [%{
+      image_url: "https://s3.amazonaws.com/phoenix-tutorial/franco_barbeite.jpg",
+      text: "<p>\"The explanations are crystal clear. The exercises, while simple, do a good job of covering corner cases that might otherwise not be obvious.\"</p>
+            <p>-- Franco Barbeite, Senior Software Engineer at LiftForward</p>"
+    }, %{
+      image_url: "	https://s3.amazonaws.com/phoenix-tutorial/giuseppe-pic.jpg",
+      text: "<p>\"Very well written, straight to the point, and with a clean, clear, style.\"</p>
+      <p>Giuseppe Caruso, Front End Develope, UI/UX Architectr</p>"
+    }]
   end
 end
