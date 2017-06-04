@@ -79,7 +79,7 @@ defmodule TutorialSite.Web.PageController do
     }, %{
       image_url: "	https://s3.amazonaws.com/phoenix-tutorial/giuseppe-pic.jpg",
       text: "<p>\"Very well written, straight to the point, and with a clean, clear, style.\"</p>
-      <p>Giuseppe Caruso, Front End Develope, UI/UX Architectr</p>"
+      <p>Giuseppe Caruso, Front End Developer, UI/UX Architect</p>"
     }]
   end
 end
