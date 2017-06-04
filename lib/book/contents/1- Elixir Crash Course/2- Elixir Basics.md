@@ -151,7 +151,7 @@ What is displayed when you type each of these into the command line?  After thin
 
 ## Enum
 
-The `Enum` module meant for working with Enumerables.  Although there are others, the most common type of Enumerable is a list, so that's what we'll be working with today.
+The `Enum` module is meant for working with Enumerables.  Although there are others, the most common type of Enumerable is a list, so that's what we'll be working with today.
 
 ```bash
 iex(1)> split_phrase = ["hello", "vast", "universe"]

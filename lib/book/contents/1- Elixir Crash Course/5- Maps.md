@@ -159,7 +159,7 @@ end
 
 def two do
   map = %{"hello" => "universe"}
-  Map.put(map, "discarded?", "data")
+  Map.put(map, "information", "data")
 end
 
 def three do

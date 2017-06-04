@@ -51,7 +51,7 @@ While I don't expect you to have familiarity with Elixir or web programming, I d
 
 The current king of the backend Web Framework world is Ruby on Rails- it's what is taught at hundreds of Coder Bootcamps and used at thousands of startups (as well as some large companies).  However, many of the leading lights of the Ruby and Rails worlds have moved on, and a significant number of them have moved to Elixir and Phoenix.  Why is that?
 
-![Twitter joke about Rails and Phoenix](./contents/images/01/ruby-to-phoenix-joke.png){ width=50% }
+![Twitter joke about Rails and Phoenix](./contents/images/01/ruby-to-phoenix-joke.png){ width=60% }
 
 The answer is that Elixir combines the power, speed, and reliability of the Erlang VM with the beauty and expressiveness of Ruby syntax.  In one stroke it fixes the biggest complaint about each language- speed for Ruby and syntax for Erlang.
 
@@ -427,7 +427,7 @@ What is displayed when you type each of these into the command line?  After thin
 
 ## Enum
 
-The `Enum` module meant for working with Enumerables.  Although there are others, the most common type of Enumerable is a list, so that's what we'll be working with today.
+The `Enum` module is meant for working with Enumerables.  Although there are others, the most common type of Enumerable is a list, so that's what we'll be working with today.
 
 ```bash
 iex(1)> split_phrase = ["hello", "vast", "universe"]
@@ -720,7 +720,7 @@ The `recombine` function is pretty cool, but it always uses the default phrase d
 First we'll see how to *make* them input their own phrase:
 
 ```elixir
-def recombinePhraseRequired(phrase) do
+def recombine_phrase_required(phrase) do
   phrase
   |> String.split
   |> Enum.join("-")
@@ -730,13 +730,25 @@ end
 This is the first function we've created that requires an argument, but we've used functions with arguments before.  When we call it we must feed it a phrase as input (with or without parentheses)
 
 ```bash
-iex(1)> LearningElixir.recombinePhraseRequired("hello world")
+iex(1)> LearningElixir.recombine_phrase_required("hello world")
         "hello-world"
-iex(2)> LearningElixir.recombinePhraseRequired "hello world"
+iex(2)> LearningElixir.recombine_phrase_required "hello world"
         "hello-world"
 ```
 
-Next we'll figure out how to make that argument *optional*.
+---
+
+> **Captain's Log: CamelCase vs snake_case**
+
+> At first we thought the way the names were constructed was mere happenstance, a whim of the creators, but we have since determined a consistent pattern.
+
+> Modules are CamelCase.  That means that each word that makes up the name is capitalized, and runs together with the other words with no separation.
+
+> Functions are snake_case.  That means that the words are entirely lower-case, and are separated by underscores.
+
+---
+
+Next we'll figure out how to make the phrase argument *optional*.
 
 There are several ways to do that.  The first solution we show, having a default value, will be typical of non-functional languages.  The second solution, which is modeled after a common Javascript pattern, will show us how different the two language's capabilities are and introduce us to the concept of Arity.  Finally, the third solution will take advantage of Elixir's functional abilities and give us our first taste of Pattern Matching.
 
@@ -1028,7 +1040,7 @@ end
 
 def two do
   map = %{"hello" => "universe"}
-  Map.put(map, "discarded?", "data")
+  Map.put(map, "information", "data")
 end
 
 def three do
