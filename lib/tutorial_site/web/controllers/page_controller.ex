@@ -16,7 +16,7 @@ defmodule TutorialSite.Web.PageController do
   end
 
   def buy_ebook(conn, _params) do
-    render conn, "buy_ebook.html", page_title: "Ebook for The Phoenix Tutorial- Coming Soon!"
+    render conn, "buy_ebook.html", page_title: "Ebook for The Phoenix Tutorial", phoenix_testimonials: phoenix_testimonials
   end
 
   def buy_videos(conn, _params) do
