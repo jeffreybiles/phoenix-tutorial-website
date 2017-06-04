@@ -1,3 +1,21 @@
-<h1>Ebook coming soon!</h1>
+<h1>The Phoenix Tutorial eBook (pdf)</h1>
 
-<%= render TutorialSite.Web.PageView, "mailchimp.html", conn: @conn %>
+<h3>Special Early Access rate!</h3>
+
+<p>Current price is $19.  It will rise as more is written,
+  but order now and get updates delivered for free as they are released.</p>
+
+<%= render TutorialSite.Web.PageView, "gumroad_ebook.html", conn: @conn %>
+
+<hr>
+<p>You've already perused the released parts of the book online, so you know how good it is...
+  but if you don't believe your eyes, here's some testimonials:</p>
+
+<div class="row">
+  <%= for testimonial <- @phoenix_testimonials do %>
+    <%= render TutorialSite.Web.PageView, "testimonial.html", conn: @conn, testimonial: testimonial %>
+  <% end %>
+</div>
+
+<p>Maybe later, after the price increases, I'll write some fancy sales copy about why you need this book.
+  But for now I'll let you make the decision to buy based on what you've seen.</p>

@@ -46,4 +46,6 @@
             and <a href="http://www.emberscreencasts.com/" target="_blank">EmberScreencasts</a></li>
 </ul>
 
+<%= render TutorialSite.Web.PageView, "gumroad_ebook.html", conn: @conn %>
+
 <%= render TutorialSite.Web.PageView, "mailchimp.html", conn: @conn %>

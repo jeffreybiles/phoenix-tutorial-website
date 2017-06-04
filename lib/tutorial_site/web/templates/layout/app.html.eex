@@ -18,7 +18,7 @@
           <ul class="nav nav-pills">
             <li><a href="/">Home</a></li>
             <li><a href="/read">Read Online</a></li>
-            <li class="not-ready"><a href="/buy_ebook">Buy eBook</a></li>
+            <li><a href="/buy_ebook">Buy eBook</a></li>
             <li class="not-ready"><a href="/buy_videos">Buy videos</a></li>
             <li><a href="/mailing_list">Mailing List</a></li>
             <li><a href="/contact">Contact</a></li>
