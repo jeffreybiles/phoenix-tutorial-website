@@ -15,13 +15,13 @@ header-includes:
 
 This book will focus on teaching you the fundamentals of web development.
 
-Web development is a powerful tool that can help you in many endeavors- whether it's building a startup that can change the world, getting a job to provide for your family, making a web app as a creative expression, or using web development as a secret weapon to increase your effectiveness in your current career, I think that you'll be glad you invested the time into learning this valuable skill.
+Web development is a powerful tool that can help you in many endeavors--whether it's building a startup that can change the world, getting a job to provide for your family, making a web app as a creative expression, or using web development as a secret weapon to increase your effectiveness in your current career, I think that you'll be glad you invested the time into learning this valuable skill.
 
-We’re going to learn web development using what I believe are some of the best tools available- Elixir (a blazing-fast programming language with friendly syntax), Phoenix (a modern web framework that combines functional programming with the best of Ruby on Rails), and Ecto (a maintainable system for interacting with the database).  (More on that later in this introduction)
+We’re going to learn web development using what I believe are some of the best tools available: Elixir (a blazing-fast programming language with friendly syntax), Phoenix (a modern web framework that combines functional programming with the best of Ruby on Rails), and Ecto (a maintainable system for interacting with the database).  (More on that later in this introduction)
 
 ## What are we building?
 
-We'll be taking a **hands-on approach** to learning, which means you'll be practicing each concept quickly after you learn it, applying it in a real application when possible.  In addition to the code given in each chapter (which you should type into your computer and run), there will also be exercises, which I highly recommend you do- if you want to remember what you're learning.
+We'll be taking a **hands-on approach** to learning, which means you'll be practicing each concept quickly after you learn it, applying it in a real application when possible.  In addition to the code given in each chapter (which you should type into your computer and run), there will also be exercises, which I highly recommend you do--if you want to remember what you're learning.
 
 Throughout this book we're going to be building the Star Tracker app, which boldly goes where no inventory management app has gone before.
 
@@ -47,9 +47,9 @@ While I don't expect you to have familiarity with Elixir or web programming, I d
 
 ## Why Phoenix and Elixir?
 
-> This section uses advanced terminology in order to compare Phoenix and Elixir to other tools.  If you don't understand something here that's okay- just read to get the general gist of it.  There will be a summary at the end.
+> This section uses advanced terminology in order to compare Phoenix and Elixir to other tools.  If you don't understand something here that's okay--just read to get the general gist of it.  There will be a summary at the end.
 
-The current king of the backend Web Framework world is Ruby on Rails- it's what is taught at hundreds of Coder Bootcamps and used at thousands of startups (as well as some large companies).  However, many of the leading lights of the Ruby and Rails worlds have moved on, and a significant number of them have moved to Elixir and Phoenix.  Why is that?
+The current king of the backend Web Framework world is Ruby on Rails--it's what is taught at hundreds of Coder Bootcamps and used at thousands of startups (as well as some large companies).  However, many of the leading lights of the Ruby and Rails worlds have moved on, and a significant number of them have moved to Elixir and Phoenix.  Why is that?
 
 ![Twitter joke about Rails and Phoenix](./contents/images/01/ruby-to-phoenix-joke.png){ width=60% }
 
@@ -81,7 +81,7 @@ This can occasionally cause frustration for those coming from an Object-Oriented
 
 > **Technobabble: When to use Phoenix vs Other web frameworks?**
 
-> Phoenix is still a newer technology, but it's well past 1.0 and stable enough to run production apps (and the underlying technologies- Elixir and Erlang- are rock solid).
+> Phoenix is still a newer technology, but it's well past 1.0 and stable enough to run production apps (and the underlying technologies--Elixir and Erlang--are rock solid).
 
 > If you're starting a new project, choose Phoenix!  But if you have a legacy project then there are more tradeoffs to consider.
 
@@ -112,10 +112,13 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 
 ### 0.1.2
 
-* Add Captain's Log for snake_case vs CamelCase
+* Added a Captain's Log for snake_case vs PascalCase
 * Added a note on tab auto-complete in iex
+* Renamed `recombinePhraseRequired` function to `recombine`
+* Updated Arguments exercise to be easier to understand
 * Updated Maps exercise to not accidentally resemble a Ruby on Rails convention
-* Fixed a typo
+* Added paragraph on destructuring Maps
+* Fixed some typos/grammar stuff
 
 ### 0.1.1
 
@@ -149,7 +152,7 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 
 # Acknowledgements
 
-A huge thanks to those who have offered feedback on the manuscript: Derek Wook, Franco Barbeite, Giuseppe Caruso, Richard Poole, and Matthew Davis.  This book would be much worse without them.
+A huge thanks to those who have offered feedback on the manuscript: Derek Wood, Franco Barbeite, Giuseppe Caruso, Richard Poole, Matthew Davis, and Peter Karth.  This book would be much worse without them.
 
 
  \pagebreak 
@@ -223,7 +226,7 @@ Check which operating system you are using and follow the associated instruction
 
 > When we find a dollar sign at the beginning of a line of code, it appears to signify that everything following should be typed out on the reader's "command line".
 
-> The command line was the 21st-century equivalent of our ship computer- you tell it a command (by typing with your fingers- such barbarians!) and it does exactly what you ask.  The most common name for this command line was "bash" (as I said- violent barbarians!), but there were several other variants in use.
+> The command line was the 21st-century equivalent of our ship computer; you tell it a command (by typing with your fingers--such barbarians!) and it does exactly what you ask.  The most common name for this command line was "bash" (as I said--violent barbarians!), but there were several other variants in use.
 
 > I will continue reporting my findings as I uncover more of this fascinating 21st-century document.
 
@@ -285,7 +288,7 @@ We've got Elixir installed now and we're ready to start learning!  In the next c
 
 # Getting Started with Elixir
 
-Elixir is an awesome language that is filled to the brim with exciting features.  In part 1 we're only going to cover the basics- enough to get started with Phoenix.  Then in subsequent parts of this book we'll add on more language constructs as needed.
+Elixir is an awesome language that is filled to the brim with exciting features.  In part 1 we're only going to cover the basics--enough to get started with Phoenix.  Then in subsequent parts of this book we'll add on more language constructs as needed.
 
 ## The Elixir Interpreter
 
@@ -414,7 +417,7 @@ iex(8)> phrase <> " -> " <> upcase_phrase
 
 The string usage above is simple but allows us to demonstrate many facets of how Elixir works.
 
-First, you'll notice that when we call `split` and `upcase`, we're not changing the original phrase.  Instead, we're creating a new copy of the phrase, which can be assigned to a variable (such as `upcase_phrase`).  The original string is "immutable"- that is, it cannot be changed (although a new immutable value could be assigned to the variable `phrase`).
+First, you'll notice that when we call `split` and `upcase`, we're not changing the original phrase.  Instead, we're creating a new copy of the phrase, which can be assigned to a variable (such as `upcase_phrase`).  The original string is "immutable"--that is, it cannot be changed (although a new immutable value could be assigned to the variable `phrase`).
 
 Second, you'll notice that instead of calling a function which is stored on the string itself (`phrase.split(" ")`) we take our function and apply it to the string (`String.split(phrase, " ")`).  This may seem like a trivial difference, but in fact it is vital to understanding the functional nature of Elixir.
 
@@ -424,7 +427,7 @@ In an object-oriented language the phrase would be an instance of the class Stri
 
 In a functional language, the phrase is the data, which can be acted upon by functions.  These functions are organized, so the most common functions which can act upon strings are stored in the `String` module, but what's important is we're separating out the data from the function instead of throwing them all in one "object".
 
-If this doesn't make sense to you, that's okay- just move on.  We'll cover modules in the next chapter (and make our own), and the functional style of coding will become clearer to you as you write more Elixir.
+If this doesn't make sense to you, that's okay--just move on.  We'll cover modules in the next chapter (and make our own), and the functional style of coding will become clearer to you as you write more Elixir.
 
 ## String exercises
 
@@ -535,9 +538,9 @@ iex(1)> "boldly going where no man has gone before" |> String.split |> Enum.join
         "boldly-going-where-no-man-has-gone-before"
 ```
 
-When you're piping functions, be sure to use parentheses for your arguments- the compiler can usually infer them, but the pipe syntax makes that more difficult and so it's best to be explicit.
+When you're piping functions, be sure to use parentheses for your arguments--the compiler can usually infer them, but the pipe syntax makes that more difficult and so it's best to be explicit.
 
-Working with pipes is a core part of the Elixir experience, and so most functions you encounter will be designed with piping in mind- they'll take *data* as their first argument, and then configuration for their other arguments.  You can see this with `Enum.join`, which takes in the list as the first argument and then `"-"` as the second argument.
+Working with pipes is a core part of the Elixir experience, and so most functions you encounter will be designed with piping in mind--they'll take *data* as their first argument, and then configuration for their other arguments.  You can see this with `Enum.join`, which takes in the list as the first argument and then `"-"` as the second argument.
 
 ## Pipe Exercises
 
@@ -733,7 +736,7 @@ The `recombine` function is pretty cool, but it always uses the default phrase d
 First we'll see how to *make* them input their own phrase:
 
 ```elixir
-def recombine_phrase_required(phrase) do
+def recombine(phrase) do
   phrase
   |> String.split
   |> Enum.join("-")
@@ -743,23 +746,11 @@ end
 This is the first function we've created that requires an argument, but we've used functions with arguments before.  When we call it we must feed it a phrase as input (with or without parentheses)
 
 ```bash
-iex(1)> LearningElixir.recombine_phrase_required("hello world")
+iex(1)> LearningElixir.recombine("hello world")
         "hello-world"
-iex(2)> LearningElixir.recombine_phrase_required "hello world"
+iex(2)> LearningElixir.recombine "hello world"
         "hello-world"
 ```
-
----
-
-> **Captain's Log: CamelCase vs snake_case**
-
-> At first we thought the way the names were constructed was mere happenstance, a whim of the creators, but we have since determined a consistent pattern.
-
-> Modules are CamelCase.  That means that each word that makes up the name is capitalized, and runs together with the other words with no separation.
-
-> Functions are snake_case.  That means that the words are entirely lower-case, and are separated by underscores.
-
----
 
 Next we'll figure out how to make the phrase argument *optional*.
 
@@ -871,7 +862,9 @@ iex(2)> LearningElixir.recombine("hello universe")
         "hello-universe"
 ```
 
-2. Redefine the 1-arity version of `recombine` in terms of the 2-arity version (like we redefined the 0-arity version in terms of the 1-arity version).
+2. Redefine the 1-arity version of `recombine` in terms of the 2-arity version.
+
+That is, make it so that the 1-arity version calls the 2-arity version instead of repeating code.  You'll note that we already defined the 0-arity version to call the 1-arity version.
 
 ---
 
@@ -912,6 +905,18 @@ defmodule LearningElixir do
 end
 ```
 
+---
+
+> **Captain's Log: PascalCase vs snake_case**
+
+> At first we thought the way the names were constructed was mere happenstance, a whim of the creators, but we have since determined a consistent pattern.
+
+> Modules, such as LearningElixir, are PascalCase.  That means that each word that makes up the name is capitalized, and runs together with the other words with no separation.
+
+> Functions and variable names, such as my_map, are snake_case.  That means that the words are entirely lower-case, and are separated by underscores.
+
+---
+
 It's started with a `%{`, ended with a `}`, and in between consists of key-value pairs separated by commas.  Each key-value pair has a key (such as "name") before the `=>` symbol (sometimes called the "rocket") and a value (such as "Enterprise") after the `=>` symbol.
 
 We can interact with this map using the functions in the `Map` module.
@@ -931,6 +936,17 @@ You can use brackets as shorthand for `Map.get`.
 iex(1)> LearningElixir.my_map["mission"]
 "Code Boldly"
 ```
+
+Another way to get an item from a map is to destructure it:
+
+```elixir
+iex(1)> %{"mission" => mission} = LearningElixir.my_map
+        %{mission: "Code Boldly", name: "Enterprise", type: "CodeShip"}
+iex(2)> mission
+        "Code Boldly"
+```
+
+More on destructuring in the next chapter.
 
 The next most common Map function is to add new values to the map with `put`.
 
@@ -967,30 +983,30 @@ Contrast that with immutable data, where there will never be side effects- no ma
 Of course, the return value of the function can be something other than 5 items.
 
 ```bash
-iex(1)> immutableArray = ["Immutability", "is", "great", "don't", "you", "agree"]
+iex(1)> immutable_array = ["Immutability", "is", "great", "don't", "you", "agree"]
         ["Immutability", "is", "great", "don't", "you", "agree"]
-iex(2)> Enum.slice(immutableArray, 4, 2)
+iex(2)> Enum.slice(immutable_array, 4, 2)
         ["you", "agree"]
-iex(3)> immutableArray
+iex(3)> immutable_array
         ["Immutability", "is", "great", "don't", "you", "agree"]
 ```
 
-So even though you call `Enum.slice` with `immutableArray` and get back an array with 2 items, `immutableArray` is still what it started as.  There are no side effects.
+So even though you call `Enum.slice` with `immutable_array` and get back an array with 2 items, `immutable_array` is still what it started as.  There are no side effects.
 
 Of course, there's a trick you can play with the data- take the result of the calculation an *immediately reassign it* to the variable you used.
 
 ```bash
-iex(1)> immutableArray = ["Immutability", "is", "great", "don't", "you", "agree"]
+iex(1)> immutable_array = ["Immutability", "is", "great", "don't", "you", "agree"]
         ["Immutability", "is", "great", "don't", "you", "agree"]
-iex(2)> immutableArray = Enum.slice(immutableArray, 4, 2)
+iex(2)> immutable_array = Enum.slice(immutable_array, 4, 2)
         ["you", "agree"]
-iex(3)> immutableArray
+iex(3)> immutable_array
         ["you", "agree"]
 ```
 
-Oh no!  Even naming it `immutableArray` didn't stop that disaster!  How is this immutable data?
+Oh no!  Even naming it `immutable_array` didn't stop that disaster!  How is this immutable data?
 
-The array that `immutableArray` originally pointed to is still 5 items long.  It's just that we told `immutableArray` to point to a new, different array- one that was the result of calling `Enum.slice` on the original `immutableArray`.
+The array that `immutable_array` originally pointed to is still 5 items long.  It's just that we told `immutable_array` to point to a new, different array- one that was the result of calling `Enum.slice` on the original `immutable_array`.
 
 Imagine if you could start calling yourself Germany and then the entire country of Germany could no longer be found.  Germany would still exist- you didn't mutate it- but everyone that was looking for Germany found you instead.
 
@@ -1227,9 +1243,9 @@ iex(4)> name
         "Babylon"
 ```
 
-This is a new form of pattern matching, where the intent is to destructure the tuple into its component parts (sometimes this specific technique is just called "destructuring").
+This is a form of pattern matching, where the intent is to destructure the tuple into its component parts (sometimes this specific technique is just called "destructuring").
 
-If you don't need one part of it, you don't have to name it- you can just use the underscore symbol:
+This is similar to the Map destructuring we covered briefly in the last chapter.  The biggest difference is that for a map you can destructure to as many or as few keys as a you like, but in a tuple you have to destructure to the whole tuple.  However, there are some conveniences-- if you don't need one part of it, you can just use the underscore symbol instead of coming up with a throwaway name:
 
 ```bash
 iex(5)> {name, _} = my_tuple
@@ -1325,6 +1341,8 @@ This may be a bit of a shock to people from other languages who are used to usin
 ```
 
 What is the value of `phaser_setting` and `my_name`?
+
+> Hint: Rememmber the Map destructuring from the previous chapter
 
 2. Type out our final version of the `take_action` function.  What happens when you call it as follows?  Why?
 

@@ -7,7 +7,7 @@ The `recombine` function is pretty cool, but it always uses the default phrase d
 First we'll see how to *make* them input their own phrase:
 
 ```elixir
-def recombine_phrase_required(phrase) do
+def recombine(phrase) do
   phrase
   |> String.split
   |> Enum.join("-")
@@ -17,23 +17,11 @@ end
 This is the first function we've created that requires an argument, but we've used functions with arguments before.  When we call it we must feed it a phrase as input (with or without parentheses)
 
 ```bash
-iex(1)> LearningElixir.recombine_phrase_required("hello world")
+iex(1)> LearningElixir.recombine("hello world")
         "hello-world"
-iex(2)> LearningElixir.recombine_phrase_required "hello world"
+iex(2)> LearningElixir.recombine "hello world"
         "hello-world"
 ```
-
----
-
-> **Captain's Log: CamelCase vs snake_case**
-
-> At first we thought the way the names were constructed was mere happenstance, a whim of the creators, but we have since determined a consistent pattern.
-
-> Modules are CamelCase.  That means that each word that makes up the name is capitalized, and runs together with the other words with no separation.
-
-> Functions are snake_case.  That means that the words are entirely lower-case, and are separated by underscores.
-
----
 
 Next we'll figure out how to make the phrase argument *optional*.
 
@@ -145,7 +133,9 @@ iex(2)> LearningElixir.recombine("hello universe")
         "hello-universe"
 ```
 
-2. Redefine the 1-arity version of `recombine` in terms of the 2-arity version (like we redefined the 0-arity version in terms of the 1-arity version).
+2. Redefine the 1-arity version of `recombine` in terms of the 2-arity version.
+
+That is, make it so that the 1-arity version calls the 2-arity version instead of repeating code.  You'll note that we already defined the 0-arity version to call the 1-arity version.
 
 ---
 

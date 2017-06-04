@@ -4,10 +4,13 @@
 
 ### 0.1.2
 
-* Add Captain's Log for snake_case vs CamelCase
+* Added a Captain's Log for snake_case vs PascalCase
 * Added a note on tab auto-complete in iex
+* Renamed `recombinePhraseRequired` function to `recombine`
+* Updated Arguments exercise to be easier to understand
 * Updated Maps exercise to not accidentally resemble a Ruby on Rails convention
-* Fixed a typo
+* Added paragraph on destructuring Maps
+* Fixed some typos/grammar stuff
 
 ### 0.1.1
 

@@ -1,6 +1,6 @@
 # Getting Started with Elixir
 
-Elixir is an awesome language that is filled to the brim with exciting features.  In part 1 we're only going to cover the basics- enough to get started with Phoenix.  Then in subsequent parts of this book we'll add on more language constructs as needed.
+Elixir is an awesome language that is filled to the brim with exciting features.  In part 1 we're only going to cover the basics--enough to get started with Phoenix.  Then in subsequent parts of this book we'll add on more language constructs as needed.
 
 ## The Elixir Interpreter
 
@@ -129,7 +129,7 @@ iex(8)> phrase <> " -> " <> upcase_phrase
 
 The string usage above is simple but allows us to demonstrate many facets of how Elixir works.
 
-First, you'll notice that when we call `split` and `upcase`, we're not changing the original phrase.  Instead, we're creating a new copy of the phrase, which can be assigned to a variable (such as `upcase_phrase`).  The original string is "immutable"- that is, it cannot be changed (although a new immutable value could be assigned to the variable `phrase`).
+First, you'll notice that when we call `split` and `upcase`, we're not changing the original phrase.  Instead, we're creating a new copy of the phrase, which can be assigned to a variable (such as `upcase_phrase`).  The original string is "immutable"--that is, it cannot be changed (although a new immutable value could be assigned to the variable `phrase`).
 
 Second, you'll notice that instead of calling a function which is stored on the string itself (`phrase.split(" ")`) we take our function and apply it to the string (`String.split(phrase, " ")`).  This may seem like a trivial difference, but in fact it is vital to understanding the functional nature of Elixir.
 
@@ -139,7 +139,7 @@ In an object-oriented language the phrase would be an instance of the class Stri
 
 In a functional language, the phrase is the data, which can be acted upon by functions.  These functions are organized, so the most common functions which can act upon strings are stored in the `String` module, but what's important is we're separating out the data from the function instead of throwing them all in one "object".
 
-If this doesn't make sense to you, that's okay- just move on.  We'll cover modules in the next chapter (and make our own), and the functional style of coding will become clearer to you as you write more Elixir.
+If this doesn't make sense to you, that's okay--just move on.  We'll cover modules in the next chapter (and make our own), and the functional style of coding will become clearer to you as you write more Elixir.
 
 ## String exercises
 
@@ -250,9 +250,9 @@ iex(1)> "boldly going where no man has gone before" |> String.split |> Enum.join
         "boldly-going-where-no-man-has-gone-before"
 ```
 
-When you're piping functions, be sure to use parentheses for your arguments- the compiler can usually infer them, but the pipe syntax makes that more difficult and so it's best to be explicit.
+When you're piping functions, be sure to use parentheses for your arguments--the compiler can usually infer them, but the pipe syntax makes that more difficult and so it's best to be explicit.
 
-Working with pipes is a core part of the Elixir experience, and so most functions you encounter will be designed with piping in mind- they'll take *data* as their first argument, and then configuration for their other arguments.  You can see this with `Enum.join`, which takes in the list as the first argument and then `"-"` as the second argument.
+Working with pipes is a core part of the Elixir experience, and so most functions you encounter will be designed with piping in mind--they'll take *data* as their first argument, and then configuration for their other arguments.  You can see this with `Enum.join`, which takes in the list as the first argument and then `"-"` as the second argument.
 
 ## Pipe Exercises
 

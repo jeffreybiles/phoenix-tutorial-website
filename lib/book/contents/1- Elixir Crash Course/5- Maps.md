@@ -18,6 +18,18 @@ defmodule LearningElixir do
 end
 ```
 
+---
+
+> **Captain's Log: PascalCase vs snake_case**
+
+> At first we thought the way the names were constructed was mere happenstance, a whim of the creators, but we have since determined a consistent pattern.
+
+> Modules, such as LearningElixir, are PascalCase.  That means that each word that makes up the name is capitalized, and runs together with the other words with no separation.
+
+> Functions and variable names, such as my_map, are snake_case.  That means that the words are entirely lower-case, and are separated by underscores.
+
+---
+
 It's started with a `%{`, ended with a `}`, and in between consists of key-value pairs separated by commas.  Each key-value pair has a key (such as "name") before the `=>` symbol (sometimes called the "rocket") and a value (such as "Enterprise") after the `=>` symbol.
 
 We can interact with this map using the functions in the `Map` module.
@@ -37,6 +49,17 @@ You can use brackets as shorthand for `Map.get`.
 iex(1)> LearningElixir.my_map["mission"]
 "Code Boldly"
 ```
+
+Another way to get an item from a map is to destructure it:
+
+```elixir
+iex(1)> %{"mission" => mission} = LearningElixir.my_map
+        %{mission: "Code Boldly", name: "Enterprise", type: "CodeShip"}
+iex(2)> mission
+        "Code Boldly"
+```
+
+More on destructuring in the next chapter.
 
 The next most common Map function is to add new values to the map with `put`.
 
@@ -73,30 +96,30 @@ Contrast that with immutable data, where there will never be side effects- no ma
 Of course, the return value of the function can be something other than 5 items.
 
 ```bash
-iex(1)> immutableArray = ["Immutability", "is", "great", "don't", "you", "agree"]
+iex(1)> immutable_array = ["Immutability", "is", "great", "don't", "you", "agree"]
         ["Immutability", "is", "great", "don't", "you", "agree"]
-iex(2)> Enum.slice(immutableArray, 4, 2)
+iex(2)> Enum.slice(immutable_array, 4, 2)
         ["you", "agree"]
-iex(3)> immutableArray
+iex(3)> immutable_array
         ["Immutability", "is", "great", "don't", "you", "agree"]
 ```
 
-So even though you call `Enum.slice` with `immutableArray` and get back an array with 2 items, `immutableArray` is still what it started as.  There are no side effects.
+So even though you call `Enum.slice` with `immutable_array` and get back an array with 2 items, `immutable_array` is still what it started as.  There are no side effects.
 
 Of course, there's a trick you can play with the data- take the result of the calculation an *immediately reassign it* to the variable you used.
 
 ```bash
-iex(1)> immutableArray = ["Immutability", "is", "great", "don't", "you", "agree"]
+iex(1)> immutable_array = ["Immutability", "is", "great", "don't", "you", "agree"]
         ["Immutability", "is", "great", "don't", "you", "agree"]
-iex(2)> immutableArray = Enum.slice(immutableArray, 4, 2)
+iex(2)> immutable_array = Enum.slice(immutable_array, 4, 2)
         ["you", "agree"]
-iex(3)> immutableArray
+iex(3)> immutable_array
         ["you", "agree"]
 ```
 
-Oh no!  Even naming it `immutableArray` didn't stop that disaster!  How is this immutable data?
+Oh no!  Even naming it `immutable_array` didn't stop that disaster!  How is this immutable data?
 
-The array that `immutableArray` originally pointed to is still 5 items long.  It's just that we told `immutableArray` to point to a new, different array- one that was the result of calling `Enum.slice` on the original `immutableArray`.
+The array that `immutable_array` originally pointed to is still 5 items long.  It's just that we told `immutable_array` to point to a new, different array- one that was the result of calling `Enum.slice` on the original `immutable_array`.
 
 Imagine if you could start calling yourself Germany and then the entire country of Germany could no longer be found.  Germany would still exist- you didn't mutate it- but everyone that was looking for Germany found you instead.
 

@@ -6,7 +6,7 @@ While dynamic data will eventually come from your users, your database, and othe
 
 ## Controller to Template
 
-We'll start with the end in mind- displaying dynamic data to your user.
+We'll start with the end in mind--displaying dynamic data to your user.
 
 <!-- web/templates/page/info.html.eex -->
 ```html

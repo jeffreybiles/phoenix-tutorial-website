@@ -2,13 +2,13 @@
 
 This book will focus on teaching you the fundamentals of web development.
 
-Web development is a powerful tool that can help you in many endeavors- whether it's building a startup that can change the world, getting a job to provide for your family, making a web app as a creative expression, or using web development as a secret weapon to increase your effectiveness in your current career, I think that you'll be glad you invested the time into learning this valuable skill.
+Web development is a powerful tool that can help you in many endeavors--whether it's building a startup that can change the world, getting a job to provide for your family, making a web app as a creative expression, or using web development as a secret weapon to increase your effectiveness in your current career, I think that you'll be glad you invested the time into learning this valuable skill.
 
-We’re going to learn web development using what I believe are some of the best tools available- Elixir (a blazing-fast programming language with friendly syntax), Phoenix (a modern web framework that combines functional programming with the best of Ruby on Rails), and Ecto (a maintainable system for interacting with the database).  (More on that later in this introduction)
+We’re going to learn web development using what I believe are some of the best tools available: Elixir (a blazing-fast programming language with friendly syntax), Phoenix (a modern web framework that combines functional programming with the best of Ruby on Rails), and Ecto (a maintainable system for interacting with the database).  (More on that later in this introduction)
 
 ## What are we building?
 
-We'll be taking a **hands-on approach** to learning, which means you'll be practicing each concept quickly after you learn it, applying it in a real application when possible.  In addition to the code given in each chapter (which you should type into your computer and run), there will also be exercises, which I highly recommend you do- if you want to remember what you're learning.
+We'll be taking a **hands-on approach** to learning, which means you'll be practicing each concept quickly after you learn it, applying it in a real application when possible.  In addition to the code given in each chapter (which you should type into your computer and run), there will also be exercises, which I highly recommend you do--if you want to remember what you're learning.
 
 Throughout this book we're going to be building the Star Tracker app, which boldly goes where no inventory management app has gone before.
 
@@ -34,9 +34,9 @@ While I don't expect you to have familiarity with Elixir or web programming, I d
 
 ## Why Phoenix and Elixir?
 
-> This section uses advanced terminology in order to compare Phoenix and Elixir to other tools.  If you don't understand something here that's okay- just read to get the general gist of it.  There will be a summary at the end.
+> This section uses advanced terminology in order to compare Phoenix and Elixir to other tools.  If you don't understand something here that's okay--just read to get the general gist of it.  There will be a summary at the end.
 
-The current king of the backend Web Framework world is Ruby on Rails- it's what is taught at hundreds of Coder Bootcamps and used at thousands of startups (as well as some large companies).  However, many of the leading lights of the Ruby and Rails worlds have moved on, and a significant number of them have moved to Elixir and Phoenix.  Why is that?
+The current king of the backend Web Framework world is Ruby on Rails--it's what is taught at hundreds of Coder Bootcamps and used at thousands of startups (as well as some large companies).  However, many of the leading lights of the Ruby and Rails worlds have moved on, and a significant number of them have moved to Elixir and Phoenix.  Why is that?
 
 ![Twitter joke about Rails and Phoenix](../images/01/ruby-to-phoenix-joke.png){ width=60% }
 
@@ -68,7 +68,7 @@ This can occasionally cause frustration for those coming from an Object-Oriented
 
 > **Technobabble: When to use Phoenix vs Other web frameworks?**
 
-> Phoenix is still a newer technology, but it's well past 1.0 and stable enough to run production apps (and the underlying technologies- Elixir and Erlang- are rock solid).
+> Phoenix is still a newer technology, but it's well past 1.0 and stable enough to run production apps (and the underlying technologies--Elixir and Erlang--are rock solid).
 
 > If you're starting a new project, choose Phoenix!  But if you have a legacy project then there are more tradeoffs to consider.
 

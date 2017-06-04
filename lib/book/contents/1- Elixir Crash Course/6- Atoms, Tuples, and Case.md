@@ -144,9 +144,9 @@ iex(4)> name
         "Babylon"
 ```
 
-This is a new form of pattern matching, where the intent is to destructure the tuple into its component parts (sometimes this specific technique is just called "destructuring").
+This is a form of pattern matching, where the intent is to destructure the tuple into its component parts (sometimes this specific technique is just called "destructuring").
 
-If you don't need one part of it, you don't have to name it- you can just use the underscore symbol:
+This is similar to the Map destructuring we covered briefly in the last chapter.  The biggest difference is that for a map you can destructure to as many or as few keys as a you like, but in a tuple you have to destructure to the whole tuple.  However, there are some conveniences-- if you don't need one part of it, you can just use the underscore symbol instead of coming up with a throwaway name:
 
 ```bash
 iex(5)> {name, _} = my_tuple
@@ -242,6 +242,8 @@ This may be a bit of a shock to people from other languages who are used to usin
 ```
 
 What is the value of `phaser_setting` and `my_name`?
+
+> Hint: Rememmber the Map destructuring from the previous chapter
 
 2. Type out our final version of the `take_action` function.  What happens when you call it as follows?  Why?
 

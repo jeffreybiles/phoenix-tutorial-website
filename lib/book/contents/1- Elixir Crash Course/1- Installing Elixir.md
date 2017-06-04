@@ -32,7 +32,7 @@ Check which operating system you are using and follow the associated instruction
 
 > When we find a dollar sign at the beginning of a line of code, it appears to signify that everything following should be typed out on the reader's "command line".
 
-> The command line was the 21st-century equivalent of our ship computer- you tell it a command (by typing with your fingers- such barbarians!) and it does exactly what you ask.  The most common name for this command line was "bash" (as I said- violent barbarians!), but there were several other variants in use.
+> The command line was the 21st-century equivalent of our ship computer; you tell it a command (by typing with your fingers--such barbarians!) and it does exactly what you ask.  The most common name for this command line was "bash" (as I said--violent barbarians!), but there were several other variants in use.
 
 > I will continue reporting my findings as I uncover more of this fascinating 21st-century document.
 
