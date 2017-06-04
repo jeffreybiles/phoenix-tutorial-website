@@ -255,6 +255,8 @@ form.link, form.button {
   @media (max-width: 64em) and (min-width: 48em) {
     .testimonial {
       min-height: 185px; } }
+  .testimonial .testimonial-text {
+    padding-top: 5px; }
 
 
 /*# sourceMappingURL=app.css.map*/
