@@ -118,6 +118,8 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 * Updated Arguments exercise to be easier to understand
 * Updated Maps exercise to not accidentally resemble a Ruby on Rails convention
 * Added paragraph on destructuring Maps
+* Removed errant camelCases and incorrect references to hashes
+* Updated String section for clarity
 * Fixed some typos/grammar stuff
 
 ### 0.1.1
@@ -152,7 +154,7 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 
 # Acknowledgements
 
-A huge thanks to those who have offered feedback on the manuscript: Derek Wood, Franco Barbeite, Giuseppe Caruso, Richard Poole, Matthew Davis, and Peter Karth.  This book would be much worse without them.
+A huge thanks to those who have offered feedback on the manuscript: Derek Wood, Franco Barbeite, Giuseppe Caruso, Richard Poole, Matthew Davis, Peter Karth, and Joep Stender.  This book would be much worse without them.
 
 
  \pagebreak 
@@ -333,11 +335,11 @@ iex(2)> (2 + 3) * 3
         15
 iex(3)> 2 + (3 * 3)
         11
-iex(3)> numTacos = 3
+iex(3)> num_tacos = 3
         3
-iex(4)> numBurritos = 3 * 5
+iex(4)> num_burritos = 3 * 5
         15
-iex(5)> numTacos + numBurritos
+iex(5)> num_tacos + num_burritos
         18
 ```
 
@@ -362,7 +364,7 @@ What is displayed when you type each of these into the command line interpreter?
 1. `2 * 10`
 2. `(2 * 10) + 3`
 3. `2 * (10 + 3)`
-4. `numTacos = 2 + 3; pepperPerTaco = 3; numTacos * pepperPerTaco`
+4. `num_tacos = 2 + 3; pepper_per_taco = 3; num_tacos * pepper_per_taco`
 
 (If you can't guess what `;` does, just go ahead and play around with it. Playing and testing your hypotheses is cheap in the command line!)
 
@@ -415,11 +417,11 @@ iex(8)> phrase <> " -> " <> upcase_phrase
         "hello vast universe -> HELLO VAST UNIVERSE"
 ```
 
-The string usage above is simple but allows us to demonstrate many facets of how Elixir works.
+The string usage above is simple but allows us to demonstrate two important facets of how Elixir works.
 
-First, you'll notice that when we call `split` and `upcase`, we're not changing the original phrase.  Instead, we're creating a new copy of the phrase, which can be assigned to a variable (such as `upcase_phrase`).  The original string is "immutable"--that is, it cannot be changed (although a new immutable value could be assigned to the variable `phrase`).
+First, when we call `split` and `upcase`, we're not changing the original phrase.  Instead, we're creating a new copy of the phrase, which can be assigned to a variable (such as `upcase_phrase`).  The original string is "immutable"--that is, it cannot be changed (although a new immutable value could be assigned to the variable `phrase`).  We'll go over immutability in more detail in chapter 5 of this section.
 
-Second, you'll notice that instead of calling a function which is stored on the string itself (`phrase.split(" ")`) we take our function and apply it to the string (`String.split(phrase, " ")`).  This may seem like a trivial difference, but in fact it is vital to understanding the functional nature of Elixir.
+Second, instead of calling a function which is stored on the string itself (`phrase.split(" ")`) we take our function and apply it to the string (`String.split(phrase, " ")`).  This may seem like a trivial difference, but in fact it is vital to understanding the functional nature of Elixir.
 
 ## Functional vs. Object-Oriented
 
@@ -456,7 +458,7 @@ iex(4)> Enum.member? split_phrase, "univers"
 
 Once again we have our functions which are organized by module (`Enum`), which are then applied to the data (`split_phrase`).
 
-We're also demonstrating a parentheses-free function syntax.  It's equivalent to having parentheses, except it's a bit cleaner (but, in some cases, more ambiguous.  In those cases parentheses should be added back).
+We're also demonstrating a parentheses-free function syntax.  It's equivalent to having parentheses, except it's a bit cleaner (but, in some cases, more ambiguous.  In those cases parentheses should be added back for clarity).
 
 ## Char Lists vs Binaries
 
@@ -808,7 +810,7 @@ iex(1)> LearningElixir.recombine()
 
 It's saying that `LearningElixir.recombine/0` is undefined or private... what does that mean?  Didn't we define `recombine`?  And what's that `0` afterwards?  The answer, as you may have guessed from this section header, is "arity".
 
-"Arity" is a fancy word for the number of arguments a given function requires.  So we've defined `LearningElixir.recombine/1` (a version of `recombine` with 1 argument), but not `LearningElixir.recombine/0` (a version of `recombine` with 0 arguments).  This can be annoying when we're used to looser languages that default to `nil` automatically, but it's really helpful for when we accidentally forget an argument- Elixir will help us catch that bug right at the start.
+"Arity" is a fancy word for the number of arguments a given function requires.  So we've defined LearningElixir.recombine/1 (a version of `recombine` with 1 argument), but not LearningElixir.recombine/0 (a version of `recombine` with 0 arguments).  This can be annoying when we're used to looser languages that default to `nil` automatically, but it's really helpful for when we accidentally forget an argument- Elixir will help us catch that bug right at the start.
 
 We can, of course, "cheat" the arity system by providing default values:
 
@@ -928,7 +930,7 @@ iex(2)> Map.get(LearningElixir.my_map, "bad_key")
         nil
 ```
 
-Our first (and most common) Map function, `Map.get`, takes two arguments: the map (`LearningElixir.my_map`) and a key ("mission").  It will then grab the value attached to that key in the map.  If the key given doesn't exist in the hash, it will return `nil`.
+Our first (and most common) Map function, `Map.get`, takes two arguments: the map (`LearningElixir.my_map`) and a key ("mission").  It will then grab the value attached to that key in the map.  If the key given doesn't exist in the map, it will return `nil`.
 
 You can use brackets as shorthand for `Map.get`.
 

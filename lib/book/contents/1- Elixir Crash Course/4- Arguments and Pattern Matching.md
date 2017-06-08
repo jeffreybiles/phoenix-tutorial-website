@@ -79,7 +79,7 @@ iex(1)> LearningElixir.recombine()
 
 It's saying that `LearningElixir.recombine/0` is undefined or private... what does that mean?  Didn't we define `recombine`?  And what's that `0` afterwards?  The answer, as you may have guessed from this section header, is "arity".
 
-"Arity" is a fancy word for the number of arguments a given function requires.  So we've defined `LearningElixir.recombine/1` (a version of `recombine` with 1 argument), but not `LearningElixir.recombine/0` (a version of `recombine` with 0 arguments).  This can be annoying when we're used to looser languages that default to `nil` automatically, but it's really helpful for when we accidentally forget an argument- Elixir will help us catch that bug right at the start.
+"Arity" is a fancy word for the number of arguments a given function requires.  So we've defined LearningElixir.recombine/1 (a version of `recombine` with 1 argument), but not LearningElixir.recombine/0 (a version of `recombine` with 0 arguments).  This can be annoying when we're used to looser languages that default to `nil` automatically, but it's really helpful for when we accidentally forget an argument- Elixir will help us catch that bug right at the start.
 
 We can, of course, "cheat" the arity system by providing default values:
 

@@ -41,7 +41,7 @@ iex(2)> Map.get(LearningElixir.my_map, "bad_key")
         nil
 ```
 
-Our first (and most common) Map function, `Map.get`, takes two arguments: the map (`LearningElixir.my_map`) and a key ("mission").  It will then grab the value attached to that key in the map.  If the key given doesn't exist in the hash, it will return `nil`.
+Our first (and most common) Map function, `Map.get`, takes two arguments: the map (`LearningElixir.my_map`) and a key ("mission").  It will then grab the value attached to that key in the map.  If the key given doesn't exist in the map, it will return `nil`.
 
 You can use brackets as shorthand for `Map.get`.
 

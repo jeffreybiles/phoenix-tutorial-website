@@ -10,6 +10,8 @@
 * Updated Arguments exercise to be easier to understand
 * Updated Maps exercise to not accidentally resemble a Ruby on Rails convention
 * Added paragraph on destructuring Maps
+* Removed errant camelCases and incorrect references to hashes
+* Updated String section for clarity
 * Fixed some typos/grammar stuff
 
 ### 0.1.1

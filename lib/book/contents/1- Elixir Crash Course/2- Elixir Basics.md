@@ -45,11 +45,11 @@ iex(2)> (2 + 3) * 3
         15
 iex(3)> 2 + (3 * 3)
         11
-iex(3)> numTacos = 3
+iex(3)> num_tacos = 3
         3
-iex(4)> numBurritos = 3 * 5
+iex(4)> num_burritos = 3 * 5
         15
-iex(5)> numTacos + numBurritos
+iex(5)> num_tacos + num_burritos
         18
 ```
 
@@ -74,7 +74,7 @@ What is displayed when you type each of these into the command line interpreter?
 1. `2 * 10`
 2. `(2 * 10) + 3`
 3. `2 * (10 + 3)`
-4. `numTacos = 2 + 3; pepperPerTaco = 3; numTacos * pepperPerTaco`
+4. `num_tacos = 2 + 3; pepper_per_taco = 3; num_tacos * pepper_per_taco`
 
 (If you can't guess what `;` does, just go ahead and play around with it. Playing and testing your hypotheses is cheap in the command line!)
 
@@ -127,11 +127,11 @@ iex(8)> phrase <> " -> " <> upcase_phrase
         "hello vast universe -> HELLO VAST UNIVERSE"
 ```
 
-The string usage above is simple but allows us to demonstrate many facets of how Elixir works.
+The string usage above is simple but allows us to demonstrate two important facets of how Elixir works.
 
-First, you'll notice that when we call `split` and `upcase`, we're not changing the original phrase.  Instead, we're creating a new copy of the phrase, which can be assigned to a variable (such as `upcase_phrase`).  The original string is "immutable"--that is, it cannot be changed (although a new immutable value could be assigned to the variable `phrase`).
+First, when we call `split` and `upcase`, we're not changing the original phrase.  Instead, we're creating a new copy of the phrase, which can be assigned to a variable (such as `upcase_phrase`).  The original string is "immutable"--that is, it cannot be changed (although a new immutable value could be assigned to the variable `phrase`).  We'll go over immutability in more detail in chapter 5 of this section.
 
-Second, you'll notice that instead of calling a function which is stored on the string itself (`phrase.split(" ")`) we take our function and apply it to the string (`String.split(phrase, " ")`).  This may seem like a trivial difference, but in fact it is vital to understanding the functional nature of Elixir.
+Second, instead of calling a function which is stored on the string itself (`phrase.split(" ")`) we take our function and apply it to the string (`String.split(phrase, " ")`).  This may seem like a trivial difference, but in fact it is vital to understanding the functional nature of Elixir.
 
 ## Functional vs. Object-Oriented
 
@@ -168,7 +168,7 @@ iex(4)> Enum.member? split_phrase, "univers"
 
 Once again we have our functions which are organized by module (`Enum`), which are then applied to the data (`split_phrase`).
 
-We're also demonstrating a parentheses-free function syntax.  It's equivalent to having parentheses, except it's a bit cleaner (but, in some cases, more ambiguous.  In those cases parentheses should be added back).
+We're also demonstrating a parentheses-free function syntax.  It's equivalent to having parentheses, except it's a bit cleaner (but, in some cases, more ambiguous.  In those cases parentheses should be added back for clarity).
 
 ## Char Lists vs Binaries
 
