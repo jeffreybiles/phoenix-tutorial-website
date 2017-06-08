@@ -5,6 +5,7 @@
 ### 0.1.2
 
 * Added a Captain's Log for snake_case vs PascalCase
+* Added technobabble for assignment vs pattern matching
 * Added a note on tab auto-complete in iex
 * Renamed `recombinePhraseRequired` function to `recombine`
 * Updated Arguments exercise to be easier to understand

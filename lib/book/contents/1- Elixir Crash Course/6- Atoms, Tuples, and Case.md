@@ -157,7 +157,21 @@ iex(6)> name
 
 We're essentially throwing away the number by using the underscore.  This saves us the trouble of naming it, and also communicates to future readers of our code which parts of the tuple will be used.
 
-They can also be used to pattern match in function definitions:
+---
+
+> **Technobabble: Assignment and Pattern Matching**
+
+> We've called `name = {"Babylon", 5}` an "assignment", but we called `{name, _} = {"Babylon", 5}` "pattern matching".  What sets them apart?
+
+> The truth is- they are both pattern matching.  They're both attempts to make the left side equal to the right side.
+
+> When the left side is just one variable, then it's very easy to "match" to it- almost anything will do.  This is "assignment" in Elixir and most other languages.
+
+> When there's a tuple or on the left side the attempt is more complex, and the attempt could fail, but it's essentially doing the same thing.  A succesful "destructuring" is when a complex left side of the equation successfully pattern matches with the right side.
+
+---
+
+Tuples can also be used to pattern match in function definitions:
 
 ```elixir
 defmodule LearningElixir do
