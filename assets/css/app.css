@@ -53,3 +53,11 @@ code.inline {
   justify-content: center;
   flex-direction: column;
 }
+
+html body {
+  margin-top: 0;
+}
+
+ul.nav.nav-pills {
+  margin-top: 10px;
+}
