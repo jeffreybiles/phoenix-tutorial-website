@@ -16,7 +16,7 @@ defmodule Testimonials do
       %{
         image_url: "https://s3.amazonaws.com/ember-school/jonathanjackson.jpeg",
         text: "<p>\"It’s amazing.  It’s really wonderful.  The structure of it is super great, and I’ve been really blown away by the quality of the content.\"</p>
-          <p>--Jonathan Jackson, Hashrocket dev, Co-host of EmberWeekend</p>"
+          <p>--Jonathan Jackson, 201 Created dev, Co-host of EmberWeekend</p>"
       }, %{
         image_url: "https://s3.amazonaws.com/ember-school/KarlArao.JPG",
         text: "<p>\"I'm loving it. Your videos make it easy to learn ember... way better than my ember 1.0 experience.\"</p>
@@ -32,7 +32,7 @@ defmodule Testimonials do
       }, %{
         image_url: "https://s3.amazonaws.com/ember-school/carengarcia.jpg",
         text: "<p>\"Learning #ember? I highly recommend @JeffreyBiles Ember School.  It's thorough, well explained and legit af.\"</p>
-          <p>--Caren Garcia, One More Cloud dev, TA for University of Texas' Coding Class</p>"
+          <p>--Caren Garcia, Implementation Engineer at BazaarVoice, TA for University of Texas' Coding Class</p>"
       }, %{
         image_url: "https://s3.amazonaws.com/ember-school/alex.jpg",
         text: "<p>\"The course has been great at making Ember feel much more approachable; I think this is in part due to your focus on getting apps set up quickly and seeing 'real results' during the first course.\"</p>
