@@ -1,13 +1,25 @@
-<%= link to: "/read", class: "subtle_link" do %>
-  <div class="jumbotron">
-    <h2>The Phoenix Tutorial</h2>
-    <h4>For all skill levels.  <em>No Elixir or Ruby on Rails knowledge required!</em></h4>
-  </div>
+<%= link to: "/read", class: "subtle_link center" do %>
+  <img class="title-image" src='/images/phoenix-tutorial-cover-short.png' />
 <% end %>
 
-<h3>Web version 100% free forever.</h3>
+<div class="row">
+  <div class="col-md-6">
+    <%= link to: "/read", class: "subtle_link" do %>
+      <button class="btn preorder-button">
+        Preorder Ebook
+      </button>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <%= link to: "/read", class: "subtle_link" do %>
+      <button class="btn read-online-button">
+        Read Free Online
+      </button>
+    <% end %>
+  </div>
+</div>
 
-<h3>The book is about 10% done, and you can <a href="/read">read what I've written so far</a>.</h3>
+<h4>Status: About 10% done.</h4>
 
 <h2>What is it?</h2>
 

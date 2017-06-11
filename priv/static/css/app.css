@@ -159,6 +159,21 @@ ul.nav.nav-pills {
   margin-top: 10px;
 }
 
+img.title-image {
+  max-width: 100%;
+}
+
+header.header {
+  margin-bottom: 10px;
+}
+
+.btn.preorder-button, .btn.read-online-button {
+  width: 100%;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 2em;
+}
+
 /* Includes Bootstrap as well as some default style for the starter
  * application. This can be safely deleted to start fresh.
  */

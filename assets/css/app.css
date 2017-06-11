@@ -61,3 +61,18 @@ html body {
 ul.nav.nav-pills {
   margin-top: 10px;
 }
+
+img.title-image {
+  max-width: 100%;
+}
+
+header.header {
+  margin-bottom: 10px;
+}
+
+.btn.preorder-button, .btn.read-online-button {
+  width: 100%;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 2em;
+}
