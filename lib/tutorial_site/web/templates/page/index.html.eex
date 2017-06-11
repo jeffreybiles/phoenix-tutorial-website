@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-md-6">
-    <%= link to: "/read", class: "subtle_link" do %>
+    <%= link to: "/buy_ebook", class: "subtle_link" do %>
       <button class="btn preorder-button">
         Preorder Ebook
       </button>
