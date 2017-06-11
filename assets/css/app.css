@@ -64,6 +64,9 @@ ul.nav.nav-pills {
 
 img.title-image {
   max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 header.header {
