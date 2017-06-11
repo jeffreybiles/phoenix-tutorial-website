@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta property="og:image" content="/images/phoenix-tutorial-cover.png" />
+    <meta property="og:url" content="https://www.phoenix-tutorial.com/" />
+    <meta property="og:title" content="The Phoenix Tutorial- Step by Step Web Development with Elixir and Phoenix" />
+    <meta property="og:description" content="Learn to create web apps with this step by step tutorial.  Meant for programmers of all skill levels, we'll start with a crash course in Elixir (the language that Phoenix is built on) and then build the inventory management app Star Tracker.">
 
     <title><%= assigns[:page_title] || "The Phoenix Tutorial- Learn Web Development with Elixir and Phoenix" %></title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
