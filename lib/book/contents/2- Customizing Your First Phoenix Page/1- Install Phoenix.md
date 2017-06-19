@@ -2,18 +2,17 @@ Now that we understand the basics of Elixir, it's time to install Phoenix and cr
 
 ## Installation
 
-<!-- TODO when editing: Update to Phoenix 1.3.0-rc.2.  This will involve creating an entirely new project -->
-
-We're going to be using Phoenix version 1.2.1 in this tutorial.  We download it straight from github using Mix:
+We're going to be using Phoenix version 1.3.0 in this tutorial.  We download it straight from github using Mix (for now, just copy this line.  We'll go over more about how version control and git/github work in the next chapter):
 
 ```bash
- $ mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new-1.2.1.ez
+# TODO: Update this to 1.3 specific version
+$ mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new-1.2.1.ez
 ```
 
 You can install the latest version by slightly altering the command:
 
 ```bash
- $ mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
+$ mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez
  ```
 
 ## Node
@@ -26,7 +25,9 @@ Go to [the NodeJS site](https://nodejs.org/en/download/) and download version 5.
 
 Postgres is the database we'll be using for this tutorial, although you're free to choose another SQL database if you're more comfortable there.
 
-Installation guides are found [on the Postgres wiki](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
+Installation guides are found [on the Postgres wiki](https://wiki.postgresql.org/wiki/Detailed_installation_guides).
+
+I personally use [PostgresApp](http://postgresapp.com/) on my mac.
 
 ## Your First App
 
@@ -41,7 +42,7 @@ Installation guides are found [on the Postgres wiki](https://wiki.postgresql.org
 We'll first use Mix to generate a new Phoenix app, named star_tracker:
 
 ```bash
-$ mix phoenix.new star_tracker
+$ mix phx.new star_tracker
 ```
 
 This will create a bare-bones app
@@ -50,13 +51,15 @@ This will create a bare-bones app
 * creating star_tracker/config/config.exs
 * creating star_tracker/config/dev.exs
 ....
-* creating star_tracker/web/templates/layout/app.html.eex
-* creating star_tracker/web/templates/page/index.html.eex
-* creating star_tracker/web/views/layout_view.ex
-* creating star_tracker/web/views/page_view.ex
+* creating star_tracker/lib/star_tracker/web/controllers/page_controller.ex
+* creating star_tracker/lib/star_tracker/web/templates/layout/app.html.eex
+* creating star_tracker/lib/star_tracker/web/templates/page/index.html.eex
+....
+* creating star_tracker/assets/static/images/phoenix.png
+* creating star_tracker/assets/static/favicon.ico
 ```
 
-You can start looking around your file structure.  We'll take our first quick tour in chapter 3, and start giving detailed explanations of what everything does starting in chapter 5.
+You can start looking around your file structure.  We'll take our first quick tour in chapter 3 of this section, and start giving detailed explanations of what everything does starting in chapter 6.
 
 You'll be prompted to fetch and install "dependencies".  Say Yes with Y (or hitting enter to choose Y as default).
 
@@ -69,20 +72,24 @@ It will then give you instructions for finishing installation
 ```bash
 Fetch and install dependencies? [Yn] Y
 * running mix deps.get
-* running npm install && node node_modules/brunch/bin/brunch build
+* running mix deps.compile
+* running cd assets && npm install && node node_modules/brunch/bin/brunch build
 
-We are all set! Run your Phoenix application:
+We are all set! Go into your application by running:
 
     $ cd star_tracker
-    $ mix phoenix.server
+
+Then configure your database in config/dev.exs and run:
+
+    $ mix ecto.create
+
+Start your Phoenix app with:
+
+    $ mix phx.server
 
 You can also run your app inside IEx (Interactive Elixir) as:
 
-    $ iex -S mix phoenix.server
-
-Before moving on, configure your database in config/dev.exs and run:
-
-    $ mix ecto.create
+    $ iex -S mix phx.server
 ```
 
 We'll follow those instructions
@@ -110,40 +117,24 @@ There's lots more Unix shell commands we could learn, but those should be enough
 
 ```bash
 $ mix ecto.create
-==> connection
-Compiling 1 file (.ex)
-Generated connection app
-==> fs (compile)
-Compiled src/sys/inotifywait_win32.erl
-...
-==> postgrex
-Compiling 62 files (.ex)
-Generated postgrex app
-==> ecto
-Compiling 69 files (.ex)
-Generated ecto app
-==> phoenix_ecto
-Compiling 4 files (.ex)
-Generated phoenix_ecto app
-==> star_tracker
-Compiling 12 files (.ex)
-Generated star_tracker app
-The database for StarTracker.Repo has been created
+  The database for StarTracker.Repo has been created
 ```
 
 Ecto is the library that Phoenix uses to interface with the database.  We'll be learning a lot more about Ecto when creating our main app.
 
 This particular command creates the database (Postgres by default) for our app.
 
+If you get an error, it's probably because you either don't have Postgres install or don't have Postgres running.  See the instructions for whichever installation of Postgres you chose.
+
 Finally, we run our app.
 
 ```bash
-$ mix phoenix.server
-  [info] Running StarTracker.Endpoint with Cowboy using http://localhost:4000
-  05 Apr 05:33:34 - info: compiled 6 files into 2 files, copied 3 in 1.7 sec
+$ mix phx.server
+  [info] Running StarTracker.Web.Endpoint with Cowboy using http://0.0.0.0:4000
+  07:36:23 - info: compiled 6 files into 2 files, copied 3 in 2.5 sec
 ```
 
-In your web browser, visit http://localhost:4000/.  There you should see the Phoenix Welcome page.
+In your web browser, visit http://localhost:4000/ (it's the same address as http://0.0.0.0:4000).  There you should see the Phoenix Welcome page.
 
 ![](.../images/phoenix-welcome.png)
 
