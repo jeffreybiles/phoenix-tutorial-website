@@ -14,7 +14,7 @@ Welcome to The Phoenix Tutorial.  I'm so glad you decided to join us!
 
 > At first I wasn't sure what I was reading, since it seemed to jump straight into technical instructions, but then I went back and read the Introduction and it all made sense.
 
-> I'll be recording my observations, both for myself, and so that others my continue my research should anything... happen.
+> I'll be recording my observations, both for myself, and so that others may continue my research should anything... happen.
 
 ---
 
