@@ -167,9 +167,41 @@ We're essentially throwing away the number by using the underscore.  This saves 
 
 > When the left side is just one variable, then it's very easy to "match" to it- almost anything will do.  This is "assignment" in Elixir and most other languages.
 
-> When there's a tuple or on the left side the attempt is more complex, and the attempt could fail, but it's essentially doing the same thing.  A succesful "destructuring" is when a complex left side of the equation successfully pattern matches with the right side.
+> When there's a tuple or on the left side the attempt is more complex, and the attempt could fail, but it's essentially doing the same thing.  A successful "destructuring" is when a complex left side of the equation successfully pattern matches with the right side.
 
 ---
+
+It's possible for a destructuring attempt to fail.
+
+```bash
+iex(1)> {name, 5} = {"Babylon", 5}
+        {"Babylon", 5}
+iex(2)> name
+        "Babylon"
+```
+
+In this first example, we're telling Elixir that `"Babylon"` is the variable `name`, and the number `5` is the number `5`.  Elixir agrees!
+
+This second example is where things go wrong.
+
+```bash
+iex(1)> {name, "five"} = {"Babylon", 5}
+        ** (MatchError) no match of right hand side value: {"Babylon", 5}
+            (stdlib) erl_eval.erl:450: :erl_eval.expr/5
+            (iex) lib/iex/evaluator.ex:249: IEx.Evaluator.handle_eval/5
+            (iex) lib/iex/evaluator.ex:229: IEx.Evaluator.do_eval/3
+            (iex) lib/iex/evaluator.ex:207: IEx.Evaluator.eval/3
+            (iex) lib/iex/evaluator.ex:94: IEx.Evaluator.loop/1
+            (iex) lib/iex/evaluator.ex:24: IEx.Evaluator.init/4
+iex(2)> name
+        ** (CompileError) iex:2: undefined function name/0
+```
+
+We're saying that `"Babylon"` is the variable `name`, and Elixir still agrees.  But then we tell Elixir that the number `5` is the string `"five"`, which is false.  Therefore Elixir throws an error.
+
+You can see that if one part of the destructuring fails, they all fail.  `name` isn't assigned.
+
+### Tuples in Function Definitions
 
 Tuples can also be used to pattern match in function definitions:
 
