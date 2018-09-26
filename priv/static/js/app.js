@@ -19348,8 +19348,8 @@ channel.join().receive("ok", function (resp) {
 exports.default = socket;
 });
 
-;require.alias("phoenix_html/priv/static/phoenix_html.js", "phoenix_html");
-require.alias("highlight.js/lib/index.js", "highlight.js");
+;require.alias("highlight.js/lib/index.js", "highlight.js");
+require.alias("phoenix_html/priv/static/phoenix_html.js", "phoenix_html");
 require.alias("phoenix/priv/static/phoenix.js", "phoenix");require.register("___globals___", function(exports, require, module) {
   
 });})();require('___globals___');

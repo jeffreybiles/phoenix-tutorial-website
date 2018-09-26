@@ -1,6 +1,6 @@
 # Functions
 
-So far in our exploration of Elixir we've typed our code directly into the Elixir interpreter, but for complex functions- not to mention building an entire program- we'll want a place to store our functions.
+So far in our exploration of Elixir we've typed our code directly into the Elixir interpreter, but for complex functions -- not to mention building an entire program -- we'll want a place to store our functions.
 
 In this chapter we'll learn how to store our code by defining modules and functions.
 
@@ -27,9 +27,9 @@ Let's go ahead and load that file in the Interpreter.
 ```zsh
 iex(1)> import_file "basic_elixir.ex"
         {:module, LearningElixir,
-         <<70, 79, 82, 49, 0, 0, 5, 0, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 128,
-           131, 104, 2, 100, 0, 14, 101, 108, 105, 120, 105, 114, 95, 100, 111, 99,
-          115, 95, 118, 49, 108, 0, 0, 0, 4, 104, 2, ...>>, {:hello, 0}}
+         <<70, 79, 82, 49, 0, 0, 4, 52, 66, 69, 65, 77, 65, 116, 85, 56, 0, 0, 0, 134,
+           0, 0, 0, 13, 21, 69, 108, 105, 120, 105, 114, 46, 76, 101, 97, 114, 110, 105,
+           110, 103, 69, 108, 105, 120, 105, 114, 8, ...>>, {:hello, 0}}
 iex(2)> LearningElixir.hello
         "boldly going where no man has gone before"
 ```
@@ -94,9 +94,9 @@ iex(3)> import_file "basic_elixir.ex"
           iex:7
 
         {:module, LearningElixir,
-         <<70, 79, 82, 49, 0, 0, 6, 8, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 162,
-           131, 104, 2, 100, 0, 14, 101, 108, 105, 120, 105, 114, 95, 100, 111, 99,
-           115, 95, 118, 49, 108, 0, 0, 0, 4, 104, 2, ...>>, {:recombine, 0}}
+         <<70, 79, 82, 49, 0, 0, 5, 40, 66, 69, 65, 77, 65, 116, 85, 56, 0, 0, 0, 182,
+           0, 0, 0, 18, 21, 69, 108, 105, 120, 105, 114, 46, 76, 101, 97, 114, 110, 105,
+           110, 103, 69, 108, 105, 120, 105, 114, 8, ...>>, {:recombine, 0}}
 iex(4)> LearningElixir.recombine
         "boldly-going-where-no-man-has-gone-before"
 ```

@@ -78,7 +78,7 @@ When we use `put`, it uses the second and third arguments as the key and value r
 
 That's because data in Elixir is "immutable".  That means that each piece of data will never change.  What `put` does is create a *new* piece of data and then assigns it to a variable.
 
-To understand what "immutable" means, we'll have to contrast it with data in a mutable language.  Here's some javascript:
+To understand what "immutable" means, we'll have to contrast it with data in a mutable language.  Here's some Javascript:
 
 ```javascript
 > var mutableArray = ["Don't", "try", "this", "at", "home"];
@@ -88,6 +88,8 @@ To understand what "immutable" means, we'll have to contrast it with data in a m
 > mutableArray
   ["try", "this", "at", "home"]
 ```
+
+> Don't worry if you don't understand the syntax of Javascript.  The important thing is that you understand the differences between mutable and immutable languages, not the specifics of this example.
 
 Above, we're assigning 5 strings to the variable `mutableArray`.  Then we call the `shift` method on the `mutableArray`, which returns the first value in the array and has the *side effect* of removing that string from the array.  The array now only has 4 elements.
 
@@ -106,7 +108,7 @@ iex(3)> immutable_array
 
 So even though you call `Enum.slice` with `immutable_array` and get back an array with 2 items, `immutable_array` is still what it started as.  There are no side effects.
 
-Of course, there's a trick you can play with the data- take the result of the calculation an *immediately reassign it* to the variable you used.
+Of course, there's a trick you can play with the data- take the result of the calculation and *immediately reassign it* to the variable you used.
 
 ```bash
 iex(1)> immutable_array = ["Immutability", "is", "great", "don't", "you", "agree"]
@@ -121,7 +123,7 @@ Oh no!  Even naming it `immutable_array` didn't stop that disaster!  How is this
 
 The array that `immutable_array` originally pointed to is still 5 items long.  It's just that we told `immutable_array` to point to a new, different array- one that was the result of calling `Enum.slice` on the original `immutable_array`.
 
-Imagine if you could start calling yourself Germany and then the entire country of Germany could no longer be found.  Germany would still exist- you didn't mutate it- but everyone that was looking for Germany found you instead.
+Imagine if you could start calling yourself Germany and then the entire country of Germany could no longer be found.  Germany would still exist -- you didn't mutate it -- but everyone that was looking for Germany found you instead.
 
 That's what it's like reassigning a variable.
 

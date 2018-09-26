@@ -16,14 +16,15 @@ Now you should see something like the following:
 
 ```zsh
 $ iex
-  Erlang/OTP 19 [erts-8.3] [source] [64-bit] [smp:8:8] [async-threads:10]
-  [hipe] [kernel-poll:false] [dtrace]
+  Erlang/OTP 21 [erts-10.0.4] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe] [dtrace]
 
-  Interactive Elixir (1.4.2) - press Ctrl+C to exit (type h() ENTER for help)
+  Interactive Elixir (1.7.1) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)>
 ```
 
 This is good!  That means it's working.
+
+> This guide uses Elixir 1.7.1, but it should work as long as the first number (major version) is '1' and the second number (minor version) is 7 or greater.  The third number is called the patch version, if you're curious.
 
 Now you can type Elixir code in and it'll run right there (after you hit the Enter key).
 
@@ -61,7 +62,7 @@ The above demonstrate numbers, basic math, order of operations with parentheses 
 
 > Our scientists have discovered how to access the Command Line Interpreter (iex) that this manuscript speaks of.  
 
-> At first we thought that we had forever trapped out computers in the interpreter, but we eventually discovered that we could exit by hitting Ctrl + C twice in a row.  This is good for when you're done, or if you get the interpreter into a weird state you don't understand.
+> At first we thought that we had forever trapped our computers in the interpreter, but we eventually discovered that we could exit by hitting Ctrl + C twice in a row.  This is good for when you're done, or if you get the interpreter into a weird state you don't understand.
 
 > Exiting and re-entering also solved another mystery- the numbers in the interpreter prompt.  A few more superstitious in our crew thought them at first some sort of sinister countdown, but they are simply the number of lines since the interpreter started.
 
@@ -185,9 +186,9 @@ iex(2)> Enum.count "hello"
 iex(3)> String.split 'hello universe'
         ** (ArgumentError) argument error
             (stdlib) :binary.split('hello universe',
-            ["　", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
-            " ", <<194, 133>>, " ", "\t", "\n", "\v", "\f", "\r"], [:global])
-            (elixir) unicode/unicode.ex:506: String.Break.split/1
+            ["　", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
+            <<194, 133>>, " ", "\t", "\n", "\v", "\f", "\r"], [:global, :trim_all])
+            (elixir) lib/elixir/unicode/properties.ex:344: String.Break.split/1
 iex(4)> String.split "hello universe"
         ["hello", "universe"]
 ```

@@ -260,13 +260,12 @@ What is the value of `phaser_setting` and `my_name`?
 > Hint: Rememmber the Map destructuring from the previous chapter
 
 2. Type out our final version of the `take_action` function.  What happens when you call it as follows?  Why?
-
-a. `LearningElixir.take_action({:err_bear, "Doctor, why is tummy glowing, is that cancer?"}, "Enterprise")`
-b. `LearningElixir.take_action("no tuple here", "Enterprise")`
-c. `LearningElixir.take_action({"ok", "I have made it so"}, "Enterprise")`
-d. `LearningElixir.take_action({:ok, "I have made it so", "another part of the tuple, how fun"}, "Enterprise")`
-e. `LearningElixir.take_action({:ok, "I have made it so"})`
-f. `LearningElixir.take_action({:ok, "I have made it so"}, "Enterprise")`
+  a. `LearningElixir.take_action({:err_bear, "Doctor, why is tummy glowing?  This seems serious."}, "Enterprise")`
+  b. `LearningElixir.take_action("no tuple here", "Enterprise")`
+  c. `LearningElixir.take_action({"ok", "I have made it so"}, "Enterprise")`
+  d. `LearningElixir.take_action({:ok, "I have made it so", "another part of the tuple, how fun"}, "Enterprise")`
+  e. `LearningElixir.take_action({:ok, "I have made it so"})`
+  f. `LearningElixir.take_action({:ok, "I have made it so"}, "Enterprise")`
 
 Learning the common error modes is important- better that you do it now while your program is small.
 
@@ -281,6 +280,6 @@ iex(2)> LearningElixir.take_action({:error, "Phasers not set to stun", "Enterpri
 
 ## Conclusion
 
-Now, with the introduction of atoms, tuples, and condition statements, we're finally starting to see functions that might look at home in a Phoenix app.  In fact, our example for the case statement was inspired by the auto-generated Controller in Phoenix 1.2 and before (they're changing the generator in Phoenix 1.3, but it still depends on the concepts we've introduced in this chapter).
+Now, with the introduction of atoms, tuples, and condition statements, we're finally starting to see functions that might look at home in a Phoenix app.  In fact, our example for the case statement was inspired by the auto-generated Controller in Phoenix 1.2 and before (they changed the generator in Phoenix 1.3, but it still depends on the concepts we've introduced in this chapter).
 
-Great job- you've already learned quite bit!
+Great job! You've already learned quite bit!

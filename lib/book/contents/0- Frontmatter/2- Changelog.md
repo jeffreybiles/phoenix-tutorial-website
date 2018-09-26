@@ -1,6 +1,10 @@
 # Changelog
 
+
+
 * **Website Created**
+* Updated to Elixir 1.7.1
+* Fixed typos/grammar
 
 ### 0.1.2
 
