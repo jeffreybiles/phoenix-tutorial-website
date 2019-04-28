@@ -18,8 +18,8 @@ defmodule TutorialSite.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {TutorialSite, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+     extra_applications: [:logger, :cowboy]]
+     #applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext, :phoenix_ecto, :postgrex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -30,15 +30,17 @@ defmodule TutorialSite.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.3.0-rc"},
-     {:phoenix_pubsub, "~> 1.0"},
-     {:phoenix_ecto, "~> 3.0"},
-     {:postgrex, ">= 0.0.0"},
-     {:phoenix_html, "~> 2.6"},
-     {:phoenix_live_reload, "~> 1.0", only: :dev},
-     {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"},
-     {:earmark, "~> 1.2"},
+    [{:phoenix, "~> 1.4.3"},
+     {:phoenix_pubsub, "~> 1.1.2"},
+     {:phoenix_ecto, "~> 4.0.0"},
+     {:ecto_sql, "~> 3.0"},
+     {:jason, "~> 1.0"},
+     {:postgrex, ">= 0.14.2"},
+     {:phoenix_html, "~> 2.13.2"},
+     {:phoenix_live_reload, "~> 1.2.0", only: :dev},
+     {:gettext, "~> 0.16.1"},
+     {:plug_cowboy, "~> 2.0"},
+     {:earmark, "~> 1.3.2"}
    ]
   end
 

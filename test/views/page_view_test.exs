@@ -1,3 +1,3 @@
-defmodule TutorialSite.Web.PageViewTest do
-  use TutorialSite.Web.ConnCase, async: true
+defmodule TutorialSiteWeb.PageViewTest do
+  use TutorialSiteWeb.ConnCase, async: true
 end

@@ -1,5 +1,5 @@
-defmodule TutorialSite.Web.PageController do
-  use TutorialSite.Web, :controller
+defmodule TutorialSiteWeb.PageController do
+  use TutorialSiteWeb, :controller
 
   def index(conn, _params) do
     render conn, "index.html", ember_testimonials: Testimonials.ember, phoenix_testimonials: Testimonials.phoenix

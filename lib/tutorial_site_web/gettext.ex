@@ -1,4 +1,4 @@
-defmodule TutorialSite.Web.Gettext do
+defmodule TutorialSiteWeb.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 

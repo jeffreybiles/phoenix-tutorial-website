@@ -5,7 +5,7 @@
 <p>Current price is $19.  It will rise as more is written,
   but order now and get updates delivered for free as they are released.</p>
 
-<%= render TutorialSite.Web.PageView, "gumroad_ebook.html", conn: @conn %>
+<%= render TutorialSiteWeb.PageView, "gumroad_ebook.html", conn: @conn %>
 
 <hr>
 <p>You've already perused the released parts of the book online, so you know how good it is...
@@ -13,7 +13,7 @@
 
 <div class="row">
   <%= for testimonial <- @phoenix_testimonials do %>
-    <%= render TutorialSite.Web.PageView, "testimonial.html", conn: @conn, testimonial: testimonial %>
+    <%= render TutorialSiteWeb.PageView, "testimonial.html", conn: @conn, testimonial: testimonial %>
   <% end %>
 </div>
 

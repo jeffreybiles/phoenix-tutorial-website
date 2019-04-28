@@ -1,5 +1,5 @@
-defmodule TutorialSite.Web.Router do
-  use TutorialSite.Web, :router
+defmodule TutorialSiteWeb.Router do
+  use TutorialSiteWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,7 +13,7 @@ defmodule TutorialSite.Web.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", TutorialSite.Web do
+  scope "/", TutorialSiteWeb do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index

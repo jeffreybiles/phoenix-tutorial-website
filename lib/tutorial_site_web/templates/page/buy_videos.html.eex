@@ -5,4 +5,4 @@
 <p>I'm currently focusing on writing the book,
   but if it gets popular enough then screencasts are next.</p>
 
-<%= render TutorialSite.Web.PageView, "mailchimp.html", conn: @conn %>
+<%= render TutorialSiteWeb.PageView, "mailchimp.html", conn: @conn %>

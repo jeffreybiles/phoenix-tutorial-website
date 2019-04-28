@@ -1,5 +1,5 @@
-defmodule TutorialSite.Web.ErrorView do
-  use TutorialSite.Web, :view
+defmodule TutorialSiteWeb.ErrorView do
+  use TutorialSiteWeb, :view
 
   def render("404.html", _assigns) do
     "Page not found"

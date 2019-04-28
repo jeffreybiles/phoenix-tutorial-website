@@ -11,7 +11,7 @@ defmodule TutorialSite do
       # Start the Ecto repository
       supervisor(TutorialSite.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(TutorialSite.Web.Endpoint, []),
+      supervisor(TutorialSiteWeb.Endpoint, []),
       # Start your own worker by calling: TutorialSite.Worker.start_link(arg1, arg2, arg3)
       # worker(TutorialSite.Worker, [arg1, arg2, arg3]),
     ]

@@ -19,7 +19,7 @@
 
 <h2>More coming soon!</h2>
 
-<%= render TutorialSite.Web.PageView, "gumroad_ebook.html", conn: @conn %>
+<%= render TutorialSiteWeb.PageView, "gumroad_ebook.html", conn: @conn %>
 
 
-<%= render TutorialSite.Web.PageView, "mailchimp.html", conn: @conn %>
+<%= render TutorialSiteWeb.PageView, "mailchimp.html", conn: @conn %>

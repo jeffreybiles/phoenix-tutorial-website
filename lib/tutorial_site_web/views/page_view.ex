@@ -1,5 +1,5 @@
-defmodule TutorialSite.Web.PageView do
-  use TutorialSite.Web, :view
+defmodule TutorialSiteWeb.PageView do
+  use TutorialSiteWeb, :view
 
 
   def hyphenate(str) do

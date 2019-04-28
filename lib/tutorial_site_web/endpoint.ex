@@ -1,14 +1,19 @@
-defmodule TutorialSite.Web.Endpoint do
+defmodule TutorialSiteWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :tutorial_site
 
-  socket "/socket", TutorialSite.Web.UserSocket
+  socket "/socket", TutorialSiteWeb.UserSocket
+
+  # copied in from user_socket, might not need it
+  # transport :websocket, Phoenix.Transports.WebSocket, timeout: 45_000
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :tutorial_site, gzip: false,
+    at: "/",
+    from: :tutorial_site,
+    gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -25,7 +30,7 @@ defmodule TutorialSite.Web.Endpoint do
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
-    json_decoder: Poison
+    json_decoder: Phoenix.json_library()
 
   plug Plug.MethodOverride
   plug Plug.Head
@@ -38,5 +43,5 @@ defmodule TutorialSite.Web.Endpoint do
     key: "_tutorial_site_key",
     signing_salt: "w3BW4Uyx"
 
-  plug TutorialSite.Web.Router
+  plug TutorialSiteWeb.Router
 end

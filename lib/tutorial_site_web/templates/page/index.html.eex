@@ -33,7 +33,7 @@
 
 <div class="row">
   <%= for testimonial <- @phoenix_testimonials do %>
-    <%= render TutorialSite.Web.PageView, "testimonial.html", conn: @conn, testimonial: testimonial %>
+    <%= render TutorialSiteWeb.PageView, "testimonial.html", conn: @conn, testimonial: testimonial %>
   <% end %>
 </div>
 
@@ -41,7 +41,7 @@
 
 <div class="row">
   <%= for testimonial <- @ember_testimonials do %>
-    <%= render TutorialSite.Web.PageView, "testimonial.html", conn: @conn, testimonial: testimonial %>
+    <%= render TutorialSiteWeb.PageView, "testimonial.html", conn: @conn, testimonial: testimonial %>
   <% end %>
 </div>
 
@@ -58,6 +58,6 @@
             and <a href="http://www.emberscreencasts.com/" target="_blank">EmberScreencasts</a></li>
 </ul>
 
-<%= render TutorialSite.Web.PageView, "gumroad_ebook.html", conn: @conn %>
+<%= render TutorialSiteWeb.PageView, "gumroad_ebook.html", conn: @conn %>
 
-<%= render TutorialSite.Web.PageView, "mailchimp.html", conn: @conn %>
+<%= render TutorialSiteWeb.PageView, "mailchimp.html", conn: @conn %>

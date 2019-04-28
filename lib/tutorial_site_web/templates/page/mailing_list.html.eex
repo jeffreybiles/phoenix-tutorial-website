@@ -2,4 +2,4 @@
 
 <p>Email frequency usually ranges from once a week to once a month, and you can unsubscribe any time.</p>
 
-<%= render TutorialSite.Web.PageView, "mailchimp.html", conn: @conn %>
+<%= render TutorialSiteWeb.PageView, "mailchimp.html", conn: @conn %>

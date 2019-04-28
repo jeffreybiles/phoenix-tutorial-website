@@ -1,3 +1,3 @@
 defmodule TutorialSite.LayoutViewTest do
-  use TutorialSite.Web.ConnCase, async: true
+  use TutorialSiteWeb.ConnCase, async: true
 end

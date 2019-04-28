@@ -1,0 +1,9 @@
+<%= render TutorialSiteWeb.PageView, "book_navigation_links.html", conn: @conn, book: @book, chapter: @chapter %>
+<hr>
+<h4><u><%= unhyphenate @section %></u></h4>
+<%= content @chapter %>
+<hr>
+<%= render TutorialSiteWeb.PageView, "book_navigation_links.html", conn: @conn, book: @book, chapter: @chapter %>
+<hr>
+<%= render TutorialSiteWeb.PageView, "gumroad_ebook.html", conn: @conn %>
+<%= render TutorialSiteWeb.PageView, "mailchimp.html", conn: @conn %>

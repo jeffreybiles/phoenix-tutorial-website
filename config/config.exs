@@ -10,10 +10,10 @@ config :tutorial_site,
   ecto_repos: [TutorialSite.Repo]
 
 # Configures the endpoint
-config :tutorial_site, TutorialSite.Web.Endpoint,
+config :tutorial_site, TutorialSiteWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "m90lOmRhiFElbuld46HfOGzoGJ/9Hqp8+acEq/+ZQsyELGy+15Rweim+VO9hXsPe",
-  render_errors: [view: TutorialSite.Web.ErrorView, accepts: ~w(html json)],
+  render_errors: [view: TutorialSiteWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: TutorialSite.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
@@ -21,6 +21,8 @@ config :tutorial_site, TutorialSite.Web.Endpoint,
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
+
+config :phoenix, :json_library, Jason
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
