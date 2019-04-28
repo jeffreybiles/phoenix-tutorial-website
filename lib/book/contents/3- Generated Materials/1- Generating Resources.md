@@ -149,7 +149,7 @@ That's how we generate and interact with a basic resource.  We'll be going over 
 
 ## Exercises
 
-1. Generate the materials resource as show in the chapter.  Use the same fields.
+1. Generate the materials resource as shown in the chapter.  Use the same fields.
 2. Input several materials into the database.
 3. Edit one of the materials.
 4. Delete one of the materials.

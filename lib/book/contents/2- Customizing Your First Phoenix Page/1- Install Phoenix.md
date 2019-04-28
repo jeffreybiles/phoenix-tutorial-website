@@ -2,24 +2,17 @@ Now that we understand the basics of Elixir, it's time to install Phoenix and cr
 
 ## Installation
 
-We're going to be using Phoenix version 1.3.0 in this tutorial.  We download it straight from github using Mix (for now, just copy this line.  We'll go over more about how version control and git/github work in the next chapter):
+We're going to be using Phoenix version 1.4.0 in this tutorial.  We download it straight from github using Mix (for now, just copy this line.  We'll go over more about how version control and git/github work in the next chapter):
 
 ```bash
-# TODO: Update this to 1.3 specific version
-$ mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new-1.2.1.ez
+$ mix archive.install hex phx_new 1.4.0
 ```
-
-You can install the latest version by slightly altering the command:
-
-```bash
-$ mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez
- ```
 
 ## Node
 
 We rely on [Brunch](http://brunch.io/) to compile static assets, and Brunch relies on Node.
 
-Go to [the NodeJS site](https://nodejs.org/en/download/) and download version 5.0 or later.  The current stable release (recommended) is 6.10.2.
+Go to [the NodeJS site](https://nodejs.org/en/download/) and download version 5.0 or later.  The current stable release (recommended) is 10.15.0 LTS.
 
 ## Postgres
 

@@ -1,6 +1,6 @@
 # Copyright and License
 
-*The Phoenix Tutorial*. Copyright 2017 by Jeffrey Biles.
+*The Phoenix Tutorial*. Copyright 2017-2019 by Jeffrey Biles.
 
 All source code in *The Phoenix Tutorial* is available under the MIT License.  The book itself and the non-code writing is, unless specifically stated otherwise, copyright Jeffrey Biles.
 
@@ -8,7 +8,7 @@ All source code in *The Phoenix Tutorial* is available under the MIT License.  T
 
 > The MIT License
 
-> Copyright (c) 2017 Jeffrey Biles
+> Copyright (c) 2017-2019 Jeffrey Biles
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

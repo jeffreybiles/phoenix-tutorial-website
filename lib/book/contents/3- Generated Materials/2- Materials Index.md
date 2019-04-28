@@ -74,7 +74,7 @@ Instead of hard-coding a list like we did in Chapter 12, we're bringing in data 
 
 ## The Material Model
 
-Let's look at what each Material consists of.  We've seen this in action, of course, when we were creating and viewing our data, but now we're going to look at how tho Material model is defined.
+Let's look at what each Material consists of.  We've seen this in action, of course, when we were creating and viewing our data, but now we're going to look at how the Material model is defined.
 
 ```elixir
 defmodule StarTracker.Material do

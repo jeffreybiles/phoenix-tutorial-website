@@ -5,7 +5,7 @@
 * Deploy
 * Play with Info page (introduce html, routing, controller, link_to, params)
 * Generate Material, start of whirlwind tour
-  * Generate `mix phoenix.gen.html Material materials name:string amount:decimal latinum_per_1k:decimal`
+  * Generate `mix phx.gen.html Material materials name:string amount:decimal latinum_per_1k:decimal`
   * Everything you can do with generated resource
   * Put in some resources
 * Materials Index
@@ -47,10 +47,10 @@
 <!-- now it gets a bit more abstract; each line will probably mean more work than before -->
 * Events
   * Test-first your basic non-relational events (migrations, changesets, controllers, forms, displays), created step by step without generators (we're doing it so that you can get practice with the basic forms.  We'll go back to generators for the basics after this)
-  * Pictures on event; first with url (and then maybe with picture upload)
   * Test-first adding belongs_to relationship of Event to Material
   * Test-first making a many-to-many relationship- multiple materials for an event
 * Item_types and items
 * Material requirements; construction buttons; accounting- how much of an item can you afford with current materials?  What if you destroyed all your other items?
 * Users; logging in and out; permissions
+* Create user-generated trades?
 * Logs  
