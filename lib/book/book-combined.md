@@ -108,7 +108,11 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 
 # Changelog
 
+
+
 * **Website Created**
+* Updated to Elixir 1.7.1
+* Fixed typos/grammar
 
 ### 0.1.2
 
@@ -162,7 +166,7 @@ A huge thanks to those who have offered feedback on the manuscript: Derek Wood, 
 
 # Copyright and License
 
-*The Phoenix Tutorial*. Copyright 2017 by Jeffrey Biles.
+*The Phoenix Tutorial*. Copyright 2017-2019 by Jeffrey Biles.
 
 All source code in *The Phoenix Tutorial* is available under the MIT License.  The book itself and the non-code writing is, unless specifically stated otherwise, copyright Jeffrey Biles.
 
@@ -170,7 +174,7 @@ All source code in *The Phoenix Tutorial* is available under the MIT License.  T
 
 > The MIT License
 
-> Copyright (c) 2017 Jeffrey Biles
+> Copyright (c) 2017-2019 Jeffrey Biles
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -211,7 +215,7 @@ Welcome to The Phoenix Tutorial.  I'm so glad you decided to join us!
 
 > At first I wasn't sure what I was reading, since it seemed to jump straight into technical instructions, but then I went back and read the Introduction and it all made sense.
 
-> I'll be recording my observations, both for myself, and so that others my continue my research should anything... happen.
+> I'll be recording my observations, both for myself, and so that others may continue my research should anything... happen.
 
 ---
 
@@ -307,14 +311,15 @@ Now you should see something like the following:
 
 ```zsh
 $ iex
-  Erlang/OTP 19 [erts-8.3] [source] [64-bit] [smp:8:8] [async-threads:10]
-  [hipe] [kernel-poll:false] [dtrace]
+  Erlang/OTP 21 [erts-10.0.4] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe] [dtrace]
 
-  Interactive Elixir (1.4.2) - press Ctrl+C to exit (type h() ENTER for help)
+  Interactive Elixir (1.7.1) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)>
 ```
 
 This is good!  That means it's working.
+
+> This guide uses Elixir 1.7.1, but it should work as long as the first number (major version) is '1' and the second number (minor version) is 7 or greater.  The third number is called the patch version, if you're curious.
 
 Now you can type Elixir code in and it'll run right there (after you hit the Enter key).
 
@@ -352,7 +357,7 @@ The above demonstrate numbers, basic math, order of operations with parentheses 
 
 > Our scientists have discovered how to access the Command Line Interpreter (iex) that this manuscript speaks of.  
 
-> At first we thought that we had forever trapped out computers in the interpreter, but we eventually discovered that we could exit by hitting Ctrl + C twice in a row.  This is good for when you're done, or if you get the interpreter into a weird state you don't understand.
+> At first we thought that we had forever trapped our computers in the interpreter, but we eventually discovered that we could exit by hitting Ctrl + C twice in a row.  This is good for when you're done, or if you get the interpreter into a weird state you don't understand.
 
 > Exiting and re-entering also solved another mystery- the numbers in the interpreter prompt.  A few more superstitious in our crew thought them at first some sort of sinister countdown, but they are simply the number of lines since the interpreter started.
 
@@ -476,9 +481,9 @@ iex(2)> Enum.count "hello"
 iex(3)> String.split 'hello universe'
         ** (ArgumentError) argument error
             (stdlib) :binary.split('hello universe',
-            ["　", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
-            " ", <<194, 133>>, " ", "\t", "\n", "\v", "\f", "\r"], [:global])
-            (elixir) unicode/unicode.ex:506: String.Break.split/1
+            ["　", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
+            <<194, 133>>, " ", "\t", "\n", "\v", "\f", "\r"], [:global, :trim_all])
+            (elixir) lib/elixir/unicode/properties.ex:344: String.Break.split/1
 iex(4)> String.split "hello universe"
         ["hello", "universe"]
 ```
@@ -562,7 +567,7 @@ Already each individual line of Elixir should be looking less mysterious than be
 
 # Functions
 
-So far in our exploration of Elixir we've typed our code directly into the Elixir interpreter, but for complex functions- not to mention building an entire program- we'll want a place to store our functions.
+So far in our exploration of Elixir we've typed our code directly into the Elixir interpreter, but for complex functions -- not to mention building an entire program -- we'll want a place to store our functions.
 
 In this chapter we'll learn how to store our code by defining modules and functions.
 
@@ -589,9 +594,9 @@ Let's go ahead and load that file in the Interpreter.
 ```zsh
 iex(1)> import_file "basic_elixir.ex"
         {:module, LearningElixir,
-         <<70, 79, 82, 49, 0, 0, 5, 0, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 128,
-           131, 104, 2, 100, 0, 14, 101, 108, 105, 120, 105, 114, 95, 100, 111, 99,
-          115, 95, 118, 49, 108, 0, 0, 0, 4, 104, 2, ...>>, {:hello, 0}}
+         <<70, 79, 82, 49, 0, 0, 4, 52, 66, 69, 65, 77, 65, 116, 85, 56, 0, 0, 0, 134,
+           0, 0, 0, 13, 21, 69, 108, 105, 120, 105, 114, 46, 76, 101, 97, 114, 110, 105,
+           110, 103, 69, 108, 105, 120, 105, 114, 8, ...>>, {:hello, 0}}
 iex(2)> LearningElixir.hello
         "boldly going where no man has gone before"
 ```
@@ -656,9 +661,9 @@ iex(3)> import_file "basic_elixir.ex"
           iex:7
 
         {:module, LearningElixir,
-         <<70, 79, 82, 49, 0, 0, 6, 8, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 162,
-           131, 104, 2, 100, 0, 14, 101, 108, 105, 120, 105, 114, 95, 100, 111, 99,
-           115, 95, 118, 49, 108, 0, 0, 0, 4, 104, 2, ...>>, {:recombine, 0}}
+         <<70, 79, 82, 49, 0, 0, 5, 40, 66, 69, 65, 77, 65, 116, 85, 56, 0, 0, 0, 182,
+           0, 0, 0, 18, 21, 69, 108, 105, 120, 105, 114, 46, 76, 101, 97, 114, 110, 105,
+           110, 103, 69, 108, 105, 120, 105, 114, 8, ...>>, {:recombine, 0}}
 iex(4)> LearningElixir.recombine
         "boldly-going-where-no-man-has-gone-before"
 ```
@@ -968,7 +973,7 @@ When we use `put`, it uses the second and third arguments as the key and value r
 
 That's because data in Elixir is "immutable".  That means that each piece of data will never change.  What `put` does is create a *new* piece of data and then assigns it to a variable.
 
-To understand what "immutable" means, we'll have to contrast it with data in a mutable language.  Here's some javascript:
+To understand what "immutable" means, we'll have to contrast it with data in a mutable language.  Here's some Javascript:
 
 ```javascript
 > var mutableArray = ["Don't", "try", "this", "at", "home"];
@@ -978,6 +983,8 @@ To understand what "immutable" means, we'll have to contrast it with data in a m
 > mutableArray
   ["try", "this", "at", "home"]
 ```
+
+> Don't worry if you don't understand the syntax of Javascript.  The important thing is that you understand the differences between mutable and immutable languages, not the specifics of this example.
 
 Above, we're assigning 5 strings to the variable `mutableArray`.  Then we call the `shift` method on the `mutableArray`, which returns the first value in the array and has the *side effect* of removing that string from the array.  The array now only has 4 elements.
 
@@ -996,7 +1003,7 @@ iex(3)> immutable_array
 
 So even though you call `Enum.slice` with `immutable_array` and get back an array with 2 items, `immutable_array` is still what it started as.  There are no side effects.
 
-Of course, there's a trick you can play with the data- take the result of the calculation an *immediately reassign it* to the variable you used.
+Of course, there's a trick you can play with the data- take the result of the calculation and *immediately reassign it* to the variable you used.
 
 ```bash
 iex(1)> immutable_array = ["Immutability", "is", "great", "don't", "you", "agree"]
@@ -1011,7 +1018,7 @@ Oh no!  Even naming it `immutable_array` didn't stop that disaster!  How is this
 
 The array that `immutable_array` originally pointed to is still 5 items long.  It's just that we told `immutable_array` to point to a new, different array- one that was the result of calling `Enum.slice` on the original `immutable_array`.
 
-Imagine if you could start calling yourself Germany and then the entire country of Germany could no longer be found.  Germany would still exist- you didn't mutate it- but everyone that was looking for Germany found you instead.
+Imagine if you could start calling yourself Germany and then the entire country of Germany could no longer be found.  Germany would still exist -- you didn't mutate it -- but everyone that was looking for Germany found you instead.
 
 That's what it's like reassigning a variable.
 
@@ -1269,9 +1276,41 @@ We're essentially throwing away the number by using the underscore.  This saves 
 
 > When the left side is just one variable, then it's very easy to "match" to it- almost anything will do.  This is "assignment" in Elixir and most other languages.
 
-> When there's a tuple or on the left side the attempt is more complex, and the attempt could fail, but it's essentially doing the same thing.  A succesful "destructuring" is when a complex left side of the equation successfully pattern matches with the right side.
+> When there's a tuple or on the left side the attempt is more complex, and the attempt could fail, but it's essentially doing the same thing.  A successful "destructuring" is when a complex left side of the equation successfully pattern matches with the right side.
 
 ---
+
+It's possible for a destructuring attempt to fail.
+
+```bash
+iex(1)> {name, 5} = {"Babylon", 5}
+        {"Babylon", 5}
+iex(2)> name
+        "Babylon"
+```
+
+In this first example, we're telling Elixir that `"Babylon"` is the variable `name`, and the number `5` is the number `5`.  Elixir agrees!
+
+This second example is where things go wrong.
+
+```bash
+iex(1)> {name, "five"} = {"Babylon", 5}
+        ** (MatchError) no match of right hand side value: {"Babylon", 5}
+            (stdlib) erl_eval.erl:450: :erl_eval.expr/5
+            (iex) lib/iex/evaluator.ex:249: IEx.Evaluator.handle_eval/5
+            (iex) lib/iex/evaluator.ex:229: IEx.Evaluator.do_eval/3
+            (iex) lib/iex/evaluator.ex:207: IEx.Evaluator.eval/3
+            (iex) lib/iex/evaluator.ex:94: IEx.Evaluator.loop/1
+            (iex) lib/iex/evaluator.ex:24: IEx.Evaluator.init/4
+iex(2)> name
+        ** (CompileError) iex:2: undefined function name/0
+```
+
+We're saying that `"Babylon"` is the variable `name`, and Elixir still agrees.  But then we tell Elixir that the number `5` is the string `"five"`, which is false.  Therefore Elixir throws an error.
+
+You can see that if one part of the destructuring fails, they all fail.  `name` isn't assigned.
+
+### Tuples in Function Definitions
 
 Tuples can also be used to pattern match in function definitions:
 
@@ -1362,13 +1401,12 @@ What is the value of `phaser_setting` and `my_name`?
 > Hint: Rememmber the Map destructuring from the previous chapter
 
 2. Type out our final version of the `take_action` function.  What happens when you call it as follows?  Why?
-
-a. `LearningElixir.take_action({:err_bear, "Doctor, why is tummy glowing, is that cancer?"}, "Enterprise")`
-b. `LearningElixir.take_action("no tuple here", "Enterprise")`
-c. `LearningElixir.take_action({"ok", "I have made it so"}, "Enterprise")`
-d. `LearningElixir.take_action({:ok, "I have made it so", "another part of the tuple, how fun"}, "Enterprise")`
-e. `LearningElixir.take_action({:ok, "I have made it so"})`
-f. `LearningElixir.take_action({:ok, "I have made it so"}, "Enterprise")`
+  a. `LearningElixir.take_action({:err_bear, "Doctor, why is tummy glowing?  This seems serious."}, "Enterprise")`
+  b. `LearningElixir.take_action("no tuple here", "Enterprise")`
+  c. `LearningElixir.take_action({"ok", "I have made it so"}, "Enterprise")`
+  d. `LearningElixir.take_action({:ok, "I have made it so", "another part of the tuple, how fun"}, "Enterprise")`
+  e. `LearningElixir.take_action({:ok, "I have made it so"})`
+  f. `LearningElixir.take_action({:ok, "I have made it so"}, "Enterprise")`
 
 Learning the common error modes is important- better that you do it now while your program is small.
 
@@ -1383,9 +1421,9 @@ iex(2)> LearningElixir.take_action({:error, "Phasers not set to stun", "Enterpri
 
 ## Conclusion
 
-Now, with the introduction of atoms, tuples, and condition statements, we're finally starting to see functions that might look at home in a Phoenix app.  In fact, our example for the case statement was inspired by the auto-generated Controller in Phoenix 1.2 and before (they're changing the generator in Phoenix 1.3, but it still depends on the concepts we've introduced in this chapter).
+Now, with the introduction of atoms, tuples, and condition statements, we're finally starting to see functions that might look at home in a Phoenix app.  In fact, our example for the case statement was inspired by the auto-generated Controller in Phoenix 1.2 and before (they changed the generator in Phoenix 1.3, but it still depends on the concepts we've introduced in this chapter).
 
-Great job- you've already learned quite bit!
+Great job! You've already learned quite bit!
 
 
  \pagebreak 
