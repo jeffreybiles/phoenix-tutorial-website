@@ -30,7 +30,7 @@ defmodule Book do
 
   defp filepath(chapter_title) do
     chapter = find_by_title(chapter_title)
-    filepath = "#{main_path}/contents/#{chapter.section_ord}- #{chapter.section_title}/#{chapter.chapter_ord}- #{chapter.chapter_title}.md"
+    "#{main_path()}/contents/#{chapter.section_ord}- #{chapter.section_title}/#{chapter.chapter_ord}- #{chapter.chapter_title}.md"
   end
 
   def get_html(chapter_title) do
@@ -50,12 +50,12 @@ defmodule Book do
   # TODO: Make these work on first and last pages
   def next(chapter_title) do
     next_index = current_index(chapter_title) + 1
-    Enum.at(contents_ordered, next_index)
+    Enum.at(contents_ordered(), next_index)
   end
 
   def previous(chapter_title) do
     previous_index = current_index(chapter_title) - 1
-    if (previous_index < 0), do: nil, else: Enum.at(contents_ordered, previous_index)
+    if (previous_index < 0), do: nil, else: Enum.at(contents_ordered(), previous_index)
   end
 
   defp contents_ordered do

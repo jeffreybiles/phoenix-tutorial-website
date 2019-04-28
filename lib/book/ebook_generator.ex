@@ -1,6 +1,6 @@
 defmodule EbookGenerator do
   def generate_markdown do
-    {:ok, header_footer_data} = File.read("#{Book.main_path}/header_footer.md")
+    {:ok, header_footer_data} = File.read("#{Book.main_path()}/header_footer.md")
     file_reader = fn(filePath) ->
       {:ok, partialData} = File.read(filePath)
       partialData
@@ -12,14 +12,14 @@ defmodule EbookGenerator do
            |> String.replace("../images/", "./contents/images/")
 
     data = Enum.join([header_footer_data, data], "\n\n")
-    File.write!("#{Book.main_path}/book-combined.md", data)
+    File.write!("#{Book.main_path()}/book-combined.md", data)
   end
 
   def file_paths do
     Book.contents
     |> Enum.map(fn(section) ->
       Enum.map(section.chapters, fn(chapter) ->
-        "#{Book.main_path}/contents/#{section.ord}- #{section.title}/#{chapter.ord}- #{chapter.title}.md"
+        "#{Book.main_path()}/contents/#{section.ord}- #{section.title}/#{chapter.ord}- #{chapter.title}.md"
       end)
     end)
     |> List.flatten
