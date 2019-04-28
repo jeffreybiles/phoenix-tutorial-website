@@ -34,14 +34,15 @@ defmodule TutorialSiteWeb do
       import Ecto
       import Ecto.Query
 
-      import TutorialSiteWeb.Router.Helpers
+      alias TutorialSiteWeb.Router.Helpers, as: Routes
+
       import TutorialSiteWeb.Gettext
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/tutorial_site/web/templates",
+      use Phoenix.View, root: "lib/tutorial_site_web/templates",
                         namespace: TutorialSiteWeb
 
       # Import convenience functions from controllers
@@ -50,7 +51,8 @@ defmodule TutorialSiteWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import TutorialSiteWeb.Router.Helpers
+      alias TutorialSiteWeb.Router.Helpers, as: Routes
+
       import TutorialSiteWeb.ErrorHelpers
       import TutorialSiteWeb.Gettext
     end

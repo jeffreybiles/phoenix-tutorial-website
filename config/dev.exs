@@ -27,8 +27,8 @@ config :tutorial_site, TutorialSiteWeb.Endpoint,
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{lib/tutorial_site/web/views/.*(ex)$},
-      ~r{lib/tutorial_site/web/templates/.*(eex)$}
+      ~r{lib/tutorial_site_web/views/.*(ex)$},
+      ~r{lib/tutorial_site_web/templates/.*(eex)$}
     ]
   ]
 

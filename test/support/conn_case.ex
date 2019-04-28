@@ -25,7 +25,7 @@ defmodule TutorialSiteWeb.ConnCase do
       import Ecto.Changeset
       import Ecto.Query
 
-      import TutorialSiteWeb.Router.Helpers
+      alias TutorialSiteWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
       @endpoint TutorialSiteWeb.Endpoint
