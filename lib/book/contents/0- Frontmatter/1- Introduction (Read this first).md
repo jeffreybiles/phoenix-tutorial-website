@@ -10,13 +10,15 @@ We’re going to learn web development using what I believe are some of the best
 
 We'll be taking a **hands-on approach** to learning, which means you'll be practicing each concept quickly after you learn it, applying it in a real application when possible.  In addition to the code given in each chapter (which you should type into your computer and run), there will also be exercises, which I highly recommend you do--if you want to remember what you're learning.
 
-Throughout this book we're going to be building the Star Tracker app, which boldly goes where no inventory management app has gone before.
+Throughout this book we're going to be building the Star Tracker app, which boldly goes where no resource exchange app has gone before.
 
 ![Insert picture of finished app here]()
 
+We'll be creating a way to buy and sell resources (mostly the elements that make up stars, hence the name) on a centralized market.  You click a button, you buy and sell a resource.  We'll use LiveView to automatically show the user when someone else makes a trade - without a page refresh, and without us writing a single line of Javascript.
+
 It's not super fancy, but it gives us many opportunities to solidify the core concepts you'll need to start creating your own Phoenix apps (and understand the more advanced Elixir and Phoenix books, should you choose to read them).
 
-## Why this book, and not Learning Phoenix or another book?
+## Why this book, and not Programming Phoenix or another book?
 
 There are lots of great resources for intermediate and advanced developers to learn Elixir and Phoenix, but relatively little for beginners.  In addition, the resources that do exist tend to rush past the core web framework features in order to get to the cool advanced features that set the framework apart, like Channels and OTP.
 
@@ -64,6 +66,10 @@ Channels/Sockets that are just as easy as in Node (the current Sockets king), bu
 
 This can occasionally cause frustration for those coming from an Object-Oriented language (such as Ruby), but once you become acclimated it means fewer bugs and more readable code.  You also get really cool features like Pattern Matching and piping that are not available in Object-Oriented languages.
 
+* LiveView
+
+Tired of sprinkling Javascript all over your app?  LiveView lets you do form validations, auto-completes, complex interactions, and [even real-time gaming](https://gist.github.com/chrismccord/60a5705482d26326675c7b752ed0dacd), all from the server.  But it doesn't just eliminate the burden of managing two separate frameworks... it's going to do for real-time apps what Rails did for request/response CRUD apps.
+
 ---
 
 > **Technobabble: When to use Phoenix vs Other web frameworks?**
@@ -73,6 +79,8 @@ This can occasionally cause frustration for those coming from an Object-Oriented
 > If you're starting a new project, choose Phoenix!  But if you have a legacy project then there are more tradeoffs to consider.
 
 > I'd say that if you are having performance problems which can't be solved with basic solutions (such as fixing n+1 database queries) then it may be worth it to switch to Phoenix.  High availability requirements are another good reason.  It also may be worth it if your project involves lots of concurrency or sockets- stuff that most languages and frameworks do poorly, but Elixir and Phoenix do really really well.
+
+> Another huge reason to switch to Phoenix is if you want real-time interactive apps.  Phoenix LiveView lets you have that without having to manage two frameworks + an API layer, like you would if you used, for example, Rails and React. It's also fantastic for dashboards and other apps that need up-to-date information from the server.
 
 > If you're investigating Phoenix, then it's likely that you fall into one of those camps.  However, if you're happy with your current tech, or if you're unhappy for different reasons, consider whether the benefits of Phoenix will be worth the cost of a rewrite.
 
@@ -84,6 +92,7 @@ If you're a beginner that didn't quite understand all of the last section, here'
 
 * Phoenix is an order of magnitude faster (due to Elixir's use of the Erlang VM)
 * Your Phoenix code is significantly less likely to descend into spaghetti code (due both to Elixir’s functional programming and Phoenix and Ecto’s learning many lessons from how web apps can go wrong)
+* LiveView means you don't have to learn React
 * You'll be prepared to take advantage of Elixir's advanced features *when their use becomes necessary*
 
 ## Conclusion

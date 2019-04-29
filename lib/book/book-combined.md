@@ -23,13 +23,15 @@ We’re going to learn web development using what I believe are some of the best
 
 We'll be taking a **hands-on approach** to learning, which means you'll be practicing each concept quickly after you learn it, applying it in a real application when possible.  In addition to the code given in each chapter (which you should type into your computer and run), there will also be exercises, which I highly recommend you do--if you want to remember what you're learning.
 
-Throughout this book we're going to be building the Star Tracker app, which boldly goes where no inventory management app has gone before.
+Throughout this book we're going to be building the Star Tracker app, which boldly goes where no resource exchange app has gone before.
 
 ![Insert picture of finished app here]()
 
+We'll be creating a way to buy and sell resources (mostly the elements that make up stars, hence the name) on a centralized market.  You click a button, you buy and sell a resource.  We'll use LiveView to automatically show the user when someone else makes a trade - without a page refresh, and without us writing a single line of Javascript.
+
 It's not super fancy, but it gives us many opportunities to solidify the core concepts you'll need to start creating your own Phoenix apps (and understand the more advanced Elixir and Phoenix books, should you choose to read them).
 
-## Why this book, and not Learning Phoenix or another book?
+## Why this book, and not Programming Phoenix or another book?
 
 There are lots of great resources for intermediate and advanced developers to learn Elixir and Phoenix, but relatively little for beginners.  In addition, the resources that do exist tend to rush past the core web framework features in order to get to the cool advanced features that set the framework apart, like Channels and OTP.
 
@@ -77,6 +79,10 @@ Channels/Sockets that are just as easy as in Node (the current Sockets king), bu
 
 This can occasionally cause frustration for those coming from an Object-Oriented language (such as Ruby), but once you become acclimated it means fewer bugs and more readable code.  You also get really cool features like Pattern Matching and piping that are not available in Object-Oriented languages.
 
+* LiveView
+
+Tired of sprinkling Javascript all over your app?  LiveView lets you do form validations, auto-completes, complex interactions, and [even real-time gaming](https://gist.github.com/chrismccord/60a5705482d26326675c7b752ed0dacd), all from the server.  But it doesn't just eliminate the burden of managing two separate frameworks... it's going to do for real-time apps what Rails did for request/response CRUD apps.
+
 ---
 
 > **Technobabble: When to use Phoenix vs Other web frameworks?**
@@ -86,6 +92,8 @@ This can occasionally cause frustration for those coming from an Object-Oriented
 > If you're starting a new project, choose Phoenix!  But if you have a legacy project then there are more tradeoffs to consider.
 
 > I'd say that if you are having performance problems which can't be solved with basic solutions (such as fixing n+1 database queries) then it may be worth it to switch to Phoenix.  High availability requirements are another good reason.  It also may be worth it if your project involves lots of concurrency or sockets- stuff that most languages and frameworks do poorly, but Elixir and Phoenix do really really well.
+
+> Another huge reason to switch to Phoenix is if you want real-time interactive apps.  Phoenix LiveView lets you have that without having to manage two frameworks + an API layer, like you would if you used, for example, Rails and React. It's also fantastic for dashboards and other apps that need up-to-date information from the server.
 
 > If you're investigating Phoenix, then it's likely that you fall into one of those camps.  However, if you're happy with your current tech, or if you're unhappy for different reasons, consider whether the benefits of Phoenix will be worth the cost of a rewrite.
 
@@ -97,6 +105,7 @@ If you're a beginner that didn't quite understand all of the last section, here'
 
 * Phoenix is an order of magnitude faster (due to Elixir's use of the Erlang VM)
 * Your Phoenix code is significantly less likely to descend into spaghetti code (due both to Elixir’s functional programming and Phoenix and Ecto’s learning many lessons from how web apps can go wrong)
+* LiveView means you don't have to learn React
 * You'll be prepared to take advantage of Elixir's advanced features *when their use becomes necessary*
 
 ## Conclusion
@@ -108,8 +117,8 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 
 # Changelog
 
-
-
+* Updated Introduction to include LiveView
+* 2 years passed.... sorry about that.  Work will be going fast from now on.
 * **Website Created**
 * Updated to Elixir 1.7.1
 * Fixed typos/grammar
@@ -311,15 +320,15 @@ Now you should see something like the following:
 
 ```zsh
 $ iex
-  Erlang/OTP 21 [erts-10.0.4] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe] [dtrace]
+  Erlang/OTP 21 [erts-10.3.4] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe] [dtrace]
 
-  Interactive Elixir (1.7.1) - press Ctrl+C to exit (type h() ENTER for help)
+  Interactive Elixir (1.8.1) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)>
 ```
 
 This is good!  That means it's working.
 
-> This guide uses Elixir 1.7.1, but it should work as long as the first number (major version) is '1' and the second number (minor version) is 7 or greater.  The third number is called the patch version, if you're curious.
+> This guide uses Elixir 1.8.1, but it should work as long as the first number (major version) is '1' and the second number (minor version) is 8 or greater.  The third number is called the patch version, if you're curious.
 
 Now you can type Elixir code in and it'll run right there (after you hit the Enter key).
 
@@ -601,6 +610,8 @@ iex(2)> LearningElixir.hello
         "boldly going where no man has gone before"
 ```
 
+<!-- TODO: Check that all the numbers stuff is still happening -->
+
 ---
 
 > **Captain's Log: Loading Elixir Files**
@@ -613,7 +624,7 @@ iex(2)> LearningElixir.hello
 
 ---
 
-We load the file into the Interpreter with the command `import_file`.  We can ignore the output for now- only notice that we see both `LearningElixir` and `hello` in various forms.
+We load the file into the Interpreter with the command `import_file`.  We can ignore the output for now; only notice that we see both `LearningElixir` and `hello` in various forms.
 
 Then we call our function with `LearningElixir.hello` and get back the expected string.
 
@@ -674,7 +685,7 @@ Less expected are the two warnings.
 
 The first warning is the result of importing the same file (and thus defining the same module) twice in one interpreter session.  If we had restarted the interpreter in between loading the file then this warning would not show up.  
 
-The second warning is because `phrase` is somewhat ambiguous- it could be either a variable or a function.  The interpreter automatically (and correctly) expands it to `phrase()`, which is the less ambiguous way to call a function.  While the language creator recommends changing all ambiguous instances to using the parentheses, you'll likely see a lot of production code without those parentheses because this warning was added relatively recently, in late 2016 (with Elixir 1.4).
+The second warning is because `phrase` is somewhat ambiguous- it could be either a variable or a function.  The interpreter automatically (and correctly) expands it to `phrase()`, which is the less ambiguous way to call a function.
 
 There are two ways to solve the ambiguity:
 
@@ -694,7 +705,7 @@ defmodule LearningElixir do
 end
 ```
 
-The first is exactly what's suggested by the warning- add in the parentheses.  The second makes explicit the fact that `phrase` is defined on the `LearningElixir` module- thus removing the ambiguity.  I personally prefer the second solution (it makes the function more portable because you don't have to worry about scope), but either works.
+The first is exactly what's suggested by the warning: add in the parentheses.  The second makes explicit the fact that `phrase` is defined on the `LearningElixir` module, thus removing the ambiguity.  I personally prefer the second solution (it makes the function more portable because you don't have to worry about scope), but either works.
 
 Finally, now that we're in a proper file we don't have to define everything on one line.
 
@@ -1018,7 +1029,7 @@ Oh no!  Even naming it `immutable_array` didn't stop that disaster!  How is this
 
 The array that `immutable_array` originally pointed to is still 5 items long.  It's just that we told `immutable_array` to point to a new, different array- one that was the result of calling `Enum.slice` on the original `immutable_array`.
 
-Imagine if you could start calling yourself Germany and then the entire country of Germany could no longer be found.  Germany would still exist -- you didn't mutate it -- but everyone that was looking for Germany found you instead.
+Imagine if you could start calling yourself Germany and then the entire country of Germany could no longer be found.  Germany would still exist -- you didn't mutate it -- but everyone that was looking for Germany found you instead.  All planes flying to Germany would go straight to your house.  A disaster.
 
 That's what it's like reassigning a variable.
 
@@ -1296,12 +1307,12 @@ This second example is where things go wrong.
 ```bash
 iex(1)> {name, "five"} = {"Babylon", 5}
         ** (MatchError) no match of right hand side value: {"Babylon", 5}
-            (stdlib) erl_eval.erl:450: :erl_eval.expr/5
-            (iex) lib/iex/evaluator.ex:249: IEx.Evaluator.handle_eval/5
-            (iex) lib/iex/evaluator.ex:229: IEx.Evaluator.do_eval/3
-            (iex) lib/iex/evaluator.ex:207: IEx.Evaluator.eval/3
-            (iex) lib/iex/evaluator.ex:94: IEx.Evaluator.loop/1
-            (iex) lib/iex/evaluator.ex:24: IEx.Evaluator.init/4
+            (stdlib) erl_eval.erl:453: :erl_eval.expr/5
+            (iex) lib/iex/evaluator.ex:257: IEx.Evaluator.handle_eval/5
+            (iex) lib/iex/evaluator.ex:237: IEx.Evaluator.do_eval/3
+            (iex) lib/iex/evaluator.ex:215: IEx.Evaluator.eval/3
+            (iex) lib/iex/evaluator.ex:103: IEx.Evaluator.loop/1
+            (iex) lib/iex/evaluator.ex:27: IEx.Evaluator.init/4
 iex(2)> name
         ** (CompileError) iex:2: undefined function name/0
 ```
@@ -1442,8 +1453,8 @@ What that means is that our crash course in Elixir is finished- it's time to get
 
 > I have heard tell of great stores of knowledge, locked away in interconnected datapads and inscribed upon dead lumber.  Here are the rumors which I hear most strongly:  
 
-> * [Try Elixir](https://www.codeschool.com/courses/try-elixir), [Mixing it Up with Elixir](https://www.codeschool.com/courses/mixing-it-up-with-elixir)- Interactive beginner's courses at CodeSchool. Try Elixir is free.  
-> * [Programming Elixir 1.3](https://pragprog.com/book/elixir13/programming-elixir-1-3)- An excellent book for programming language nerds and others who want to geek out on details of the Elixir language.
+> * [Programming Elixir 1.6](https://pragprog.com/book/elixir16/programming-elixir-1-6)- An excellent book for programming language nerds and others who want to geek out on details of the Elixir language.
+> * [Programming Phoenix 1.4](https://pragprog.com/book/phoenix14/programming-phoenix-1-4)- A book which quickly and efficiently introduces the major parts of the Phoenix framework.  It's meant for advanced coders who are familiar with Elixir and with backend web frameworks such as Rails or Laravel.
 
 > Were I a younger captain I might go seeking after these sources of knowledge myself, but I am lucky to have discovered even this one document, and in my age I know that deciphering it is much more important than some fool's errand.  We must know how the Phoenix-class ships were constructed!
 

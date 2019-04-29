@@ -34,6 +34,8 @@ iex(2)> LearningElixir.hello
         "boldly going where no man has gone before"
 ```
 
+<!-- TODO: Check that all the numbers stuff is still happening -->
+
 ---
 
 > **Captain's Log: Loading Elixir Files**
@@ -46,7 +48,7 @@ iex(2)> LearningElixir.hello
 
 ---
 
-We load the file into the Interpreter with the command `import_file`.  We can ignore the output for now- only notice that we see both `LearningElixir` and `hello` in various forms.
+We load the file into the Interpreter with the command `import_file`.  We can ignore the output for now; only notice that we see both `LearningElixir` and `hello` in various forms.
 
 Then we call our function with `LearningElixir.hello` and get back the expected string.
 
@@ -107,7 +109,7 @@ Less expected are the two warnings.
 
 The first warning is the result of importing the same file (and thus defining the same module) twice in one interpreter session.  If we had restarted the interpreter in between loading the file then this warning would not show up.  
 
-The second warning is because `phrase` is somewhat ambiguous- it could be either a variable or a function.  The interpreter automatically (and correctly) expands it to `phrase()`, which is the less ambiguous way to call a function.  While the language creator recommends changing all ambiguous instances to using the parentheses, you'll likely see a lot of production code without those parentheses because this warning was added relatively recently, in late 2016 (with Elixir 1.4).
+The second warning is because `phrase` is somewhat ambiguous- it could be either a variable or a function.  The interpreter automatically (and correctly) expands it to `phrase()`, which is the less ambiguous way to call a function.
 
 There are two ways to solve the ambiguity:
 
@@ -127,7 +129,7 @@ defmodule LearningElixir do
 end
 ```
 
-The first is exactly what's suggested by the warning- add in the parentheses.  The second makes explicit the fact that `phrase` is defined on the `LearningElixir` module- thus removing the ambiguity.  I personally prefer the second solution (it makes the function more portable because you don't have to worry about scope), but either works.
+The first is exactly what's suggested by the warning: add in the parentheses.  The second makes explicit the fact that `phrase` is defined on the `LearningElixir` module, thus removing the ambiguity.  I personally prefer the second solution (it makes the function more portable because you don't have to worry about scope), but either works.
 
 Finally, now that we're in a proper file we don't have to define everything on one line.
 

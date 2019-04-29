@@ -12,8 +12,8 @@ What that means is that our crash course in Elixir is finished- it's time to get
 
 > I have heard tell of great stores of knowledge, locked away in interconnected datapads and inscribed upon dead lumber.  Here are the rumors which I hear most strongly:  
 
-> * [Try Elixir](https://www.codeschool.com/courses/try-elixir), [Mixing it Up with Elixir](https://www.codeschool.com/courses/mixing-it-up-with-elixir)- Interactive beginner's courses at CodeSchool. Try Elixir is free.  
-> * [Programming Elixir 1.3](https://pragprog.com/book/elixir13/programming-elixir-1-3)- An excellent book for programming language nerds and others who want to geek out on details of the Elixir language.
+> * [Programming Elixir 1.6](https://pragprog.com/book/elixir16/programming-elixir-1-6)- An excellent book for programming language nerds and others who want to geek out on details of the Elixir language.
+> * [Programming Phoenix 1.4](https://pragprog.com/book/phoenix14/programming-phoenix-1-4)- A book which quickly and efficiently introduces the major parts of the Phoenix framework.  It's meant for advanced coders who are familiar with Elixir and with backend web frameworks such as Rails or Laravel.
 
 > Were I a younger captain I might go seeking after these sources of knowledge myself, but I am lucky to have discovered even this one document, and in my age I know that deciphering it is much more important than some fool's errand.  We must know how the Phoenix-class ships were constructed!
 

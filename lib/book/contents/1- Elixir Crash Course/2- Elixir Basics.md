@@ -16,15 +16,15 @@ Now you should see something like the following:
 
 ```zsh
 $ iex
-  Erlang/OTP 21 [erts-10.0.4] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe] [dtrace]
+  Erlang/OTP 21 [erts-10.3.4] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe] [dtrace]
 
-  Interactive Elixir (1.7.1) - press Ctrl+C to exit (type h() ENTER for help)
+  Interactive Elixir (1.8.1) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)>
 ```
 
 This is good!  That means it's working.
 
-> This guide uses Elixir 1.7.1, but it should work as long as the first number (major version) is '1' and the second number (minor version) is 7 or greater.  The third number is called the patch version, if you're curious.
+> This guide uses Elixir 1.8.1, but it should work as long as the first number (major version) is '1' and the second number (minor version) is 8 or greater.  The third number is called the patch version, if you're curious.
 
 Now you can type Elixir code in and it'll run right there (after you hit the Enter key).
 

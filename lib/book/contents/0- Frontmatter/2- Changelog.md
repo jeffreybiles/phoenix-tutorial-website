@@ -1,7 +1,7 @@
 # Changelog
 
-
-
+* Updated Introduction to include LiveView
+* 2 years passed.... sorry about that.  Work will be going fast from now on.
 * **Website Created**
 * Updated to Elixir 1.7.1
 * Fixed typos/grammar
