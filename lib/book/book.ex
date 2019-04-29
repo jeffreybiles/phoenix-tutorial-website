@@ -26,7 +26,7 @@ defmodule Book do
 
   defp filepath(chapter_title) do
     chapter = find_by_title(chapter_title)
-    "contents/#{chapter.section_ord}- #{chapter.section_title}/#{chapter.chapter_ord}- #{chapter.chapter_title}.md"
+    "book/lib/contents/#{chapter.section_ord}- #{chapter.section_title}/#{chapter.chapter_ord}- #{chapter.chapter_title}.md"
   end
 
   def get_html(chapter_title) do
