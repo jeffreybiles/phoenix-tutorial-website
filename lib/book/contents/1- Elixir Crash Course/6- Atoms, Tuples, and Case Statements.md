@@ -1,4 +1,4 @@
-# Atoms, Tuples, and Case
+# Atoms, Tuples, and Case Statements
 
 In this chapter we'll cover three more basic Elixir concepts that are used often in Phoenix apps.  We'll also combine them (and build on the concepts we've previously learned) in order to discover even more ways of pattern matching.
 
