@@ -161,6 +161,8 @@ This version of `recombine` does exactly the same as our last version, but now i
 
 We introduced the relevant `String` function in the last chapter.
 
+3. Within the same module, create the "upcase_dasherized_phrase" function, which returns the phrase, dasherized AND in all upper case.
+
 ## Conclusion
 
 Now you know how to create a module that organizes your functions.  This increases your ability to organize your code aesthetically (lining up pipe operators) and opens up many new possibilities.  However, our current understanding is still very limited.

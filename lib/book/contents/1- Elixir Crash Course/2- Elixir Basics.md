@@ -90,7 +90,7 @@ iex(2)> 'hello universe'
         'hello universe'
 ```
 
-For the purposes of this book we'll be using double-quoted strings (sometimes called Binaries).  Single-quoted strings (sometimes called Char Lists) are mostly used when interfacing with old Elixir libraries.
+For the purposes of this book we'll be using double-quoted strings (sometimes called Binaries).  Single-quoted strings (sometimes called Char Lists) are mostly used when interfacing with old Erlang libraries.
 
 ---
 
@@ -195,7 +195,7 @@ iex(4)> String.split "hello universe"
 
 > Want to see something cool?  Press 'tab' in iex to trigger an autocomplete.  So you type in "Stri", hit 'tab', and it'll complete it to "String".
 
-> Even better, if there are multiple options, it will show you all of them that match your search.  Try hitting tab after typing in "String." (make sure to include the dat)- it'll show you all of the functions available on that module.
+> Even better, if there are multiple options, it will show you all of them that match your search.  Try hitting tab after typing in "String." (make sure to include the dot)- it'll show you all of the functions available on that module.
 
 ## Enum Exercises
 
@@ -247,7 +247,7 @@ It's a couple more characters than the previous one, but it's far more readable.
 If you have multiple arguments, you just pass the second (and third and fourth, etc.) arguments with the function.
 
 ```bash
-iex(1)> "boldly going where no man has gone before" |> String.split |> Enum.join("-")
+iex(1)> "boldly going where no man has gone before" |> String.split() |> Enum.join("-")
         "boldly-going-where-no-man-has-gone-before"
 ```
 

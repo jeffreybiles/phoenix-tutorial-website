@@ -10,7 +10,7 @@ So let's dive in!
 
 Let's say you're make a mistake. A horrible, life-changing mistake.  In real life you'd just have to deal with the consequences, be they jail, debt, injury, or a lifetime of shame.  But in code, you can make (most of) your mistakes disappear with just a few taps at the command line... IF you're using version control.
 
-Using version control, you can go back in time, create alternate timelines, combine the best parts of alternate timelines, see your entire history, and even work together with other people separate from you in time and space.  This chapter will teach you the absolute basics- we'll be treating commits kind of like save files in a videogame- but there's a whole world of advanced tricks that are really useful, especially when you collaborate with other coders.
+Using version control, you can go back in time, create alternate timelines, combine the best parts of alternate timelines, see your entire history, and even work together with other people separate from you in time and space.  This chapter will teach you the absolute basics -- we'll be treating commits kind of like save files in a videogame -- but there's a whole world of advanced tricks that are really useful, especially when you collaborate with other coders.
 
 The version control system we'll be using is called "Git".
 
@@ -56,22 +56,24 @@ Let's ask `git` about our status again.
 
 ```bash
 $ git status
-  # On branch master
-  #
-  # Initial commit
-  #
-  # Untracked files:
-  #   (use "git add <file>..." to include in what will be committed)
-  #
-  #	.gitignore
-  #	README.md
-  #	assets/
-  #	config/
-  #	lib/
-  #	mix.exs
-  #	mix.lock
-  #	priv/
-  #	test/
+  On branch master
+
+  No commits yet
+
+  Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+
+    	.formatter.exs
+    	.gitignore
+    	README.md
+    	assets/
+    	config/
+    	lib/
+    	mix.exs
+    	mix.lock
+    	priv/
+    	test/
+
   nothing added to commit but untracked files present (use "git add" to track)
 ```
 
@@ -85,146 +87,212 @@ The dot here means "current directory", and since we're in the root directory of
 
 ```bash
 $ git status
-  # On branch master
-  #
-  # Initial commit
-  #
-  # Changes to be committed:
-  #   (use "git rm --cached <file>..." to unstage)
-  #
-  #	new file:   .gitignore
-  #	new file:   README.md
-  #	new file:   Star-Tracker
-  #	new file:   assets/brunch-config.js
-  #	new file:   assets/css/app.css
-  #	new file:   assets/css/phoenix.css
-  #	new file:   assets/js/app.js
-  #	new file:   assets/js/socket.js
-  #	new file:   assets/package.json
-  #	new file:   assets/static/favicon.ico
-  #	new file:   assets/static/images/phoenix.png
-  #	new file:   assets/static/robots.txt
-  #	new file:   config/config.exs
-  #	new file:   config/dev.exs
-  #	new file:   config/prod.exs
-  #	new file:   config/test.exs
-  #	new file:   lib/star_tracker/application.ex
-  #	new file:   lib/star_tracker/repo.ex
-  #	new file:   lib/star_tracker/web/channels/user_socket.ex
-  #	new file:   lib/star_tracker/web/controllers/page_controller.ex
-  #	new file:   lib/star_tracker/web/endpoint.ex
-  #	new file:   lib/star_tracker/web/gettext.ex
-  #	new file:   lib/star_tracker/web/router.ex
-  #	new file:   lib/star_tracker/web/templates/layout/app.html.eex
-  #	new file:   lib/star_tracker/web/templates/page/index.html.eex
-  #	new file:   lib/star_tracker/web/views/error_helpers.ex
-  #	new file:   lib/star_tracker/web/views/error_view.ex
-  #	new file:   lib/star_tracker/web/views/layout_view.ex
-  #	new file:   lib/star_tracker/web/views/page_view.ex
-  #	new file:   lib/star_tracker/web/web.ex
-  #	new file:   mix.exs
-  #	new file:   mix.lock
-  #	new file:   priv/gettext/en/LC_MESSAGES/errors.po
-  #	new file:   priv/gettext/errors.pot
-  #	new file:   priv/repo/seeds.exs
-  #	new file:   test/star_tracker/web/controllers/page_controller_test.exs
-  #	new file:   test/star_tracker/web/views/error_view_test.exs
-  #	new file:   test/star_tracker/web/views/layout_view_test.exs
-  #	new file:   test/star_tracker/web/views/page_view_test.exs
-  #	new file:   test/support/channel_case.ex
-  #	new file:   test/support/conn_case.ex
-  #	new file:   test/support/data_case.ex
-  #	new file:   test/test_helper.exs
+  On branch master
+
+  No commits yet
+
+  Changes to be committed:
+    (use "git rm --cached <file>..." to unstage)
+
+  	new file:   .formatter.exs
+  	new file:   .gitignore
+  	new file:   README.md
+  	new file:   assets/.babelrc
+  	new file:   assets/css/app.css
+  	new file:   assets/css/phoenix.css
+    ......
+  	new file:   lib/star_tracker/application.ex
+  	new file:   lib/star_tracker/repo.ex
+  	new file:   lib/star_tracker_web.ex
+  	......
+  	new file:   lib/star_tracker_web/views/page_view.ex
+  	new file:   mix.exs
+  	new file:   mix.lock
+  	......
+  	new file:   test/test_helper.exs
 ```
 
-Calling for the status shows that git now has all these new files ready to be committed- or, in the parlance of git, "staged".
+Calling for the status shows that git now has all these new files ready to be committed -- or, in the parlance of git, "staged".
 
 Let's take these staged files and commit them.
 
+We'll use the `git commit` command, and pass the "message" option with `-m` and a string that will be used for your commit message.
+
 ```bash
 $ git commit -m "Our first commit"
-  [master (root-commit) 3484920] Our first commit
-   43 files changed, 1291 insertions(+)
-   create mode 100644 .gitignore
-   create mode 100644 README.md
-   create mode 160000 Star-Tracker
-   create mode 100644 assets/brunch-config.js
-   create mode 100644 assets/css/app.css
-   create mode 100644 assets/css/phoenix.css
-   create mode 100644 assets/js/app.js
-   create mode 100644 assets/js/socket.js
-   create mode 100644 assets/package.json
-   create mode 100644 assets/static/favicon.ico
-   create mode 100644 assets/static/images/phoenix.png
-   create mode 100644 assets/static/robots.txt
-   create mode 100644 config/config.exs
-   create mode 100644 config/dev.exs
-   create mode 100644 config/prod.exs
-   create mode 100644 config/test.exs
-   create mode 100644 lib/star_tracker/application.ex
-   create mode 100644 lib/star_tracker/repo.ex
-   create mode 100644 lib/star_tracker/web/channels/user_socket.ex
-   create mode 100644 lib/star_tracker/web/controllers/page_controller.ex
-   create mode 100644 lib/star_tracker/web/endpoint.ex
-   create mode 100644 lib/star_tracker/web/gettext.ex
-   create mode 100644 lib/star_tracker/web/router.ex
-   create mode 100644 lib/star_tracker/web/templates/layout/app.html.eex
-   create mode 100644 lib/star_tracker/web/templates/page/index.html.eex
-   create mode 100644 lib/star_tracker/web/views/error_helpers.ex
-   create mode 100644 lib/star_tracker/web/views/error_view.ex
-   create mode 100644 lib/star_tracker/web/views/layout_view.ex
-   create mode 100644 lib/star_tracker/web/views/page_view.ex
-   create mode 100644 lib/star_tracker/web/web.ex
-   create mode 100644 mix.exs
-   create mode 100644 mix.lock
-   create mode 100644 priv/gettext/en/LC_MESSAGES/errors.po
-   create mode 100644 priv/gettext/errors.pot
-   create mode 100644 priv/repo/seeds.exs
-   create mode 100644 test/star_tracker/web/controllers/page_controller_test.exs
-   create mode 100644 test/star_tracker/web/views/error_view_test.exs
-   create mode 100644 test/star_tracker/web/views/layout_view_test.exs
-   create mode 100644 test/star_tracker/web/views/page_view_test.exs
-   create mode 100644 test/support/channel_case.ex
-   create mode 100644 test/support/conn_case.ex
-   create mode 100644 test/support/data_case.ex
-   create mode 100644 test/test_helper.exs
+  [master (root-commit) 6e6ab4a] Our first commit
+  47 files changed, 12588 insertions(+)
+  create mode 100644 .formatter.exs
+  create mode 100644 .gitignore
+  create mode 100644 README.md
+  create mode 100644 assets/.babelrc
+  create mode 100644 assets/css/app.css
+  create mode 100644 assets/css/phoenix.css
+  ......
+  create mode 100644 lib/star_tracker/application.ex
+  create mode 100644 lib/star_tracker/repo.ex
+  create mode 100644 lib/star_tracker_web.ex
+  ......
+  create mode 100644 lib/star_tracker_web/views/page_view.ex
+  create mode 100644 mix.exs
+  create mode 100644 mix.lock
+  ......
+  create mode 100644 test/test_helper.exs
  ```
 
- So now we've committed 43 files with a total of 1291 lines of code between them (your numbers may be slightly different depending on the point version of Phoenix that you use, but they shouldn't be too far off). Thanks git for those handy stats, and thanks Phoenix for not making us write all that code ourselves!
+ So now we've committed 47 files with a total of 12588 lines of code between them (your numbers may be slightly different depending on the point version of Phoenix that you use, but they shouldn't be too far off). Thanks git for those handy stats, and thanks Phoenix for not making us write all that code ourselves!
 
  Let's see what our status is now.
 
 ```bash
 $ git status
   # On branch master
-  nothing to commit, working directory clean
+  nothing to commit, working tree clean
 ```
 
-This tells us that we've committed all the changes- everything is saved.
+This tells us that we've committed all the changes. Everything is saved.
 
 ## Your Second Commit
 
+Let's make a small change, then create a new git commit.
 
+We'll make our change in README.md.  Go in that file and at the end add the following:
 
+```
+## Custom Instructions
 
+We're going to add our custom instructions here.
+```
 
+It's some nonsense stuff, but the important part is that, once you save the file, we'll have more changes.
 
+Go ahead and check the git status again:
 
+```bash
+$ git status
+  On branch master
+  Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git checkout -- <file>..." to discard changes in working directory)
 
+  	modified:   README.md
+
+  no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Now let's add the file.
+
+```bash
+$ git add README.md
+```
+
+Notice that now we're adding a specific file to the staged changes, instead of adding all available files like we did previous with `git add .`.  The effect would be the same in this case, since that's the only file changed, but I wanted to show that you could be more selective in adding to a commit.
+
+Let's check out status.
+
+```bash
+$ git status
+  On branch master
+  Changes to be committed:
+    (use "git reset HEAD <file>..." to unstage)
+
+  	modified:   README.md
+```
+
+It shows that we've modified the README file.
+
+Now let's commit it.
+
+```Bash
+$ git commit -m "update the readme to add custom instructions"
+  [master 17f7669] update the readme
+   1 file changed, 4 insertions(+)
+```
+
+Congrats!  You made your second commit!
 
 ## Looking at Historical Logs
 
 Now that we've made some commits, let's look at our history by typing in `git log`
 
-(Note: when you're doing looking at the log, press `q` to exit)
+```bash
+$ git log
+```
 
+```bash
+commit 17f76691b8ebdc192f0e7028f22c04912bdc9efe (HEAD -> master)
+Author: jeffreybiles <bilesjeffrey@gmail.com>
+Date:   Thu May 2 09:59:21 2019 -0500
 
+    update the readme to add custom instructions
+
+commit 6e6ab4adb3198b2f0d6b370a63aa6a2d8d217c40
+Author: jeffreybiles <bilesjeffrey@gmail.com>
+Date:   Thu May 2 09:45:30 2019 -0500
+
+    Our first commit
+```
+
+The specifics will be different for you, but the format should be similar.  You'll see
+
+* the commit hash.  Think of this like the key for your save file.
+* the author.  This will always be you during this project, but this is very useful data when collaborating.
+* the time the commit was made.
+* the commit message.
+
+All of these are useful, but the commit message varies the most wildly in usefulness.  If you have nice commit messages that are clear about what has changed in that commit, then navigating your history will be a breeze.
+
+When you're doing looking at the log, press `q` to exit.
 
 ## Stashing your Mistakes
 
+Sometimes you make mistakes.  Horrible, horrible mistakes.
 
+Let's make one of those mistake... let's delete our entire config directory.
 
+```bash
+$ rm -rf config
+```
 
+Oh no!  It's gone!  Our app doesn't run!
+
+First, let's check out status:
+
+```bash
+$ git status
+  On branch master
+  Changes not staged for commit:
+    (use "git add/rm <file>..." to update what will be committed)
+    (use "git checkout -- <file>..." to discard changes in working directory)
+
+  	deleted:    config/config.exs
+  	deleted:    config/dev.exs
+  	deleted:    config/prod.exs
+  	deleted:    config/test.exs
+
+  no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Cool, so git still knows about the files, even though they're deleted.
+
+Git can do even better... it can make it like the mistake never happened.  It's like going back to your last save file.
+
+```bash
+$ git stash -u
+  Saved working directory and index state WIP on master: 17f7669 update the readme
+```
+
+If you check the status again, you'll see that the files are no longer deleted.
+
+```bash
+$ git status
+  On branch master
+  nothing to commit, working tree clean
+```
+
+And if you check your files, you'll see the config directory is back.  Hurrah!
+
+By the way, the `-u` option makes it work with files that were added or deleted.  Without that, it would just handle files that were modified.
 
 ## Why Github?
 
@@ -234,16 +302,3 @@ Now that we've made some commits, let's look at our history by typing in `git lo
 * Switch branches
 * Merge the branch
 * Deployment
-
-
-## Deployment
-
-"Deployment" is the process of making your app available to the wider world.  In this case, it's getting it to a web server where people can view your website (currently a barely-customized default app) by putting a URL in their browser.
-
-For the purposes of this tutorial we recommend using Heroku.  It uses git to receive your code, and does a lot of the nitty-gritty of server management for you.  Perfect for beginners or people who are too busy to bother with handling the fine details.
-
-If you do choose Heroku, go the their docs page ([http://www.phoenixframework.org/docs/heroku](http://www.phoenixframework.org/docs/heroku)) and follow the instruction, because I have nothing useful to add to them.  You'll need to be connected to the internet to deploy your app anyways.  Just make sure to replace all instances of hello_phoenix and HelloPhoenix with the name of your app.
-
-If this book ever makes it to a paper edition then I'll write something up at that time.  Until then, use [the official docs](http://www.phoenixframework.org/docs/heroku).
-
-See you in the next chapter, where we start customizing our app.

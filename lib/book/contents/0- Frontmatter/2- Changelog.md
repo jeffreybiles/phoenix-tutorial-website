@@ -1,5 +1,8 @@
 # Changelog
 
+
+* Fixed typos/grammar
+
 ### 0.1.4
 
 * Updated Introduction to include LiveView

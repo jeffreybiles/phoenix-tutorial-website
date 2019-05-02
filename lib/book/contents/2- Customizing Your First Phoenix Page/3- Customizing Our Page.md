@@ -200,7 +200,7 @@ It's okay if you don't understand all of that right now- in the upcoming chapter
 ## Exercises
 
 1. Update your app to what we have (except for the "Before Render" and "After Render" stuff... leave that out)
-2. After lead paragraph element in the index page, add a new paragraph that says "Now with warp-speed mode- get light-years ahead of the competition".
+2. After lead paragraph element in the index page, add a new paragraph that says "Now with warp-speed mode... get light-years ahead of the competition".
 
 ![](../images/exercise-results.png)
 

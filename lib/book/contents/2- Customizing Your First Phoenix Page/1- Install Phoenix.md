@@ -2,17 +2,17 @@ Now that we understand the basics of Elixir, it's time to install Phoenix and cr
 
 ## Installation
 
-We're going to be using Phoenix version 1.4.0 in this tutorial.  We download it straight from github using Mix (for now, just copy this line.  We'll go over more about how version control and git/github work in the next chapter):
+We're going to be using Phoenix version 1.4.4 in this tutorial.  We download it straight from github using Mix (for now, just copy this line.  We'll go over more about how version control and git/github work in the next chapter):
 
 ```bash
-$ mix archive.install hex phx_new 1.4.0
+$ mix archive.install hex phx_new 1.4.4
 ```
 
 ## Node
 
-We rely on [Brunch](http://brunch.io/) to compile static assets, and Brunch relies on Node.
+We rely on [Webpack](https://webpack.js.org/) to compile static assets, and Brunch relies on Node.
 
-Go to [the NodeJS site](https://nodejs.org/en/download/) and download version 5.0 or later.  The current stable release (recommended) is 10.15.0 LTS.
+Go to [the NodeJS site](https://nodejs.org/en/download/) and download version 5.0 or later.  The current stable release (recommended) is 10.15.3 LTS.
 
 ## Postgres
 
@@ -28,7 +28,7 @@ I personally use [PostgresApp](http://postgresapp.com/) on my mac.
 
 > Much of this section is taken from [the Up and Running docs](http://www.phoenixframework.org/docs/up-and-running).
 
-> In general, the chapters in Section 2 are gluing together a bunch of Getting Started Guides, but after that we'll get to the more exciting Original Content.
+> In general, the first few chapters in Section 2 are gluing together a bunch of Getting Started Guides, but after that we'll get to the more exciting Original Content.
 
 ---
 
@@ -44,9 +44,9 @@ This will create a bare-bones app
 * creating star_tracker/config/config.exs
 * creating star_tracker/config/dev.exs
 ....
-* creating star_tracker/lib/star_tracker/web/controllers/page_controller.ex
-* creating star_tracker/lib/star_tracker/web/templates/layout/app.html.eex
-* creating star_tracker/lib/star_tracker/web/templates/page/index.html.eex
+* creating star_tracker/lib/star_tracker_web/controllers/page_controller.ex
+* creating star_tracker/lib/star_tracker_web/templates/layout/app.html.eex
+* creating star_tracker/lib/star_tracker_web/templates/page/index.html.eex
 ....
 * creating star_tracker/assets/static/images/phoenix.png
 * creating star_tracker/assets/static/favicon.ico
@@ -66,7 +66,7 @@ It will then give you instructions for finishing installation
 Fetch and install dependencies? [Yn] Y
 * running mix deps.get
 * running mix deps.compile
-* running cd assets && npm install && node node_modules/brunch/bin/brunch build
+* cd assets && npm install && node node_modules/webpack/bin/webpack.js --mode development
 
 We are all set! Go into your application by running:
 
@@ -110,21 +110,31 @@ There's lots more Unix shell commands we could learn, but those should be enough
 
 ```bash
 $ mix ecto.create
-  The database for StarTracker.Repo has been created
+  Compiling 13 files (.ex)
+  Generated star_tracker app
+  The database for StarTracker.Repo has already been created
 ```
 
 Ecto is the library that Phoenix uses to interface with the database.  We'll be learning a lot more about Ecto when creating our main app.
 
 This particular command creates the database (Postgres by default) for our app.
 
-If you get an error, it's probably because you either don't have Postgres install or don't have Postgres running.  See the instructions for whichever installation of Postgres you chose.
+If you get an error, it's probably because you either don't have Postgres installed or don't have Postgres running.  See the instructions for whichever installation of Postgres you chose.
 
 Finally, we run our app.
 
 ```bash
 $ mix phx.server
-  [info] Running StarTracker.Web.Endpoint with Cowboy using http://0.0.0.0:4000
-  07:36:23 - info: compiled 6 files into 2 files, copied 3 in 2.5 sec
+  [info] Running StarTrackerWeb.Endpoint with cowboy 2.6.3 at 0.0.0.0:4000 (http)
+  [info] Access StarTrackerWeb.Endpoint at http://localhost:4000
+
+  Webpack is watching the files…
+
+  Hash: 1fc94cc9b786e491ad40
+  Version: webpack 4.4.0
+  Time: 486ms
+  Built at: 2019-5-2 09:05:06
+  ......
 ```
 
 In your web browser, visit http://localhost:4000/ (it's the same address as http://0.0.0.0:4000).  There you should see the Phoenix Welcome page.
@@ -133,4 +143,4 @@ In your web browser, visit http://localhost:4000/ (it's the same address as http
 
 And that's your first Phoenix app!  Congratulations!
 
-In the next chapter we'll go over how to save your code with Git and Github and deploy your site (make it publicly available on the internet) with Heroku.
+In the next chapter we'll go over how to save your code with Git and Github and deploy your site (make it publicly available on the internet) with Render.
