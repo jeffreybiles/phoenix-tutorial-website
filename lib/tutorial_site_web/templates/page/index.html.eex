@@ -3,17 +3,25 @@
 <% end %>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-4">
     <%= link to: "/buy_ebook", class: "subtle_link" do %>
       <button class="btn preorder-button">
         Preorder Ebook
       </button>
     <% end %>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-4">
     <%= link to: "/read", class: "subtle_link" do %>
       <button class="btn read-online-button">
         Read Free Online
+      </button>
+    <% end %>
+  </div>
+
+  <div class="col-md-4">
+    <%= link to: "https://courses.happyprogrammer.net/p/phoenix-tutorial", class: "subtle_link" do %>
+      <button class="btn read-online-button">
+        Buy Videos
       </button>
     <% end %>
   </div>
