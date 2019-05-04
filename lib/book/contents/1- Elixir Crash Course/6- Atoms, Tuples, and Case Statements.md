@@ -109,7 +109,15 @@ iex(1)> LearningElixir.my_map
         %{mission: "Code Boldly", name: "Enterprise", type: "CodeShip"}
 iex(2)> LearningElixir.my_map(:ds9)
         %{mission: "Protect Bajor", name: "Terok Nor", type: "Station"}
-        # TODO: put in example with an atom that doesn't work
+iex(3)> LearningElixir.my_map(:ds)
+        ** (FunctionClauseError) no function clause matching in LearningElixir.my_map/1
+
+        The following arguments were given to LearningElixir.my_map/1:
+
+        # 1
+        :ds
+
+        iex:9: LearningElixir.my_map/1
 ```
 
 Pattern matching is common with atoms, but it could be done with any datatype- Strings, numbers, even Maps.

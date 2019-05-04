@@ -34,8 +34,6 @@ iex(2)> LearningElixir.hello
         "boldly going where no man has gone before"
 ```
 
-<!-- TODO: Check that all the numbers stuff is still happening -->
-
 ---
 
 > **Captain's Log: Loading Elixir Files**
