@@ -109,6 +109,7 @@ iex(1)> LearningElixir.my_map
         %{mission: "Code Boldly", name: "Enterprise", type: "CodeShip"}
 iex(2)> LearningElixir.my_map(:ds9)
         %{mission: "Protect Bajor", name: "Terok Nor", type: "Station"}
+        # TODO: put in example with an atom that doesn't work
 ```
 
 Pattern matching is common with atoms, but it could be done with any datatype- Strings, numbers, even Maps.
@@ -146,7 +147,7 @@ iex(4)> name
 
 This is a form of pattern matching, where the intent is to destructure the tuple into its component parts (sometimes this specific technique is just called "destructuring").
 
-This is similar to the Map destructuring we covered briefly in the last chapter.  The biggest difference is that for a map you can destructure to as many or as few keys as a you like, but in a tuple you have to destructure to the whole tuple.  However, there are some conveniences-- if you don't need one part of it, you can just use the underscore symbol instead of coming up with a throwaway name:
+This is similar to the Map destructuring we covered briefly in the last chapter.  The biggest difference is that for a map you can destructure to as many or as few keys as you like, but in a tuple you have to destructure to the whole tuple.  However, there are some conveniences-- if you don't need one part of it, you can just use the underscore symbol instead of coming up with a throwaway name:
 
 ```bash
 iex(5)> {name, _} = my_tuple

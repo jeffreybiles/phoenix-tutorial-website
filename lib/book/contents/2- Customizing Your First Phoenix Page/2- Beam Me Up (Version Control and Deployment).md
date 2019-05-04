@@ -4,6 +4,8 @@ This chapter contains a lot of material that isn't directly related to Elixir an
 
 For those reasons, I'll be linking to several external guides that cover these very important subjects much more thoroughly than I could, and which will be more likely to stay up to date and cover all operating systems.  What I'll be writing are the parts that won't change either with time or with switching between operating systems.
 
+If you're already familiar with version-control systems, feel free to skim until you get to the end, where we discuss deployment.
+
 So let's dive in!
 
 ## What is Version Control?
@@ -294,11 +296,57 @@ And if you check your files, you'll see the config directory is back.  Hurrah!
 
 By the way, the `-u` option makes it work with files that were added or deleted.  Without that, it would just handle files that were modified.
 
-## Why Github?
+# Putting your git repository online
 
-* Create github account (link) (mention bitbucket and gitlab as more secure alternatives, provide links)
-* Push up to github
-* Create a branch
-* Switch branches
-* Merge the branch
-* Deployment
+You've got the git repository on your computer, but the real power comes when you can share it with the world and work with other people.
+
+The de-facto git management service is [Github](https://github.com/).  That's what I'll be using.  However, there are plenty of alternatives such as [bitbucket](https://bitbucket.org/) and [gitlab](https://about.gitlab.com/).  Use whatever you're most comfortable with.
+
+## Create a Github account and repository
+
+Go to github and signup: [https://github.com/join](https://github.com/join).
+
+You'll be fine with a free subscription.
+
+<!-- TODO: Create a fake profile for the purposes of this tutorial.  Do it while creating the video. -->
+
+## Add your Public Key to Github # TODO
+
+## Create your first repository # TODO
+
+## Push to Github # TODO
+
+
+# Deployment
+
+"Deployment" is the process of making your app available to the wider world.  In this case, it's getting it to a web server where people can view your website (currently a barely-customized default app) by putting a URL in their browser.
+
+For the purposes of this tutorial we recommend using either Render or Heroku.  They both use git to receive your code, and do a lot of the nitty-gritty of server management for you; perfect for beginners or people who are too busy to bother with handling the fine details.
+
+Both of these options have good online instructions, and I don't really have much to add beyond a comparison of the pros and cons of each.  However, seeing someone else follow the instructions could be useful, so I'll record a video of me deploying an app in the video course.
+
+## Heroku
+
+Heroku is the standard "easy deploy" choice.  Phoenix even has official docs ([https://hexdocs.pm/phoenix/heroku.html](https://hexdocs.pm/phoenix/heroku.html)). You won't really go wrong using Heroku as a starter, and when you're just getting started out it's free.
+
+There are three downsides to using Heroku:
+
+* the hoops you're required to jump through have become slowly more arcane
+* it's not built for Phoenix, so you're going to lose some scalability
+* it can get expensive later on
+
+## Render
+
+Render is a newer alternative that gets rid of some of the cruft that's built up around Heroku.  In general it's cheaper, but to get started you'll need their $5/month DB plan.
+
+One of the big selling points is that any push to github's master branch will automatically deploy your app... no extra setup, no extra commands.  For a lean team that has a good gitflow-like setup, this can be really nice.
+
+Their official instructions ([https://render.com/docs/deploy-phoenix](https://render.com/docs/deploy-phoenix)) are good, and the founder is very responsive on slack.
+
+## Others
+
+There are plenty of other deployment options.  If you have the technical expertise, you can set up on a custom server and start running stuff.  There's also specialized options like [gigalixir](https://gigalixir.com/).  If you really want video instructions for a specific setup, send me an email and let me know: jeff@happyprogrammer.net.
+
+## Onward!
+
+See you in the next chapter, where we start customizing our app.

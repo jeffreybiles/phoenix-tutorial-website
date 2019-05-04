@@ -143,4 +143,4 @@ In your web browser, visit http://localhost:4000/ (it's the same address as http
 
 And that's your first Phoenix app!  Congratulations!
 
-In the next chapter we'll go over how to save your code with Git and Github and deploy your site (make it publicly available on the internet) with Render.
+In the next chapter we'll go over how to save your code with Git and Github, then how to deploy your site, making it publicly available on the internet.
