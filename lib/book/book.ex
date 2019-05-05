@@ -21,6 +21,18 @@ defmodule Book do
           %{ord: 6, title: "Atoms, Tuples, and Case Statements"},
           %{ord: 7, title: "Conclusion"}
         ]
+    }, %{
+      ord: 2,
+      title: "Customizing Your First Phoenix Page",
+      chapters: [
+        %{ord: 1, title: "Installing Phoenix"},
+        %{ord: 2, title: "Beam Me Up (Version Control and Deployment)"},
+        %{ord: 3, title: "Customizing Our Page"},
+        %{ord: 4, title: "A New Page"},
+        %{ord: 5, title: "Use, Import, Alias"},
+        %{ord: 6, title: "Passing Data"},
+        %{ord: 7, title: "Links and Loops"}
+      ]
     }]
   end
 

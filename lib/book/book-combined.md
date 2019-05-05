@@ -117,11 +117,19 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 
 # Changelog
 
-* Updated Introduction to include LiveView
-* 2 years passed.... sorry about that.  Work will be going fast from now on.
-* **Website Created**
-* Updated to Elixir 1.7.1
+
 * Fixed typos/grammar
+
+### 0.1.4
+
+* Updated Introduction to include LiveView
+* Updated to Elixir 1.8.1
+* Fixed typos/grammar
+* A bit of time has passed since the last update, but things should be going super fast from here on out.
+
+### 0.1.3
+
+* **Website Created**
 
 ### 0.1.2
 
@@ -394,7 +402,7 @@ iex(2)> 'hello universe'
         'hello universe'
 ```
 
-For the purposes of this book we'll be using double-quoted strings (sometimes called Binaries).  Single-quoted strings (sometimes called Char Lists) are mostly used when interfacing with old Elixir libraries.
+For the purposes of this book we'll be using double-quoted strings (sometimes called Binaries).  Single-quoted strings (sometimes called Char Lists) are mostly used when interfacing with old Erlang libraries.
 
 ---
 
@@ -499,7 +507,7 @@ iex(4)> String.split "hello universe"
 
 > Want to see something cool?  Press 'tab' in iex to trigger an autocomplete.  So you type in "Stri", hit 'tab', and it'll complete it to "String".
 
-> Even better, if there are multiple options, it will show you all of them that match your search.  Try hitting tab after typing in "String." (make sure to include the dat)- it'll show you all of the functions available on that module.
+> Even better, if there are multiple options, it will show you all of them that match your search.  Try hitting tab after typing in "String." (make sure to include the dot)- it'll show you all of the functions available on that module.
 
 ## Enum Exercises
 
@@ -551,7 +559,7 @@ It's a couple more characters than the previous one, but it's far more readable.
 If you have multiple arguments, you just pass the second (and third and fourth, etc.) arguments with the function.
 
 ```bash
-iex(1)> "boldly going where no man has gone before" |> String.split |> Enum.join("-")
+iex(1)> "boldly going where no man has gone before" |> String.split() |> Enum.join("-")
         "boldly-going-where-no-man-has-gone-before"
 ```
 
@@ -609,8 +617,6 @@ iex(1)> import_file "basic_elixir.ex"
 iex(2)> LearningElixir.hello
         "boldly going where no man has gone before"
 ```
-
-<!-- TODO: Check that all the numbers stuff is still happening -->
 
 ---
 
@@ -736,6 +742,8 @@ This version of `recombine` does exactly the same as our last version, but now i
 ```
 
 We introduced the relevant `String` function in the last chapter.
+
+3. Within the same module, create the "upcase_dasherized_phrase" function, which returns the phrase, dasherized AND in all upper case.
 
 ## Conclusion
 
@@ -904,7 +912,7 @@ In the next chapter we'll introduce our first complex data type- Maps. Playing a
 
  \pagebreak 
 
-# Maps
+# Maps and Immutability
 
 ## Maps
 
@@ -1118,7 +1126,7 @@ In the next chapter we'll introduce two more data types- Atoms and Tuples.  They
 
  \pagebreak 
 
-# Atoms, Tuples, and Case
+# Atoms, Tuples, and Case Statements
 
 In this chapter we'll cover three more basic Elixir concepts that are used often in Phoenix apps.  We'll also combine them (and build on the concepts we've previously learned) in order to discover even more ways of pattern matching.
 
@@ -1229,6 +1237,15 @@ iex(1)> LearningElixir.my_map
         %{mission: "Code Boldly", name: "Enterprise", type: "CodeShip"}
 iex(2)> LearningElixir.my_map(:ds9)
         %{mission: "Protect Bajor", name: "Terok Nor", type: "Station"}
+iex(3)> LearningElixir.my_map(:ds)
+        ** (FunctionClauseError) no function clause matching in LearningElixir.my_map/1
+
+        The following arguments were given to LearningElixir.my_map/1:
+
+        # 1
+        :ds
+
+        iex:9: LearningElixir.my_map/1
 ```
 
 Pattern matching is common with atoms, but it could be done with any datatype- Strings, numbers, even Maps.
@@ -1266,7 +1283,7 @@ iex(4)> name
 
 This is a form of pattern matching, where the intent is to destructure the tuple into its component parts (sometimes this specific technique is just called "destructuring").
 
-This is similar to the Map destructuring we covered briefly in the last chapter.  The biggest difference is that for a map you can destructure to as many or as few keys as a you like, but in a tuple you have to destructure to the whole tuple.  However, there are some conveniences-- if you don't need one part of it, you can just use the underscore symbol instead of coming up with a throwaway name:
+This is similar to the Map destructuring we covered briefly in the last chapter.  The biggest difference is that for a map you can destructure to as many or as few keys as you like, but in a tuple you have to destructure to the whole tuple.  However, there are some conveniences-- if you don't need one part of it, you can just use the underscore symbol instead of coming up with a throwaway name:
 
 ```bash
 iex(5)> {name, _} = my_tuple
@@ -1459,3 +1476,1693 @@ What that means is that our crash course in Elixir is finished- it's time to get
 > Were I a younger captain I might go seeking after these sources of knowledge myself, but I am lucky to have discovered even this one document, and in my age I know that deciphering it is much more important than some fool's errand.  We must know how the Phoenix-class ships were constructed!
 
 ---
+
+
+ \pagebreak 
+
+Now that we understand the basics of Elixir, it's time to install Phoenix and create our first app.
+
+## Installation
+
+We're going to be using Phoenix version 1.4.4 in this tutorial.  We download it straight from github using Mix (for now, just copy this line.  We'll go over more about how version control and git/github work in the next chapter):
+
+```bash
+$ mix archive.install hex phx_new 1.4.4
+```
+
+## Node
+
+We rely on [Webpack](https://webpack.js.org/) to compile static assets, and Brunch relies on Node.
+
+Go to [the NodeJS site](https://nodejs.org/en/download/) and download version 5.0 or later.  The current stable release (recommended) is 10.15.3 LTS.
+
+## Postgres
+
+Postgres is the database we'll be using for this tutorial, although you're free to choose another SQL database if you're more comfortable there.
+
+Installation guides are found [on the Postgres wiki](https://wiki.postgresql.org/wiki/Detailed_installation_guides).
+
+I personally use [PostgresApp](http://postgresapp.com/) on my mac.
+
+## Your First App
+
+---
+
+> Much of this section is taken from [the Up and Running docs](http://www.phoenixframework.org/docs/up-and-running).
+
+> In general, the first few chapters in Section 2 are gluing together a bunch of Getting Started Guides, but after that we'll get to the more exciting Original Content.
+
+---
+
+We'll first use Mix to generate a new Phoenix app, named star_tracker:
+
+```bash
+$ mix phx.new star_tracker
+```
+
+This will create a bare-bones app
+
+```bash
+* creating star_tracker/config/config.exs
+* creating star_tracker/config/dev.exs
+....
+* creating star_tracker/lib/star_tracker_web/controllers/page_controller.ex
+* creating star_tracker/lib/star_tracker_web/templates/layout/app.html.eex
+* creating star_tracker/lib/star_tracker_web/templates/page/index.html.eex
+....
+* creating star_tracker/assets/static/images/phoenix.png
+* creating star_tracker/assets/static/favicon.ico
+```
+
+You can start looking around your file structure.  We'll take our first quick tour in chapter 3 of this section, and start giving detailed explanations of what everything does starting in chapter 6.
+
+You'll be prompted to fetch and install "dependencies".  Say Yes with Y (or hitting enter to choose Y as default).
+
+```bash
+Fetch and install dependencies? [Yn] Y
+```
+
+It will then give you instructions for finishing installation
+
+```bash
+Fetch and install dependencies? [Yn] Y
+* running mix deps.get
+* running mix deps.compile
+* cd assets && npm install && node node_modules/webpack/bin/webpack.js --mode development
+
+We are all set! Go into your application by running:
+
+    $ cd star_tracker
+
+Then configure your database in config/dev.exs and run:
+
+    $ mix ecto.create
+
+Start your Phoenix app with:
+
+    $ mix phx.server
+
+You can also run your app inside IEx (Interactive Elixir) as:
+
+    $ iex -S mix phx.server
+```
+
+We'll follow those instructions
+
+```bash
+$ cd star_tracker
+```
+
+The first command Changes Directories to the newly-created folder.  `cd` is a unix shell command, but don't let the name scare you- "Unix" shell commands can be used on Linux, Mac, and Windows 10+ (with Bash).
+
+Here's some basic commands to get you started
+
+| Command | Description | Example |
+| ------- | ----------- | ------- |
+| ls      | lists files and folders in directory | ls -a |
+| cd      | change directory | cd star_tracker |
+| mkdir   | create directory | mkdir new_folder |
+| mv      | move file | mv old_location new_location |
+| cp      | copy file(s) | cp old_file new_file |
+| rm      | remove file | rm old_file |
+
+In Unix terminology `.` means "current directory", `..` means "one directory up", and `~` means the home directory.  So to move up a directory we would input `cd ..`, and to look at the files in the home directory we would input `ls ~`.
+
+There's lots more Unix shell commands we could learn, but those should be enough to get you started.  Now back to installing Phoenix!
+
+```bash
+$ mix ecto.create
+  Compiling 13 files (.ex)
+  Generated star_tracker app
+  The database for StarTracker.Repo has already been created
+```
+
+Ecto is the library that Phoenix uses to interface with the database.  We'll be learning a lot more about Ecto when creating our main app.
+
+This particular command creates the database (Postgres by default) for our app.
+
+If you get an error, it's probably because you either don't have Postgres installed or don't have Postgres running.  See the instructions for whichever installation of Postgres you chose.
+
+Finally, we run our app.
+
+```bash
+$ mix phx.server
+  [info] Running StarTrackerWeb.Endpoint with cowboy 2.6.3 at 0.0.0.0:4000 (http)
+  [info] Access StarTrackerWeb.Endpoint at http://localhost:4000
+
+  Webpack is watching the files…
+
+  Hash: 1fc94cc9b786e491ad40
+  Version: webpack 4.4.0
+  Time: 486ms
+  Built at: 2019-5-2 09:05:06
+  ......
+```
+
+In your web browser, visit http://localhost:4000/ (it's the same address as http://0.0.0.0:4000).  There you should see the Phoenix Welcome page.
+
+![](../contents/images/phoenix-welcome.png)
+
+And that's your first Phoenix app!  Congratulations!
+
+In the next chapter we'll go over how to save your code with Git and Github, then how to deploy your site, making it publicly available on the internet.
+
+
+ \pagebreak 
+
+# Beam Me Up (Version Control and Deployment)
+
+This chapter contains a lot of material that isn't directly related to Elixir and Phoenix, but is nonetheless extremely important to know.  It also contains a lot of material that is specific to certain services and operating systems- meaning that I won't be able to provide good instructions for Windows on Linux, and the instructions for these services could change independently of the Phoenix framework's upgrade cycle.
+
+For those reasons, I'll be linking to several external guides that cover these very important subjects much more thoroughly than I could, and which will be more likely to stay up to date and cover all operating systems.  What I'll be writing are the parts that won't change either with time or with switching between operating systems.
+
+If you're already familiar with version-control systems, feel free to skim until you get to the end, where we discuss deployment.
+
+So let's dive in!
+
+## What is Version Control?
+
+Let's say you're make a mistake. A horrible, life-changing mistake.  In real life you'd just have to deal with the consequences, be they jail, debt, injury, or a lifetime of shame.  But in code, you can make (most of) your mistakes disappear with just a few taps at the command line... IF you're using version control.
+
+Using version control, you can go back in time, create alternate timelines, combine the best parts of alternate timelines, see your entire history, and even work together with other people separate from you in time and space.  This chapter will teach you the absolute basics -- we'll be treating commits kind of like save files in a videogame -- but there's a whole world of advanced tricks that are really useful, especially when you collaborate with other coders.
+
+The version control system we'll be using is called "Git".
+
+## Install Git
+
+To see if you have `git` already installed, type `git` on the command line.  If it shows you the most commonly used commands, then congratulations- you have `git` already installed.  If it says something like "`command not found: git`" then you'll need to install it. This is a pretty good guide: https://www.atlassian.com/git/tutorials/install-git.
+
+## Initializing a Git Project
+
+First, let's check the status of our project according to git.  Make sure you're in the `star_tracker` folder and then type the following:
+
+```bash
+$ git status
+  fatal: Not a git repository (or any of the parent directories): .git
+```
+
+This is an error, but it's one we expect.  We don't have a git repository yet!  Let's make one.
+
+```bash
+$ git init
+  Initialized empty Git repository in /Users/jeffreybiles/phoenix/star_tracker/.git/
+```
+
+Your filepath will be different, but it should say something similar.  It creates a `.git` folder, where it will store all your git data.
+
+The dot in the folder name means it's "hidden", so it may not show up by default.  You can fix that by using the `-a` option in your `ls` command.
+
+```bash
+$ ls
+  README.md assets    deps      mix.exs   priv
+  _build    config    lib       mix.lock  test
+$ ls -a
+  .          .gitignore assets     lib        priv
+  ..         README.md  config     mix.exs    test
+  .git       _build     deps       mix.lock
+```
+
+We won't worry about the specifics of the `.git` folder in this book, just know that deleting it is a very bad idea unless you know what you're doing.
+
+## Our First Commit
+
+Let's ask `git` about our status again.
+
+```bash
+$ git status
+  On branch master
+
+  No commits yet
+
+  Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+
+    	.formatter.exs
+    	.gitignore
+    	README.md
+    	assets/
+    	config/
+    	lib/
+    	mix.exs
+    	mix.lock
+    	priv/
+    	test/
+
+  nothing added to commit but untracked files present (use "git add" to track)
+```
+
+We have lots of "untracked" files, which means that git currently has no record of them.  Let's go ahead and add all of them to our git project.
+
+```bash
+$ git add .
+```
+
+The dot here means "current directory", and since we're in the root directory of the project this command translates into "add everything".
+
+```bash
+$ git status
+  On branch master
+
+  No commits yet
+
+  Changes to be committed:
+    (use "git rm --cached <file>..." to unstage)
+
+  	new file:   .formatter.exs
+  	new file:   .gitignore
+  	new file:   README.md
+  	new file:   assets/.babelrc
+  	new file:   assets/css/app.css
+  	new file:   assets/css/phoenix.css
+    ......
+  	new file:   lib/star_tracker/application.ex
+  	new file:   lib/star_tracker/repo.ex
+  	new file:   lib/star_tracker_web.ex
+  	......
+  	new file:   lib/star_tracker_web/views/page_view.ex
+  	new file:   mix.exs
+  	new file:   mix.lock
+  	......
+  	new file:   test/test_helper.exs
+```
+
+Calling for the status shows that git now has all these new files ready to be committed -- or, in the parlance of git, "staged".
+
+Let's take these staged files and commit them.
+
+We'll use the `git commit` command, and pass the "message" option with `-m` and a string that will be used for your commit message.
+
+```bash
+$ git commit -m "Our first commit"
+  [master (root-commit) 6e6ab4a] Our first commit
+  47 files changed, 12588 insertions(+)
+  create mode 100644 .formatter.exs
+  create mode 100644 .gitignore
+  create mode 100644 README.md
+  create mode 100644 assets/.babelrc
+  create mode 100644 assets/css/app.css
+  create mode 100644 assets/css/phoenix.css
+  ......
+  create mode 100644 lib/star_tracker/application.ex
+  create mode 100644 lib/star_tracker/repo.ex
+  create mode 100644 lib/star_tracker_web.ex
+  ......
+  create mode 100644 lib/star_tracker_web/views/page_view.ex
+  create mode 100644 mix.exs
+  create mode 100644 mix.lock
+  ......
+  create mode 100644 test/test_helper.exs
+ ```
+
+ So now we've committed 47 files with a total of 12588 lines of code between them (your numbers may be slightly different depending on the point version of Phoenix that you use, but they shouldn't be too far off). Thanks git for those handy stats, and thanks Phoenix for not making us write all that code ourselves!
+
+ Let's see what our status is now.
+
+```bash
+$ git status
+  # On branch master
+  nothing to commit, working tree clean
+```
+
+This tells us that we've committed all the changes. Everything is saved.
+
+## Your Second Commit
+
+Let's make a small change, then create a new git commit.
+
+We'll make our change in README.md.  Go in that file and at the end add the following:
+
+```
+## Custom Instructions
+
+We're going to add our custom instructions here.
+```
+
+It's some nonsense stuff, but the important part is that, once you save the file, we'll have more changes.
+
+Go ahead and check the git status again:
+
+```bash
+$ git status
+  On branch master
+  Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git checkout -- <file>..." to discard changes in working directory)
+
+  	modified:   README.md
+
+  no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Now let's add the file.
+
+```bash
+$ git add README.md
+```
+
+Notice that now we're adding a specific file to the staged changes, instead of adding all available files like we did previous with `git add .`.  The effect would be the same in this case, since that's the only file changed, but I wanted to show that you could be more selective in adding to a commit.
+
+Let's check out status.
+
+```bash
+$ git status
+  On branch master
+  Changes to be committed:
+    (use "git reset HEAD <file>..." to unstage)
+
+  	modified:   README.md
+```
+
+It shows that we've modified the README file.
+
+Now let's commit it.
+
+```Bash
+$ git commit -m "update the readme to add custom instructions"
+  [master 17f7669] update the readme
+   1 file changed, 4 insertions(+)
+```
+
+Congrats!  You made your second commit!
+
+## Looking at Historical Logs
+
+Now that we've made some commits, let's look at our history by typing in `git log`
+
+```bash
+$ git log
+```
+
+```bash
+commit 17f76691b8ebdc192f0e7028f22c04912bdc9efe (HEAD -> master)
+Author: jeffreybiles <bilesjeffrey@gmail.com>
+Date:   Thu May 2 09:59:21 2019 -0500
+
+    update the readme to add custom instructions
+
+commit 6e6ab4adb3198b2f0d6b370a63aa6a2d8d217c40
+Author: jeffreybiles <bilesjeffrey@gmail.com>
+Date:   Thu May 2 09:45:30 2019 -0500
+
+    Our first commit
+```
+
+The specifics will be different for you, but the format should be similar.  You'll see
+
+* the commit hash.  Think of this like the key for your save file.
+* the author.  This will always be you during this project, but this is very useful data when collaborating.
+* the time the commit was made.
+* the commit message.
+
+All of these are useful, but the commit message varies the most wildly in usefulness.  If you have nice commit messages that are clear about what has changed in that commit, then navigating your history will be a breeze.
+
+When you're doing looking at the log, press `q` to exit.
+
+## Stashing your Mistakes
+
+Sometimes you make mistakes.  Horrible, horrible mistakes.
+
+Let's make one of those mistake... let's delete our entire config directory.
+
+```bash
+$ rm -rf config
+```
+
+Oh no!  It's gone!  Our app doesn't run!
+
+First, let's check out status:
+
+```bash
+$ git status
+  On branch master
+  Changes not staged for commit:
+    (use "git add/rm <file>..." to update what will be committed)
+    (use "git checkout -- <file>..." to discard changes in working directory)
+
+  	deleted:    config/config.exs
+  	deleted:    config/dev.exs
+  	deleted:    config/prod.exs
+  	deleted:    config/test.exs
+
+  no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Cool, so git still knows about the files, even though they're deleted.
+
+Git can do even better... it can make it like the mistake never happened.  It's like going back to your last save file.
+
+```bash
+$ git stash -u
+  Saved working directory and index state WIP on master: 17f7669 update the readme
+```
+
+If you check the status again, you'll see that the files are no longer deleted.
+
+```bash
+$ git status
+  On branch master
+  nothing to commit, working tree clean
+```
+
+And if you check your files, you'll see the config directory is back.  Hurrah!
+
+By the way, the `-u` option makes it work with files that were added or deleted.  Without that, it would just handle files that were modified.
+
+# Putting your git repository online
+
+You've got the git repository on your computer, but the real power comes when you can share it with the world and work with other people.
+
+The de-facto git management service is [Github](https://github.com/).  That's what I'll be using.  However, there are plenty of alternatives such as [bitbucket](https://bitbucket.org/) and [gitlab](https://about.gitlab.com/).  Use whatever you're most comfortable with.
+
+## Create a Github account and repository
+
+Go to github and signup: [https://github.com/join](https://github.com/join).
+
+You'll be fine with a free subscription.
+
+
+## Add your Public Key to Github # TODO
+
+I'll be doing this and the next three sections when I create the videos, for logistical reasons.
+
+## Create your first repository # TODO
+
+## Push to Github # TODO
+
+
+# Deployment
+
+"Deployment" is the process of making your app available to the wider world.  In this case, it's getting it to a web server where people can view your website (currently a barely-customized default app) by putting a URL in their browser.
+
+For the purposes of this tutorial we recommend using either Render or Heroku.  They both use git to receive your code, and do a lot of the nitty-gritty of server management for you; perfect for beginners or people who are too busy to bother with handling the fine details.
+
+Both of these options have good online instructions, and I don't really have much to add beyond a comparison of the pros and cons of each.  However, seeing someone else follow the instructions could be useful, so I'll record a video of me deploying an app in the video course.
+
+## Heroku
+
+Heroku is the standard "easy deploy" choice.  Phoenix even has official docs ([https://hexdocs.pm/phoenix/heroku.html](https://hexdocs.pm/phoenix/heroku.html)). You won't really go wrong using Heroku as a starter, and when you're just getting started out it's free.
+
+There are three downsides to using Heroku:
+
+* the hoops you're required to jump through have become slowly more arcane
+* it's not built for Phoenix, so you're going to lose some scalability
+* it can get expensive later on
+
+## Render
+
+Render is a newer alternative that gets rid of some of the cruft that's built up around Heroku.  In general it's cheaper, but to get started you'll need their $5/month DB plan.
+
+One of the big selling points is that any push to github's master branch will automatically deploy your app... no extra setup, no extra commands.  For a lean team that has a good gitflow-like setup, this can be really nice.
+
+Their official instructions ([https://render.com/docs/deploy-phoenix](https://render.com/docs/deploy-phoenix)) are good, and the founder is very responsive on slack.
+
+## Others
+
+There are plenty of other deployment options.  If you have the technical expertise, you can set up on a custom server and start running stuff.  There's also specialized options like [gigalixir](https://gigalixir.com/).  If you really want video instructions for a specific setup, send me an email and let me know: jeff@happyprogrammer.net.
+
+## Onward!
+
+See you in the next chapter, where we start customizing our app.
+
+
+ \pagebreak 
+
+# Customizing Our Page
+
+Now that we've got our foundational Elixir knowledge, our app is generated, and we're all set up on github and Heroku, it's time to start building our app.  We'll start with some basic customization work, getting used to some of the building blocks of a Phoenix page.
+
+If you've worked on html pages before then much of this chapter will be review- but I'd encourage you to still at least skim the chapter in order to pick up the Phoenix-specific parts, and to put the given code in your own application in order to keep up your project in sync with ours.
+
+---
+
+> Technobabble: What about client-side Javascript applications?  
+> The best part of
+> If you do decide to use a client-side Javascript web framework, 80% of the knowledge in this book should still apply, and Phoenix is great at creating APIs.
+> However, Phoenix LiveView has shrunk the range of cases where a full client-side web framework is required.  If you want your page to work offline, or to have extra-rich interactions, then you'll still want a client-side web framework, but if you just want some basic interactivity (the "sprinkles of javascript" use case) then Phoenix LiveView has you covered.
+
+---
+
+## The index page
+
+We'll start with the autogenerated index page (`lib/star_tracker_web/templates/page/index.html.eex`).  This is what shows up when you visit `localhost:4000`.
+
+<!-- web/templates/page/index.html.eex -->
+```html
+<section class="phx-hero">
+  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
+  <p>A productive web framework that<br/>does not compromise speed or maintainability.</p>
+</section>
+
+<section class="row">
+  <article class="column">
+    <h2>Resources</h2>
+    <ul>
+      <li>
+        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
+      </li>
+      <li>
+        <a href="https://github.com/phoenixframework/phoenix">Source</a>
+      </li>
+      <li>
+        <a href="https://github.com/phoenixframework/phoenix/blob/v1.4/CHANGELOG.md">v1.4 Changelog</a>
+      </li>
+    </ul>
+  </article>
+  <article class="column">
+    <h2>Help</h2>
+    <ul>
+      <li>
+        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
+      </li>
+      <li>
+        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
+      </li>
+      <li>
+        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
+      </li>
+    </ul>
+  </article>
+</section>
+```
+
+Let's delete all that, replace it with something simpler and more manageable:
+
+<!-- web/templates/page/index.html.eex -->
+```html
+<div class="phx-hero">
+  <h2>Star Tracker</h2>
+  <p class="lead">Track and trade resources related to star formation.</p>
+</div>
+```
+
+You'll notice that the page shown at `localhost:4000` has changed automatically- this is because Phoenix uses livereload, a cool tool that saves us time and a click each time we change something in development.
+
+![Picture of customized page](./contents/images/08/basic-index.png)
+
+Let's break down what's happening here.
+
+First, the file ending is `.html.eex`.  The `.html` part means that it's an html web page.  The `.eex` part means that it's the templating language "Embedded Elixir".  Soon we'll be using Elixir to customize our templates on the fly, using information from cookies, the database (both explained later), and other sources to create situation-specific html pages that are served to the user.
+
+Then we have the html itself.  Embedded Elixir is a superset of html- that is, an html page is a valid Embedded Elixir page, but then Embedded Elixir adds things on top.  The current page is just plain html.
+
+---
+
+> **Previously On: HTML**
+
+> The basic building block of HTML are "elements".  In the example above we see the "div", "h2" (headline 2), and "p" (paragraph) elements.  Each of those elements has an opening tag ("<h2>"), a closing tag ("</h2>"), and some content in between ("Star Tracker").  The opening tag is the element name in between a less-than sign and a greater-than sign.  The closing tag is the same, but with a slash ("/") added right before the element name.
+
+> There are some elements, such as "<br>" (break) that are standalone and do not have content or a closing tag.  These are sometimes written as self-closing ("<br />").  When in doubt, use a closing tag.
+
+> Elements can have "attributes".  The attribute we see in the example above is "class".  Above we can see that the div has been given the class of "phx-hero" and the paragraph element has been given the class of "lead".  These are used by the css (we'll go over that later) to style the code and change how it looks, and sometimes by other parts of the code as well.
+
+> We'll try to briefly touch on everything as we go, but if this information about HTML is new to you and you want to get more familiar before moving on with this book, you can learn more at [TODO: Find a good beginner html resource]()
+
+---
+
+So that's the Index template... but you'll notice that there's other stuff showing on the page.  Even if you delete everything in the index template there will still be content on the page.  That's because of the layout template.
+
+## The layout template
+
+Wrapping everything is the app layout template.  You can find it at `lib/star_tracker_web/templates/layout/app.html.eex`.
+
+<!-- web/templates/layout/app.html.eex -->
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>StarTracker · Phoenix Framework</title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+  </head>
+  <body>
+    <header>
+      <section class="container">
+        <nav role="navigation">
+          <ul>
+            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
+          </ul>
+        </nav>
+        <a href="http://phoenixframework.org/" class="phx-logo">
+          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
+        </a>
+      </section>
+    </header>
+    <main role="main" class="container">
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <%= render @view_module, @view_template, assigns %>
+    </main>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>
+```
+
+A lot of this should look familiar if you've worked on any web apps before.
+
+You've got your enveloping `html` tags, which contain the `head` and `body` tags.
+
+`head` contains a title (shown in the browser tab), a link to the css stylesheet, and lots of `meta` tags.  We'll leave those all be for now- customizing them is mostly for SEO (Search Engine Optimization) purposes and is the same across web frameworks.
+
+The `body` tag contains what's actually shown on the page.  
+
+First, we've got a `header` tag that contains navigation links.
+
+Then after that, we've got a `main` tag with role `main` and class `container` that contains and wraps all our other content.  Within the container div we've got a header, two alert paragraphs, and a render block (`<%= render @view_module, @view_template, assigns %>`) which will render everything else in the app.
+
+Finally, we've got a script tag that contains any javascript we've written (we'll explain later when we get there).  
+
+Go ahead and delete the header so our `body` tag looks like this:
+
+<!-- web/templates/layout/app.html.eex (excerpt)-->
+```html
+<body>
+  <main role="main" class="container">
+    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <%= render @view_module, @view_template, assigns %>
+  </main>
+  <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+</body>
+```
+
+Now we're left with the two flash paragraphs and the renderer.  The flash paragraphs only show up when we want to display a flash message.  The renderer is where the rest of the app is placed - it's where the index page we worked on before goes.
+
+To demonstrate that, let's put some marker text before and after the render block.
+
+<!-- web/templates/layout/app.html.eex (excerpt)-->
+```html
+<main role="main" class="container">
+  <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+  <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+  <p>Before Render</p>
+  <%= render @view_module, @view_template, assigns %>
+  <p>After Render</p>
+</main>
+```
+
+![Index page wrapped](./contents/images/08/wrapped-basic-index.png)
+
+So that's the basic layout of the page.  The only thing left to go over is the `<%= %>` construct.
+
+## Embedded Elixir
+
+The `<%= %>` is the Embedded Elixir part of "Embedded Elixir templates".  Any time you see that you know that your Elixir app is feeding custom information into the template.
+
+`<%= render @view_module, @view_template, assigns %>` is what displays the index page (or another page, depending on the URL).  Other Embedded Elixir blocks in the layout put in Javascript, CSS, and alert messages.
+
+It's okay if you don't understand all of that right now- in the upcoming chapters, we'll be starting with simple Embedded Elixir and building up from there.
+
+## Exercises
+
+1. Update your app to what we have (except for the "Before Render" and "After Render" stuff... leave that out)
+2. After the lead paragraph element in the index page, add a new paragraph that says "Now with warp-speed mode... get light-years ahead of the competition".
+
+![](./contents/images/08/exercise-results.png)
+
+## Extra Resources
+
+* TODO: find a good HTML course
+
+## Conclusion
+
+In this chapter we looked at the index page and the default app layout page (we can have alternate layouts within an application).  We reviewed HTML, customized both of the aforementioned pages, and got our first taste of Embedded Elixir.
+
+This chapter was either 80% review or a firehose of new information, depending on your background in web apps.  As we go on through the book those difficulty levels should both adjust to the middle, but while we're in these opening parts it's best to recognize where you are and either skim or do extra research (see the Extra Resources section) based on how you're feeling about the material.
+
+Next we're going to create our own custom page.  This will let us trace through the basic path of a Phoenix web request and introduce us to the Router and a Controller.
+
+
+ \pagebreak 
+
+# A New Page
+
+In this chapter we're going to add our first custom Route -- an Info page -- giving us practice in the basics of html we learned last time, as well as our first look at a more full cycle of a request in Phoenix.
+
+Here's what it will look like at the end of this chapter:
+
+![](./contents/images/09/end-result.png)
+
+But this is what it would look like right now if you tried to visit `localhost:4000/info`:
+
+![](./contents/images/09/no-route-found.png)
+
+The error message is "no route found for GET /info (StarTrackerWeb.Router)".
+
+## The Router
+
+Let's crack open our Router file, in `lib/star_tracker_web/router.ex`, and start exploring.  It should look like this:
+
+<!-- web/router.ex -->
+```elixir
+defmodule StarTrackerWeb.Router do
+  use StarTrackerWeb, :router
+
+  pipeline :browser do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
+
+  pipeline :api do
+    plug :accepts, ["json"]
+  end
+
+  scope "/", StarTrackerWeb do
+    pipe_through :browser
+
+    get "/", PageController, :index
+  end
+
+  # Other scopes may use custom stacks.
+  # scope "/api", StarTrackerWeb do
+  #   pipe_through :api
+  # end
+end
+```
+
+We'll go over this line by line before making our edit.
+
+## The Router Name
+
+First, notice the module name: `StarTrackerWeb.Router`.  Many many module names in our app will start with `StarTrackerWeb`- it's a good indication that what we're using is local to our Phoenix app.  Then the second part- `Router` tells us the specific usage of this module.
+
+Both parts of the name are very important, and Phoenix will freak out if you change either one.  Try it!  Change it to `StarTrackerWeb.Diverter` or something and Phoenix will immediately start asking where `StarTrackerWeb.Router` went.
+
+![](./contents/images/09/naming-error.png)
+
+If you start getting messages like that ("Module StarTrackerWeb.X is not available") the most probably cause is that you misnamed something.
+
+Let's change it back and then move on.
+
+## Macros
+
+The next line is `use StarTrackerWeb, :router`.  We'll go into detail in the next chapter on how that works, but for now just know that that's how we get the `pipeline`, `plug`, `scope`, `pipe_through`, and `get` macros used later in the file.
+
+---
+
+> Technobabble: Macros
+
+> Macros are a cool advanced Elixir feature that give us more power and syntactical freedom than regular functions and let us define a DSL (Domain Specific Language).
+
+> While we won't be defining our own Macros in this book, we'll be taking advantage of lots of them that are built into Phoenix- the items from `StarTracker.Web, :router` are just the first.
+
+> If you're an advanced coder, I'd encourage you to research Macros for yourself.  A good resource for this is [Metaprogramming Elixir](https://pragprog.com/book/cmelixir/metaprogramming-elixir) by Chris McCord (the creator of the Phoenix framework).  It's a short but advanced book- if you had any trouble with chapters 2-4, I recommend waiting until the end of this book, and possibly reading [a more detailed Intro to Elixir book](https://pragprog.com/book/elixir16/programming-elixir-1-6) first.
+
+---
+
+The first of those macros is `pipeline`.  We define two of them: `browser` and `api`.  Each has a series of `plugs` -- a set of stacked instructions to run on each request (we'll go over plugs later in the book) -- that provide helpful functionality for the specific type of request we're running.
+
+## The Routes Themselves
+
+Next we see the following:
+
+```elixir
+scope "/", StarTrackerWeb do
+  pipe_through :browser # Use the default browser stack
+
+  get "/", PageController, :index
+end
+```
+
+The `scope` macro takes two arguments and a block.
+
+The first argument is the base url- `/` here, so effectively nil- and the second argument is the app that will serve in this scope- `StarTrackerWeb`.  Everything else in the scope will be prefixed with that (for example, `PageController` will actually be `StarTrackerWeb.PageController`).  The block is everything between `do` and `end`, and where we use `pipe_through` and `get`.  
+
+`pipe_through :browser` says that within this scope, we'll be using the `browser` pipeline that was defined earlier in the file.
+
+`get` takes 3 arguments- the url, the controller, and the function.  Here the url is `/`, the controller is `PageController`, and the function is `:index`.  What this means is that if a GET request is sent to the url `/`, then we'll respond with the index function on PageController.
+
+---
+
+> **Previously on: Request Types**
+
+> GET is only one of several types of requests available.  It's the most common, but other common types include POST, PUT, and DELETE.
+
+> Generally GET is used when you want information from the server but aren't requesting that the server make any changes.
+
+> We'll cover the other request types later when we start using them.
+
+---
+
+## Our New Route
+
+Let's define our own route now- `info`.  It'll be a `get` request, since we don't need the server to make any changes.  We'll want the url to be `/info`, we can re-use the `PageController`, and we'll call our function `:info`.
+
+```elixir
+scope "/", StarTrackerWeb do
+  pipe_through :browser # Use the default browser stack
+
+  get "/", PageController, :index
+  get "/info", PageController, :info
+end
+```
+
+Now if we try to visit `/info`, we'll get a different error!
+
+![](./contents/images/09/no-controller-function.png)
+
+It says "function StarTrackerWeb.PageController.info/2 is undefined or private".  Time to define it!
+
+## The Controller
+
+First, let's look at our current code for `PageController`:
+
+```elixir
+defmodule StarTrackerWeb.PageController do
+  use StarTrackerWeb, :controller
+
+  def index(conn, _params) do
+    render conn, "index.html"
+  end
+end
+```
+
+The `defmodule` is `StarTrackerWeb.PageController`- the naming of which is, once again, is very important.  Try changing the name if you don't believe me.
+
+## Don't Change the Name
+
+Even if you also change the name in the `get` function, it will still complain.  Let's change it in both places to `PageTroller` (both in the Controller `defmodule` and in the `get` function for `:index`) and see what happens.
+
+![](./contents/images/09/wrong-controller-name.png)
+
+
+The error is "function StarTrackerWeb.PageTrollerView.render/2 is undefined (module StarTracker.PageTrollerView is not available)".  It's looking for a `StarTrackerWeb.PageTrollerView` module that doesn't exist.  If we _really_ wanted to change the name, we'd have to go change two more things: the view and the name of a templates folder.
+
+But we don't want to change the names, so go ahead and change them back if you messed around with them.  There's rarely a good reason to stray from the conventions that Phoenix recommends.
+
+## Our Current Controller Function
+
+We'll once again skip over the line with `use` (`use StarTrackerWeb, :controller`), leaving it to the next chapter, and move on to our `index` function.
+
+```elixir
+def index(conn, _params) do
+  render conn, "index.html"
+end
+```
+
+Each Phoenix Controller function takes two arguments: connection and parameters (`conn` and `_params` in this example).  We'll go over the connection in more detail in later chapters, but right now we just need it to feed to the `render` function.  `_params`, on the other hand, is not needed.  Starting an argument name with `_` is a great way to signal to future readers of your code that you don't intend to use it, while still being more descriptive than just a plain `_`.  If we decided to use that argument, we would change it to `params`.
+
+We then use the render function and feed it two arguments: the connection and then a string, `"index.html"`.  The string indicates where we'll get the template to display our page.  This is partly Phoenix Magic; through naming conventions it knows that `index.html` in the PageController means `lib/star_tracker_web/templates/page/index.html.eex`, and it also knows to use the StarTrackerWeb.PageView as the View (we'll cover Views later).
+
+## Our New Controller Function
+
+Our controller function won't be too much different.
+
+```elixir
+defmodule StarTrackerWeb.PageController do
+  use StarTrackerWeb, :controller
+
+  def index(conn, _params) do
+    render conn, "index.html"
+  end
+
+  def info(conn, _params) do
+    render conn, "info.html"
+  end
+end
+```
+
+As you can see, the only differences are the name and the location of the template file.  This is enough to give us a new error message when we try to visit `/info` in the browser.
+
+![](./contents/images/09/no-template.png)
+
+The error is "Could not render "info.html" for StarTrackerWeb.PageView, please define a matching clause for render/2 or define a template at "lib/star_tracker_web/templates/page"".  It's pretty clear what we need to do: define a template.
+
+## The Template
+
+If we simply create a file at `lib/star_tracker_web/templates/page/info.html.eex` we'll see an immediate change: no more error, just a blank page:
+
+![](./contents/images/09/blank-page.png)
+
+We can do better than that though- we can put words on the page!
+
+```html
+<h1>Hello!</h1>
+
+<p>We're making this app for the following reasons:</p>
+
+<ul>
+  <li>Track and trade resources</li>
+  <li>Learn Elixir and Phoenix</li>
+  <li>Resource Management is its own reward</li>
+</ul>
+
+<h3>What can we do here?</h3>
+
+<p>Well, eventually we'll have an <em>actual app</em>, but for now we're just demonstrating basic concepts.</p>
+
+<a href="/"><div class="btn btn-primary">Go back to main page</div></a>
+```
+
+This is all plain html, but it gets the job of filling out our page done.
+
+![](./contents/images/09/end-result.png)
+
+---
+
+> **Previously On: HTML**
+
+> We're introducing some new HTML elements/tags here.
+
+> First is the ul/li combo. "ul" stands for "unordered list", and "li" stands for "list item".  You'll see several "li"s nested within one "ul".  The default styling is a bullet pointed list, although you can change that.
+
+> "h3" is like "h2", but smaller.  "h1" through "h6" are available, with "h1" being the biggest and "h6" the smallest.
+
+> "em" stands for "emphasis".  It does the same thing as "bold".
+
+> "a" stands for "anchor".  It's a link. We won't often use the bare "a" tag in Phoenix -- we'll prefer the `link` helper we'll introduce in chapter 7 of this section -- but this html is good enough to get our page working.
+
+---
+
+And with that, we have our page!
+
+## Exercises
+
+1. Bring your local app up to where we are.
+2. There are many places where naming is important to Phoenix, but other places where it isn't.  Try changing naming in the following two places:
+  a) The Controller function name: try changing `:info` to `:about` in the `get` helper in the Router, and then change the function name in the Controller to `about` as well.
+  b) The template name: change `info.html` to `information.html` in the Controller function, then change the template filename to match (`web/templates/page/information.html.eex`).
+
+You'll know you've succeeded once you've made the changes and the page at `/info` still works as before.  If you want to check that it's actually doing something and not just coasting off an old version of the app, feel free to check halfway through each change- when you've changed one of the parts but not the other.  You should, at that point, see an error message.
+
+## Conclusion
+
+In this chapter we've create a new page at the url `/info`.  To do this we had to create a new Route in the Router, a new function in the Controller, and a new template.  Although we'll expand on it later, Route -> Controller -> Template is the basic path that all requests take when being served by Phoenix.
+
+In Chapter 6 of this section we'll explore further the connections between the Router, the Controller, and the Template, but first in Chapter 5 we're going to go back and look at the `use` construct and see where all of those handy macros come from.
+
+
+ \pagebreak 
+
+# Bringing In the Code
+
+> WARNING: This is one of the hardest and weirdest chapters.  It's also the most optional, and I considered not even including it.  The core (easy) parts of it will be repeated when we need them, so if things start dragging, feel free to skip to the next chapter.
+
+One of the most important tasks in any programming environment is bringing in code from elsewhere; it lets you reuse functionality and keep everything clean.  Elixir and Phoenix have a series of elegant tools available to do that.
+
+In this chapter we're going to focus on the `use`, `import`, and `alias` keywords and what they specifically bring to our Router and Controller files.  There are, of course, functions beyond this (config files, mix, etc.) that we'll cover later.
+
+If you start to feel lost during this chapter, that's okay.  Just power on through, then come back later when you've had more exposure to the framework.  The main goal with this chapter is that our uses of `use` and `import` feel less magical and arbitrary, so knowing that there is a logic is almost as good as understanding the logic.
+
+If you want, you can consider this entire chapter Technobabble for now, skip it, and continue to treat `use`, `import`, and `alias` as magical constructs.
+
+## use StarTrackerWeb, :router
+
+In the last chapter we had the following Router file:
+
+```elixir
+defmodule StarTrackerWeb.Router do
+  use StarTrackerWeb, :router
+
+  pipeline :browser do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
+
+  pipeline :api do
+    plug :accepts, ["json"]
+  end
+
+  scope "/", StarTrackerWeb do
+    pipe_through :browser
+
+    get "/", PageController, :index
+    get "/info", PageController, :info
+  end
+
+  # Other scopes may use custom stacks.
+  # scope "/api", StarTrackerWeb do
+  #   pipe_through :api
+  # end
+end
+```
+
+We explained briefly what each of the macros (`pipeline`, `plug`, `scope`, `pipe_through`, `get`) did, but not where they came from.  They're not defined in the core Elixir libraries... instead, they're all made available by the line `use StarTrackerWeb, :router`.
+
+The first link of the chain can be found in `lib/star_tracker_web.ex`.
+
+```Elixir
+defmodule StarTrackerWeb do
+  # ...
+
+  def router do
+    quote do
+      use Phoenix.Router
+      import Plug.Conn
+      import Phoenix.Controller
+    end
+  end
+
+  # ...
+
+  @doc """
+  When used, dispatch to the appropriate controller/view/etc.
+  """
+  defmacro __using__(which) when is_atom(which) do
+    apply(__MODULE__, which, [])
+  end
+end
+```
+
+The comments with `...` are simply code blocks that I've left out in order to make the explanation more concise.
+
+The path through this code starts with `defmacro __using__`.  That is what is called first by Elixir when someone calls `use ThisModuleName`.  So it takes one argument, which in this case is `:router`.  The only line in `defmacro __using__` then uses that argument to call a function within the module with the name of that argument- in this case, the `router` function.  A convoluted way of doing things, but having this complication once means that every Phoenix app gets to enjoy a nicer syntax every time they use the `use MyAppWeb` interface.
+
+## quote
+
+There are lots of cool complicated things you can do with `quote`, but in this file it sticks to doing one relatively simple thing- taking what's within the `quote do ... end` block and dumping it into the file that called the macro where `quote` is used.
+
+So, in this case, the effect of putting `use StarTrackerWeb, :router` in your file is the same as putting in `use Phoenix.Router`, as well as `import Plug.Conn` and `import Phoenix.Controller`.
+
+Why the added layer of indirection?  Having this indirection allows us to put in "standard" things that will show up in every instance where the macro is used.  It's much easier to type in `use StarTrackerWeb, :router` than all three lines, and if you want to change those lines it's better to have them in one centralized place.  This is more useful for Controllers and Views, since there's generally one Router per Phoenix app, but many Controllers and Views.
+
+---
+
+> **Previously On: Indirection**
+
+> "Indirection" can mean various things in a programming context, but when it's used as in "layer of indirection" people generally mean that there are several function calls that don't seem strictly necessary but are there for organizational purposes.
+
+> There are cases where these organizational purposes are valid and worth the cost of adding a layer of indirection (Phoenix usually makes good choices in this regard), but there are also cases where it's meaningless complication that just makes your program harder to understand.
+
+> One of the marks of an experienced developer is that they understand the pros and cons of adding specific layers of indirection.  For now, just go with Phoenix's defaults unless you have a very compelling reason not to.
+
+---
+
+So now that we see that this use of `use StarTrackerWeb, :router` gives us the same effect as `use Phoenix.Router`, `import Plug.Conn`, and `import Phoenix.Controller`. Let's see what that first command brings us.
+
+## use Phoenix.Router
+
+So far we've gotten all our modules from `StarTracker`- our own web app.  Now we're getting a module from `Phoenix`, so we'll have to dig into where the framework code is stored.
+
+## deps
+
+The path for that is in the `deps` folder.  Your text editor may have that folder greyed out, but it should still be available for browsing.  If your text editor has it completely hidden, you can use the command line (`ls` and `cd` commands) or your OS's file browser to explore.
+
+Within the `deps` are all your app's dependencies, brought in from across the web.  Currently we're only interested in the `phoenix` folder.  Specifically, the file we're looking for has a path of `deps/phoenix/lib/phoenix/router.ex`.
+
+## Phoenix.Router
+
+Here's a simplified version of that file:
+
+```elixir
+defmodule Phoenix.Router do
+  @http_methods [:get, :post, :put, :patch, :delete, :options, :connect, :trace, :head]
+
+  def __using__(_) do
+    defmacro __before_compile__(env) do #
+    defmacro match(verb, path, plug, plug_opts, options \\ []) do #
+
+    for verb <- @http_methods do
+      defmacro unquote(verb)(path, plug, plug_opts, options \\ []) do #
+        add_route(:match, unquote(verb), path, plug, plug_opts, options)
+      end
+    end
+
+    defmacro pipeline(plug, do: block) do #
+    defmacro plug(plug, opts \\ []) do #
+    defmacro pipe_through(pipes) do #
+    defmacro resources(path, controller, opts, do: nested_context) do #
+    defmacro resources(path, controller, do: nested_context) do #
+    defmacro resources(path, controller, opts) do #
+    defmacro resources(path, controller) do #
+    defmacro scope(options, do: context) do #
+    defmacro scope(path, options, do: context) do#
+    defmacro scope(path, alias, options, do: context) do #
+
+    defmacro forward(path, plug, plug_opts \\ [], router_opts \\ []) do #
+  end
+end
+```
+
+You can see that we're defining all of the macros which we used earlier, including several versions of `scope` (remember: pattern matching based on number of arguments), as well as a couple more we haven't seen yet.
+
+That's enough of a dive into the source code- we won't go into detail on how each of them is defined... although you're welcome to explore as much as you like on your own.
+
+## import
+
+When we used `use StarTrackerWeb, :router`, it also automatically gave us two import statements: `import Plug.Conn`, and `import Phoenix.Controller`.
+
+Like `use`, `import` drops function definitions directly into the current module's namespace.
+
+What sets them apart: `use` calls the `__using__` callback in order to inject code into the current module, and `import` doesn't.  `import` can also have the `only` option, which takes a list of function names (and their arities) and then only puts those specific functions into the current module's namespace.
+
+We'll be using `import` often in our own code, and we'll recap it the first time that happens.
+
+## use StarTracker.Web, :controller
+
+In our controller we call `use StarTrackerWeb, :controller`.  Like in the Router, this takes us to our `star_tracker_web.ex` file.
+
+```elixir
+defmodule StarTrackerWeb do
+  # ...
+  def controller do
+    quote do
+      use Phoenix.Controller, namespace: StarTrackerWeb
+
+      import Plug.Conn
+      import StarTrackerWeb.Gettext
+      alias StarTrackerWeb.Router.Helpers, as: Routes
+    end
+  end
+  # ...
+  def router do
+    quote do
+      use Phoenix.Router
+      import Plug.Conn
+      import Phoenix.Controller
+    end
+  end
+  # ...
+
+  @doc """
+  When used, dispatch to the appropriate controller/view/etc.
+  """
+  defmacro __using__(which) when is_atom(which) do
+    apply(__MODULE__, which, [])
+  end
+end
+```
+
+We're `use`-ing and `import`-ing some different files, and we're also using `alias`.  Let's tackle the now-familiar `use` first.
+
+## use Phoenix.Controller
+
+Here's a highly-compacted version of `Phoenix.Controller`, with 90% of the function names and 100% of the actual code redacted for simplicity's sake (the actual file is 1475 lines long, as of this writing).
+
+```elixir
+defmodule Phoenix.Controller do
+  #...
+  def html(conn, data) do #...
+  def redirect(conn, opts) when is_list(opts) do #...
+
+  # ...
+
+  def render(conn, template_or_assigns \\ [])
+  def render(conn, template) when is_binary(template) or is_atom(template) do # ...
+  def render(conn, assigns) do #...
+
+  def render(conn, template, assigns) when is_atom(template) and (is_map(assigns) or is_list(assigns)) do #...
+  def render(conn, template, assigns) when is_binary(template) and (is_map(assigns) or is_list(assigns)) do #...
+  def render(conn, view, template) when is_atom(view) and (is_binary(template) or is_atom(template)) do # ...
+
+  def render(conn, view, template, assigns) when is_atom(view) and (is_binary(template) or is_atom(template)) do #...
+
+  #...
+end
+```
+
+Here we see 7 different definitions of `render` (the one Controller function we've used so far), each differentiated by the number of arguments (arity) as well as some `when` clauses (a particular definition of `render` will only be used if its `when` clause is true).
+
+There are lots more definitions in this file, including `html` and `redirect`, but for now there's nothing else for us to learn here.  Time to look at the other things brought in by `use StarTracker.Web, :controller`.
+
+## alias
+
+The final line for `controller` is `alias StarTrackerWeb.Router.Helpers, as: Routes`.  We haven't used this yet, but the explanation is easy *if you don't worry about what `StarTrackerWeb.Router.Helpers` actually does*.
+
+Let's start with a slightly simpler case.  If we had `alias StarTrackerWeb.Router.Helpers`, then whenever we want to access any function in that module, we could leave off the `StarTrackerWeb.Router` part, and just reference `Helpers.function_name`.  This makes things more convenient.
+
+Then we add the `as` option to the alias.  `alias StarTrackerWeb.Router.Helpers, as: Routes` allows us to call `Routes.function_name`.  The default usage is equivalent to putting the last part of the aliased module in the `as` option (`alias StarTrackerWeb.Router.Helpers, as: Helpers`).
+
+We'll be using `alias` often in our own code, and we'll recap it the first time that happens.
+
+## Conclusion
+
+So that's how we get all the macros like `render`, `get`, and `scope`.
+
+I hope this demystified some of the Elixir Magic for you.  If not, keep reading; although an understanding of the concepts in this chapter is helpful, it's by no means required, and you can make a great app while still thinking of `use` as just a mysterious line that makes your Router and Controller work.
+
+In the next chapter we're going to further connect the Router, Controller, and Template, and see how they pass data back and forth.
+
+
+ \pagebreak 
+
+# Passing Data
+
+Working with and responding to dynamic data is one of the core responsibilities of a Phoenix app.  Without that, it would be just a very complex way of writing static HTML!
+
+While dynamic data will eventually come from your users, your database, and other apps, for this chapter we're going to focus on the initial task of passing data in between your Controller, Template, and Router.
+
+## Controller to Template
+
+We'll start with the end in mind: displaying dynamic data to your user.
+
+<!-- web/templates/page/info.html.eex -->
+```html
+<h1>Hello <%= @name %>!</h1>
+
+<p>We're making this app for the following reasons:</p>
+
+<!-- ... -->
+```
+
+Here's the updated start of our info page.  We've added `<%= @name %>` as part of our heading.
+
+The `<%= %>` construct is how we embed Elixir into our HTML.  Anything inside there is Elixir code.  In this case we're displaying the variable `@name`.
+
+Of course, that variable doesn't exist yet, so we'll get the following error:
+
+![](./contents/images/11/no-assign-variable.png)
+
+The error says "assign @name not available in eex template", so let's make it available!
+
+We'll do so in the Controller, by adding a Map to the end of our `render` function.
+
+<!-- web/controllers/page_controller.ex -->
+```elixir
+def info(conn, _params) do
+  render(conn, "info.html", name: "Phoenix")
+end
+```
+
+We have a map with one key-value pair- :name and "Phoenix".  This will be enough to let our page display.
+
+> Note: Maps can be used as arguments without the %{} wrapping them.  The line is equivalent to `render(conn, "info.html", %{name: "Phoenix"})`
+
+![](./contents/images/11/assigned-controller-variable.png)
+
+And that's how we pass data from Controller to Template!
+
+## Router to Controller
+
+The Router takes the URL and uses that to choose a Controller and a Controller action.  However, you can also make it capture more information from the URL and then pass it along to the Controller action.
+
+Our current Router looks like this (for brevity's sake, we're only showing the relevant scope):
+
+<!-- web/router.ex -->
+```elixir
+scope "/", StarTracker do
+  pipe_through :browser # Use the default browser stack
+
+  get "/", PageController, :index
+  get "/info", PageController, :info
+end
+```
+
+We can choose to add a parameter to the `info` route.  Let's call that parameter 'name':
+
+<!-- web/router.ex -->
+```elixir
+scope "/", StarTracker do
+  pipe_through :browser # Use the default browser stack
+
+  get "/", PageController, :index
+  get "/info/:name", PageController, :info
+end
+```
+
+So our new route is `/info/:name`.  `:name` is an atom instead of a plain String, marking it as a parameter.  You can type anything in there and it will map to the `:name` parameter- for example, `/info/Jeffrey`.
+
+Let's hook it up in the Controller.
+
+```elixir
+def info(conn, params) do
+  render conn, "info.html", name: params["name"]
+end
+```
+
+We're now using the `params` argument (and taking away the leading underscore).  The `params` is a Map of all the URL parameters- in this case, just "name".  So you call `params["name"]` to get the information from your URL, and feed it to the `name` key in the Map you feed to `render`.
+
+![](./contents/images/11/hello-parameters.png)
+
+We're now using the Router to pass data from the URL to the Controller, and then on down to the Template.
+
+## Default Parameters
+
+However, there's a problem: if we go back to our plain `/info` route (without a parameter), we'll run into an error.
+
+![](./contents/images/11/need-default-parameter.png)
+
+That can be solved by having two routes defined in our router:
+
+```elixir
+scope "/", StarTracker do
+  pipe_through :browser # Use the default browser stack
+
+  get "/", PageController, :index
+  get "/info", PageController, :info
+  get "/info/:name", PageController, :info
+end
+```
+
+So now we can get the `/info` route working both with and without parameters... but it doesn't look quite right.
+
+![](./contents/images/11/extra-space.png)
+
+The extra space may seem like a small thing, but it will look like a bug to a user.
+
+There are several ways we could handle this.  The first is to use a default name in the absence of a name passed in the URL.
+
+```elixir
+def info(conn, params) do
+  name = params["name"] || "Stranger"
+  render conn, "info.html", name: name
+end
+```
+
+Then, on the `/info` route, it will tell display "Hello Stranger", and on the `/info/Jeffrey` route it will display "Hello Jeffrey".
+
+![](./contents/images/11/stranger-default.png)
+
+If we don't want to come up with a default name we can take measures to remove the space before the exclamation point.  The simplest in this case is to use an `if` in the template.
+
+## Template Conditionals
+
+```html
+<%= if @name do %>
+  <h1>Hello <%= @name %>!</h1>
+<% else %>
+  <h1>Hello!</h1>
+<% end %>
+```
+
+![](./contents/images/09/end-result.png)
+
+I know I've ragged on `if`s, but Embedded Elixir plays by slightly different Best Practice rules than regular Elixir.  It's still best to limit the amount of if-branching (especially nested ifs), but the strictures are a bit looser.
+
+An `if` statement in the template starts off with this line: `<%= if @name do %>`.  The conditional between the `if` and the `do` will vary, but everything else will always be part of the `if` statement.  The block of html immediately after the `if` is what is displayed if the conditional (`@name` in this case) is "true".  I say "true" in quotes because it will be "true" for anything except `nil` or`false`- the conditional `@name` could be the boolean `true`, a number, a Map, a List, or (as is the case here) a String.
+
+There's an optional `<% else %>` statement.  If this is present, then the block of html immediately after it will be displayed when the conditional is `false` or `nil`.
+
+Finally, it's closed out by `<% end %>`.
+
+You may have noticed that the starter `<%= if @name do %>` has an equals sign at the start, while `<% else %>` and `<% end %>` don't.  That's because the equals sign generally signifies that something will be displayed to the user (I guess the `else` doesn't get it because the equals sign in front of `if` already takes care of it- honestly not sure).  Try removing the equals sign and you'll see that the entire header disappears.
+
+![](./contents/images/11/no-equals-in-if.png)
+
+## Conclusion
+
+We've now seen how data is passed from the Route URL to the Controller to the Template.  In the next chapter, we'll learn about links (one of the most important building blocks in a web page) and each loops (a common way of displaying custom data arrays), and how to combine them to let the user customize the URL without ever touching the address bar.
+
+## Exercises
+
+1. Bring your app up to speed with the code we wrote in the chapter.
+2. Make it so the name is always capitalized, no matter how it's written in the URL
+
+![](./contents/images/11/hello-parameters.png)
+
+<!-- Answer:
+
+```elixir
+def info(conn, params) do
+  render conn, "info.html", name: String.capitalize(params["name"])
+end
+``` -->
+
+3. Add a second parameter to the URL- `:position`.  After the header add a line welcoming them- if their position was "Engineer", it would say "So good to have an Engineer here".
+
+![](./contents/images/11/name-and-position.png)
+
+We won't make you cover all 4 possible cases of names and positions being specified or not specified- multiple optional parameters are not a pattern we'll want to use in our Phoenix apps.
+
+<!-- Answer:
+
+```elixir
+scope "/", StarTracker do
+  pipe_through :browser # Use the default browser stack
+
+  get "/", PageController, :index
+  get "/info", PageController, :info
+  get "/info/:name/:position", PageController, :info
+end
+```
+
+```elixir
+def info(conn, params) do
+  render conn, "info.html", name: String.capitalize(params["name"]),
+                            position: params["position"]
+end
+```
+
+```html
+<%= if @name do %>
+  <h1>Hello <%= @name %>!</h1>
+<% else %>
+  <h1>Hello!</h1>
+<% end %>
+
+<p>So good to have a <%= @position || "officer" %> here!</p>
+``` -->
+
+4. Add a shirt color based on their position.  Here's a handy chart:
+
+* commander -> red
+* operations -> yellow
+* engineer -> yellow
+* security -> yellow
+* scientist -> blue
+* doctor -> blue
+* other -> grey
+
+ > Note: This is only true for the recent fleet operations- red/yellow used to be switched.  The security personnel, operations, and engineering all wore red shirts, mostly to hide the security personnel's blood.  Once our interactions with alien planets became more one-sided, the majority of security personnel were eliminated (by not hiring them!  As opposed to how they used to be eliminated), and command took on the symbolic risk of the red uniform.
+
+ So if they're an Engineer, then it should say "So good to have an engineer here. Love your yellow shirt!"
+
+![](./contents/images/11/shirt-color.png)
+
+<!-- Answer:  There are many possible answers, of course, but I like this one because it allows an easy default statement and is easy to parse.  If the data had to be stored elsewhere (a database?) then a Map would be better, with a default of "grey" if nothing found in the map.
+
+```elixir
+def info(conn, params) do
+  render conn, "info.html", name: String.capitalize(params["name"]),
+                            position: params["position"],
+                            shirt_color: shirt_color(params["position"])
+end
+
+def shirt_color(position) do
+  case position do
+    "commander" -> "red"
+    "engineer" -> "yellow"
+    "operations" -> "yellow"
+    "security" -> "yellow"
+    "scientist" -> "blue"
+    "doctor" -> "blue"
+    _ -> "grey"
+  end
+end
+```
+
+```html
+<%= if @name do %>
+  <h1>Hello <%= @name %>!</h1>
+<% else %>
+  <h1>Hello!</h1>
+<% end %>
+
+<p>So good to have a <%= @position %> here. Love your <%= @shirt_color %> shirt!</p>
+``` -->
+
+
+ \pagebreak 
+
+## Choosing the URL
+
+In the last chapter we saw how changing the URL could effect what's shown in the page.  However, we were stuck editing the URL by hand when using the site- something that's rarely done.  In this chapter we'll learn about the link helper- and then about how to use arrays and `each` to automatically generate a bunch of links.
+
+## Links
+
+Previously, we'd used a link with a bare "anchor" tag as follows:
+
+```html
+<a href="/"><div class="btn btn-primary">Go back to main page</div></a>
+```
+
+We can add more of these to link to various versions of this page:
+
+```html
+<a href="/info/José">José</a>
+<a href="/info/Chris">Chris</a>
+<a href="/info/Jeffrey">Jeffrey</a>
+<hr>
+```
+
+At this point, you have a list of 3 names, clicking any of which takes you to a different version of the info page.
+
+![](./contents/images/12/hello-jose.png)
+
+This is pretty good right now, but if we had more names we wanted to include, a dynamic list of names, or a more complex definition for each link, then things would get unwieldy fast.  That's why we're introducing the `for` helper.
+
+## The for helper
+
+The `for` helper is a way of iterating over data within a template, letting you create more dynamic templates.
+
+Here's a simple version:
+
+```html
+<%= for name <- ["José", "Chris", "Jeffrey"] do %>
+  <%= name %>
+<% end %>
+```
+
+First, notice the similarities to the `if` helper.
+
+```html
+<%= if (xs) do %>
+  Stuff
+<% end %>
+
+<%= for (x <- xs) do %>
+  Stuff
+<% end %>
+```
+
+So they start off with the equals version of the Embedded Elixir tag (`<%= %>`), then the name of the helper (`if` or `for`), then there's some stuff in parentheses (the parentheses were added to help you see the similarities- we don't actually recommend using those in your application, as they simply clutter things up), then `do`.  That starts off a block of html which is used by the helper (displayed 0 or 1 times by the `if` helper, depending on the condition, and displayed n times by the `for` helper, where n is the number of items in the array), which is closed by `<% end %>`.
+
+The interesting differentiator is in what comes between the helper name and `do`.  Let's look at our `for` helper again.
+
+```html
+<%= for name <- ["José", "Chris", "Jeffrey"] do %>
+  <%= name %>
+<% end %>
+```
+
+On the right side of the backwards arrow (`<-`) we have an array: `["José", "Chris", "Jeffrey"]`  Then on the left side of the backwards arrow we see the variable (`name`) that the items in the array will be assigned to.  Within the block we can use that variable (`<%= name %>`).
+
+And with that we'll be looping over all 3 names and displaying them dynamically.
+
+![](./contents/images/12/list-no-links.png)
+
+You'll notice that there are no longer links.  Let's fix that.
+
+```html
+<%= for name <- ["José", "Chris", "Jeffrey"] do %>
+  <a href="/info/<%= name %>"><%= name %></a>
+<% end %>
+```
+
+Here we've brought back our anchor tag, but we've dynamically inserted the `name` variable inside of it; once for the url and once for the displayed text.
+
+## Benefit: easily change how data is displayed
+
+We'll see more benefits to this arrangement once we start pulling data from databases and external sources, but we can already see one benefit: changing the way the data is displayed is much easier.  Let's put them in a list instead of displayed horizontally.
+
+```html
+<ul>
+  <%= for name <- ["José", "Chris", "Jeffrey"] do %>
+    <li><a href="/info/<%= name %>"><%= name %></a></li>
+  <% end %>
+</ul>
+```
+
+![](./contents/images/12/li-style.png)
+
+We just had to add the `ul` tag around the `for` helper, and then the `li` tag around the anchor tag inside the block.  Without the `for` helper, we would have to add the `li` tag around each anchor tag individually- a bad situation if we had lots of items in the list or we wanted to do something more complex than just adding one tag.
+
+## From the Controller
+
+We don't have to define the list within the template.  In fact, most of the time the data in the template will be fed into it from the controller.  Let's do that with our list of names.
+
+```elixir
+def info(conn, params) do
+  names = ["José", "Chris", "Jeffrey"]
+  render conn, "info.html", name: params["name"], names: names
+end
+```
+
+```html
+<ul>
+  <%= for (name <- @names) do %>
+    <li><a href="/info/<%= name %>"><%= name %></a></li>
+  <% end %>
+</ul>
+```
+
+Within the controller we're now feeding the template two variables: `name` and `names`.  They're usable in the template as `@name` and `@names`.
+
+Within the template we then use `@names` to feed the `for` helper.
+
+## Name Collisions
+
+You'll notice that `name`, `@name`, and `@names` are pretty similar. `name` comes from the `for` helper, and can only be used inside of it, while `@name` and `@names` come from the controller.  I happen to think these are the best variable names in this particular situation, but it's useful to keep in mind that such similar variable names could cause confusion.
+
+## The link helper
+
+We don't have to construct anchor tags by hand every time.  Phoenix has a handy `link` helper.
+
+```html
+<%= link name, to: "/info/#{name}" %>
+```
+
+The above is equivalent to
+
+```html
+<a href="/info/<%= name %>"><%= name %></a>
+```
+
+So it's a little shorter.  There are other benefits to it that we'll see later on, such as being able to choose a different HTTP function than "get", but for now it's just shorter and more "Phoenix-y".
+
+So let's analyze each part of it.
+
+```html
+<%= link name, to: "/info/#{name}" %>
+```
+
+First, the structure of the helper.  It doesn't have a `do` at the end, so this helper is self-contained rather than having an html block and an `<% end %>`.  We also know, because of the equals sign at the start, that it will display something. `link`, of course, tells us which helper we're using.
+
+The first argument is what will be displayed - in this case, the value in the `name` variable.  The second argument is a Map containing one key-value pair.  The key is `to`, and the value is the URL that we're linking to.  You'll notice that we use Elixir-style string interpolation (`"#{name}"`) rather than Embedded-Elixir-style string interpolation (`<%= name %>`).  That's because this is already inside an Elixir block (the `link` helper).
+
+There are other options available within the hash: `method`, which changes the HTTP method used, and other keys are passed directly to the html (class, data, etc.)
+
+It's worth noting that there is second form of the `link` helper that does have a `do` block (for more complex link text).  There's also other ways to define the url in the `to` option.  We'll cover those when we need them.
+
+## Conclusion
+
+Both the `link` and `for` helpers will be seen often throughout a typical Phoenix app.  In addition to their uses as such, they've also served as good examples of how template helpers work in Phoenix- you can generalize based on those examples to the point where any Phoenix template you look at will be considerably less mysterious.
+
+We're done covering the building blocks that we can comfortably tackle in an isolated page.  In the next chapter we'll use Phoenix generators to generate some pages and finally start working with the "full" Phoenix stack, including the database.
+
+## Exercises
+
+1. Update your app to where we are.  Save and commit to git.
+2. Use the `for` helper to dynamically display the 3 reasons we have listed for creating this app ("Track our resources", "Learn Elixir and Phoenix", and "Inventory Management is its own reward").  Pass them in from the controller as `@reasons`.
+3. Start with your code from the chapter 11 exercises where you added a position variable.  Then use nested `for` helpers (one `for` helper inside another) to create 3 links for each name ("Chris the commander", "Chris the engineer", "Chris the scientist"), with each linking to the page with the name and position shown.
+
+![](./contents/images/12/nested-for-loops.png)
+
+<!-- Answer:
+
+```elixir
+def info(conn, params) do
+  position = params["position"] || "person"
+  name = params["name"] || "person"
+  positions = ["commander", "engineer", "scientist"]
+  names = ["José", "Chris", "Jeffrey"]
+  render conn, "info.html", name: String.capitalize(name),
+                            names: names,
+                            position: position,
+                            positions: positions,
+                            shirt_color: shirt_color(position)
+end
+
+def shirt_color(position) do
+  case position do
+    "commander" -> "red"
+    "engineer" -> "yellow"
+    "operations" -> "yellow"
+    "security" -> "yellow"
+    "scientist" -> "blue"
+    "doctor" -> "blue"
+    _ -> "grey"
+  end
+end
+```
+
+```html
+<h1>Hello <%= @name %>!</h1>
+
+<p>So good to have a <%= @position %> here!  Love your <%= @shirt_color %> shirt!</p>
+
+<ul>
+  <%= for (name <- @names) do %>
+    <%= for (position <- @positions) do %>
+      <li><%= link "#{name} the #{position}", to: "/info/#{name}/#{position}" %></li>
+    <% end %>
+  <% end %>
+</ul>
+``` -->
