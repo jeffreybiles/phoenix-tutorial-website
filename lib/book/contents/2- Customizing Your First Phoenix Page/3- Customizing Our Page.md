@@ -173,7 +173,6 @@ To demonstrate that, let's put some marker text before and after the render bloc
 </main>
 ```
 
-<!-- TODO: check to make sure this is right -->
 ![Index page wrapped](../images/08/wrapped-basic-index.png)
 
 So that's the basic layout of the page.  The only thing left to go over is the `<%= %>` construct.

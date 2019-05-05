@@ -95,8 +95,6 @@ Why the added layer of indirection?  Having this indirection allows us to put in
 
 ---
 
-<!-- paused editing here.  TODO: Keep going -->
-
 So now that we see that this use of `use StarTrackerWeb, :router` gives us the same effect as `use Phoenix.Router`, `import Plug.Conn`, and `import Phoenix.Controller`. Let's see what that first command brings us.
 
 ## use Phoenix.Router

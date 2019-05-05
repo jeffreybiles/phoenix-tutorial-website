@@ -1,15 +1,13 @@
 # A New Page
 
-In this chapter we're going to add our first custom Route- an Info page- giving us practice in the basics of html we learned last time, as well as our first look at a more full cycle of a request in Phoenix.
+In this chapter we're going to add our first custom Route -- an Info page -- giving us practice in the basics of html we learned last time, as well as our first look at a more full cycle of a request in Phoenix.
 
 Here's what it will look like at the end of this chapter:
 
-<!-- TODO: New Image -->
 ![](../images/09/end-result.png)
 
 But this is what it would look like right now if you tried to visit `localhost:4000/info`:
 
-<!-- TODO: New Image -->
 ![](../images/09/no-route-found.png)
 
 The error message is "no route found for GET /info (StarTrackerWeb.Router)".
@@ -56,7 +54,6 @@ First, notice the module name: `StarTrackerWeb.Router`.  Many many module names 
 
 Both parts of the name are very important, and Phoenix will freak out if you change either one.  Try it!  Change it to `StarTrackerWeb.Diverter` or something and Phoenix will immediately start asking where `StarTrackerWeb.Router` went.
 
-<!-- TODO: New Image -->
 ![](../images/09/naming-error.png)
 
 If you start getting messages like that ("Module StarTrackerWeb.X is not available") the most probably cause is that you misnamed something.
@@ -71,11 +68,11 @@ The next line is `use StarTrackerWeb, :router`.  We'll go into detail in the nex
 
 > Technobabble: Macros
 
-> Macros are a cool advanced Elixir feature that give us more power and syntactical freedom than regular functions and let us define a DSL (Domain Specific Language). (TODO: Is this description accurate and sufficient?)
+> Macros are a cool advanced Elixir feature that give us more power and syntactical freedom than regular functions and let us define a DSL (Domain Specific Language).
 
 > While we won't be defining our own Macros in this book, we'll be taking advantage of lots of them that are built into Phoenix- the items from `StarTracker.Web, :router` are just the first.
 
-> I'd encourage you to research Macros for yourself.  (TODO: Investigate the next sentence to make sure it's true (read the book)) A good resource for this is [Metaprogramming Elixir](https://pragprog.com/book/cmelixir/metaprogramming-elixir) by Chris McCord (the creator of the Phoenix framework).  It's a short but advanced book- if you had any trouble with chapters 2-4, I recommend waiting until the end of this book, and possibly reading [a more detailed Intro to Elixir book](https://pragprog.com/book/elixir16/programming-elixir-1-6) first.
+> If you're an advanced coder, I'd encourage you to research Macros for yourself.  A good resource for this is [Metaprogramming Elixir](https://pragprog.com/book/cmelixir/metaprogramming-elixir) by Chris McCord (the creator of the Phoenix framework).  It's a short but advanced book- if you had any trouble with chapters 2-4, I recommend waiting until the end of this book, and possibly reading [a more detailed Intro to Elixir book](https://pragprog.com/book/elixir16/programming-elixir-1-6) first.
 
 ---
 
@@ -128,7 +125,6 @@ end
 
 Now if we try to visit `/info`, we'll get a different error!
 
-<!-- TODO: new image -->
 ![](../images/09/no-controller-function.png)
 
 It says "function StarTrackerWeb.PageController.info/2 is undefined or private".  Time to define it!
@@ -153,7 +149,6 @@ The `defmodule` is `StarTrackerWeb.PageController`- the naming of which is, once
 
 Even if you also change the name in the `get` function, it will still complain.  Let's change it in both places to `PageTroller` (both in the Controller `defmodule` and in the `get` function for `:index`) and see what happens.
 
-<!-- TODO: New Image -->
 ![](../images/09/wrong-controller-name.png)
 
 
@@ -195,7 +190,6 @@ end
 
 As you can see, the only differences are the name and the location of the template file.  This is enough to give us a new error message when we try to visit `/info` in the browser.
 
-<!-- TODO: New image -->
 ![](../images/09/no-template.png)
 
 The error is "Could not render "info.html" for StarTrackerWeb.PageView, please define a matching clause for render/2 or define a template at "lib/star_tracker_web/templates/page"".  It's pretty clear what we need to do: define a template.
@@ -204,7 +198,6 @@ The error is "Could not render "info.html" for StarTrackerWeb.PageView, please d
 
 If we simply create a file at `lib/star_tracker_web/templates/page/info.html.eex` we'll see an immediate change: no more error, just a blank page:
 
-<!-- TODO: New image -->
 ![](../images/09/blank-page.png)
 
 We can do better than that though- we can put words on the page!
@@ -229,7 +222,6 @@ We can do better than that though- we can put words on the page!
 
 This is all plain html, but it gets the job of filling out our page done.
 
-<!-- TODO: New Images -->
 ![](../images/09/end-result.png)
 
 ---
