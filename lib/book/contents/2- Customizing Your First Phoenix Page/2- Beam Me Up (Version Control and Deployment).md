@@ -308,9 +308,10 @@ Go to github and signup: [https://github.com/join](https://github.com/join).
 
 You'll be fine with a free subscription.
 
-<!-- TODO: Create a fake profile for the purposes of this tutorial.  Do it while creating the video. -->
 
 ## Add your Public Key to Github # TODO
+
+I'll be doing this and the next three sections when I create the videos, for logistical reasons.
 
 ## Create your first repository # TODO
 

@@ -40,7 +40,7 @@ Here's a simple version:
 First, notice the similarities to the `if` helper.
 
 ```html
-<%= if (x) do %>
+<%= if (xs) do %>
   Stuff
 <% end %>
 
@@ -73,15 +73,15 @@ You'll notice that there are no longer links.  Let's fix that.
 <% end %>
 ```
 
-Here we've brought back our anchor tag, but we've dynamically inserted the `name` variable inside of it- once for the url and once for the displayed text.
+Here we've brought back our anchor tag, but we've dynamically inserted the `name` variable inside of it; once for the url and once for the displayed text.
 
 ## Benefit: easily change how data is displayed
 
-We'll see more benefits to this arrangement once we start pulling data from databases and external sources, but we can already see one benefit- changing the way the data is displayed is much easier.  Let's put them in a list instead of displayed horizontally.
+We'll see more benefits to this arrangement once we start pulling data from databases and external sources, but we can already see one benefit: changing the way the data is displayed is much easier.  Let's put them in a list instead of displayed horizontally.
 
 ```html
 <ul>
-  <%= for (name <- ["José", "Chris", "Jeffrey"]) do %>
+  <%= for name <- ["José", "Chris", "Jeffrey"] do %>
     <li><a href="/info/<%= name %>"><%= name %></a></li>
   <% end %>
 </ul>
@@ -142,9 +142,9 @@ So let's analyze each part of it.
 
 First, the structure of the helper.  It doesn't have a `do` at the end, so this helper is self-contained rather than having an html block and an `<% end %>`.  We also know, because of the equals sign at the start, that it will display something. `link`, of course, tells us which helper we're using.
 
-The first argument is what will be displayed- in this case, the value in the `name` variable.  The second argument is a Map containing one key-value pair.  The key is `to`, and the value is the URL that we're linking to.  You'll notice that we use Elixir-style string interpolation (`"#{name}"`) rather than Embedded-Elixir-style string interpolation (`<%= name %>`).  That's because this is already inside an Elixir block (the `link` helper).
+The first argument is what will be displayed - in this case, the value in the `name` variable.  The second argument is a Map containing one key-value pair.  The key is `to`, and the value is the URL that we're linking to.  You'll notice that we use Elixir-style string interpolation (`"#{name}"`) rather than Embedded-Elixir-style string interpolation (`<%= name %>`).  That's because this is already inside an Elixir block (the `link` helper).
 
-Two other options are available within the hash: `function` and `form`.
+There are other options available within the hash: `method`, which changes the HTTP method used, and other keys are passed directly to the html (class, data, etc.)
 
 It's worth noting that there is second form of the `link` helper that does have a `do` block (for more complex link text).  There's also other ways to define the url in the `to` option.  We'll cover those when we need them.
 
@@ -158,11 +158,11 @@ We're done covering the building blocks that we can comfortably tackle in an iso
 
 1. Update your app to where we are.  Save and commit to git.
 2. Use the `for` helper to dynamically display the 3 reasons we have listed for creating this app ("Track our resources", "Learn Elixir and Phoenix", and "Inventory Management is its own reward").  Pass them in from the controller as `@reasons`.
-3*. Start with your code from the chapter 11 exercises where you added a position variable.  Then use nested `for` helpers (one `for` helper inside another) to create 3 links for each name ("Chris the commander", "Chris the engineer", "Chris the scientist"), with each linking to the page with the name and position shown.
+3. Start with your code from the chapter 11 exercises where you added a position variable.  Then use nested `for` helpers (one `for` helper inside another) to create 3 links for each name ("Chris the commander", "Chris the engineer", "Chris the scientist"), with each linking to the page with the name and position shown.
 
 ![](../images/12/nested-for-loops.png)
 
-Answer:
+<!-- Answer:
 
 ```elixir
 def info(conn, params) do
@@ -202,4 +202,4 @@ end
     <% end %>
   <% end %>
 </ul>
-```
+``` -->
