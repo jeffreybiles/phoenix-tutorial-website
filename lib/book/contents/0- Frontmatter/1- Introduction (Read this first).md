@@ -12,7 +12,7 @@ We'll be taking a **hands-on approach** to learning, which means you'll be pract
 
 Throughout this book we're going to be building the Star Tracker app, which boldly goes where no resource exchange app has gone before.
 
-![Insert picture of finished app here]()
+![Insert picture of finished app here](){ width=60% }
 
 We'll be creating a way to buy and sell resources (mostly the elements that make up stars, hence the name) on a centralized market.  You click a button, you buy and sell a resource.  We'll use LiveView to automatically show the user when someone else makes a trade - without a page refresh, and without us writing a single line of Javascript.
 

@@ -68,7 +68,7 @@ Let's delete all that, replace it with something simpler and more manageable:
 
 You'll notice that the page shown at `localhost:4000` has changed automatically- this is because Phoenix uses livereload, a cool tool that saves us time and a click each time we change something in development.
 
-![Picture of customized page](../images/08/basic-index.png)
+![Picture of customized page](../images/08/basic-index.png){ width=60% }
 
 Let's break down what's happening here.
 
@@ -80,9 +80,9 @@ Then we have the html itself.  Embedded Elixir is a superset of html- that is, a
 
 > **Previously On: HTML**
 
-> The basic building block of HTML are "elements".  In the example above we see the "div", "h2" (headline 2), and "p" (paragraph) elements.  Each of those elements has an opening tag ("<h2>"), a closing tag ("</h2>"), and some content in between ("Star Tracker").  The opening tag is the element name in between a less-than sign and a greater-than sign.  The closing tag is the same, but with a slash ("/") added right before the element name.
+> The basic building block of HTML are "elements".  In the example above we see the "div", "h2" (headline 2), and "p" (paragraph) elements.  Each of those elements has an opening tag ("&#60;h2>"), a closing tag ("&#60;/h2>"), and some content in between ("Star Tracker").  The opening tag is the element name in between a less-than sign and a greater-than sign.  The closing tag is the same, but with a slash ("/") added right before the element name.
 
-> There are some elements, such as "<br>" (break) that are standalone and do not have content or a closing tag.  These are sometimes written as self-closing ("<br />").  When in doubt, use a closing tag.
+> There are some elements, such as "&#60;br>" (break) that are standalone and do not have content or a closing tag.  These are sometimes written as self-closing ("&#60;br />").  When in doubt, use a closing tag.
 
 > Elements can have "attributes".  The attribute we see in the example above is "class".  Above we can see that the div has been given the class of "phx-hero" and the paragraph element has been given the class of "lead".  These are used by the css (we'll go over that later) to style the code and change how it looks, and sometimes by other parts of the code as well.
 
@@ -173,7 +173,7 @@ To demonstrate that, let's put some marker text before and after the render bloc
 </main>
 ```
 
-![Index page wrapped](../images/08/wrapped-basic-index.png)
+![Index page wrapped](../images/08/wrapped-basic-index.png){ width=60% }
 
 So that's the basic layout of the page.  The only thing left to go over is the `<%= %>` construct.
 
@@ -190,7 +190,7 @@ It's okay if you don't understand all of that right now- in the upcoming chapter
 1. Update your app to what we have (except for the "Before Render" and "After Render" stuff... leave that out)
 2. After the lead paragraph element in the index page, add a new paragraph that says "Now with warp-speed mode... get light-years ahead of the competition".
 
-![](../images/08/exercise-results.png)
+![](../images/08/exercise-results.png){ width=60% }
 
 ## Extra Resources
 

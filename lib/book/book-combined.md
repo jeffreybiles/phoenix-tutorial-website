@@ -25,7 +25,7 @@ We'll be taking a **hands-on approach** to learning, which means you'll be pract
 
 Throughout this book we're going to be building the Star Tracker app, which boldly goes where no resource exchange app has gone before.
 
-![Insert picture of finished app here]()
+![Insert picture of finished app here](){ width=60% }
 
 We'll be creating a way to buy and sell resources (mostly the elements that make up stars, hence the name) on a centralized market.  You click a button, you buy and sell a resource.  We'll use LiveView to automatically show the user when someone else makes a trade - without a page refresh, and without us writing a single line of Javascript.
 
@@ -1619,9 +1619,12 @@ $ mix phx.server
   ......
 ```
 
+![Twitter joke about Rails and Phoenix](./contents/images/01/ruby-to-phoenix-joke.png){ width=60% }
+
+
 In your web browser, visit http://localhost:4000/ (it's the same address as http://0.0.0.0:4000).  There you should see the Phoenix Welcome page.
 
-![](../contents/images/phoenix-welcome.png)
+![](./contents/images/01/phoenix-hello.png){ width=60% }
 
 And that's your first Phoenix app!  Congratulations!
 
@@ -2057,7 +2060,7 @@ Let's delete all that, replace it with something simpler and more manageable:
 
 You'll notice that the page shown at `localhost:4000` has changed automatically- this is because Phoenix uses livereload, a cool tool that saves us time and a click each time we change something in development.
 
-![Picture of customized page](./contents/images/08/basic-index.png)
+![Picture of customized page](./contents/images/08/basic-index.png){ width=60% }
 
 Let's break down what's happening here.
 
@@ -2069,9 +2072,9 @@ Then we have the html itself.  Embedded Elixir is a superset of html- that is, a
 
 > **Previously On: HTML**
 
-> The basic building block of HTML are "elements".  In the example above we see the "div", "h2" (headline 2), and "p" (paragraph) elements.  Each of those elements has an opening tag ("<h2>"), a closing tag ("</h2>"), and some content in between ("Star Tracker").  The opening tag is the element name in between a less-than sign and a greater-than sign.  The closing tag is the same, but with a slash ("/") added right before the element name.
+> The basic building block of HTML are "elements".  In the example above we see the "div", "h2" (headline 2), and "p" (paragraph) elements.  Each of those elements has an opening tag ("&#60;h2>"), a closing tag ("&#60;/h2>"), and some content in between ("Star Tracker").  The opening tag is the element name in between a less-than sign and a greater-than sign.  The closing tag is the same, but with a slash ("/") added right before the element name.
 
-> There are some elements, such as "<br>" (break) that are standalone and do not have content or a closing tag.  These are sometimes written as self-closing ("<br />").  When in doubt, use a closing tag.
+> There are some elements, such as "&#60;br>" (break) that are standalone and do not have content or a closing tag.  These are sometimes written as self-closing ("&#60;br />").  When in doubt, use a closing tag.
 
 > Elements can have "attributes".  The attribute we see in the example above is "class".  Above we can see that the div has been given the class of "phx-hero" and the paragraph element has been given the class of "lead".  These are used by the css (we'll go over that later) to style the code and change how it looks, and sometimes by other parts of the code as well.
 
@@ -2162,7 +2165,7 @@ To demonstrate that, let's put some marker text before and after the render bloc
 </main>
 ```
 
-![Index page wrapped](./contents/images/08/wrapped-basic-index.png)
+![Index page wrapped](./contents/images/08/wrapped-basic-index.png){ width=60% }
 
 So that's the basic layout of the page.  The only thing left to go over is the `<%= %>` construct.
 
@@ -2179,7 +2182,7 @@ It's okay if you don't understand all of that right now- in the upcoming chapter
 1. Update your app to what we have (except for the "Before Render" and "After Render" stuff... leave that out)
 2. After the lead paragraph element in the index page, add a new paragraph that says "Now with warp-speed mode... get light-years ahead of the competition".
 
-![](./contents/images/08/exercise-results.png)
+![](./contents/images/08/exercise-results.png){ width=60% }
 
 ## Extra Resources
 
@@ -2202,11 +2205,11 @@ In this chapter we're going to add our first custom Route -- an Info page -- giv
 
 Here's what it will look like at the end of this chapter:
 
-![](./contents/images/09/end-result.png)
+![](./contents/images/09/end-result.png){ width=60% }
 
 But this is what it would look like right now if you tried to visit `localhost:4000/info`:
 
-![](./contents/images/09/no-route-found.png)
+![](./contents/images/09/no-route-found.png){ width=60% }
 
 The error message is "no route found for GET /info (StarTrackerWeb.Router)".
 
@@ -2252,7 +2255,7 @@ First, notice the module name: `StarTrackerWeb.Router`.  Many many module names 
 
 Both parts of the name are very important, and Phoenix will freak out if you change either one.  Try it!  Change it to `StarTrackerWeb.Diverter` or something and Phoenix will immediately start asking where `StarTrackerWeb.Router` went.
 
-![](./contents/images/09/naming-error.png)
+![](./contents/images/09/naming-error.png){ width=60% }
 
 If you start getting messages like that ("Module StarTrackerWeb.X is not available") the most probably cause is that you misnamed something.
 
@@ -2323,7 +2326,7 @@ end
 
 Now if we try to visit `/info`, we'll get a different error!
 
-![](./contents/images/09/no-controller-function.png)
+![](./contents/images/09/no-controller-function.png){ width=60% }
 
 It says "function StarTrackerWeb.PageController.info/2 is undefined or private".  Time to define it!
 
@@ -2347,7 +2350,7 @@ The `defmodule` is `StarTrackerWeb.PageController`- the naming of which is, once
 
 Even if you also change the name in the `get` function, it will still complain.  Let's change it in both places to `PageTroller` (both in the Controller `defmodule` and in the `get` function for `:index`) and see what happens.
 
-![](./contents/images/09/wrong-controller-name.png)
+![](./contents/images/09/wrong-controller-name.png){ width=60% }
 
 
 The error is "function StarTrackerWeb.PageTrollerView.render/2 is undefined (module StarTracker.PageTrollerView is not available)".  It's looking for a `StarTrackerWeb.PageTrollerView` module that doesn't exist.  If we _really_ wanted to change the name, we'd have to go change two more things: the view and the name of a templates folder.
@@ -2388,7 +2391,7 @@ end
 
 As you can see, the only differences are the name and the location of the template file.  This is enough to give us a new error message when we try to visit `/info` in the browser.
 
-![](./contents/images/09/no-template.png)
+![](./contents/images/09/no-template.png){ width=60% }
 
 The error is "Could not render "info.html" for StarTrackerWeb.PageView, please define a matching clause for render/2 or define a template at "lib/star_tracker_web/templates/page"".  It's pretty clear what we need to do: define a template.
 
@@ -2396,7 +2399,7 @@ The error is "Could not render "info.html" for StarTrackerWeb.PageView, please d
 
 If we simply create a file at `lib/star_tracker_web/templates/page/info.html.eex` we'll see an immediate change: no more error, just a blank page:
 
-![](./contents/images/09/blank-page.png)
+![](./contents/images/09/blank-page.png){ width=60% }
 
 We can do better than that though- we can put words on the page!
 
@@ -2420,7 +2423,7 @@ We can do better than that though- we can put words on the page!
 
 This is all plain html, but it gets the job of filling out our page done.
 
-![](./contents/images/09/end-result.png)
+![](./contents/images/09/end-result.png){ width=60% }
 
 ---
 
@@ -2728,7 +2731,7 @@ The `<%= %>` construct is how we embed Elixir into our HTML.  Anything inside th
 
 Of course, that variable doesn't exist yet, so we'll get the following error:
 
-![](./contents/images/11/no-assign-variable.png)
+![](./contents/images/11/no-assign-variable.png){ width=60% }
 
 The error says "assign @name not available in eex template", so let's make it available!
 
@@ -2745,7 +2748,7 @@ We have a map with one key-value pair- :name and "Phoenix".  This will be enough
 
 > Note: Maps can be used as arguments without the %{} wrapping them.  The line is equivalent to `render(conn, "info.html", %{name: "Phoenix"})`
 
-![](./contents/images/11/assigned-controller-variable.png)
+![](./contents/images/11/assigned-controller-variable.png){ width=60% }
 
 And that's how we pass data from Controller to Template!
 
@@ -2789,7 +2792,7 @@ end
 
 We're now using the `params` argument (and taking away the leading underscore).  The `params` is a Map of all the URL parameters- in this case, just "name".  So you call `params["name"]` to get the information from your URL, and feed it to the `name` key in the Map you feed to `render`.
 
-![](./contents/images/11/hello-parameters.png)
+![](./contents/images/11/hello-parameters.png){ width=60% }
 
 We're now using the Router to pass data from the URL to the Controller, and then on down to the Template.
 
@@ -2797,7 +2800,7 @@ We're now using the Router to pass data from the URL to the Controller, and then
 
 However, there's a problem: if we go back to our plain `/info` route (without a parameter), we'll run into an error.
 
-![](./contents/images/11/need-default-parameter.png)
+![](./contents/images/11/need-default-parameter.png){ width=60% }
 
 That can be solved by having two routes defined in our router:
 
@@ -2813,7 +2816,7 @@ end
 
 So now we can get the `/info` route working both with and without parameters... but it doesn't look quite right.
 
-![](./contents/images/11/extra-space.png)
+![](./contents/images/11/extra-space.png){ width=60% }
 
 The extra space may seem like a small thing, but it will look like a bug to a user.
 
@@ -2828,7 +2831,7 @@ end
 
 Then, on the `/info` route, it will tell display "Hello Stranger", and on the `/info/Jeffrey` route it will display "Hello Jeffrey".
 
-![](./contents/images/11/stranger-default.png)
+![](./contents/images/11/stranger-default.png){ width=60% }
 
 If we don't want to come up with a default name we can take measures to remove the space before the exclamation point.  The simplest in this case is to use an `if` in the template.
 
@@ -2842,7 +2845,7 @@ If we don't want to come up with a default name we can take measures to remove t
 <% end %>
 ```
 
-![](./contents/images/09/end-result.png)
+![](./contents/images/09/end-result.png){ width=60% }
 
 I know I've ragged on `if`s, but Embedded Elixir plays by slightly different Best Practice rules than regular Elixir.  It's still best to limit the amount of if-branching (especially nested ifs), but the strictures are a bit looser.
 
@@ -2854,7 +2857,7 @@ Finally, it's closed out by `<% end %>`.
 
 You may have noticed that the starter `<%= if @name do %>` has an equals sign at the start, while `<% else %>` and `<% end %>` don't.  That's because the equals sign generally signifies that something will be displayed to the user (I guess the `else` doesn't get it because the equals sign in front of `if` already takes care of it- honestly not sure).  Try removing the equals sign and you'll see that the entire header disappears.
 
-![](./contents/images/11/no-equals-in-if.png)
+![](./contents/images/11/no-equals-in-if.png){ width=60% }
 
 ## Conclusion
 
@@ -2865,7 +2868,7 @@ We've now seen how data is passed from the Route URL to the Controller to the Te
 1. Bring your app up to speed with the code we wrote in the chapter.
 2. Make it so the name is always capitalized, no matter how it's written in the URL
 
-![](./contents/images/11/hello-parameters.png)
+![](./contents/images/11/hello-parameters.png){ width=60% }
 
 <!-- Answer:
 
@@ -2877,7 +2880,7 @@ end
 
 3. Add a second parameter to the URL- `:position`.  After the header add a line welcoming them- if their position was "Engineer", it would say "So good to have an Engineer here".
 
-![](./contents/images/11/name-and-position.png)
+![](./contents/images/11/name-and-position.png){ width=60% }
 
 We won't make you cover all 4 possible cases of names and positions being specified or not specified- multiple optional parameters are not a pattern we'll want to use in our Phoenix apps.
 
@@ -2924,7 +2927,7 @@ end
 
  So if they're an Engineer, then it should say "So good to have an engineer here. Love your yellow shirt!"
 
-![](./contents/images/11/shirt-color.png)
+![](./contents/images/11/shirt-color.png){ width=60% }
 
 <!-- Answer:  There are many possible answers, of course, but I like this one because it allows an easy default statement and is easy to parse.  If the data had to be stored elsewhere (a database?) then a Map would be better, with a default of "grey" if nothing found in the map.
 
@@ -2984,7 +2987,7 @@ We can add more of these to link to various versions of this page:
 
 At this point, you have a list of 3 names, clicking any of which takes you to a different version of the info page.
 
-![](./contents/images/12/hello-jose.png)
+![](./contents/images/12/hello-jose.png){ width=40% }
 
 This is pretty good right now, but if we had more names we wanted to include, a dynamic list of names, or a more complex definition for each link, then things would get unwieldy fast.  That's why we're introducing the `for` helper.
 
@@ -3026,7 +3029,7 @@ On the right side of the backwards arrow (`<-`) we have an array: `["José", "Ch
 
 And with that we'll be looping over all 3 names and displaying them dynamically.
 
-![](./contents/images/12/list-no-links.png)
+![](./contents/images/12/list-no-links.png){ width=40% }
 
 You'll notice that there are no longer links.  Let's fix that.
 
@@ -3050,7 +3053,7 @@ We'll see more benefits to this arrangement once we start pulling data from data
 </ul>
 ```
 
-![](./contents/images/12/li-style.png)
+![](./contents/images/12/li-style.png){ width=40% }
 
 We just had to add the `ul` tag around the `for` helper, and then the `li` tag around the anchor tag inside the block.  Without the `for` helper, we would have to add the `li` tag around each anchor tag individually- a bad situation if we had lots of items in the list or we wanted to do something more complex than just adding one tag.
 
@@ -3123,7 +3126,7 @@ We're done covering the building blocks that we can comfortably tackle in an iso
 2. Use the `for` helper to dynamically display the 3 reasons we have listed for creating this app ("Track our resources", "Learn Elixir and Phoenix", and "Inventory Management is its own reward").  Pass them in from the controller as `@reasons`.
 3. Start with your code from the chapter 11 exercises where you added a position variable.  Then use nested `for` helpers (one `for` helper inside another) to create 3 links for each name ("Chris the commander", "Chris the engineer", "Chris the scientist"), with each linking to the page with the name and position shown.
 
-![](./contents/images/12/nested-for-loops.png)
+![](./contents/images/12/nested-for-loops.png){ width=40% }
 
 <!-- Answer:
 

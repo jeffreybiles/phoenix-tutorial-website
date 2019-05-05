@@ -79,31 +79,31 @@ Run `mix phoenix.server` to get everything running again.
 
 Then visit `localhost:4000/materials`.
 
-![](../images/13/empty-table.png)
+![](../images/13/empty-table.png){ width=60% }
 
 We've got the "Listing Materials" header, an empty table with three columns (matching the three fields we put in the generator), and a "New material" button.
 
 Let's click the "New material" button.
 
-![](../images/13/new-material.png)
+![](../images/13/new-material.png){ width=60% }
 
 The route we're at now is `/materials/new`.  Here we've got a form with three fields- once again, corresponding to what we put in the generator.
 
 Let's fill them out- name as "Hydrogen", amount as 2000, and latinum_per_1k (displayed here as "Latinum per 1k") as 1.
 
-![](../images/13/filled-out-form.png)
+![](../images/13/filled-out-form.png){ width=60% }
 
 The name is self-explanatory, the amount is how much of the material we have, and latinum_per_1k is the sale price of the material.
 
 Click the "Submit" button and you'll find yourself back at the `/materials` route.
 
-![](../images/13/table-with-one-item.png)
+![](../images/13/table-with-one-item.png){ width=60% }
 
 Now the table isn't empty- it's filled with the item you just created.
 
 Let's create more.
 
-![](../images/13/filled-out-table.png)
+![](../images/13/filled-out-table.png){ width=60% }
 
 We've added several more materials.  Notice one in particular- gold-pressed latinum.  This isn't a typical element like the others.  We won't use it to create materials, and will instead use it as a unit of exchange.  For the purposes of our app, it's important that 1k_per_latinum is exactly 1000 for gold-pressed latinum.
 
@@ -115,7 +115,7 @@ Now let's check out those buttons to the right.
 
 `show` takes you to a page that shows you that one material
 
-![](../images/13/show-material.png)
+![](../images/13/show-material.png){ width=60% }
 
 The url for the `show` page of Hydrogen is `materials/1`.  If you visit the `show` page of another material you'll get a URL with a different number.  That number is the `id` of the material in the database- a unique identifier and therefore a great way to determine which resource we're talking about (unlike the name, which can change).  
 
@@ -125,7 +125,7 @@ The contents of the `show` page is the displayed data for the resource.  Current
 
 Below that we have two links we can click- `Edit` and `Back`.  `Back` will take us back to our index page, so let's click the more interesting `Edit` link.
 
-![](../images/13/edit-material.png)
+![](../images/13/edit-material.png){ width=60% }
 
 The url here is `materials/1/edit`.  The `1` part is the id, determined the same way as in the `show` page.
 
@@ -133,13 +133,13 @@ You'll notice that the contents of this page are almost exactly like our `new` f
 
 Go ahead and change the update the `amount` to 3000 and click `Submit`.
 
-![](../images/13/updated-material.png)
+![](../images/13/updated-material.png){ width=60% }
 
 It automatically redirects us to the `show` page, with the `amount` changed.
 
 Click the `Back` button to take us back to the `index` page.
 
-![](../images/13/edited-table.png)
+![](../images/13/edited-table.png){ width=60% }
 
 And we'll see our table as before, but with the updated amount of Hydrogen.
 
