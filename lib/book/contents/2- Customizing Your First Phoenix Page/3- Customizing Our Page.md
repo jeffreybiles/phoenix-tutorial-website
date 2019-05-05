@@ -60,7 +60,7 @@ Let's delete all that, replace it with something simpler and more manageable:
 
 <!-- web/templates/page/index.html.eex -->
 ```html
-<div class="jumbotron">
+<div class="phx-hero">
   <h2>Star Tracker</h2>
   <p class="lead">Track and trade resources related to star formation.</p>
 </div>
@@ -68,7 +68,6 @@ Let's delete all that, replace it with something simpler and more manageable:
 
 You'll notice that the page shown at `localhost:4000` has changed automatically- this is because Phoenix uses livereload, a cool tool that saves us time and a click each time we change something in development.
 
-<!-- TODO: get a new shot of this picture, with new text -->
 ![Picture of customized page](../images/08/basic-index.png)
 
 Let's break down what's happening here.
@@ -85,7 +84,7 @@ Then we have the html itself.  Embedded Elixir is a superset of html- that is, a
 
 > There are some elements, such as "<br>" (break) that are standalone and do not have content or a closing tag.  These are sometimes written as self-closing ("<br />").  When in doubt, use a closing tag.
 
-> Elements can have "attributes".  The attribute we see in the example above is "class".  Above we can see that the div has been given the class of "jumbotron" and the paragraph element has been given the class of "lead".  These are used by the css (we'll go over that later) to style the code and change how it looks, and sometimes by other parts of the code as well.
+> Elements can have "attributes".  The attribute we see in the example above is "class".  Above we can see that the div has been given the class of "phx-hero" and the paragraph element has been given the class of "lead".  These are used by the css (we'll go over that later) to style the code and change how it looks, and sometimes by other parts of the code as well.
 
 > We'll try to briefly touch on everything as we go, but if this information about HTML is new to you and you want to get more familiar before moving on with this book, you can learn more at [TODO: Find a good beginner html resource]()
 
@@ -192,7 +191,7 @@ It's okay if you don't understand all of that right now- in the upcoming chapter
 1. Update your app to what we have (except for the "Before Render" and "After Render" stuff... leave that out)
 2. After the lead paragraph element in the index page, add a new paragraph that says "Now with warp-speed mode... get light-years ahead of the competition".
 
-![](../images/exercise-results.png)
+![](../images/08/exercise-results.png)
 
 ## Extra Resources
 
