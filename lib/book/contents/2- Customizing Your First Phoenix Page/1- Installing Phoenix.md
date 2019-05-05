@@ -137,9 +137,6 @@ $ mix phx.server
   ......
 ```
 
-![Twitter joke about Rails and Phoenix](../images/01/ruby-to-phoenix-joke.png){ width=60% }
-
-
 In your web browser, visit http://localhost:4000/ (it's the same address as http://0.0.0.0:4000).  There you should see the Phoenix Welcome page.
 
 ![](../images/01/phoenix-hello.png){ width=60% }
