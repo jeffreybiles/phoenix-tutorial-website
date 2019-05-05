@@ -137,7 +137,7 @@ If we don't want to come up with a default name we can take measures to remove t
 <% end %>
 ```
 
-![](../images/11/no-space-default.png)
+![](../images/09/end-result.png)
 
 I know I've ragged on `if`s, but Embedded Elixir plays by slightly different Best Practice rules than regular Elixir.  It's still best to limit the amount of if-branching (especially nested ifs), but the strictures are a bit looser.
 
@@ -160,23 +160,23 @@ We've now seen how data is passed from the Route URL to the Controller to the Te
 1. Bring your app up to speed with the code we wrote in the chapter.
 2. Make it so the name is always capitalized, no matter how it's written in the URL
 
-![](../images/11/capitalize-name.png)
+![](../images/11/hello-parameters.png)
 
-Answer:
+<!-- Answer:
 
 ```elixir
 def info(conn, params) do
   render conn, "info.html", name: String.capitalize(params["name"])
 end
-```
+``` -->
 
-3*. Add a second parameter to the URL- `:position`.  After the header add a line welcoming them- if their position was "Engineer", it would say "So good to have an Engineer here".
+3. Add a second parameter to the URL- `:position`.  After the header add a line welcoming them- if their position was "Engineer", it would say "So good to have an Engineer here".
 
 ![](../images/11/name-and-position.png)
 
 We won't make you cover all 4 possible cases of names and positions being specified or not specified- multiple optional parameters are not a pattern we'll want to use in our Phoenix apps.
 
-Answer:
+<!-- Answer:
 
 ```elixir
 scope "/", StarTracker do
@@ -202,10 +202,10 @@ end
   <h1>Hello!</h1>
 <% end %>
 
-<p>So good to have a <%= @position %> here!</p>
-```
+<p>So good to have a <%= @position || "officer" %> here!</p>
+``` -->
 
-4**. Add a shirt color based on their position.  Here's a handy chart:
+4. Add a shirt color based on their position.  Here's a handy chart:
 
 * commander -> red
 * operations -> yellow
@@ -217,11 +217,11 @@ end
 
  > Note: This is only true for the recent fleet operations- red/yellow used to be switched.  The security personnel, operations, and engineering all wore red shirts, mostly to hide the security personnel's blood.  Once our interactions with alien planets became more one-sided, the majority of security personnel were eliminated (by not hiring them!  As opposed to how they used to be eliminated), and command took on the symbolic risk of the red uniform.
 
- So if they're an Engineer, then it should say "So good to have an engineer here- love your yellow shirt!"
+ So if they're an Engineer, then it should say "So good to have an engineer here. Love your yellow shirt!"
 
 ![](../images/11/shirt-color.png)
 
-Answer:  There are many possible answers, of course, but I like this one because it allows an easy default statement and is easy to parse.  If the data had to be stored elsewhere (a database?) then a Map would be better, with a default of "grey" if nothing found in the map.
+<!-- Answer:  There are many possible answers, of course, but I like this one because it allows an easy default statement and is easy to parse.  If the data had to be stored elsewhere (a database?) then a Map would be better, with a default of "grey" if nothing found in the map.
 
 ```elixir
 def info(conn, params) do
@@ -250,5 +250,5 @@ end
   <h1>Hello!</h1>
 <% end %>
 
-<p>So good to have a <%= @position %> here- love your <%= @shirt_color %> shirt!</p>
-```
+<p>So good to have a <%= @position %> here. Love your <%= @shirt_color %> shirt!</p>
+``` -->
