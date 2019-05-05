@@ -25,7 +25,9 @@ We'll be taking a **hands-on approach** to learning, which means you'll be pract
 
 Throughout this book we're going to be building the Star Tracker app, which boldly goes where no resource exchange app has gone before.
 
-![Insert picture of finished app here](){ width=60% }
+> Note: this is an early version of the app.  There will be some stylistic and usability improvements made before we get to that part of the tutorial.
+
+![Insert picture of finished app here](./contents/images/01/example-app-complete.png){ width=100% }
 
 We'll be creating a way to buy and sell resources (mostly the elements that make up stars, hence the name) on a centralized market.  You click a button, you buy and sell a resource.  We'll use LiveView to automatically show the user when someone else makes a trade - without a page refresh, and without us writing a single line of Javascript.
 
@@ -118,7 +120,13 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 # Changelog
 
 
-* Fixed typos/grammar
+
+
+### 0.2.0
+
+* **New Section Added: Customizing Your First Phoenix Page**
+* Added preview of app in introduction
+* Fixed typos/grammar in previous sections
 
 ### 0.1.4
 
@@ -1618,9 +1626,6 @@ $ mix phx.server
   Built at: 2019-5-2 09:05:06
   ......
 ```
-
-![Twitter joke about Rails and Phoenix](./contents/images/01/ruby-to-phoenix-joke.png){ width=60% }
-
 
 In your web browser, visit http://localhost:4000/ (it's the same address as http://0.0.0.0:4000).  There you should see the Phoenix Welcome page.
 

@@ -1,7 +1,13 @@
 # Changelog
 
 
-* Fixed typos/grammar
+
+
+### 0.2.0
+
+* **New Section Added: Customizing Your First Phoenix Page**
+* Added preview of app in introduction
+* Fixed typos/grammar in previous sections
 
 ### 0.1.4
 
