@@ -32,11 +32,13 @@ We'll do so in the Controller, by adding a Map to the end of our `render` functi
 <!-- web/controllers/page_controller.ex -->
 ```elixir
 def info(conn, _params) do
-  render conn, "info.html", name: "Phoenix"
+  render(conn, "info.html", name: "Phoenix")
 end
 ```
 
 We have a map with one key-value pair- :name and "Phoenix".  This will be enough to let our page display.
+
+> Note: Maps can be used as arguments without the %{} wrapping them.  The line is equivalent to `render(conn, "info.html", %{name: "Phoenix"})`
 
 ![](../images/11/assigned-controller-variable.png)
 
@@ -44,7 +46,7 @@ And that's how we pass data from Controller to Template!
 
 ## Router to Controller
 
-The Router takes the URL and uses that to choose a Controller and a Controller action.  However, you can also make it capture more information and then pass it along to the Controller action.
+The Router takes the URL and uses that to choose a Controller and a Controller action.  However, you can also make it capture more information from the URL and then pass it along to the Controller action.
 
 Our current Router looks like this (for brevity's sake, we're only showing the relevant scope):
 
@@ -88,7 +90,7 @@ We're now using the Router to pass data from the URL to the Controller, and then
 
 ## Default Parameters
 
-However, there's a problem- if we go back to our plain `/info` route (without a parameter), we'll run into an error.
+However, there's a problem: if we go back to our plain `/info` route (without a parameter), we'll run into an error.
 
 ![](../images/11/need-default-parameter.png)
 
