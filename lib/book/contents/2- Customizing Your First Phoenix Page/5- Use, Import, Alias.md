@@ -1,6 +1,8 @@
 # Bringing In the Code
 
-One of the most important tasks in any programming environment is bringing in code from elsewhere- it lets you reuse functionality and keep everything clean.  Elixir and Phoenix have a series of elegant tools available to do that.
+> WARNING: This is one of the hardest and weirdest chapters.  It's also the most optional, and I considered not even including it.  The core (easy) parts of it will be repeated when we need them, so if things start dragging, feel free to skip to the next chapter.
+
+One of the most important tasks in any programming environment is bringing in code from elsewhere; it lets you reuse functionality and keep everything clean.  Elixir and Phoenix have a series of elegant tools available to do that.
 
 In this chapter we're going to focus on the `use`, `import`, and `alias` keywords and what they specifically bring to our Router and Controller files.  There are, of course, functions beyond this (config files, mix, etc.) that we'll cover later.
 
@@ -95,7 +97,7 @@ Why the added layer of indirection?  Having this indirection allows us to put in
 
 <!-- paused editing here.  TODO: Keep going -->
 
-So now that we see that this use of `use StarTracker.Web, :router` gives us the same effect as `use Phoenix.Router`, let's see what that command brings us.
+So now that we see that this use of `use StarTrackerWeb, :router` gives us the same effect as `use Phoenix.Router`, `import Plug.Conn`, and `import Phoenix.Controller`. Let's see what that first command brings us.
 
 ## use Phoenix.Router
 
@@ -113,58 +115,74 @@ Here's a simplified version of that file:
 
 ```elixir
 defmodule Phoenix.Router do
-  @http_functions [:get, :post, :put, :patch, :delete, :options, :connect, :trace, :head]
-  for verb <- @http_functions do #...
+  @http_methods [:get, :post, :put, :patch, :delete, :options, :connect, :trace, :head]
 
-  defmacro __using__(_) do #...
-  defmacro match(verb, path, plug, plug_opts, options \\ []) do #...
-  defmacro pipeline(plug, do: block) do #...
-  defmacro plug(plug, opts \\ []) do #...
-  defmacro pipe_through(pipes) do #...
+  def __using__(_) do
+    defmacro __before_compile__(env) do #
+    defmacro match(verb, path, plug, plug_opts, options \\ []) do #
 
-  defmacro resources(path, controller, opts, do: nested_context) do #...
-  defmacro resources(path, controller, do: nested_context) do #...
-  defmacro resources(path, controller, opts) do #...
-  defmacro resources(path, controller) do #...
+    for verb <- @http_methods do
+      defmacro unquote(verb)(path, plug, plug_opts, options \\ []) do #
+        add_route(:match, unquote(verb), path, plug, plug_opts, options)
+      end
+    end
 
-  defmacro scope(options, do: context) do #...
-  defmacro scope(path, options, do: context) do #...
-  defmacro scope(path, alias, options, do: context) do #...
+    defmacro pipeline(plug, do: block) do #
+    defmacro plug(plug, opts \\ []) do #
+    defmacro pipe_through(pipes) do #
+    defmacro resources(path, controller, opts, do: nested_context) do #
+    defmacro resources(path, controller, do: nested_context) do #
+    defmacro resources(path, controller, opts) do #
+    defmacro resources(path, controller) do #
+    defmacro scope(options, do: context) do #
+    defmacro scope(path, options, do: context) do#
+    defmacro scope(path, alias, options, do: context) do #
 
-  defmacro forward(path, plug, plug_opts \\ [], router_opts \\ []) do #...
+    defmacro forward(path, plug, plug_opts \\ [], router_opts \\ []) do #
+  end
 end
 ```
 
 You can see that we're defining all of the macros which we used earlier, including several versions of `scope` (remember: pattern matching based on number of arguments), as well as a couple more we haven't seen yet.
 
-That's enough of a dive into the source code- we won't go into detail on how each of them is defined- although you're welcome to do so if it strikes your fancy.
+That's enough of a dive into the source code- we won't go into detail on how each of them is defined... although you're welcome to explore as much as you like on your own.
+
+## import
+
+When we used `use StarTrackerWeb, :router`, it also automatically gave us two import statements: `import Plug.Conn`, and `import Phoenix.Controller`.
+
+Like `use`, `import` drops function definitions directly into the current module's namespace.
+
+What sets them apart: `use` calls the `__using__` callback in order to inject code into the current module, and `import` doesn't.  `import` can also have the `only` option, which takes a list of function names (and their arities) and then only puts those specific functions into the current module's namespace.
+
+We'll be using `import` often in our own code, and we'll recap it the first time that happens.
 
 ## use StarTracker.Web, :controller
 
-In our controller we call `use StarTracker.Web, :controller`.  Like in the Router, this takes us to our `web/web.ex` file.
+In our controller we call `use StarTrackerWeb, :controller`.  Like in the Router, this takes us to our `star_tracker_web.ex` file.
 
 ```elixir
-defmodule StarTracker.Web do
+defmodule StarTrackerWeb do
   # ...
   def controller do
     quote do
-      use Phoenix.Controller
+      use Phoenix.Controller, namespace: StarTrackerWeb
 
-      alias StarTracker.Repo
-      import Ecto
-      import Ecto.Query
-
-      import StarTracker.Router.Helpers
-      import StarTracker.Gettext
+      import Plug.Conn
+      import StarTrackerWeb.Gettext
+      alias StarTrackerWeb.Router.Helpers, as: Routes
     end
   end
   # ...
   def router do
     quote do
       use Phoenix.Router
+      import Plug.Conn
+      import Phoenix.Controller
     end
   end
   # ...
+
   @doc """
   When used, dispatch to the appropriate controller/view/etc.
   """
@@ -174,11 +192,11 @@ defmodule StarTracker.Web do
 end
 ```
 
-We see that `controller` is a bit more complex than `router`. Within the `quote` block, instead of just dropping in one line, it drops in 7.  We'll start with the familiar one: `use Phoenix.Controller`.
+We're `use`-ing and `import`-ing some different files, and we're also using `alias`.  Let's tackle the now-familiar `use` first.
 
 ## use Phoenix.Controller
 
-Here's a highly-compacted version of `Phoenix.Controller`, with 90% of the function names and 100% of the actual code redacted for simplicity's sake (the actual file is 1073 lines long, as of this writing).
+Here's a highly-compacted version of `Phoenix.Controller`, with 90% of the function names and 100% of the actual code redacted for simplicity's sake (the actual file is 1475 lines long, as of this writing).
 
 ```elixir
 defmodule Phoenix.Controller do
@@ -208,26 +226,18 @@ There are lots more definitions in this file, including `html` and `redirect`, b
 
 ## alias
 
-The next line is the `controller` function is `alias StarTracker.Repo`.  We haven't used this yet, but the explanation is easy *if you don't worry about what `StarTracker.Repo` actually does*.
+The final line for `controller` is `alias StarTrackerWeb.Router.Helpers, as: Routes`.  We haven't used this yet, but the explanation is easy *if you don't worry about what `StarTrackerWeb.Router.Helpers` actually does*.
 
-Simply put: you can access a set of functions from the `StarTracker.Repo` module, such as `StarTracker.Repo.get`.  With the alias given above, you can leave off the `StarTracker` part, leaving only `Repo.get`.  This makes things more convenient.
+Let's start with a slightly simpler case.  If we had `alias StarTrackerWeb.Router.Helpers`, then whenever we want to access any function in that module, we could leave off the `StarTrackerWeb.Router` part, and just reference `Helpers.function_name`.  This makes things more convenient.
 
-You can also give the `as` option to your alias.  `alias StarTracker.Repo, as: Repository` would allow you to call `Repository.get`.  The default usage is equivalent to putting the last part of the aliased module in the `as` option (`alias StarTracker.Repo, as: Repo`).
+Then we add the `as` option to the alias.  `alias StarTrackerWeb.Router.Helpers, as: Routes` allows us to call `Routes.function_name`.  The default usage is equivalent to putting the last part of the aliased module in the `as` option (`alias StarTrackerWeb.Router.Helpers, as: Helpers`).
 
 We'll be using `alias` often in our own code, and we'll recap it the first time that happens.
-
-## import
-
-The rest of the lines are `import` calls.  Like `use`, `import` drops the function definitions directly into the current module's namespace.
-
-What sets them apart: `use` calls the `__using__` callback in order to inject code into the current module, and `import` doesn't.  `import` can also have the `only` option, which takes a list of function names (and their arities) and then only puts those specific functions into the current module's namespace.
-
-We'll be using `import` often in our own code, and we'll recap it the first time that happens.
 
 ## Conclusion
 
 So that's how we get all the macros like `render`, `get`, and `scope`.
 
-I hope this demystified some of the Elixir Magic for you.  If not, keep reading- although an understanding of the concepts in this chapter is helpful, it's by no means required, and you can make a great app while still thinking of `use` as just a mysterious line that makes your Router and Controller work.
+I hope this demystified some of the Elixir Magic for you.  If not, keep reading; although an understanding of the concepts in this chapter is helpful, it's by no means required, and you can make a great app while still thinking of `use` as just a mysterious line that makes your Router and Controller work.
 
 In the next chapter we're going to further connect the Router, Controller, and Template, and see how they pass data back and forth.
