@@ -52,7 +52,7 @@ This will create a bare-bones app
 * creating star_tracker/assets/static/favicon.ico
 ```
 
-You can start looking around your file structure.  We'll take our first quick tour in chapter 3 of this section, and start giving detailed explanations of what everything does starting in chapter 6.
+You can start looking around your file structure.  We'll take our first quick tour in chapter 2.3, and start giving detailed explanations of what everything does starting in chapters 2.4 and 2.5.
 
 You'll be prompted to fetch and install "dependencies".  Say Yes with Y (or hitting enter to choose Y as default).
 

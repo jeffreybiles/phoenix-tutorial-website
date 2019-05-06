@@ -158,7 +158,7 @@ We're done covering the building blocks that we can comfortably tackle in an iso
 
 1. Update your app to where we are.  Save and commit to git.
 2. Use the `for` helper to dynamically display the 3 reasons we have listed for creating this app ("Track our resources", "Learn Elixir and Phoenix", and "Inventory Management is its own reward").  Pass them in from the controller as `@reasons`.
-3. Start with your code from the chapter 11 exercises where you added a position variable.  Then use nested `for` helpers (one `for` helper inside another) to create 3 links for each name ("Chris the commander", "Chris the engineer", "Chris the scientist"), with each linking to the page with the name and position shown.
+3. Start with your code from the chapter 2.5 exercises where you added a position variable.  Then use nested `for` helpers (one `for` helper inside another) to create 3 links for each name ("Chris the commander", "Chris the engineer", "Chris the scientist"), with each linking to the page with the name and position shown.
 
 ![](../images/12/nested-for-loops.png){ width=40% }
 

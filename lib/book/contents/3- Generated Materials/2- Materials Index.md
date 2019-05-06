@@ -70,7 +70,7 @@ Now we can get to the `index` action itself.
 
 At the bottom we have our familiar `render` function, which takes the connection (`conn`), the name of the template (`"index.html"`), and an optional Map (`materials: materials`).  That part all works like before.  The new part is how we get our data.  
 
-Instead of hard-coding a list like we did in Chapter 12, we're bringing in data from the database using `Repo.all(Material)`.  We'll get into the database and the various ways you can interact with it later, but for this particular case the naming is really descriptive- we're going to the Repo (database) and getting all of the Materials.
+Instead of hard-coding a list like we did in Chapter 2.6, we're bringing in data from the database using `Repo.all(Material)`.  We'll get into the database and the various ways you can interact with it later, but for this particular case the naming is really descriptive- we're going to the Repo (database) and getting all of the Materials.
 
 ## The Material Model
 
@@ -200,7 +200,7 @@ So for every material we create a table row (`tr`), and within the table row we 
 </td>
 ```
 
-These use the same link helper we went over in chapter 12, but here they use more options and are considerably more complex.
+These use the same link helper we went over in chapter 2.6, but here they use more options and are considerably more complex.
 
 ## The Expanded link Helper
 
@@ -294,5 +294,5 @@ In the next chapter we're going to do the same for the `show` route.  It should 
 
 1. Add a column to the table- `updatedAt`.  Make sure to add it to the header as well.
 2. Add `createdAt` column to the table.
-3. Convert `material_path(@conn, :edit, material)` to the raw string form we used in chapter 12.  This is not because the raw string is better (x_path pattern is preferred), but so you can get practice figuring out what the x_path helper translates to.
+3. Convert `material_path(@conn, :edit, material)` to the raw string form we used in chapter 2.6.  This is not because the raw string is better (x_path pattern is preferred), but so you can get practice figuring out what the x_path helper translates to.
 4. Take the `to` field from the links on the info page and use `page_path` to define them.

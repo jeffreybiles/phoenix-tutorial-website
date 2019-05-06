@@ -29,11 +29,16 @@ defmodule Book do
           %{ord: 2, title: "Beam Me Up (Version Control and Deployment)"},
           %{ord: 3, title: "Customizing Our Page"},
           %{ord: 4, title: "A New Page"},
-          %{ord: 5, title: "Use, Import, Alias"},
-          %{ord: 6, title: "Passing Data"},
-          %{ord: 7, title: "Links and Loops"}
+          %{ord: 5, title: "Passing Data"},
+          %{ord: 6, title: "Links and Loops"}
         ]
-    }]
+      }, %{
+        ord: 99,
+        title: "Appendices",
+        chapters: [
+          %{ord: 1, title: "Use, Import, Alias"},
+        ]
+      }]
   end
 
   defp filepath(chapter_title) do

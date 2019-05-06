@@ -72,7 +72,7 @@ The next line is `use StarTrackerWeb, :router`.  We'll go into detail in the nex
 
 > While we won't be defining our own Macros in this book, we'll be taking advantage of lots of them that are built into Phoenix- the items from `StarTracker.Web, :router` are just the first.
 
-> If you're an advanced coder, I'd encourage you to research Macros for yourself.  A good resource for this is [Metaprogramming Elixir](https://pragprog.com/book/cmelixir/metaprogramming-elixir) by Chris McCord (the creator of the Phoenix framework).  It's a short but advanced book- if you had any trouble with chapters 2-4, I recommend waiting until the end of this book, and possibly reading [a more detailed Intro to Elixir book](https://pragprog.com/book/elixir16/programming-elixir-1-6) first.
+> If you're an advanced coder, I'd encourage you to research Macros for yourself.  A good resource for this is [Metaprogramming Elixir](https://pragprog.com/book/cmelixir/metaprogramming-elixir) by Chris McCord (the creator of the Phoenix framework).  It's a short but advanced book- if you had any trouble with chapters 2.2-2.4, I recommend waiting until the end of this book, and possibly reading [a more detailed Intro to Elixir book](https://pragprog.com/book/elixir16/programming-elixir-1-6) first.
 
 ---
 
@@ -236,7 +236,7 @@ This is all plain html, but it gets the job of filling out our page done.
 
 > "em" stands for "emphasis".  It does the same thing as "bold".
 
-> "a" stands for "anchor".  It's a link. We won't often use the bare "a" tag in Phoenix -- we'll prefer the `link` helper we'll introduce in chapter 7 of this section -- but this html is good enough to get our page working.
+> "a" stands for "anchor".  It's a link. We won't often use the bare "a" tag in Phoenix -- we'll prefer the `link` helper we'll introduce in chapter 2.6 -- but this html is good enough to get our page working.
 
 ---
 
@@ -255,4 +255,6 @@ You'll know you've succeeded once you've made the changes and the page at `/info
 
 In this chapter we've create a new page at the url `/info`.  To do this we had to create a new Route in the Router, a new function in the Controller, and a new template.  Although we'll expand on it later, Route -> Controller -> Template is the basic path that all requests take when being served by Phoenix.
 
-In Chapter 6 of this section we'll explore further the connections between the Router, the Controller, and the Template, but first in Chapter 5 we're going to go back and look at the `use` construct and see where all of those handy macros come from.
+In the next chapter, we'll explore further the connections between the Router, the Controller, and the Template.
+
+> Curious where all of those handy macros come from, like `get` or `pipeline`?  Check out [the appendix section where we explain `use`, `import`, and `alias`](read/Appendices/Use,-Import,-Alias).
