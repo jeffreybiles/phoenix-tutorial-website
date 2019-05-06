@@ -226,10 +226,10 @@ material_path(@conn, :show, material)
 
 I call this the `x_path` helper to signify that it's not just materials that it works with.  If we had an `Officer` resource, then we would have an `officer_path` helper available.
 
-To see the helpers available, and which routes they work with, run `mix phoenix.routes` in your command line.
+To see the helpers available, and which routes they work with, run `mix phx.routes` in your command line.
 
 ```bash
-$ mix phoenix.routes
+$ mix phx.routes
 Compiling 8 files (.ex)
 material_path  GET     /materials           StarTracker.MaterialController :index
 material_path  GET     /materials/:id/edit  StarTracker.MaterialController :edit

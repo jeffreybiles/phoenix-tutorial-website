@@ -2,7 +2,6 @@
 
 
 
-
 ### 0.2.0
 
 * **New Section Added: Customizing Your First Phoenix Page**

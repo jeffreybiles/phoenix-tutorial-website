@@ -241,6 +241,34 @@ def shirt_color(position) do
     _ -> "grey"
   end
 end
+
+option 2
+def shirt_color_map do
+  %{
+    "commander" => "red"
+    "engineer" => "yellow"
+    "operations" => "yellow"
+    "security" => "yellow"
+    "scientist" => "blue"
+    "doctor" => "blue"
+  }
+end
+
+def shirt_color(position) do
+  shirt_color_map()[position] || "grey"
+end
+
+option 3
+check that this works before tweeting it
+def shirt_color(position) do
+  if(position == "commander"), do: "red"
+  if(position == "engineer"), do: "yellow"
+  if(position == "operations"), do: "yellow"
+  if(position == "security"), do: "yellow"
+  if(position == "scientist"), do: "blue"
+  if(position == "doctor"), do: "blue"
+  "grey"
+end
 ```
 
 ```html
