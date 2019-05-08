@@ -102,7 +102,7 @@ That will then be used by the following line in `app.html.eex`:
 
 And will show up like this:
 
-![](../images/3.6/deleted-material-flash.png){ width=60% }
+![](../images/3.4/deleted-material-flash.png){ width=60% }
 
 When you visit any other page (or reload the current page) the flash message will go away.
 
@@ -142,3 +142,7 @@ We'll use much of that knowledge in the next chapter, where we'll walk through t
 
 1. What happens if you try to redirect to the show page of the material you just deleted?  You're feeding in a `%Material` directly, so why does it error?
 2. Add two more flash messages: a second `:info` and an `:error`.  What happens?  Why do you think that is?
+3. In the confirmation message before deleting a material, include the name of the element.
+
+
+![](../images/3.4/specific-confirmation.png){ width=60% }
