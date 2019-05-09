@@ -334,5 +334,4 @@ But first, let's solidify what you've learned with some exercises.
   c. Make it so that there are always 1000 of any material that's created.
   d. Challenge: allow the `amount` field to be filled out, but have 1000 as a default if it's not.
   <!-- TODO: check and make sure that this is possible with what we've told people so far -->
-
-To be honest, the knowledge we've gained isn't super flexible, simply because we had to cover so much.  Therefore, there aren't a lot of exercises that can be done right now.  In the next two chapters we'll review these concepts and see them in new ways, increasing our understanding and expanding how we can use them.
+2. Replace the generic error message (the part sectioned off by `if @changeset.action`) with a flash error message in the error case of `create`.  After doing that, think about why Phoenix chose to do it the way they did, rather than use a flash message.
