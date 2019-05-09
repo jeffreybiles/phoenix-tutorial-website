@@ -108,3 +108,8 @@ As you can see, we're working with the pre-existing material, instead of a blank
 As promised, this was much shorter than the previous chapter.  Instead of learning all new concepts, we only had to repurpose what we'd already learned.
 
 The biggest difference is that we were working with an already-existing material, so from the start our Changeset had valid data.
+
+## Exercises
+
+1.
+<!-- TODO: Come up with exercises -->
