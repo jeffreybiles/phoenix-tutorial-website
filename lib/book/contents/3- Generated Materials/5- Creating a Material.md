@@ -12,6 +12,7 @@ We'll go over creation in this chapter, which will be fairly long.  In the next 
 When creating a resource, we'll be going through two stages: first, we'll be visiting the `new` page, and then, after filling out the information, we'll be hitting the `create` function in order to add the new `Material` to the database.
 
 Both of these are separate routes, which are defined by the `resources "/materials", MaterialController` we put in our routes file.
+
 If defined separately, they would look like this:
 
 ```elixir
@@ -327,4 +328,11 @@ But first, let's solidify what you've learned with some exercises.
 
 ## Exercises
 
-1.
+1. Changesets:
+  a. Change the Changeset so that the `amount` field isn't required, and will not error even if no amount is given.
+  b. Now change it so `amount` isn't allowed in the changeset, and will error if any number is given.
+  c. Make it so that there are always 1000 of any material that's created.
+  d. Challenge: allow the `amount` field to be filled out, but have 1000 as a default if it's not.
+  <!-- TODO: check and make sure that this is possible with what we've told people so far -->
+
+To be honest, the knowledge we've gained isn't super flexible, simply because we had to cover so much.  Therefore, there aren't a lot of exercises that can be done right now.  In the next two chapters we'll review these concepts and see them in new ways, increasing our understanding and expanding how we can use them.
