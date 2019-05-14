@@ -146,11 +146,47 @@ end
 
 We've added the line `field :price, :integer` to the schema, which will now allow that in all `%Material{}` Schemas.
 
-We've also added `:price` to both the `cast` and `validate_required` portions of the `changeset` pipeline.
+We've also added `:price` to both the `cast` and `validate_required` portions of the `changeset` pipeline.  This means that when the user fills out the price on the form it will get turned into data in the database, and that if they don't fill anything out for the price then there will be an error.
+
+And, of course, that error will happen automatically if we don't add the price field to the form, so let's go do that.
 
 ## Adding the price field to the form
 
+We're going to copy the code for `:amount` and just change it to `:price`.  We'll also customize the label a bit by using the optional third argument, but that's about it.
+
+```html
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= label f, :amount %>
+  <%= number_input f, :amount %>
+  <%= error_tag f, :amount %>
+
+  <%= label f, :price, "Price Per Unit" %>
+  <%= number_input f, :price %>
+  <%= error_tag f, :price %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>
+```
+
+Now we've got it displaying the price.
+
+![](../images/3.7/updated-form.png)
+
 ## Price on the show page
+
+
 
 ## Price on the Index page
 
