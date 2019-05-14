@@ -14,7 +14,7 @@ Throughout this book we're going to be building the Star Tracker app, which bold
 
 > Note: this is an early version of the app.  There will be some stylistic and usability improvements made before we get to that part of the tutorial.
 
-![Insert picture of finished app here](../images/01/example-app-complete.png){ width=100% }
+![Insert picture of finished app here](../images/0.1/example-app-complete.png){ width=100% }
 
 We'll be creating a way to buy and sell resources (mostly the elements that make up stars, hence the name) on a centralized market.  You click a button, you buy and sell a resource.  We'll use LiveView to automatically show the user when someone else makes a trade - without a page refresh, and without us writing a single line of Javascript.
 
@@ -42,7 +42,7 @@ While I don't expect you to have familiarity with Elixir or web programming, I d
 
 The current king of the backend Web Framework world is Ruby on Rails--it's what is taught at hundreds of Coder Bootcamps and used at thousands of startups (as well as some large companies).  However, many of the leading lights of the Ruby and Rails worlds have moved on, and a significant number of them have moved to Elixir and Phoenix.  Why is that?
 
-![Twitter joke about Rails and Phoenix](../images/01/ruby-to-phoenix-joke.png){ width=60% }
+![Twitter joke about Rails and Phoenix](../images/0.1/ruby-to-phoenix-joke.png){ width=60% }
 
 The answer is that Elixir combines the power, speed, and reliability of the Erlang VM with the beauty and expressiveness of Ruby syntax.  In one stroke it fixes the biggest complaint about each language- speed for Ruby and syntax for Erlang.
 

@@ -4,11 +4,11 @@ In this chapter we're going to add our first custom Route -- an Info page -- giv
 
 Here's what it will look like at the end of this chapter:
 
-![](../images/09/end-result.png){ width=60% }
+![](../images/2.4/end-result.png){ width=60% }
 
 But this is what it would look like right now if you tried to visit `localhost:4000/info`:
 
-![](../images/09/no-route-found.png){ width=60% }
+![](../images/2.4/no-route-found.png){ width=60% }
 
 The error message is "no route found for GET /info (StarTrackerWeb.Router)".
 
@@ -54,7 +54,7 @@ First, notice the module name: `StarTrackerWeb.Router`.  Many many module names 
 
 Both parts of the name are very important, and Phoenix will freak out if you change either one.  Try it!  Change it to `StarTrackerWeb.Diverter` or something and Phoenix will immediately start asking where `StarTrackerWeb.Router` went.
 
-![](../images/09/naming-error.png){ width=60% }
+![](../images/2.4/naming-error.png){ width=60% }
 
 If you start getting messages like that ("Module StarTrackerWeb.X is not available") the most probably cause is that you misnamed something.
 
@@ -125,7 +125,7 @@ end
 
 Now if we try to visit `/info`, we'll get a different error!
 
-![](../images/09/no-controller-function.png){ width=60% }
+![](../images/2.4/no-controller-function.png){ width=60% }
 
 It says "function StarTrackerWeb.PageController.info/2 is undefined or private".  Time to define it!
 
@@ -149,7 +149,7 @@ The `defmodule` is `StarTrackerWeb.PageController`- the naming of which is, once
 
 Even if you also change the name in the `get` function, it will still complain.  Let's change it in both places to `PageTroller` (both in the Controller `defmodule` and in the `get` function for `:index`) and see what happens.
 
-![](../images/09/wrong-controller-name.png){ width=60% }
+![](../images/2.4/wrong-controller-name.png){ width=60% }
 
 
 The error is "function StarTrackerWeb.PageTrollerView.render/2 is undefined (module StarTracker.PageTrollerView is not available)".  It's looking for a `StarTrackerWeb.PageTrollerView` module that doesn't exist.  If we _really_ wanted to change the name, we'd have to go change two more things: the view and the name of a templates folder.
@@ -190,7 +190,7 @@ end
 
 As you can see, the only differences are the name and the location of the template file.  This is enough to give us a new error message when we try to visit `/info` in the browser.
 
-![](../images/09/no-template.png){ width=60% }
+![](../images/2.4/no-template.png){ width=60% }
 
 The error is "Could not render "info.html" for StarTrackerWeb.PageView, please define a matching clause for render/2 or define a template at "lib/star_tracker_web/templates/page"".  It's pretty clear what we need to do: define a template.
 
@@ -198,7 +198,7 @@ The error is "Could not render "info.html" for StarTrackerWeb.PageView, please d
 
 If we simply create a file at `lib/star_tracker_web/templates/page/info.html.eex` we'll see an immediate change: no more error, just a blank page:
 
-![](../images/09/blank-page.png){ width=60% }
+![](../images/2.4/blank-page.png){ width=60% }
 
 We can do better than that though- we can put words on the page!
 
@@ -222,7 +222,7 @@ We can do better than that though- we can put words on the page!
 
 This is all plain html, but it gets the job of filling out our page done.
 
-![](../images/09/end-result.png){ width=60% }
+![](../images/2.4/end-result.png){ width=60% }
 
 ---
 
