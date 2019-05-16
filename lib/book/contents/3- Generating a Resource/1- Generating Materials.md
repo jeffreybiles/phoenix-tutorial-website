@@ -134,7 +134,7 @@ Now that we've got our table filled out, let's check out those buttons to the ri
 
 `show` takes you back `/materials/1`, which is sometimes colloquially called the "show page", because it shows us one item.
 
-![](../images/3.1/show-material.png){ width=60% }
+![](../images/3.1/show-material.png){ width=40% }
 
 If you visit the `show` page of another material you'll get a URL with a different number.  That number is the `id` of the material in the database- a unique identifier and therefore a great way to determine which resource we're talking about (unlike the name, which can change).
 

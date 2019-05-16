@@ -11,6 +11,7 @@ defmodule TutorialSiteWeb.PageController do
 
   def read_chapter(conn, %{"section" => section, "chapter" => chapter}) do
     readable_chapter = "#{chapter} (#{section}, The Phoenix Tutorial)" |> String.split("-") |> Enum.join(" ")
+    
     render conn, "read_chapter.html", section: section, chapter: chapter,
                   book: Book.contents, page_title: readable_chapter
   end

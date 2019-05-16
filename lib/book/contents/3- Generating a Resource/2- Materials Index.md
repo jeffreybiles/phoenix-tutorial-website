@@ -99,6 +99,7 @@ defmodule StarTracker.Trade do
   def update_material(%Material{} = material, attrs) #...
   def delete_material(%Material{} = material) #...
   def change_material(%Material{} = material) #...
+end
 ```
 
 This is where we store our interactions with the database, and while exploring the generated code we'll go over each of the six generated functions in this file.
@@ -107,15 +108,15 @@ For now, we'll just look at the `list_materials` function.
 
 It's one line: `Repo.all(Material)`.  We'll get into the database and the various ways you can interact with it later, but for this particular case the naming is really descriptive- we're going to the Repo (database) and getting all of the Materials.
 
- > ** Captain's Log: Why the Trade context?
+> ** Captain's Log: Why the Trade context?
 
- > At first, the Trade context seemed unnecessary.  Many of the items are just one line, and only used once, so why not put that code directly in the controller?
+> At first, the Trade context seemed unnecessary.  Many of the items are just one line, and only used once, so why not put that code directly in the controller?
 
- > However, when my database interactions grew in complexity, I saw the value in having separate functions.
+> However, when my database interactions grew in complexity, I saw the value in having separate functions.
 
- > When I started doing stuff beyond the basic CRUD operations, I saw how the reusability was useful.
+> When I started doing stuff beyond the basic CRUD operations, I saw how the reusability was useful.
 
- > Finally, when my app became bigger and my crew became more involved, I saw how having all the database interactions in one place let me know where to look for code that effected persistence.
+> Finally, when my app became bigger and my crew became more involved, I saw how having all the database interactions in one place let me know where to look for code that effected persistence.
 
 ## The Material Model
 
