@@ -1,18 +1,12 @@
-# Bringing In the Code
-
-> WARNING: This is one of the hardest and weirdest chapters.  It's also the most optional, and I considered not even including it.  The core (easy) parts of it will be repeated when we need them, so if things start dragging, feel free to skip to the next chapter.
+# Appendix: Use, Import, Alias
 
 One of the most important tasks in any programming environment is bringing in code from elsewhere; it lets you reuse functionality and keep everything clean.  Elixir and Phoenix have a series of elegant tools available to do that.
 
-In this chapter we're going to focus on the `use`, `import`, and `alias` keywords and what they specifically bring to our Router and Controller files.  There are, of course, functions beyond this (config files, mix, etc.) that we'll cover later.
-
-If you start to feel lost during this chapter, that's okay.  Just power on through, then come back later when you've had more exposure to the framework.  The main goal with this chapter is that our uses of `use` and `import` feel less magical and arbitrary, so knowing that there is a logic is almost as good as understanding the logic.
-
-If you want, you can consider this entire chapter Technobabble for now, skip it, and continue to treat `use`, `import`, and `alias` as magical constructs.
+In this appendix we're going to focus on the `use`, `import`, and `alias` keywords and what they specifically bring to our Router and Controller files.  There are, of course, functions beyond this (config files, mix, etc.).
 
 ## use StarTrackerWeb, :router
 
-In the last chapter we had the following Router file:
+In the tutorial we had the following Router file:
 
 ```elixir
 defmodule StarTrackerWeb.Router do
@@ -236,6 +230,4 @@ We'll be using `alias` often in our own code, and we'll recap it the first time 
 
 So that's how we get all the macros like `render`, `get`, and `scope`.
 
-I hope this demystified some of the Elixir Magic for you.  If not, keep reading; although an understanding of the concepts in this chapter is helpful, it's by no means required, and you can make a great app while still thinking of `use` as just a mysterious line that makes your Router and Controller work.
-
-In the next chapter we're going to further connect the Router, Controller, and Template, and see how they pass data back and forth.
+I hope this demystified some of the Elixir Magic for you.  If not, then don't worry too much about it; although an understanding of the concepts in this appendix is helpful, it's by no means required, and you can make a great app while still thinking of `use` as just a mysterious line that makes your Router and Controller work.
