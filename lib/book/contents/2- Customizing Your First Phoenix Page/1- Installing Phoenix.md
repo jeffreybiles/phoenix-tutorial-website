@@ -139,7 +139,7 @@ $ mix phx.server
 
 In your web browser, visit http://localhost:4000/ (it's the same address as http://0.0.0.0:4000).  There you should see the Phoenix Welcome page.
 
-![](../images/0.1/phoenix-hello.png){ width=60% }
+![](../images/01/phoenix-hello.png){ width=60% }
 
 And that's your first Phoenix app!  Congratulations!
 

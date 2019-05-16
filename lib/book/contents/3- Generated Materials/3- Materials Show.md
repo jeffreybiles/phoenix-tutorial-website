@@ -4,7 +4,7 @@ In the last chapter we went over the Materials Index page.  We started from how 
 
 This chapter will do the same thing for the Material Show page.  It will be shorter because the show page shares many things in common with the index page.  However, aside from the review, there are still some interesting new techniques to be learned that we'll be using throughout our Phoenix app.
 
-![](../images/3.1/show-material.png){ width=60% }
+![](../images/13/show-material.png){ width=60% }
 
 ## The Show Route
 
@@ -123,13 +123,13 @@ If you look at the list of functions on `Repo`, you may notice something funny..
 
 Let's test this out by putting in an id that we don't have yet:
 
-![](../images/3.3/get!-error.png){ width=60% }
+![](../images/15/get!-error.png){ width=60% }
 
 What a nice error!  It points to the exact line with our failing `Trade.get_material!` call and gives us the information that we fed into the function.  Plenty of information to reconstruct what went wrong.
 
 Now let's try removing the exclamation point, and see what happens if we feed in a bad ID with `Repo.get`:
 
-![](../images/3.3/get-bad-error.png){ width=60% }
+![](../images/15/get-bad-error.png){ width=60% }
 
 What a terrible error.  "function nil.name/0 is undefined".  Because our app is still small, and because I have experience with errors like this, I can infer the problem is that `@material` is nil, and trace that back to where `@material` is defined, with `Repo.get`.  But that's a lot of unnecessary work, and if the app is big or you're a beginner, then it may be overwhelming.  The default -- `Repo.get!` -- is much better.
 
