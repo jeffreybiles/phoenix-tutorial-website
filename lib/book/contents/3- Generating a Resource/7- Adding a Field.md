@@ -182,7 +182,7 @@ We're going to copy the code for `:amount` and just change the atom used to `:pr
 
 Now we've got it displaying the price.
 
-![](../images/3.7/updated-form.png)
+![](../images/3.7/updated-form.png){ width=40% }
 
 ## Price on the show page
 
@@ -211,6 +211,8 @@ To add the price to the show page, we'll extend the pattern we've used for the o
 ```
 
 There's no new concepts here, we're just repeating the pattern with our new field.
+
+![](../images/3.7/show-material.png){ width=40% }
 
 ## Price on the Index page
 
@@ -250,6 +252,8 @@ To add the price to the Index page, we'll add to our loop a table data cell (`td
 ```
 
 Once again, there are no new concepts in this code.  This is the logical extension of the way we've displayed data in the table before.
+
+![](../images/3.7/list-materials.png){ width=60% }
 
 ## Conclusion
 

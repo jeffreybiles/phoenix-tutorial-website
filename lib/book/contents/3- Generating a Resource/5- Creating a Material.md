@@ -24,6 +24,10 @@ If defined separately, they would look like this:
 
 `create` is a `post`, and it will change the database (adding an item), add a flash message, and then redirect.  In that way, it'll work kind of like `delete`.
 
+The `create` function does not have an associated page, but the `new` page will look like this:
+
+![](../images/3.1/new-material.png){ width=60% }
+
 ## The `new` Controller Function
 
 Let's take a look at the `new` function in `MaterialController`.
