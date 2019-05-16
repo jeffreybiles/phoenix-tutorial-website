@@ -68,7 +68,7 @@ defmodule Book do
   def html_processing(html) do
     html
     |> String.replace("\"", "'")
-    |> String.replace(~r/<img src='\.\.\/images\/(\d+)\/([^']+)'/u, "<img src='/images/\\g{1}/\\g{2}'")
+    |> String.replace(~r/<img src='\.\.\/images\/(\d+\.*\d+)\/([^']+)'/u, "<img src='/images/\\g{1}/\\g{2}'")
     |> String.replace(~r/<img ([^>]+)>\s*{ width=(\d+)% }/, "<img \\g{1} style='width: \\g{2}%'>")
   end
 
