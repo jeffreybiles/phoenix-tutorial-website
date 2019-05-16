@@ -5,7 +5,6 @@ header-includes:
     - \usepackage{fancyhdr}
     - \pagestyle{fancy}
     - \fancyhead[CO,CE]{}
-    - \fancyhead[LO,LE]{Part 1- Elixir Basics}
     - \fancyfoot[CO,CE]{The Phoenix Tutorial, by Jeffrey Biles}
     - \fancyfoot[LE,RO]{\thepage}
 ---
@@ -120,7 +119,13 @@ I hope you're as excited as I am to begin!  Turn the page and we'll start instal
 # Changelog
 
 
+### 0.3.0
 
+* **New Section Added: Generating a Resource**
+* **Fixed syntax highlighting**
+* Readability improvements, including increasing font size and adding a border around images
+* Fixed error with "em" tag
+* Updated text of "use, import, alias" to reflect that it's in an appendix
 
 ### 0.2.0
 
@@ -328,7 +333,7 @@ In order to show off the language features, we'll want to jump down to something
 
 Open it up by typing `iex` in your command line.
 
-```bash
+```zsh
 $ iex
 ```
 
@@ -348,7 +353,7 @@ This is good!  That means it's working.
 
 Now you can type Elixir code in and it'll run right there (after you hit the Enter key).
 
-```bash
+```exs
 iex(1)> 2 + 3
         5
 ```
@@ -359,7 +364,7 @@ Boom.  Type in `2 + 3`, hit enter, and it shows the result `5` in the line below
 
 When we build our Phoenix app we'll spend the majority of our time interacting with it in other ways, but we'll always have the option to drop back to the interpreter and play around.
 
-```bash
+```exs
 iex(1)> 2 + 3
         5
 iex(2)> (2 + 3) * 3
@@ -403,7 +408,7 @@ What is displayed when you type each of these into the command line interpreter?
 
 There are two types of Strings in Elixir.
 
-```elixir
+```exs
 iex(1)> "hello universe"
         "hello universe"
 iex(2)> 'hello universe'
@@ -424,7 +429,7 @@ For the purposes of this book we'll be using double-quoted strings (sometimes ca
 
 Here's some basic inline usages of strings
 
-```bash
+```exs
 iex(1)> "hello" <> "universe"
         "hellouniverse"
 iex(2)> "hello" <> " universe"
@@ -437,7 +442,7 @@ iex(4)> "hello #{place}"
 
 Aside from these inline usages, most action on strings happens via functions being applied to them.  Here's an example:
 
-```bash
+```exs
 iex(5)> phrase = "hello vast universe"
         "hello vast universe"
 iex(6)> String.split(phrase, " ")
@@ -474,7 +479,7 @@ What is displayed when you type each of these into the command line?  After thin
 
 The `Enum` module is meant for working with Enumerables.  Although there are others, the most common type of Enumerable is a list, so that's what we'll be working with today.
 
-```bash
+```exs
 iex(1)> split_phrase = ["hello", "vast", "universe"]
         ["hello", "vast", "universe"]
 iex(2)> Enum.count split_phrase
@@ -495,7 +500,7 @@ We're also demonstrating a parentheses-free function syntax.  It's equivalent to
 
 As an aside, remember how we have single-quoted strings (arrays of Chars) and double-quoted strings (binaries)?  Those types end up being important.  We use `Enum` functions on single-quoted Strings, and `String` functions on double-quoted Strings.
 
-```bash
+```exs
 iex(1)> Enum.count 'hello'
         5
 iex(2)> Enum.count "hello"
@@ -533,7 +538,7 @@ Let's say we wanted to count how many words are in a certain phrase.  We don't h
 
 There are several ways we could do this.  Here's the first.
 
-```bash
+```exs
 iex(1)> phrase = "boldly going where no man has gone before"
         "boldly going where no man has gone before"
 iex(2)> split_phrase = String.split(phrase)
@@ -544,7 +549,7 @@ iex(3)> count = Enum.count split_phrase
 
 If you're unsure of where you're going and what to check at every step, that's probably the best way to go.  However, for production code it can look a bit messy.  Here's another way that's a bit more compact:
 
-```bash
+```exs
 iex(1)> Enum.count(String.split("boldly going where no man has gone before"))
         8
 ```
@@ -557,7 +562,7 @@ A great solution to this is the pipe syntax.
 
 In the pipe syntax, we can take the results of one function and "pipe" it as the first argument of the next function.
 
-```bash
+```exs
 iex(1)> "boldly going where no man has gone before" |> String.split |> Enum.count
         8
 ```
@@ -566,7 +571,7 @@ It's a couple more characters than the previous one, but it's far more readable.
 
 If you have multiple arguments, you just pass the second (and third and fourth, etc.) arguments with the function.
 
-```bash
+```exs
 iex(1)> "boldly going where no man has gone before" |> String.split() |> Enum.join("-")
         "boldly-going-where-no-man-has-gone-before"
 ```
@@ -744,7 +749,7 @@ This version of `recombine` does exactly the same as our last version, but now i
 1. Create the `LearningElixir` module, with the `phrase` and `recombine` functions in it.  Import it on the command line, then run `LearningElixir.recombine`.
 2. Within that module, create the `upcase_phrase` function, which returns the phrase, but all in upper case letters.  Use the `phrase` function in your solution- you're cheating if you just type out the phrase manually in upper case.
 
-```bash
+```exs
 > iex(1)> LearningElixir.upcase_phrase
           "BOLDLY GOING WHERE NO MAN HAS GONE BEFORE"
 ```
@@ -780,7 +785,7 @@ end
 
 This is the first function we've created that requires an argument, but we've used functions with arguments before.  When we call it we must feed it a phrase as input (with or without parentheses)
 
-```bash
+```exs
 iex(1)> LearningElixir.recombine("hello world")
         "hello-world"
 iex(2)> LearningElixir.recombine "hello world"
@@ -803,7 +808,7 @@ end
 
 Here the argument has a *default value* of `LearningElixir.phrase`.  When defining an argument, you can put `\\` after an argument name and then give a default value- in this case, `LearningElixir.phrase`
 
-```bash
+```exs
 iex(1)> LearningElixir.recombine
         "boldly-going-where-no-man-has-gone-before"
 iex(2)> LearningElixir.recombine "hello universe"
@@ -830,7 +835,7 @@ end
 
 In many languages, if you don't give a default value for an argument the default will automatically be `nil`.  However, this is not the case in Elixir.  Here's what happens if you try that:
 
-```bash
+```exs
 iex(1)> LearningElixir.recombine()
         ** (UndefinedFunctionError) function LearningElixir.recombine/0
         is undefined or private.
@@ -877,7 +882,7 @@ end
 
 Here we're defining two versions of recombine- the first with an arity of 1 and the second with an arity of 0.  When we call it with an argument, we get the first version of `recombine`.  When we call it without an argument, we get the second version- which then calls the first version and feeds it the phrase we defined earlier.
 
-```bash
+```exs
 iex(1)> LearningElixir.recombine "hello world, universe"
         "hello-world,-universe"
 iex(2)> LearningElixir.recombine
@@ -890,7 +895,7 @@ Pretty cool, right?  There are lots of other ways you can employ pattern matchin
 
 1.  Use pattern matching to add a 2-arity version of `recombine` which lets you input the join string.
 
-```bash
+```exs
 iex(1)> LearningElixir.recombine("hello world, universe", " vast ")
         "hello vast world, vast universe"
 iex(2)> LearningElixir.recombine("hello universe")
@@ -956,7 +961,7 @@ It's started with a `%{`, ended with a `}`, and in between consists of key-value
 
 We can interact with this map using the functions in the `Map` module.
 
-```bash
+```exs
 iex(1)> Map.get(LearningElixir.my_map, "mission")
         "Code Boldly"
 iex(2)> Map.get(LearningElixir.my_map, "bad_key")
@@ -967,14 +972,14 @@ Our first (and most common) Map function, `Map.get`, takes two arguments: the ma
 
 You can use brackets as shorthand for `Map.get`.
 
-```elixir
+```exs
 iex(1)> LearningElixir.my_map["mission"]
 "Code Boldly"
 ```
 
 Another way to get an item from a map is to destructure it:
 
-```elixir
+```exs
 iex(1)> %{"mission" => mission} = LearningElixir.my_map
         %{mission: "Code Boldly", name: "Enterprise", type: "CodeShip"}
 iex(2)> mission
@@ -985,7 +990,7 @@ More on destructuring in the next chapter.
 
 The next most common Map function is to add new values to the map with `put`.
 
-```bash
+```exs
 iex(1)> Map.put(LearningElixir.my_map, "captain", "Picard")
         %{"captain" => "Picard", "mission" => "Code Boldly",
           "name" => "Enterprise", "type" => "CodeShip"}
@@ -1019,7 +1024,7 @@ Contrast that with immutable data, where there will never be side effects- no ma
 
 Of course, the return value of the function can be something other than 5 items.
 
-```bash
+```exs
 iex(1)> immutable_array = ["Immutability", "is", "great", "don't", "you", "agree"]
         ["Immutability", "is", "great", "don't", "you", "agree"]
 iex(2)> Enum.slice(immutable_array, 4, 2)
@@ -1032,7 +1037,7 @@ So even though you call `Enum.slice` with `immutable_array` and get back an arra
 
 Of course, there's a trick you can play with the data- take the result of the calculation and *immediately reassign it* to the variable you used.
 
-```bash
+```exs
 iex(1)> immutable_array = ["Immutability", "is", "great", "don't", "you", "agree"]
         ["Immutability", "is", "great", "don't", "you", "agree"]
 iex(2)> immutable_array = Enum.slice(immutable_array, 4, 2)
@@ -1051,7 +1056,7 @@ That's what it's like reassigning a variable.
 
 One way around this is to keep on assigning stuff to new variables:
 
-```bash
+```exs
 iex(1)> phrase = "boldly going where no man has gone before"
         "boldly going where no man has gone before"
 iex(2)> phrase2 = String.split(phrase, " ")
@@ -1066,7 +1071,7 @@ iex(5)> phrase3
 
 That method, however, can get tedious.  That's one reason why the pipe (`|>`) construct is so popular in Elixir- it allows you to pass on the output of a function and use it as the first argument in the next function call, without the bother of naming it
 
-```bash
+```exs
 iex(1)> phrase =
 ...(1)> "boldly going where no man has gone before" |>
 ...(1)> String.split(" ") |>
@@ -1080,7 +1085,7 @@ Remember: in the command line we put the pipe at the end of the line, to let the
 
 Now let's apply this to `Map.put`:
 
-```bash
+```exs
 iex(1)> my_map = LearningElixir.my_map |>
 ...(1)> Map.put("captain", "Picard") |>
 ...(1)> Map.put("spock replacement", "Data")
@@ -1162,7 +1167,7 @@ end
 
 Now when we want to access the code, we use an atom instead of a String:
 
-```bash
+```exs
 iex(1)> LearningElixir.my_map[:name]
         "Enterprise"
 iex(2)> LearningElixir.my_map["name"]
@@ -1171,7 +1176,7 @@ iex(2)> LearningElixir.my_map["name"]
 
 But here's the first convenience that atoms unlock:
 
-```bash
+```exs
 iex(3)> LearningElixir.my_map.name
         "Enterprise"
 ```
@@ -1240,7 +1245,7 @@ end
 
 Now we're matching not just on arity (number of arguments), but also on the value of the argument given (for versions with arity of 1).
 
-```bash
+```exs
 iex(1)> LearningElixir.my_map
         %{mission: "Code Boldly", name: "Enterprise", type: "CodeShip"}
 iex(2)> LearningElixir.my_map(:ds9)
@@ -1264,7 +1269,7 @@ One of the other common pattern-matching data-types is a Tuple.
 
 Tuples are simply collections of values, surrounded by curly braces:
 
-```bash
+```exs
 iex(1)> my_tuple = {"Babylon", 5}
         {"Babylon", 5}
 ```
@@ -1273,7 +1278,7 @@ As you can see, the values can be of any type- including multiple types within o
 
 You can access an element within a tuple using the `elem` function:
 
-```bash
+```exs
 iex(2)> elem(my_tuple, 0)
         "Babylon"
 ```
@@ -1282,7 +1287,7 @@ As you can see, it's zero-indexed.
 
 You can also decompose a tuple into its component parts:
 
-```bash
+```exs
 iex(3)> {name, num} = my_tuple
         {"Babylon", 5}
 iex(4)> name
@@ -1293,7 +1298,7 @@ This is a form of pattern matching, where the intent is to destructure the tuple
 
 This is similar to the Map destructuring we covered briefly in the last chapter.  The biggest difference is that for a map you can destructure to as many or as few keys as you like, but in a tuple you have to destructure to the whole tuple.  However, there are some conveniences-- if you don't need one part of it, you can just use the underscore symbol instead of coming up with a throwaway name:
 
-```bash
+```exs
 iex(5)> {name, _} = my_tuple
         {"Babylon", 5}
 iex(6)> name
@@ -1318,7 +1323,7 @@ We're essentially throwing away the number by using the underscore.  This saves 
 
 It's possible for a destructuring attempt to fail.
 
-```bash
+```exs
 iex(1)> {name, 5} = {"Babylon", 5}
         {"Babylon", 5}
 iex(2)> name
@@ -1329,7 +1334,7 @@ In this first example, we're telling Elixir that `"Babylon"` is the variable `na
 
 This second example is where things go wrong.
 
-```bash
+```exs
 iex(1)> {name, "five"} = {"Babylon", 5}
         ** (MatchError) no match of right hand side value: {"Babylon", 5}
             (stdlib) erl_eval.erl:453: :erl_eval.expr/5
@@ -1364,7 +1369,7 @@ end
 
 Here both variations on the function have two arguments, the second of which is a ship and the first of which is a tuple.  The tuple has two values- an atom and a string.  The atom is either `:ok` or `:error`, and the string is used when the action is a failure but thrown away when the action is successful.
 
-```bash
+```exs
 iex(1)> LearningElixir.take_action({:ok, "Make it so"}, "Enterprise")
         "Great job, Enterprise"
 iex(2)> LearningElixir.take_action({:error, "Shields are at 38 percent!"}, "Enterprise")
@@ -1448,7 +1453,7 @@ Learning the common error modes is important- better that you do it now while yo
 
 3. Modify `take_action` so that the ship is passed as a third part of the tuple.
 
-```bash
+```exs
 iex(1)> LearningElixir.take_action({:ok, "I have made it so", "Enterprise"})
         "Great job, Enterprise"
 iex(2)> LearningElixir.take_action({:error, "Phasers not set to stun", "Enterprise"})
@@ -2440,7 +2445,7 @@ This is all plain html, but it gets the job of filling out our page done.
 
 > "h3" is like "h2", but smaller.  "h1" through "h6" are available, with "h1" being the biggest and "h6" the smallest.
 
-> "em" stands for "emphasis".  It does the same thing as "bold".
+> "em" stands for "emphasis".  By default this does the same thing as italics (&lt;i&gt;).
 
 > "a" stands for "anchor".  It's a link. We won't often use the bare "a" tag in Phoenix -- we'll prefer the `link` helper we'll introduce in chapter 2.6 -- but this html is good enough to get our page working.
 
@@ -2711,6 +2716,34 @@ def shirt_color(position) do
     _ -> "grey"
   end
 end
+
+option 2
+def shirt_color_map do
+  %{
+    "commander" => "red"
+    "engineer" => "yellow"
+    "operations" => "yellow"
+    "security" => "yellow"
+    "scientist" => "blue"
+    "doctor" => "blue"
+  }
+end
+
+def shirt_color(position) do
+  shirt_color_map()[position] || "grey"
+end
+
+option 3
+check that this works before tweeting it
+def shirt_color(position) do
+  if(position == "commander"), do: "red"
+  if(position == "engineer"), do: "yellow"
+  if(position == "operations"), do: "yellow"
+  if(position == "security"), do: "yellow"
+  if(position == "scientist"), do: "blue"
+  if(position == "doctor"), do: "blue"
+  "grey"
+end
 ```
 
 ```html
@@ -2749,7 +2782,7 @@ We can add more of these to link to various versions of this page:
 
 At this point, you have a list of 3 names, clicking any of which takes you to a different version of the info page.
 
-![](./contents/images/2.6/hello-jose.png){ width=40% }
+![](./contents/images/2.6/hello-jose.png){ width=30% }
 
 This is pretty good right now, but if we had more names we wanted to include, a dynamic list of names, or a more complex definition for each link, then things would get unwieldy fast.  That's why we're introducing the `for` helper.
 
@@ -2791,7 +2824,7 @@ On the right side of the backwards arrow (`<-`) we have an array: `["José", "Ch
 
 And with that we'll be looping over all 3 names and displaying them dynamically.
 
-![](./contents/images/2.6/list-no-links.png){ width=40% }
+![](./contents/images/2.6/list-no-links.png){ width=30% }
 
 You'll notice that there are no longer links.  Let's fix that.
 
@@ -2815,7 +2848,7 @@ We'll see more benefits to this arrangement once we start pulling data from data
 </ul>
 ```
 
-![](./contents/images/2.6/li-style.png){ width=40% }
+![](./contents/images/2.6/li-style.png){ width=30% }
 
 We just had to add the `ul` tag around the `for` helper, and then the `li` tag around the anchor tag inside the block.  Without the `for` helper, we would have to add the `li` tag around each anchor tag individually- a bad situation if we had lots of items in the list or we wanted to do something more complex than just adding one tag.
 
@@ -2935,21 +2968,1626 @@ end
 
  \pagebreak 
 
-# Bringing In the Code
+# Generating Resources
 
-> WARNING: This is one of the hardest and weirdest chapters.  It's also the most optional, and I considered not even including it.  The core (easy) parts of it will be repeated when we need them, so if things start dragging, feel free to skip to the next chapter.
+So far we've been introducing concepts piece by piece, building up a slowly more complex page.  However, the interconnected nature of Phoenix means that if we kept on doing that, we'd spend quite a bit of time with incomplete or broken features.  Instead of doing that, we're going to jump ahead and use a Phoenix generator to create a complete resource, then go over customizing it piece by piece.
+
+For this chapter, we're going to generate the resource, input several instances of it into the database, then look at the various ways we can interact with the default generated pages (without looking at the underlying code of those pages).  In the later chapters of the section we'll look at the code that's been generated, understand how it works, and see what will happen when we change it.
+
+## The generate task
+
+We'll be doing the code generation by running a mix task from the command line- specifically `mix phx.gen.html`.  `mix` is Elixir's task runner (more on it later), and `phx.gen.html` is the name of the task we're running.  We're going to be adding a few more options to this task, giving us the complete command below:
+
+```bash
+mix phx.gen.html Trade Material materials name:string amount:integer
+```
+
+The first argument, `Trade`, is the _context_.  They're a useful organizational tool which we'll say more about later; in this tutorial, we'll have two contexts: `Trade` and `Auth`.
+
+The next two arguments, `Material` and `materials`, are the singular and plural forms of the name of the resource we're generating.  Phoenix chose to be explicit about this rather than trying to guess the plural, like in some other popular frameworks, because being explicit in this case results in less confusion.  This is an outgrowth of Phoenix's general philosophy: abstract away what you can, but when an abstraction could cause confusion, prefer being explicit over obtaining that last inch of magical convenience.
+
+So we have the capitalized singular and the lower-case plural.  The other two options are both fields for our resource.  The part before the colon is the name of the field, while the part after the colon is the type.  In the instance of `name:string`, the field is called `name`, while it will be stored in the database as a `string`.  `string` will also determine part of the code generated in the templates.
+
+Run the task.
+
+```bash
+$ mix phx.gen.html Trade Material materials name:string amount:integer
+* creating lib/star_tracker_web/controllers/material_controller.ex
+* creating lib/star_tracker_web/templates/material/edit.html.eex
+* creating lib/star_tracker_web/templates/material/form.html.eex
+* creating lib/star_tracker_web/templates/material/index.html.eex
+* creating lib/star_tracker_web/templates/material/new.html.eex
+* creating lib/star_tracker_web/templates/material/show.html.eex
+* creating lib/star_tracker_web/views/material_view.ex
+* creating test/star_tracker_web/controllers/material_controller_test.exs
+* creating lib/star_tracker/trade/material.ex
+* creating priv/repo/migrations/20190506123826_create_materials.exs
+* creating lib/star_tracker/trade.ex
+* injecting lib/star_tracker/trade.ex
+* creating test/star_tracker/trade_test.exs
+* injecting test/star_tracker/trade_test.exs
+
+Add the resource to your browser scope in lib/star_tracker_web/router.ex:
+
+    resources "/materials", MaterialController
+
+
+Remember to update your repository by running migrations:
+
+    $ mix ecto.migrate
+
+```
+
+Then follow the instructions given by the mix command.  First we'll add the resources line to `web/router.ex`:
+
+```elixir
+scope "/", StarTracker do
+  pipe_through :browser # Use the default browser stack
+
+  resources "/materials", MaterialController
+
+  get "/", PageController, :index
+  get "/info", PageController, :info
+  #...
+end
+```
+
+This adds several available urls to our application, which we'll be visiting later in this chapter.
+
+Then we'll run the ecto migration:
+
+```bash
+$ mix ecto.migrate
+Compiling 17 files (.ex)
+Generated star_tracker app
+
+[info]  == Running 20190506124749 StarTracker.Repo.Migrations.CreateMaterials.change/0 forward
+[info]  create table materials
+[info]  == Migrated 20190506124749 in 0.0s
+```
+
+This changes the database, creating the table `materials`- which is where we'll store our materials data.
+
+## Adding materials
+
+Run `mix phx.server` to get everything running again.
+
+```bash
+$ mix phx.server
+[info] Running StarTrackerWeb.Endpoint with cowboy 2.6.3 at 0.0.0.0:4000 (http)
+[info] Access StarTrackerWeb.Endpoint at http://localhost:4000
+
+Webpack is watching the files…
+```
+
+Then visit `localhost:4000/materials`.
+
+![](./contents/images/3.1/empty-table.png){ width=60% }
+
+We've got the "Listing Materials" header, an empty table with two columns (matching the two fields we put in the generator), and a "New material" button.
+
+Let's click the "New material" button.
+
+![](./contents/images/3.1/new-material.png){ width=60% }
+
+The route we're at now is `/materials/new`.  Here we've got a form with two fields -- once again, corresponding to what we put in the generator.
+
+Let's fill them out with "Hydrogen" for the name and 2000 as the amount.
+
+![](./contents/images/3.1/filled-out-form.png){ width=60% }
+
+The name is self-explanatory, and in a move that will anger scientists the world over, we're not attaching any units to the amount.  Sorry.  Think of it as two thousand moles of Hydrogen, if that helps you cope.
+
+> There are 6.022x10^23 atoms in a mole.  One mole of Hydrogen is 1.008 grams.  One mole of Helium is 4.003 grams, and one mole of Carbon is 12.011 grams.  You don't need to remember any of that, since we're not actually attaching units in the app, but this fancy Chemical Physics degree needs to pay its way somehow.
+
+Click the "Submit" button and you'll find yourself at the route `/materials/1`.  It gives you a nice "Material created successfully" message, then shows the material you just created.
+
+![](./contents/images/3.1/show-material-with-flash.png){ width=60% }
+
+We have two buttons at the bottom: `edit` and `back`.
+
+For now, let's hit the `back` button, which will take us to the materials index page at `/materials`.
+
+![](./contents/images/3.1/table-with-one-item.png){ width=60% }
+
+Now the table isn't empty- it's filled with the item you just created.
+
+Let's create more.
+
+![](./contents/images/3.1/filled-out-table.png){ width=60% }
+
+Now that we've got our table filled out, let's check out those buttons to the right.
+
+## Exploring the default actions
+
+`delete` does exactly what you'd expect- it deletes a material.
+
+`show` takes you back `/materials/1`, which is sometimes colloquially called the "show page", because it shows us one item.
+
+![](./contents/images/3.1/show-material.png){ width=40% }
+
+If you visit the `show` page of another material you'll get a URL with a different number.  That number is the `id` of the material in the database- a unique identifier and therefore a great way to determine which resource we're talking about (unlike the name, which can change).
+
+The id is automatically assigned.  In this case it's "1" because this is the first material we created and our current id-assignment scheme is sequential starting from 1.
+
+The contents of the `show` page is the displayed data for the resource.  Currently this is exactly what's in the table on our index page, but often this includes more data than the table or a more user-friendly (but space-consuming) display of said data.
+
+Below that we have two links we can click: `Edit` and `Back`.  `Back` will take us back to our index page, so let's click the more interesting `Edit` link.
+
+![](./contents/images/3.1/edit-material.png){ width=60% }
+
+The url here is `materials/1/edit`.  The `1` part is the id, determined the same way as in the `show` page.
+
+You'll notice that the contents of this page are almost exactly like our `new` form, except that the data fields come pre-filled (with the current data) and it says "Edit" up top instead of "New".  We'll see why that is later when we look at how these pages are constructed.
+
+Go ahead and change the update the `amount` to 3000 and click `Submit`.
+
+![](./contents/images/3.1/updated-material.png){ width=60% }
+
+It automatically redirects us to the `show` page, with the `amount` changed and a nice "Material updated successfully" message.
+
+Click the `Back` button to take us back to the `index` page.  We'll see our table as before, but with the updated amount of Hydrogen.
+
+## Conclusions
+
+That's how we generate and interact with a basic resource.  We'll be going over that piece by piece over the next several chapter, showing how each part works and how we can customize it.  We'll start by looking at what goes into the `index` route, tracing what happens starting from `web/router.ex`.
+
+## Exercises
+
+1. Generate the materials resource as shown in the chapter.  Use the same fields.
+2. Input several materials into the database.
+3. Edit one of the materials.
+4. Delete one of the materials.
+
+
+ \pagebreak 
+
+# The Material Index Page
+
+In the last chapter we auto-generated the Material resource, added a couple types of materials, then checked out the various pages that were auto-generated for us.
+
+This chapter we're going to focus on only one of those pages -- the index page at `/materials` -- and dig in to the code that backs it.  Then we'll use our knowledge to customize the page and make it our own.
+
+![](./contents/images/3.1/edited-table.png){ width=60% }
+
+We're going to start at the route and work our way down to the template.
+
+## RESTful Routes
+
+To make our generate resource work, we had to add one line to the `web/router.ex` file:  
+
+```elixir
+scope "/", StarTrackerWeb do
+  pipe_through :browser # Use the default browser stack
+
+  resources "/materials", MaterialController
+  #...
+end
+```
+
+This one line added several routes for us, and is the equivalent of the following seven lines:
+
+```elixir
+scope "/", StarTrackerWeb do
+  pipe_through :browser # Use the default browser stack
+
+  get "/materials", MaterialController, :index
+  get "/materials/:id", MaterialController, :show
+  get "/materials/:id/edit", MaterialController, :edit
+  get "/materials/new", MaterialController, :new
+  post "/materials", MaterialController, :create
+  patch "/materials/:id", MaterialController, :update
+  delete "/materials/:id", MaterialController, :delete
+
+  #...
+end
+```
+
+Those seven routes are what make up a "RESTful" resource.  The four `get` routes are the various pages that we visited while playing with our app in the last chapter, and the three other routes (create, update, and delete) are the three actions we could take to change the records.
+
+We'll cover the other six routes later; for now what we care about is that the line `resources "/materials", MaterialController` ends up giving us (among other things) `get "/materials", MaterialController, :index`, which is where we'll find our Index page.
+
+## Index Controller Action
+
+We've mapped out the url `/materials` to the `index` action on `MaterialController`.  Let's look at that action.
+
+```elixir
+defmodule StarTrackerWeb.MaterialController do
+  use StarTrackerWeb, :controller
+
+  alias StarTracker.Trade
+  alias StarTracker.Trade.Material
+
+  def index(conn, _params) do
+    materials = Trade.list_materials()
+    render(conn, "index.html", materials: materials)
+  end
+
+  #...
+end
+```
+
+A quick review of controllers and all the code that comes before the index.  
+
+First, we define our module: `StarTrackerWeb.MaterialController`.  That name is connected with the filename, and with how it connects with views and templates, so don't mess with it.  Next we load in a bunch of controller-related code with `use StarTrackerWeb, :controller`.  Our final piece of setup is our aliases. `alias StarTracker.Trade` means we can use `Trade` in the rest of the file without including `StarTracker` in front of it.  In the same way, `alias StarTracker.Trade.Material` means we can use `Material` without including `StarTracker.Trade` in front of it.
+
+Now we can get to the `index` action itself.
+
+At the bottom we have our familiar `render` function, which takes the connection (`conn`), the name of the template (`"index.html"`), and an optional Map (`materials: materials`).  That part all works like before.  The new part is how we get our data.  
+
+<!-- re-do this paragraph to reflect how we're calling Trade.list_materials() now.  May need to add a section for the context file -->
+Instead of hard-coding a list like we did in Chapter 2.6, we're bringing in data from the database.  We call `Trade.list_materials()`, which we've defined in `Trade` context.
+
+## The Trade context
+
+In `lib/star_tracker/trade.ex` we define the `Trade` context.
+
+```elixir
+defmodule StarTracker.Trade do
+  @moduledoc """
+  The Trade context.
+  """
+
+  import Ecto.Query, warn: false
+  alias StarTracker.Repo
+
+  alias StarTracker.Trade.Material
+
+  def list_materials do
+    Repo.all(Material)
+  end
+
+  # five other methods, abbreviated
+  def get_material!(id) #...
+  def create_material(attrs \\ %{}) #...
+  def update_material(%Material{} = material, attrs) #...
+  def delete_material(%Material{} = material) #...
+  def change_material(%Material{} = material) #...
+end
+```
+
+This is where we store our interactions with the database, and while exploring the generated code we'll go over each of the six generated functions in this file.
+
+For now, we'll just look at the `list_materials` function.
+
+It's one line: `Repo.all(Material)`.  We'll get into the database and the various ways you can interact with it later, but for this particular case the naming is really descriptive- we're going to the Repo (database) and getting all of the Materials.
+
+> ** Captain's Log: Why the Trade context?
+
+> At first, the Trade context seemed unnecessary.  Many of the items are just one line, and only used once, so why not put that code directly in the controller?
+
+> However, when my database interactions grew in complexity, I saw the value in having separate functions.
+
+> When I started doing stuff beyond the basic CRUD operations, I saw how the reusability was useful.
+
+> Finally, when my app became bigger and my crew became more involved, I saw how having all the database interactions in one place let me know where to look for code that effected persistence.
+
+## The Material Model
+
+Let's look at what each Material consists of.  We've seen this in action, of course, when we were creating and viewing our data, but now we're going to look at how the Material model is defined.
+
+```elixir
+defmodule StarTracker.Trade.Material do
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  schema "materials" do
+    field :amount, :integer
+    field :name, :string
+
+    timestamps()
+  end
+
+  @doc false
+  def changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:name, :amount])
+    |> validate_required([:name, :amount])
+  end
+end
+```
+
+We first have the conventional module naming (don't change it!), and then the `use` statement that pulls in a lot of model-related functions and macros.  Some of those macros are `schema`, `field`, and `timestamps`.  
+
+After that we import `Ecto.Changeset`, which gives us `cast` and `validate_required`, among others.
+
+The `schema` block is where we can view the structure of our model.  Within the block you can define various fields.
+
+The first three fields we have here are defined by giving an atom for the name of the field and an atom for the type of the field (`:name` and `:string`, or `:amount` and `:integer`).  These were created by the options we gave the generator.
+
+The next thing we see is `timestamps()`.  This creates `createdAt` and `updatedAt` fields for you, which are really useful and are thus included on every generated model unless you remove the `timestamps()` line.  These two datetime fields are not set by the user, but are set by the database itself (based on the current time) when a record is created or updated.  
+
+There are other options and ways of defining fields, which we'll go over later when we run into them.
+
+For now we're going to ignore the `changeset` function.  We're also going to ignore the `migrations` file.  We'll go over both of those in future chapters.  For now, we just wanted some context for the `index` action.
+
+## The Index Template
+
+Finally, we get to the template file itself, in `/lib/star_tracker_web/templates/material/index.html.eex`.  It's long, but you should already recognize quite a bit of what's going on.
+
+```html
+<h1>Listing Materials</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for material <- @materials do %>
+      <tr>
+        <td><%= material.name %></td>
+        <td><%= material.amount %></td>
+
+        <td>
+          <%= link "Show", to: Routes.material_path(@conn, :show, material) %>
+          <%= link "Edit", to: Routes.material_path(@conn, :edit, material) %>
+          <%= link "Delete", to: Routes.material_path(@conn, :delete, material), method: :delete, data: [confirm: "Are you sure?"] %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Material", to: Routes.material_path(@conn, :new) %></span>
+```
+
+We start off with our `h2` header, giving the user an idea of what the page is about.
+
+The rest of the page is a big html table.
+
+A table consists of a table header (`thead`) and a table body (`tbody`).  The table body is made up of rows and columns of data.  The table header is where we put the titles of each column.
+
+```html
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Amount</th>
+
+    <th></th>
+  </tr>
+</thead>
+```
+
+Within the `thead` element we have one table row (`tr`), and in that row we have three `th` elements- the first two holding titles of the columns and the last one being a blank placeholder.
+
+Then we have the body of the table:
+
+```html
+<tbody>
+  <%= for material <- @materials do %>
+    <tr>
+      <td><%= material.name %></td>
+      <td><%= material.amount %></td>
+
+      <td>
+        <!-- links go here -->
+      </td>
+    </tr>
+  <% end %>
+</tbody>
+```
+
+We've removed some of the links so we can focus on the structure, and better see its similarities with the table header.
+
+Right within our `tbody` tag we see a `for` block which goes over every item in `@materials`.  This means that whatever is within the `for` block will be repeated for every material.
+
+So for every material we create a table row (`tr`), and within the table row we create three table data (`td`) elements.  The first two display data from the `material` record that's in this instance of the `for` block.  The last one contains several buttons.  Let's look at those.
+
+```html
+<td>
+  <%= link "Show", to: Routes.material_path(@conn, :show, material) %>
+  <%= link "Edit", to: Routes.material_path(@conn, :edit, material) %>
+  <%= link "Delete", to: Routes.material_path(@conn, :delete, material), method: :delete, data: [confirm: "Are you sure?"] %>
+</td>
+```
+
+These use the same link helper we went over in chapter 2.6, but here they use more options and are considerably more complex.
+
+## The Expanded link Helper
+
+Let's analyze our first link helper:
+
+```html
+<%= link "Show", to: Routes.material_path(@conn, :show, material) %>
+```
+
+We start off with the name of the helper (`link`), followed by the text that will show on the page (`"Show"`).  Then things start diverging from how we used the link helper before.
+
+In the `to` option, we're using another helper in order to construct the URL that the link will be linking to.
+
+```elixir
+Routes.material_path(@conn, :show, material)
+```
+
+I call this the `x_path` helper to signify that it's not just materials that it works with.  If we had an `Officer` resource, then we would have an `officer_path` helper available.
+
+To see the helpers available, and which routes they work with, run `mix phx.routes` in your command line.
+
+```bash
+$ mix phx.routes
+material_path  GET     /materials                             StarTrackerWeb.MaterialController :index
+material_path  GET     /materials/:id/edit                    StarTrackerWeb.MaterialController :edit
+material_path  GET     /materials/new                         StarTrackerWeb.MaterialController :new
+material_path  GET     /materials/:id                         StarTrackerWeb.MaterialController :show
+material_path  POST    /materials                             StarTrackerWeb.MaterialController :create
+material_path  PATCH   /materials/:id                         StarTrackerWeb.MaterialController :update
+               PUT     /materials/:id                         StarTrackerWeb.MaterialController :update
+material_path  DELETE  /materials/:id                         StarTrackerWeb.MaterialController :delete
+    page_path  GET     /                                      StarTrackerWeb.PageController :index
+    page_path  GET     /info                                  StarTrackerWeb.PageController :info
+    page_path  GET     /info/:name                            StarTrackerWeb.PageController :info
+    page_path  GET     /info/:name/:position                  StarTrackerWeb.PageController :info
+    websocket  WS      /socket/websocket                      StarTrackerWeb.UserSocket
+```
+
+Right now we have `material_path` and `page_path` (and `websocket`), but this list will grow.
+
+So the x in `x_path` is by default the name of the controller.  The first argument is a connection (`@conn`), the second argument is an atom giving the name of the action on the controller, and then the rest of the arguments are parameters to the route.  When the parameter is an id, we can give either the id itself or an object which has an `id` field.
+
+So going back to our material_path for show:
+
+```elixir
+Routes.material_path(@conn, :show, material)
+```
+
+We can see that the parameter we give it is the `material` object, from which we'll extract the id.
+
+The `edit` link helper is very similar to the `show` link helper and has no new concepts:
+
+```elixir
+<%= link "Edit", to: Routes.material_path(@conn, :edit, material) %>
+```
+
+The `delete` link helper does introduce several new things:
+
+```elixir
+<%= link "Delete", to: material_path(@conn, :delete, material), method: :delete, data: [confirm: "Are you sure?"] %>
+```
+
+The first new thing is `method: :delete`.  By default, the method is `:get`, and that's what's been in all the links we've gone over so far.  `get` is what we use when we want to view a page or get data.  However, to make changes to the data we'll need to use `:post`, `:patch`, `:put`, or `:delete`.  Our router will recognize the method used and direct us to the correct action.
+
+Then we have `data: [confirm: "Are you sure?"]`.  This makes it so that when we click on the button, it will pop up a confirmation box with the text "Are you sure?".  If you hit "OK" it will continue on.  If you hit "Cancel" it will stop and not perform the deletion.  Try it for yourself in the browser!
+
+Data confirmation can be used on a link with any method, but it's most commonly used for links with the `:delete` method.
+
+Finally, we have one last link at the bottom of the page, for `new`.
+
+```elixir
+<%= link "New material", to: Routes.material_path(@conn, :new) %>
+```
+
+The interesting thing here is that there are no parameters passed, since the `new` action doesn't take any parameters.
+
+## Conclusion
+
+This chapter explored how the materials `index` route worked, from top to bottom.
+
+We started with how `web/router.ex` used the `resources` macro to generate the 7 RESTful routes for `materials`, then moved on to deconstructing our controller action, followed by a quick detour into our `Material` model, and finally getting to the index template, which was mostly review except for the `table` elements and new `link` helper options.
+
+In the next chapter we're going to do the same for the `show` route.  It should be a shorter exercise, since it shares many things in common with the `index` route, but we'll still learn several new things.
+
+## Exercises
+
+1. Add a column to the table: `updatedAt`.  Make sure to add it to the header as well.
+2. Add `createdAt` column to the table.
+3. Convert `Routes.material_path(@conn, :edit, material)` to the raw string form we used in chapter 2.6.  This is not because the raw string is better (x_path pattern is preferred), but so you can get practice figuring out what the x_path helper translates to.  Make sure it works for all the materials, not just one.
+4. Take the `to` field from the links on the info page and use `page_path` to define them.
+
+
+ \pagebreak 
+
+# The Material Show Page
+
+In the last chapter we went over the Materials Index page.  We started from how the route matches a URL to a controller, then showed how the controller gets data from the database to the template (via a method on the context), took a detour to explore the Material model, then finally went over the Embedded Elixir template.
+
+This chapter will do the same thing for the Material Show page.  It will be shorter because the show page shares many things in common with the index page.  However, aside from the review, there are still some interesting new techniques to be learned that we'll be using throughout our Phoenix app.
+
+![](./contents/images/3.1/show-material.png){ width=40% }
+
+## The Show Route
+
+We have one line in our `web/router.ex` file to represent all of the Material-related routes:
+
+```elixir
+resources "/materials", MaterialController
+```
+
+This route macro could expand out to seven different routes, including the show route:
+
+```elixir
+get "/materials/:id", MaterialController, :show
+```
+
+We're matching the URL to the `show` action on the `MaterialController`, and giving it one param: `:id`.
+
+## Pattern Matching on Map
+
+The `show` action is as follows:
+
+```elixir
+def show(conn, %{"id" => id}) do
+  material = Trade.get_material!(id)
+  render(conn, "show.html", material: material)
+end
+```
+
+The first thing you may notice is how we've defined our params argument; instead of simply putting them all in `params` and pulling them out later, we're pattern-matching using `%{"id" => id}`.
+
+There are two aspects to this.  One is simply pulling information out of the params Map, and could be replicated with the following code:
+
+```elixir
+def show(conn, params) do
+  id = params["id"];
+  material = Trade.get_material!(id)
+  render(conn, "show.html", material: material)
+end
+```
+
+The other aspect to pattern-matching on a Map is that it will refuse to match unless the data is provided as expected.  Let's go back to our `LearningElixir` module and create a new `inspire` function:
+
+```elixir
+defmodule LearningElixir do
+  def my_map do
+    %{
+      "name" => "Enterprise",
+      "type" => "CodeShip",
+      "mission" => "To explore strange new techniques, to seek out new programming languages and new web frameworks, to code boldly go where no man has gone before"
+    }
+  end
+
+  def inspire(%{"name" => name, "type" => type, "mission" => mission}) do
+    "These are the voyages of the #{type} #{name}.  Its five-year mission: #{mission}"
+  end
+end
+```
+
+Then we can run the following in the command line:
+
+```exs
+iex()> LearningElixir.my_map |> LearningElixir.inspire
+"These are the voyages of the CodeShip Enterprise.  Its five-year mission: To explore strange new techniques, to seek out new programming languages and new web frameworks, to code boldly go where no man has gone before"
+```
+
+It automatically mapped the values in `my_map` to the arguments in `inspire`.  But what happens if we feed it a map that doesn't have all the required key-value pairs?
+
+```exs
+iex() %{"name" => "Jim", "type" => "CodeShip"} |> LearningElixir.inspire
+** (FunctionClauseError) no function clause matching in LearningElixir.inspire/1
+
+    The following arguments were given to LearningElixir.inspire/1:
+
+        # 1
+        %{"name" => "Jim", "type" => "CodeShip"}
+
+    iex:10: LearningElixir.inspire/1
+```
+
+Pattern-matching on the keys protects the function from running unless the map that's been given to it has all the required information.  This can catch a large class of possible errors, and prevents you from having to do null checks on those keys (like you would have to do in Ruby or Javascript).
+
+The problem here: Jim has no mission.  Hard to inspire people without a mission!
+
+> The careful observer will note that we used Strings to match instead of atoms.  If you try to match a URL parameter with atoms, it will give the "no function clause matching" error.
+
+## Repo.get! and exclamation point functions
+
+Back to our `show` action:
+
+```elixir
+def show(conn, %{"id" => id}) do
+  material = Trade.get_material!(id)
+  render(conn, "show.html", material: material)
+end
+```
+
+The next line is about how we get the selected Material. It calls out to the `Trade` context, so let's look there to see what it does.
+
+```elixir
+def get_material!(id), do: Repo.get!(Material, id)
+```
+
+First, this is a shortcut for short methods.  It's the same as the following:
+
+```elixir
+def get_material!(id) do
+  Repo.get!(Material, id)
+end
+```
+
+If you have a lot of short lines, then the one-line version can be nice.  Now back to the database interaction!
+
+`Repo.get!` takes two required arguments: the record type (`Material`) and the id of the record we're trying to get.  Remember, `id` is automatically assigned when we create a record and is unique per type of record, so the two pieces of information we're giving `Repo.get!` is always enough information to uniquely identify a record.
+
+If you look at the list of functions on `Repo`, you may notice something funny... in addition to `Repo.get!` there's also a `Repo.get` function.  It has the same name, but without the exclamation point.  This is a shorthand adopted from Ruby; an exclamation point tells the user that the function will throw an error if doesn't work instead of failing silently.  
+
+Let's test this out by putting in an id that we don't have yet:
+
+![](./contents/images/3.3/get!-error.png){ width=60% }
+
+What a nice error!  It points to the exact line with our failing `Trade.get_material!` call and gives us the information that we fed into the function.  Plenty of information to reconstruct what went wrong.
+
+Now let's try removing the exclamation point, and see what happens if we feed in a bad ID with `Repo.get`:
+
+![](./contents/images/3.3/get-bad-error.png){ width=60% }
+
+What a terrible error.  "function nil.name/0 is undefined".  Because our app is still small, and because I have experience with errors like this, I can infer the problem is that `@material` is nil, and trace that back to where `@material` is defined, with `Repo.get`.  But that's a lot of unnecessary work, and if the app is big or you're a beginner, then it may be overwhelming.  The default -- `Repo.get!` -- is much better.
+
+Anyways, back to our controller. Our last line is very familiar: `render(conn, "show.html", material: material)`.  It renders the show template and feeds it the material we grabbed.
+
+## The Show template
+
+Here's the `show` template:
+
+```html
+<h1>Show Material</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @material.name %>
+  </li>
+
+  <li>
+    <strong>Amount:</strong>
+    <%= @material.amount %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.material_path(@conn, :edit, @material) %></span>
+<span><%= link "Back", to: Routes.material_path(@conn, :index) %></span>
+```
+
+Most of this should be review: the header (`h2`), the list (`ul` and `li`), displaying data (`<%= @material.name %>`), and creating links (`<%= link "Edit", to: Routes.material_path(@conn, :edit, @material) %>`).
+
+The only new thing is the `<strong>` tag, and it's pretty simple: it bolds the text inside.  It is preferred to using the bold (`<b>`) tag directly because you can always redefine what the `<strong>` tag means; bolding is only a default.
+
+## Conclusion
+
+In addition to reviewing the core Phoenix pattern, we saw two important new techniques- exclamation point functions and pattern matching on Map keys.  You'll see both of these a lot throughout your Phoenix app and grow to appreciate their usefulness.
+
+## Exercises
+
+1. Add the `id` property to the top of the list, above the name.
+2. Add the `updatedAt` and `createdAt` properties to the bottom of the list, below the amount.
+3. Make a version of the `inspire` function that doesn't require a mission.  Not very inspiring, is it?  Now make one that requires a mission but doesn't require a spaceship name or type.  Test each of them in the command line, making sure that the version with all three keys is triggered when all three keys are available, but the other two versions are triggered when keys are missing.
+
+These are the results you should get:
+
+```exs
+iex()> %{"mission" => "Write awesome code"} |> LearningElixir.inspire
+"Your mission: Write awesome code"
+iex()> %{"name" => "Jeffrey", "type" => "Human"} |> LearningElixir.inspire
+"These are the voyages of the Human Jeffrey."
+iex()> %{"name" => "Jeffrey", "type" => "Human", "mission" => "Make learning programming more fun and less frustrating"} |> LearningElixir.inspire
+"These are the voyages of the Human Jeffrey.  Its five-year mission: Make learning programming more fun and less frustrating"
+```
+
+Hint: the order that you have the function versions in matters.
+
+
+ \pagebreak 
+
+# Deleting a Materal
+
+In the last two chapters, we covered the Index and the Show pages.  They were both primarily about _displaying_ information.
+
+For the rest of this section, we're going to be working with routes and actions where we change information.  We may still display information while doing that, but our primary goal is to change things.
+
+To ease our way into these concepts, we're going to start with clicking a link to delete a material from the database.
+
+## The Link
+
+The button itself is in the Index page, in the set of three buttons in the final `td` of each row.
+
+```html
+<%= link "Delete", to: Routes.material_path(@conn, :delete, material), method: :delete, data: [confirm: "Are you sure?"] %>
+```
+
+We already went over how the options in this particular link works in chapter 3.2, so instead of picking apart the link helper again we'll start investigating where clicking it takes us.
+
+In our router, we've defined `resources "/materials", MaterialController`, which is defining the 7 separate routes that create a RESTful resource.  One of those is `delete "/materials/:id", MaterialController, :delete`, which is where the link above will take us.
+
+Then that will send us to the `delete` method on the `MaterialController`.
+
+```elixir
+defmodule StarTrackerWeb.MaterialController do
+  use StarTrackerWeb, :controller
+
+  alias StarTracker.Trade
+  # ...
+  def delete(conn, %{"id" => id}) do
+    material = Trade.get_material!(id)
+    {:ok, _material} = Trade.delete_material(material)
+
+    conn
+    |> put_flash(:info, "Material deleted successfully.")
+    |> redirect(to: Routes.material_path(conn, :index))
+  end
+end
+```
+
+Here we're doing the following steps:
+
+0. Matching the passed-in ID param.
+1. Getting the material from the database.
+2. Deleting the material from the database.
+3. Setting a flash message.
+4. Redirecting to the Index.
+
+Getting the `id` is basic pattern-matching of the params Map.
+
+Then the material uses the same function on the `Trade` context as we used to get the material for the show page.
+
+Then after that we start getting into the new stuff.
+
+## Deleting from the Database
+
+The next line calls the `delete_material` function on the `Trade` context.
+
+```elixir
+{:ok, _material} = Trade.delete_material(material)
+```
+
+Let's take a look at that function.
+
+```elixir
+def delete_material(%Material{} = material) do
+  Repo.delete(material)
+end
+```
+
+The first thing to notice is that the argument is pattern-matched so it has to be a `Material`.  If you try to feed it a string, an integer, or a random Map, then it will throw one of those "no function clause matching" errors.
+
+Next, we call the function `Repo.delete`.  It does exactly what it says, and returns a tuple: `{:ok, material}`.
+
+Yes, it returns the material that we just deleted.  We destroyed the database record, but that doesn't mean we can't still pass around a Map containing the material's information.  However, we won't be using it right now, as indicated by the fact that our actual pattern-matched tuple is `{:ok, _material}`, with an underscore in front of the variable name.
+
+Aside from returning the deleted material (which we just discarded), pattern-matching the tuple also allows us to catch errors better.  If there's an error, it will throw at that line when the `:ok` atom isn't matched.
+
+## Flash Messages
+
+The next line is
+
+```elixir
+conn
+|> put_flash(:info, "Material deleted successfully.")
+```
+
+Remember, this is the same as:
+
+```elixir
+put_flash(conn, :info, "Material deleted successfully.")
+```
+
+`put_flash` takes three arguments: the connection, the type of flash message (`:info` and `:error` available by default), and then the message itself.
+
+It returns the `conn` we gave as the first argument, but with an `:info` flash attached.
+
+That will then be used by the following line in `app.html.eex`:
+
+```html
+<p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+```
+
+And will show up like this:
+
+![](./contents/images/3.4/deleted-material-flash.png){ width=60% }
+
+When you visit any other page (or reload the current page) the flash message will go away.
+
+## Redirection
+
+Our final line is a redirect.
+
+```elixir
+|> redirect(to: Routes.material_path(conn, :index))
+```
+
+It's taking the `conn` returned from the `put_flash` message as the first argument.  The second argument is a hash, in this case containing the `to:` option.  The `x_path` construct should be familiar from when we were using them in the `link` helper, and it works the exact same way here.
+
+So we go to the `index` function on the `MaterialController` and run through that, getting the materials list and displaying the `index` template.
+
+## Why Redirect?
+
+We're already on the Material Index route, so why redirect?
+
+Because every action in a request/response cycle must end with a render or a redirect.  If you don't, it will error.
+
+What if you want to delete from multiple screens and have the redirect behavior be different?
+
+Well, I can see two options.
+
+One, which you'll want to choose most of the time, is to have your controllers be small enough that adding a second controller method isn't horrible.  This already happens by default for most routes; note that `delete`, at 5 lines of code, is our longest controller method yet.
+
+The other option is to have the route that you're redirecting to be fed in via a parameter.  The upside is that you can use the same controller method and route over and over.  The downside is that it's breaking the default pattern of where Phoenix wants you to put information, and can therefore confuse later developers.
+
+## Conclusion
+
+In this chapter we walked through the `delete` function on `MaterialController`.  Along the way we learned about the `Repo.delete` function, how returning a tuple can help catch errors, how flash messages work, and how and why we redirect back to the index page.
+
+We'll use much of that knowledge in the next chapter, where we'll walk through the `new` and `create` methods, and show how to use forms and Ecto changesets.
+
+## Exercises
+
+1. What happens if you try to redirect to the show page of the material you just deleted?  You're feeding in a `%Material` directly, so why does it error?
+2. Add two more flash messages: a second `:info` and an `:error`.  What happens?  Why do you think that is?
+3. In the confirmation message before deleting a material, include the name of the element.
+
+
+![](./contents/images/3.4/specific-confirmation.png){ width=60% }
+
+
+ \pagebreak 
+
+# Creating a Material
+
+Of all the things that we can do with the generated routes, creating and editing the data are the most complex.
+
+That's why I've saved them for last.
+
+We'll go over creation in this chapter, which will be fairly long.  In the next chapter we'll go over editing, which should be fairly short since it mostly goes over the same material.  Then, in this section's final chapter, we'll pull together everything we've learned and add a new data field to our `Material`s.
+<!-- TODO: check that we're actually going to be able to fit creating a new data field into one chapter  -->
+
+## The Two-Step Process
+
+When creating a resource, we'll be going through two stages: first, we'll be visiting the `new` page, and then, after filling out the information, we'll be hitting the `create` function in order to add the new `Material` to the database.
+
+Both of these are separate routes, which are defined by the `resources "/materials", MaterialController` we put in our routes file.
+
+If defined separately, they would look like this:
+
+```elixir
+  get "/materials/new", MaterialController, :new
+  post "/materials", MaterialController, :create
+```
+
+`new` is a `get`, so we'll be getting some data (in this case, an empty `%Material` object) then displaying a page.  In that way, it'll work kind of like `show` and `index`.
+
+`create` is a `post`, and it will change the database (adding an item), add a flash message, and then redirect.  In that way, it'll work kind of like `delete`.
+
+The `create` function does not have an associated page, but the `new` page will look like this:
+
+![](./contents/images/3.1/new-material.png){ width=60% }
+
+## The `new` Controller Function
+
+Let's take a look at the `new` function in `MaterialController`.
+
+```elixir
+def new(conn, _params) do
+  changeset = Trade.change_material(%Material{})
+  render(conn, "new.html", changeset: changeset)
+end
+```
+
+We're once again calling a function on the `Trade` context, but now instead of getting a `Material` we're getting a changeset.  Let's investigate where that changeset comes from.
+
+In the call `Trade.change_material(%Material{})`, we're feeding the `change_material` function the Schema `%Material{}`.  We'll explain what exactly that is soon.
+
+```elixir
+def change_material(%Material{} = material) do
+  Material.changeset(material, %{})
+end
+```
+
+The `%Material` Schema we fed to `change_material` pattern matches with what the function is expecting, so it's assigned to `material`... and fed into `Material.changeset`.  The second argument is a blank Map.
+
+Okay, so we're ultimately getting the changeset from `Material.changeset(%Material, %{})`.  Keep that in mind, but for a second we're going to explore the `new` page's html and see what we're going to do with that changeset.
+
+## The `new` Template
+
+`render(conn, "new.html", changeset: changeset)` feeds the changeset down to the `lib/star_tracker_web/templates/material/new.html.eex` file, so let's take a look at that.
+
+```html
+<h1>New Material</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.material_path(@conn, :create)) %>
+
+<span><%= link "Back", to: Routes.material_path(@conn, :index) %></span>
+```
+
+The `h1` and `link` should both be familiar to you, but seeing `render` in this context may be new.  It works exactly like `render` does in the controller, but it does so as a sub-section of the page.  The first argument tells us that the html we'll be rendering will be found at `lib/star_tracker_web/templates/material/info.html.eex`, while the second argument is a Map that contains variables, or assignments.
+
+The assignments Map was `%{changeset: changeset}` when being passed into `new.html.eex`, but with the `Map.put` it's now `%{changeset: changeset, action: Routes.material_path(@conn, :create)}` when being passed into the form.
+
+Let's take a look at that form now:
+
+```html
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= label f, :amount %>
+  <%= number_input f, :amount %>
+  <%= error_tag f, :amount %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>
+```
+
+There's a helper, `form_for`, which takes both `@changeset` and `@action` as the first two arguments.
+
+Now that we've tracked down both where we're using the changeset and where we're getting it from, let's explore what it actually _is_.
+
+## Ecto, Schemas, and Changesets
+
+Changesets are one of the four main parts of Ecto.
+
+Ecto is, according to the github repo, "a toolkit for data mapping and language integrated query".  In simpler (but slightly less accurate) terms, it's a library for handling data and talking to the database.
+
+The four main parts are:
+
+* Ecto.Repo
+* Ecto.Schema
+* Ecto.Changeset
+* Ecto.Query
+
+We've already seen `Ecto.Repo` used before: `Repo.all` and `Repo.get!` are two of the methods we've used to get data from the database.
+
+To understand the form, we'll also need to learn about `Ecto.Schema` and `Ecto.Changeset`.
+
+To see how we're using them, let's take a look at our `Material` file.  We'll find it in `lib/star_tracker/trade/material.ex`.
+
+```elixir
+defmodule StarTracker.Trade.Material do
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  schema "materials" do
+    field :amount, :integer
+    field :name, :string
+
+    timestamps()
+  end
+
+  @doc false
+  def changeset(material, attrs) do
+    material
+    |> cast(attrs, [:name, :amount])
+    |> validate_required([:name, :amount])
+  end
+end
+```
+
+Right off the bat, we've got `use Ecto.Schema` and `import Ecto.Changeset`.
+
+Then we define our Schema:
+
+```elixir
+schema "materials" do
+  field :amount, :integer
+  field :name, :string
+
+  timestamps()
+end
+```
+
+This uses a DSL (Domain Specific Language) to easily tell us what the data on the `%Material{}` Schema will look like.  With the `name` and `amount` fields defined as above, we could create one like this: `%Material{name: 'Neon', amount: 200}`.
+
+A Schema like `%Material{}` looks a lot like a Map, and that's because it _is_ a type of Map, but with some extra features.  What's the difference between them?  A plain Map will take any key-value combo, while a Schema will _only_ take the keys defined in the `schema` DSL.
+
+So at the simplest level, a Schema is like a structured Map.  Having the Map be structured can help keep all parts of your app on the same page, preventing many common errors... including the following typo-related example:
+
+<!-- TODO: double-check that this is the correct output -->
+```
+iex()> map = %{amount: 3}
+%{amount: 3}
+iex()> map = Map.put(map, :nme, "Sure hope this saves right")
+%{amount: 3, nme: "Sure hope this saves right"
+iex()> map.name
+nil
+```
+
+So that's our Schema.
+
+A Changeset is a tool for tracking changes to the data in Schemas like `%Material{}` before committing them to the database.  Our first clue into how this works is where we define the `changeset` function, which will return a Changeset:
+
+```elixir
+def changeset(material, attrs) do
+  material
+  |> cast(attrs, [:name, :amount])
+  |> validate_required([:name, :amount])
+end
+```
+
+In this code, when being called for the purposes of `new`, the `material` variable is equal to `%Material{}`, and the `attrs` variable is equal to `%{}`.
+
+`material` is the current version of the Schema, and the Map in `attrs` contains new values that will be added to the Schema, replacing old values if there's a conflict.
+
+In `cast`, we define the values that are _allowed_ to change.
+
+In `validate_required`, we define the values that _must_ be present for the Changeset to be valid.  You'll note that we do not yet have either of the required values present, so our Changeset is not currently valid.
+
+Both of the above functions can take either a Schema or a Changeset (or a `{data, types}` tuple, but we won't go into that), and they both output a Changeset.
+
+It's that Changeset that gets passed to the `changeset` variable, then put on the `assigns` Map (to be accessed as `@changeset`), and then used in our form.
+
+## Forms
+
+Let's take a look at our form:
+
+```html
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= label f, :amount %>
+  <%= number_input f, :amount %>
+  <%= error_tag f, :amount %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>
+```
+
+Here's it again in highly simplified form:
+
+```html
+<%= form_for @changeset, @action, fn f -> %>
+  <!-- error message display -->
+  <!-- name field -->
+  <!-- amount field -->
+
+  <div><%= submit "Save" %></div>
+<% end %>
+```
+
+`form_for` is a helper that takes three arguments: `@changeset`, `@action`, and a function with one argument (`f`), which is short for "form".  The `submit` helper, when used withn a `form_for` helper, submits the form using the `@action` defined (in this case, we passed in the action when rendering the `form` partial.)
+
+There are many ways you can choose to display a field, and we'll go over those variations later in this book, but for now let's look at the standard generated way.
+
+```html
+<%= label f, :name %>
+<%= text_input f, :name %>
+<%= error_tag f, :name %>
+```
+
+There are three parts to this.
+
+The first is the label.  It's what displays above the input field.  The label helper can take one to four arguments (or, said another way, there are at least four definitions of the `label` helper).  We're using the one with two arguments: the form as defined by `form_for`, `f`, and the field in the `material` Schema that it applies to, `:name`.  It will automatically use that field name to generate the label, but if you want something different you can also customize it via a third argument.
+
+The second is the input field itself.  The user will use this to type in the value for the field. Here it's `text_input`, but there are many input fields that match different data types (such as `number_input`, which is used for `amount`).  This takes two arguments plus an optional options hash.  The first argument is once again the form as defined by `form_for`, `f`, and the second argument is once again the field in the `material` Schema that it applies to, `:name`.
+
+The third is the error tag.  This is what displays errors for this field.  These errors will be calculated on the Changeset when we post to the `create` route, then displayed here.  You already know what the first and second arguments are, because they're the same as before, but now it's even simpler because there are no optional fields.
+
+If you understood the last three paragraphs, then you should be able to grok the three lines used for `:amount`.
+
+```html
+<%= label f, :amount %>
+<%= number_input f, :amount %>
+<%= error_tag f, :amount %>
+```
+
+So we'll go ahead and move on to the last part of the form:
+
+```html
+<%= if @changeset.action do %>
+  <div class="alert alert-danger">
+    <p>Oops, something went wrong! Please check the errors below.</p>
+  </div>
+<% end %>
+```
+
+When we submit the form and post to the `create` route, it will either succeed or there will be an error.  If there's an error, we'll end up back here with a new Changeset, and this one will have an `action` on it, and we'll display the error message.  So it'll have this error message on top, plus the specific error messages below individual fields.
+
+So now we've finally finished covering the `new` route... but to actually create a new instance of `Material` and save it to the database, we need to hit the `create` route as well.
+
+## The `create` Controller Function
+
+When rendering the `form` partial, we passed it `Routes.material_path(@conn, :create)` as the action.  That means that when we hit the `submit` button, we'll go to the `create` function on the `MaterialController`.
+
+Let's take a look at it.
+
+```elixir
+def create(conn, %{"material" => material_params}) do
+  case Trade.create_material(material_params) do
+    {:ok, material} ->
+      conn
+      |> put_flash(:info, "Material created successfully.")
+      |> redirect(to: Routes.material_path(conn, :show, material))
+
+    {:error, %Ecto.Changeset{} = changeset} ->
+      render(conn, "new.html", changeset: changeset)
+  end
+end
+```
+
+This is the most complex controller function we've seen, but there are no new concepts here yet (there are some in `Trade.create_material`, even though it's just three lines).  Let's break it down.
+
+First, we take two arguments: `conn`, the connection, and then the params, which we're pattern-matching for `"material"` and assigning that to `material_params`.  These params are what we filled out in the field, and will currently hold `:amount` and `:name`.
+
+Then we open up a case statement.  The expression is the results from `Trade.create_material(material_params)`, and it's a tuple.  There are two options for the tuple, as seen below: `{:ok, material}` and `{:error, %Ecto.Changeset{}}`.  That is to say, it can return successfully with a newly created `material`, or it can return unsuccessfully with a new version of the Changeset.
+
+If it returns successfully, we do something very similar to what we did in the `delete` function, with the differences being in the flash message used and the route that we send the user to (`:show` instead of `:index`).
+
+If it returns unsuccessfully, then we re-render the `new` route, but with the new version of the Changeset.  Now it will have the values we tried to apply (so the user doesn't have to fill out the form again) and the errors (so the user knows what needs to be fixed).
+
+Now let's take a look at what's happening in `Trade.create_material` that gives us that tuple.
+
+## Creating the Material
+
+Here's the code for `Trade.create_material`:
+
+```elixir
+def create_material(attrs \\ %{}) do
+  %Material{}
+  |> Material.changeset(attrs)
+  |> Repo.insert()
+end
+```
+
+We start off with a blank Material Schema (`%Material{}`).
+
+Then we pipe that into `Material.changeset`, and have the `attrs` as the second argument.  Recall that this is what we did earlier in `Trade.change_material`, which prepared a Changeset for the `new` function, but now we're feeding it actual attributes passed in from the form, rather than a blank Map (although a blank Map is the default if you don't pass anything in).
+
+Finally, we pipe the Changeset we just created to `Repo.insert`.  This will try to create a new record in the database, and this is where we get the success or failure tuples that we received in the `create` controller function.
+
+## Conclusion
+
+We covered a lot in this chapter.
+
+First, we saw how the `new` route is displayed.  We generate a blank Material Changeset using `Trade.change_material`, then feed it to `lib/star_tracker_web/templates/material/new.html.eex` template.  That template then renders the `form` partial, passing down the Changeset and an action (`Routes.material_path(@conn, :create)`).  Then we used the `form_for` helper to specify how the form is displayed.
+
+Then we saw what happened once the user hits the submit button and sends their form data to the `create` route.  We take the form data and feed it to `Trade.create_material`.  That method creates a Changeset from the data and tries to put it into the database via `Repo.insert`.  If successful it returns `{:ok, material}`, and then we take the newly created material and redirect to its `show` page.  If failed, it returns `{:error, %Changeset{} = changeset}`, and then we use the new Changeset to re-render the `new` page.
+
+In the next chapter we're going to see the `edit` and `update` routes, which are very similar to the `new` and `create` routes, but with some minor changes.  That will be a great review if the concepts of this chapter are still a little shaky.
+
+But first, let's solidify what you've learned with some exercises.
+
+## Exercises
+
+1. Changesets:
+  a. Change the Changeset so that the `amount` field isn't required, and will not error even if no amount is given.
+  b. Now change it so `amount` isn't allowed in the changeset, and will error if any number is given.
+  c. Make it so that there are always 1000 of any material that's created.
+  d. Challenge: allow the `amount` field to be filled out, but have 1000 as a default if it's not.
+  <!-- TODO: check and make sure that this is possible with what we've told people so far -->
+2. Replace the generic error message (the part sectioned off by `if @changeset.action`) with a flash error message in the error case of `create`.  After doing that, think about why Phoenix chose to do it the way they did, rather than use a flash message.
+
+
+ \pagebreak 
+
+# Editing a Material
+
+We covered a lot in the previous chapter, but the knowledge gained isn't super flexible because we had to cover so much.  In this chapter and the next we'll review these concepts and look at different options and how we can use them in new ways.
+
+The first variation, covered in this chapter, is editing an existing Material instead of creating a new one.
+
+## The `edit` Controller function
+
+Let's look at `new` and `edit` side by side.
+
+```elixir
+def new(conn, _params) do
+  changeset = Trade.change_material(%Material{})
+  render(conn, "new.html", changeset: changeset)
+end
+
+def edit(conn, %{"id" => id}) do
+  material = Trade.get_material!(id)
+  changeset = Trade.change_material(material)
+  render(conn, "edit.html", material: material, changeset: changeset)
+end
+```
+
+They're similar in structure, although `edit` is a bit more complex.  
+
+First, instead of starting with a blank Schema (`%Material{}`), we're getting a previously-created material from the database.  We're then feeding that into `Trade.change_material`, so our Changeset will contain the previously assigned values.
+
+Second, when rendering, we render the `edit` template instead of the `new` template.
+
+Finally, we send the `material` down alongside the `changeset`.
+
+## The `edit` Template
+
+This is what gets rendered:
+
+```html
+<h1>Edit Material</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.material_path(@conn, :update, @material)) %>
+
+<span><%= link "Back", to: Routes.material_path(@conn, :index) %></span>
+```
+
+This is _very_ similar to the `new` template.  The only differences are that instead of saying "Create Material" we say "Edit Material", and the action is `update` instead of `create`.  The `update` action is the only place we use the `@material` we assigned.
+
+The `form` that we render is the exact same as the one we rendered in `new`.  This reuse is the reason we put it in a separate template file.  The only difference is that the Changeset we give it already has values for the fields, so they'll already be filled out.
+
+Then, when the user hits the submit button, it will go to the `update` function in the `MaterialController`.
+
+## The `update` Controller function
+
+Once again, we'll compare what we did last chapter with the new function.
+
+```elixir
+def create(conn, %{"material" => material_params}) do
+  case Trade.create_material(material_params) do
+    {:ok, material} ->
+      conn
+      |> put_flash(:info, "Material created successfully.")
+      |> redirect(to: Routes.material_path(conn, :show, material))
+
+    {:error, %Ecto.Changeset{} = changeset} ->
+      render(conn, "new.html", changeset: changeset)
+  end
+end
+
+def update(conn, %{"id" => id, "material" => material_params}) do
+  material = Trade.get_material!(id)
+
+  case Trade.update_material(material, material_params) do
+    {:ok, material} ->
+      conn
+      |> put_flash(:info, "Material updated successfully.")
+      |> redirect(to: Routes.material_path(conn, :show, material))
+
+    {:error, %Ecto.Changeset{} = changeset} ->
+      render(conn, "edit.html", material: material, changeset: changeset)
+  end
+end
+```
+
+As you can see, `create` and `update` are structured very similarly.  They both destructure params, then they have a case statement where the expression is a call to the `Trade` context, and then they have success and failure conditions which match based on the same tuples.  The `success` condition is, in fact, the almost the exact same, except the message says "updated" instead of "created".  The `error` condition is similar, except it renders `edit` instead of `new`, and passes down a `material` in addition to a `changeset`.
+
+However, despite the significant similarities, there are some important differences.
+
+First, in `update`, we're working with a pre-existing material, so we match the `"id"` parameter, then use that to get the material (`Trade.get_material!(id)`), and feed that material into `Trade.update_material(material, material_params)`.
+
+The other major difference is hidden in `Trade.update_material`, so let's look at that.
+
+```elixir
+def create_material(attrs \\ %{}) do
+  %Material{}
+  |> Material.changeset(attrs)
+  |> Repo.insert()
+end
+
+def update_material(%Material{} = material, attrs) do
+  material
+  |> Material.changeset(attrs)
+  |> Repo.update()
+end
+```
+
+As you can see, we're working with the pre-existing material, instead of a blank `%Material{}` Schema.  Then we pass it into the changeset with the new attributes, as before.  Then, instead of inserting a new database record, we update the existing database record.
+
+## Conclusion
+
+As promised, this was much shorter than the previous chapter.  Instead of learning all new concepts, we only had to repurpose what we'd already learned.
+
+The biggest difference is that we were working with an already-existing material, so from the start our Changeset had valid data.
+
+## Exercises
+
+Let's test some edge cases.
+
+1. In `update`, feed `Trade.update_material` an empty `%Material{}` instead of the material from the database for the first argument.  What errors occur?  Why?
+2. In `update`, feed `Trade.update_material` an empty `%{}` instead of the material_params from the POST call for the second argument.  What errors occur?  Why?
+3. In `edit`, feed `Trade.change_material` an empty `%Material{}` instead of the material from the database.  Leave everything else the same.  What errors occur?  Why? 
+
+<!--
+1: 
+
+Ecto.NoPrimaryKeyValueError at PUT /materials/4
+struct `%StarTracker.Trade.Material{__meta__: #Ecto.Schema.Metadata<:built, "materials">, amount: nil, id: nil, inserted_at: nil, name: nil, price: nil, updated_at: nil}` is missing primary key value
+
+2: It won't give you an error... it just doesn't update
+
+3: It will show a blank fieldset, then when submitted it will give "no route found for POST /materials/4"
+-->
+
+ \pagebreak 
+
+# Adding a Field
+
+We've now completed our tour of the generated Material resource.  We've gone through the index page, the show page, the new page, the edit page, and the create, update, and delete actions.
+
+Along the way we've learned a lot:
+
+* routes: resources, alternate methods (post, delete, etc.), redirects
+* interacting with the database via `Repo` methods
+* Changesets
+* Schemas
+* new pattern-matching techniques
+* flash messages
+* templates: partials, forms, tables
+
+Seriously, that's a lot.  Good job.
+
+Now it's time to take a quick victory lap.
+
+In this chapter we're going to be adding a `price` field to our Materials.  We'll be learning one new concept (migrations) and then reviewing a lot of stuff we've learned in the previous chapters in this section.
+
+We'll need to update our app in six different places:
+
+1. The database
+2. The schema
+3. The changeset
+4. The form
+5. The show page
+6. The index page
+
+So let's get started!
+
+## Changing the database with migrations
+
+First we need to add `price` to the `materials` database table.  We'll do this via a migration.
+
+Let's take a look at the migration we've already used.  The filename will vary slightly, since part of it is determined by the time at which it was created, but it should be the only migration file in the `priv/repo/migrations` folder.
+
+```elixir
+defmodule StarTracker.Repo.Migrations.CreateMaterials do
+  use Ecto.Migration
+
+  def change do
+    create table(:materials) do
+      add :name, :string
+      add :amount, :integer
+
+      timestamps()
+    end
+
+  end
+end
+```
+
+We have several macros (`create`, `table`, `add`, and `timestamps`) that we get from `use Ecto.Migration`.  There are others, including another that we'll be learning this section, but those are the four used in this generated migration.
+
+All the action is happening within the `change` function.  
+
+We create a table called `:materials`, and then we add two fields to it: `:name` and `:amount`, which have the types of `:string` and `:integer`.  The field name tells us the key to store the value under, and the type tells us what form the values will take.
+
+We also add `timestamps()`, which adds `inserted_at` and `updated_at` fields with a type of `:naive_datetime`.
+
+So that's what the generate migration does.  Now it's time to create the migration that will add `price` to the database.
+
+Let's go to the command line to generate it.
+
+```bash
+$ mix ecto.gen.migration add_price_to_materials
+* creating priv/repo/migrations/20190509073235_add_price_to_materials.exs
+```
+
+Now let's find the file that was just generated.  Your filename will differ from mine, but it should be in the same folder and end with `add_price_to_materials.exs`.
+
+```elixir
+defmodule StarTracker.Repo.Migrations.AddPriceToMaterials do
+  use Ecto.Migration
+
+  def change do
+
+  end
+end
+```
+
+It gives us the boilerplate, setting up a blank `change` function.  Let's fill it in.
+
+```elixir
+defmodule StarTracker.Repo.Migrations.AddPriceToMaterials do
+  use Ecto.Migration
+
+  def change do
+    alter table(:materials) do
+      add :price, :integer
+    end
+  end
+end
+```
+
+Instead of creating a table with `create`, we're going to alter it with `alter`.  This is another macro that `use Ecto.Migration` gives us.  
+
+The syntax for adding a field is the same as before, and just like `:amount`, `:price` is an integer.
+
+Now let's go ahead and use this migration to change the database.
+
+```bash
+$ mix ecto.migrate
+[info] == Running 20190509073235 StarTracker.Repo.Migrations.AddPriceToMaterials.change/0 forward
+[info] alter table materials
+[info] == Migrated 20190509073235 in 0.0s
+```
+
+Notice that we only ran this one migration, and not the previous one.  That's because `mix ecto.migrate` will only run the migrations that haven't already been run.
+
+If you try it again, you'll see that no changes are made, since everything's already been run.
+
+```bash
+$ mix ecto.migrate
+[info] Already up
+```
+
+So now our database table has a new field!  Let's change the rest of our Ecto setup to match.
+
+## Changing the Schema and Changeset
+
+We define both the Schema and the Changeset for our materials in the `StarTracker.Trade.Material` module.  Let's update those to include the `price`.
+
+```elixir
+defmodule StarTracker.Trade.Material do
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  schema "materials" do
+    field :amount, :integer
+    field :name, :string
+    field :price, :integer
+
+    timestamps()
+  end
+
+  @doc false
+  def changeset(material, attrs) do
+    material
+    |> cast(attrs, [:name, :amount, :price])
+    |> validate_required([:name, :amount, :price])
+  end
+end
+```
+
+We've added the line `field :price, :integer` to the schema, which will now allow that in all `%Material{}` Schemas.
+
+We've also added `:price` to both the `cast` and `validate_required` portions of the `changeset` pipeline.  This means that when the user fills out the price on the form it will get turned into data in the database, and that if they don't fill anything out for the price then there will be an error.
+
+And, of course, that error will happen automatically if we don't add the price field to the form, so let's go do that.
+
+## Adding the price field to the form
+
+We're going to copy the code for `:amount` and just change the atom used to `:price`.  We'll also customize the label a bit by using the optional third argument, but that's about it.
+
+```html
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= label f, :amount %>
+  <%= number_input f, :amount %>
+  <%= error_tag f, :amount %>
+
+  <%= label f, :price, "Price Per Unit" %>
+  <%= number_input f, :price %>
+  <%= error_tag f, :price %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>
+```
+
+Now we've got it displaying the price.
+
+![](./contents/images/3.7/updated-form.png){ width=40% }
+
+## Price on the show page
+
+To add the price to the show page, we'll extend the pattern we've used for the other attributes.
+
+```html
+<h1>Show Material</h1>
+
+<ul>
+  <li>
+    <strong>Name:</strong>
+    <%= @material.name %>
+  </li>
+  <li>
+    <strong>Amount:</strong>
+    <%= @material.amount %>
+  </li>
+  <li>
+    <strong>Price:</strong>
+    <%= @material.price %>
+  </li>
+</ul>
+
+<span><%= link "Edit", to: Routes.material_path(@conn, :edit, @material) %></span>
+<span><%= link "Back", to: Routes.material_path(@conn, :index) %></span>
+```
+
+There's no new concepts here, we're just repeating the pattern with our new field.
+
+![](./contents/images/3.7/show-material.png){ width=40% }
+
+## Price on the Index page
+
+To add the price to the Index page, we'll add to our loop a table data cell (`td`) containing the price of our material.  We'll also add a table header cell (`th`) that contains the name of the column.
+
+```html
+<h1>Listing Materials</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Price</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for material <- @materials do %>
+      <tr>
+        <td><%= material.name %></td>
+        <td><%= material.amount %></td>
+        <td><%= material.price %></td>
+
+        <td>
+          <%= link "Show", to: Routes.material_path(@conn, :show, material) %>
+          <%= link "Edit", to: Routes.material_path(@conn, :edit, material) %>
+          <%= link "Delete", to: Routes.material_path(@conn, :delete, material), method: :delete, data: [confirm: "Are you sure you want to delete #{material.name}?"] %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Material", to: Routes.material_path(@conn, :new) %></span>
+```
+
+Once again, there are no new concepts in this code.  This is the logical extension of the way we've displayed data in the table before.
+
+![](./contents/images/3.7/list-materials.png){ width=60% }
+
+## Conclusion
+
+In this chapter we added the `:price` field to our materials.
+
+We learned how to create and run a custom migration to add it to the database, then how to edit our Schema and Changeset so our code can interact with the database correctly.  Although we'd touched on these before, this is the first time we made serious changes.
+
+Finally we updated our templates: the edit form, the show page, and the index page.  These simply extended the patterns we'd set forth in previous versions of the templates.  However, there are sometimes reasons to make more extensive edits to the templates.  In future chapters we'll see how complex data can make it necessary to change.  In the next chapter, which is optional, we'll show how to change how our app looks through extensive changes in the template's display code.
+
+## Exercises
+
+1. Add a `description` field to our app.  
+  a. Create and run the migration that adds it.
+  b. Add it to the schema and changeset; changing it should be allowed but not required
+  c. Add the field to the form.  Hint: look up the `textarea` input field.
+  d. Display the field in the show page.
+  e. Display a checkmark (html code: `&#10004` &#10004;) in the index page if a description is present;
+
+
+ \pagebreak 
+
+# Appendix: Use, Import, Alias
 
 One of the most important tasks in any programming environment is bringing in code from elsewhere; it lets you reuse functionality and keep everything clean.  Elixir and Phoenix have a series of elegant tools available to do that.
 
-In this chapter we're going to focus on the `use`, `import`, and `alias` keywords and what they specifically bring to our Router and Controller files.  There are, of course, functions beyond this (config files, mix, etc.) that we'll cover later.
-
-If you start to feel lost during this chapter, that's okay.  Just power on through, then come back later when you've had more exposure to the framework.  The main goal with this chapter is that our uses of `use` and `import` feel less magical and arbitrary, so knowing that there is a logic is almost as good as understanding the logic.
-
-If you want, you can consider this entire chapter Technobabble for now, skip it, and continue to treat `use`, `import`, and `alias` as magical constructs.
+In this appendix we're going to focus on the `use`, `import`, and `alias` keywords and what they specifically bring to our Router and Controller files.  There are, of course, functions beyond this (config files, mix, etc.).
 
 ## use StarTrackerWeb, :router
 
-In the last chapter we had the following Router file:
+In the tutorial we had the following Router file:
 
 ```elixir
 defmodule StarTrackerWeb.Router do
@@ -3173,6 +4811,4 @@ We'll be using `alias` often in our own code, and we'll recap it the first time 
 
 So that's how we get all the macros like `render`, `get`, and `scope`.
 
-I hope this demystified some of the Elixir Magic for you.  If not, keep reading; although an understanding of the concepts in this chapter is helpful, it's by no means required, and you can make a great app while still thinking of `use` as just a mysterious line that makes your Router and Controller work.
-
-In the next chapter we're going to further connect the Router, Controller, and Template, and see how they pass data back and forth.
+I hope this demystified some of the Elixir Magic for you.  If not, then don't worry too much about it; although an understanding of the concepts in this appendix is helpful, it's by no means required, and you can make a great app while still thinking of `use` as just a mysterious line that makes your Router and Controller work.
