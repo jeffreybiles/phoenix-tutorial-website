@@ -16,7 +16,7 @@ end
 
 This is the first function we've created that requires an argument, but we've used functions with arguments before.  When we call it we must feed it a phrase as input (with or without parentheses)
 
-```bash
+```exs
 iex(1)> LearningElixir.recombine("hello world")
         "hello-world"
 iex(2)> LearningElixir.recombine "hello world"
@@ -39,7 +39,7 @@ end
 
 Here the argument has a *default value* of `LearningElixir.phrase`.  When defining an argument, you can put `\\` after an argument name and then give a default value- in this case, `LearningElixir.phrase`
 
-```bash
+```exs
 iex(1)> LearningElixir.recombine
         "boldly-going-where-no-man-has-gone-before"
 iex(2)> LearningElixir.recombine "hello universe"
@@ -66,7 +66,7 @@ end
 
 In many languages, if you don't give a default value for an argument the default will automatically be `nil`.  However, this is not the case in Elixir.  Here's what happens if you try that:
 
-```bash
+```exs
 iex(1)> LearningElixir.recombine()
         ** (UndefinedFunctionError) function LearningElixir.recombine/0
         is undefined or private.
@@ -113,7 +113,7 @@ end
 
 Here we're defining two versions of recombine- the first with an arity of 1 and the second with an arity of 0.  When we call it with an argument, we get the first version of `recombine`.  When we call it without an argument, we get the second version- which then calls the first version and feeds it the phrase we defined earlier.
 
-```bash
+```exs
 iex(1)> LearningElixir.recombine "hello world, universe"
         "hello-world,-universe"
 iex(2)> LearningElixir.recombine
@@ -126,7 +126,7 @@ Pretty cool, right?  There are lots of other ways you can employ pattern matchin
 
 1.  Use pattern matching to add a 2-arity version of `recombine` which lets you input the join string.
 
-```bash
+```exs
 iex(1)> LearningElixir.recombine("hello world, universe", " vast ")
         "hello vast world, vast universe"
 iex(2)> LearningElixir.recombine("hello universe")

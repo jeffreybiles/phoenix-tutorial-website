@@ -152,7 +152,7 @@ This version of `recombine` does exactly the same as our last version, but now i
 1. Create the `LearningElixir` module, with the `phrase` and `recombine` functions in it.  Import it on the command line, then run `LearningElixir.recombine`.
 2. Within that module, create the `upcase_phrase` function, which returns the phrase, but all in upper case letters.  Use the `phrase` function in your solution- you're cheating if you just type out the phrase manually in upper case.
 
-```bash
+```exs
 > iex(1)> LearningElixir.upcase_phrase
           "BOLDLY GOING WHERE NO MAN HAS GONE BEFORE"
 ```

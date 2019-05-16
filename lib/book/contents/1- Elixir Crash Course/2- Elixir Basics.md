@@ -8,7 +8,7 @@ In order to show off the language features, we'll want to jump down to something
 
 Open it up by typing `iex` in your command line.
 
-```bash
+```zsh
 $ iex
 ```
 
@@ -28,7 +28,7 @@ This is good!  That means it's working.
 
 Now you can type Elixir code in and it'll run right there (after you hit the Enter key).
 
-```bash
+```exs
 iex(1)> 2 + 3
         5
 ```
@@ -39,7 +39,7 @@ Boom.  Type in `2 + 3`, hit enter, and it shows the result `5` in the line below
 
 When we build our Phoenix app we'll spend the majority of our time interacting with it in other ways, but we'll always have the option to drop back to the interpreter and play around.
 
-```bash
+```exs
 iex(1)> 2 + 3
         5
 iex(2)> (2 + 3) * 3
@@ -83,7 +83,7 @@ What is displayed when you type each of these into the command line interpreter?
 
 There are two types of Strings in Elixir.
 
-```elixir
+```exs
 iex(1)> "hello universe"
         "hello universe"
 iex(2)> 'hello universe'
@@ -104,7 +104,7 @@ For the purposes of this book we'll be using double-quoted strings (sometimes ca
 
 Here's some basic inline usages of strings
 
-```bash
+```exs
 iex(1)> "hello" <> "universe"
         "hellouniverse"
 iex(2)> "hello" <> " universe"
@@ -117,7 +117,7 @@ iex(4)> "hello #{place}"
 
 Aside from these inline usages, most action on strings happens via functions being applied to them.  Here's an example:
 
-```bash
+```exs
 iex(5)> phrase = "hello vast universe"
         "hello vast universe"
 iex(6)> String.split(phrase, " ")
@@ -154,7 +154,7 @@ What is displayed when you type each of these into the command line?  After thin
 
 The `Enum` module is meant for working with Enumerables.  Although there are others, the most common type of Enumerable is a list, so that's what we'll be working with today.
 
-```bash
+```exs
 iex(1)> split_phrase = ["hello", "vast", "universe"]
         ["hello", "vast", "universe"]
 iex(2)> Enum.count split_phrase
@@ -175,7 +175,7 @@ We're also demonstrating a parentheses-free function syntax.  It's equivalent to
 
 As an aside, remember how we have single-quoted strings (arrays of Chars) and double-quoted strings (binaries)?  Those types end up being important.  We use `Enum` functions on single-quoted Strings, and `String` functions on double-quoted Strings.
 
-```bash
+```exs
 iex(1)> Enum.count 'hello'
         5
 iex(2)> Enum.count "hello"
@@ -213,7 +213,7 @@ Let's say we wanted to count how many words are in a certain phrase.  We don't h
 
 There are several ways we could do this.  Here's the first.
 
-```bash
+```exs
 iex(1)> phrase = "boldly going where no man has gone before"
         "boldly going where no man has gone before"
 iex(2)> split_phrase = String.split(phrase)
@@ -224,7 +224,7 @@ iex(3)> count = Enum.count split_phrase
 
 If you're unsure of where you're going and what to check at every step, that's probably the best way to go.  However, for production code it can look a bit messy.  Here's another way that's a bit more compact:
 
-```bash
+```exs
 iex(1)> Enum.count(String.split("boldly going where no man has gone before"))
         8
 ```
@@ -237,7 +237,7 @@ A great solution to this is the pipe syntax.
 
 In the pipe syntax, we can take the results of one function and "pipe" it as the first argument of the next function.
 
-```bash
+```exs
 iex(1)> "boldly going where no man has gone before" |> String.split |> Enum.count
         8
 ```
@@ -246,7 +246,7 @@ It's a couple more characters than the previous one, but it's far more readable.
 
 If you have multiple arguments, you just pass the second (and third and fourth, etc.) arguments with the function.
 
-```bash
+```exs
 iex(1)> "boldly going where no man has gone before" |> String.split() |> Enum.join("-")
         "boldly-going-where-no-man-has-gone-before"
 ```

@@ -65,15 +65,15 @@ end
 
 Then we can run the following in the command line:
 
-```bash
-$ LearningElixir.my_map |> LearningElixir.inspire
+```exs
+iex()> LearningElixir.my_map |> LearningElixir.inspire
 "These are the voyages of the CodeShip Enterprise.  Its five-year mission: To explore strange new techniques, to seek out new programming languages and new web frameworks, to code boldly go where no man has gone before"
 ```
 
 It automatically mapped the values in `my_map` to the arguments in `inspire`.  But what happens if we feed it a map that doesn't have all the required key-value pairs?
 
-```bash
-$ %{"name" => "Jim", "type" => "CodeShip"} |> LearningElixir.inspire
+```exs
+iex() %{"name" => "Jim", "type" => "CodeShip"} |> LearningElixir.inspire
 ** (FunctionClauseError) no function clause matching in LearningElixir.inspire/1
 
     The following arguments were given to LearningElixir.inspire/1:
@@ -176,12 +176,12 @@ In addition to reviewing the core Phoenix pattern, we saw two important new tech
 
 These are the results you should get:
 
-```bash
-$ %{"mission" => "Write awesome code"} |> LearningElixir.inspire
+```exs
+iex()> %{"mission" => "Write awesome code"} |> LearningElixir.inspire
 "Your mission: Write awesome code"
-$ %{"name" => "Jeffrey", "type" => "Human"} |> LearningElixir.inspire
+iex()> %{"name" => "Jeffrey", "type" => "Human"} |> LearningElixir.inspire
 "These are the voyages of the Human Jeffrey."
-$ %{"name" => "Jeffrey", "type" => "Human", "mission" => "Make learning programming more fun and less frustrating"} |> LearningElixir.inspire
+iex()> %{"name" => "Jeffrey", "type" => "Human", "mission" => "Make learning programming more fun and less frustrating"} |> LearningElixir.inspire
 "These are the voyages of the Human Jeffrey.  Its five-year mission: Make learning programming more fun and less frustrating"
 ```
 

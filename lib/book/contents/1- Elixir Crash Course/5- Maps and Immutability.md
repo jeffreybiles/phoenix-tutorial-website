@@ -34,7 +34,7 @@ It's started with a `%{`, ended with a `}`, and in between consists of key-value
 
 We can interact with this map using the functions in the `Map` module.
 
-```bash
+```exs
 iex(1)> Map.get(LearningElixir.my_map, "mission")
         "Code Boldly"
 iex(2)> Map.get(LearningElixir.my_map, "bad_key")
@@ -45,14 +45,14 @@ Our first (and most common) Map function, `Map.get`, takes two arguments: the ma
 
 You can use brackets as shorthand for `Map.get`.
 
-```elixir
+```exs
 iex(1)> LearningElixir.my_map["mission"]
 "Code Boldly"
 ```
 
 Another way to get an item from a map is to destructure it:
 
-```elixir
+```exs
 iex(1)> %{"mission" => mission} = LearningElixir.my_map
         %{mission: "Code Boldly", name: "Enterprise", type: "CodeShip"}
 iex(2)> mission
@@ -63,7 +63,7 @@ More on destructuring in the next chapter.
 
 The next most common Map function is to add new values to the map with `put`.
 
-```bash
+```exs
 iex(1)> Map.put(LearningElixir.my_map, "captain", "Picard")
         %{"captain" => "Picard", "mission" => "Code Boldly",
           "name" => "Enterprise", "type" => "CodeShip"}
@@ -97,7 +97,7 @@ Contrast that with immutable data, where there will never be side effects- no ma
 
 Of course, the return value of the function can be something other than 5 items.
 
-```bash
+```exs
 iex(1)> immutable_array = ["Immutability", "is", "great", "don't", "you", "agree"]
         ["Immutability", "is", "great", "don't", "you", "agree"]
 iex(2)> Enum.slice(immutable_array, 4, 2)
@@ -110,7 +110,7 @@ So even though you call `Enum.slice` with `immutable_array` and get back an arra
 
 Of course, there's a trick you can play with the data- take the result of the calculation and *immediately reassign it* to the variable you used.
 
-```bash
+```exs
 iex(1)> immutable_array = ["Immutability", "is", "great", "don't", "you", "agree"]
         ["Immutability", "is", "great", "don't", "you", "agree"]
 iex(2)> immutable_array = Enum.slice(immutable_array, 4, 2)
@@ -129,7 +129,7 @@ That's what it's like reassigning a variable.
 
 One way around this is to keep on assigning stuff to new variables:
 
-```bash
+```exs
 iex(1)> phrase = "boldly going where no man has gone before"
         "boldly going where no man has gone before"
 iex(2)> phrase2 = String.split(phrase, " ")
@@ -144,7 +144,7 @@ iex(5)> phrase3
 
 That method, however, can get tedious.  That's one reason why the pipe (`|>`) construct is so popular in Elixir- it allows you to pass on the output of a function and use it as the first argument in the next function call, without the bother of naming it
 
-```bash
+```exs
 iex(1)> phrase =
 ...(1)> "boldly going where no man has gone before" |>
 ...(1)> String.split(" ") |>
@@ -158,7 +158,7 @@ Remember: in the command line we put the pipe at the end of the line, to let the
 
 Now let's apply this to `Map.put`:
 
-```bash
+```exs
 iex(1)> my_map = LearningElixir.my_map |>
 ...(1)> Map.put("captain", "Picard") |>
 ...(1)> Map.put("spock replacement", "Data")

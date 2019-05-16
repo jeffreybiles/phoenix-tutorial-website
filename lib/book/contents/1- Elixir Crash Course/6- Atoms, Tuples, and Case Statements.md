@@ -26,7 +26,7 @@ end
 
 Now when we want to access the code, we use an atom instead of a String:
 
-```bash
+```exs
 iex(1)> LearningElixir.my_map[:name]
         "Enterprise"
 iex(2)> LearningElixir.my_map["name"]
@@ -35,7 +35,7 @@ iex(2)> LearningElixir.my_map["name"]
 
 But here's the first convenience that atoms unlock:
 
-```bash
+```exs
 iex(3)> LearningElixir.my_map.name
         "Enterprise"
 ```
@@ -104,7 +104,7 @@ end
 
 Now we're matching not just on arity (number of arguments), but also on the value of the argument given (for versions with arity of 1).
 
-```bash
+```exs
 iex(1)> LearningElixir.my_map
         %{mission: "Code Boldly", name: "Enterprise", type: "CodeShip"}
 iex(2)> LearningElixir.my_map(:ds9)
@@ -128,7 +128,7 @@ One of the other common pattern-matching data-types is a Tuple.
 
 Tuples are simply collections of values, surrounded by curly braces:
 
-```bash
+```exs
 iex(1)> my_tuple = {"Babylon", 5}
         {"Babylon", 5}
 ```
@@ -137,7 +137,7 @@ As you can see, the values can be of any type- including multiple types within o
 
 You can access an element within a tuple using the `elem` function:
 
-```bash
+```exs
 iex(2)> elem(my_tuple, 0)
         "Babylon"
 ```
@@ -146,7 +146,7 @@ As you can see, it's zero-indexed.
 
 You can also decompose a tuple into its component parts:
 
-```bash
+```exs
 iex(3)> {name, num} = my_tuple
         {"Babylon", 5}
 iex(4)> name
@@ -157,7 +157,7 @@ This is a form of pattern matching, where the intent is to destructure the tuple
 
 This is similar to the Map destructuring we covered briefly in the last chapter.  The biggest difference is that for a map you can destructure to as many or as few keys as you like, but in a tuple you have to destructure to the whole tuple.  However, there are some conveniences-- if you don't need one part of it, you can just use the underscore symbol instead of coming up with a throwaway name:
 
-```bash
+```exs
 iex(5)> {name, _} = my_tuple
         {"Babylon", 5}
 iex(6)> name
@@ -182,7 +182,7 @@ We're essentially throwing away the number by using the underscore.  This saves 
 
 It's possible for a destructuring attempt to fail.
 
-```bash
+```exs
 iex(1)> {name, 5} = {"Babylon", 5}
         {"Babylon", 5}
 iex(2)> name
@@ -193,7 +193,7 @@ In this first example, we're telling Elixir that `"Babylon"` is the variable `na
 
 This second example is where things go wrong.
 
-```bash
+```exs
 iex(1)> {name, "five"} = {"Babylon", 5}
         ** (MatchError) no match of right hand side value: {"Babylon", 5}
             (stdlib) erl_eval.erl:453: :erl_eval.expr/5
@@ -228,7 +228,7 @@ end
 
 Here both variations on the function have two arguments, the second of which is a ship and the first of which is a tuple.  The tuple has two values- an atom and a string.  The atom is either `:ok` or `:error`, and the string is used when the action is a failure but thrown away when the action is successful.
 
-```bash
+```exs
 iex(1)> LearningElixir.take_action({:ok, "Make it so"}, "Enterprise")
         "Great job, Enterprise"
 iex(2)> LearningElixir.take_action({:error, "Shields are at 38 percent!"}, "Enterprise")
@@ -312,7 +312,7 @@ Learning the common error modes is important- better that you do it now while yo
 
 3. Modify `take_action` so that the ship is passed as a third part of the tuple.
 
-```bash
+```exs
 iex(1)> LearningElixir.take_action({:ok, "I have made it so", "Enterprise"})
         "Great job, Enterprise"
 iex(2)> LearningElixir.take_action({:error, "Phasers not set to stun", "Enterprise"})
