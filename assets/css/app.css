@@ -1,6 +1,7 @@
 /* This file is for your main application css. */
 @import "./testimonials.scss";
 @import "./phoenix.css";
+@import "./highlight/atom-one-dark.css";
 
 .container {
   max-width: 900px !important;

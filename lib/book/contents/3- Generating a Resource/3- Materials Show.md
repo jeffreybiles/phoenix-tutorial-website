@@ -4,7 +4,7 @@ In the last chapter we went over the Materials Index page.  We started from how 
 
 This chapter will do the same thing for the Material Show page.  It will be shorter because the show page shares many things in common with the index page.  However, aside from the review, there are still some interesting new techniques to be learned that we'll be using throughout our Phoenix app.
 
-![](../images/3.1/show-material.png){ width=60% }
+![](../images/3.1/show-material.png){ width=40% }
 
 ## The Show Route
 
