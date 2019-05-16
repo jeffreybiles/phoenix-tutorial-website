@@ -23,7 +23,7 @@ The `<%= %>` construct is how we embed Elixir into our HTML.  Anything inside th
 
 Of course, that variable doesn't exist yet, so we'll get the following error:
 
-![](../images/11/no-assign-variable.png){ width=60% }
+![](../images/2.5/no-assign-variable.png){ width=60% }
 
 The error says "assign @name not available in eex template", so let's make it available!
 
@@ -40,7 +40,7 @@ We have a map with one key-value pair- :name and "Phoenix".  This will be enough
 
 > Note: Maps can be used as arguments without the %{} wrapping them.  The line is equivalent to `render(conn, "info.html", %{name: "Phoenix"})`
 
-![](../images/11/assigned-controller-variable.png){ width=60% }
+![](../images/2.5/assigned-controller-variable.png){ width=60% }
 
 And that's how we pass data from Controller to Template!
 
@@ -84,7 +84,7 @@ end
 
 We're now using the `params` argument (and taking away the leading underscore).  The `params` is a Map of all the URL parameters- in this case, just "name".  So you call `params["name"]` to get the information from your URL, and feed it to the `name` key in the Map you feed to `render`.
 
-![](../images/11/hello-parameters.png){ width=60% }
+![](../images/2.5/hello-parameters.png){ width=60% }
 
 We're now using the Router to pass data from the URL to the Controller, and then on down to the Template.
 
@@ -92,7 +92,7 @@ We're now using the Router to pass data from the URL to the Controller, and then
 
 However, there's a problem: if we go back to our plain `/info` route (without a parameter), we'll run into an error.
 
-![](../images/11/need-default-parameter.png){ width=60% }
+![](../images/2.5/need-default-parameter.png){ width=60% }
 
 That can be solved by having two routes defined in our router:
 
@@ -108,7 +108,7 @@ end
 
 So now we can get the `/info` route working both with and without parameters... but it doesn't look quite right.
 
-![](../images/11/extra-space.png){ width=60% }
+![](../images/2.5/extra-space.png){ width=60% }
 
 The extra space may seem like a small thing, but it will look like a bug to a user.
 
@@ -123,7 +123,7 @@ end
 
 Then, on the `/info` route, it will tell display "Hello Stranger", and on the `/info/Jeffrey` route it will display "Hello Jeffrey".
 
-![](../images/11/stranger-default.png){ width=60% }
+![](../images/2.5/stranger-default.png){ width=60% }
 
 If we don't want to come up with a default name we can take measures to remove the space before the exclamation point.  The simplest in this case is to use an `if` in the template.
 
@@ -137,7 +137,7 @@ If we don't want to come up with a default name we can take measures to remove t
 <% end %>
 ```
 
-![](../images/09/end-result.png){ width=60% }
+![](../images/2.4/end-result.png){ width=60% }
 
 I know I've ragged on `if`s, but Embedded Elixir plays by slightly different Best Practice rules than regular Elixir.  It's still best to limit the amount of if-branching (especially nested ifs), but the strictures are a bit looser.
 
@@ -149,7 +149,7 @@ Finally, it's closed out by `<% end %>`.
 
 You may have noticed that the starter `<%= if @name do %>` has an equals sign at the start, while `<% else %>` and `<% end %>` don't.  That's because the equals sign generally signifies that something will be displayed to the user (I guess the `else` doesn't get it because the equals sign in front of `if` already takes care of it- honestly not sure).  Try removing the equals sign and you'll see that the entire header disappears.
 
-![](../images/11/no-equals-in-if.png){ width=60% }
+![](../images/2.5/no-equals-in-if.png){ width=60% }
 
 ## Conclusion
 
@@ -160,7 +160,7 @@ We've now seen how data is passed from the Route URL to the Controller to the Te
 1. Bring your app up to speed with the code we wrote in the chapter.
 2. Make it so the name is always capitalized, no matter how it's written in the URL
 
-![](../images/11/hello-parameters.png){ width=60% }
+![](../images/2.5/hello-parameters.png){ width=60% }
 
 <!-- Answer:
 
@@ -172,7 +172,7 @@ end
 
 3. Add a second parameter to the URL- `:position`.  After the header add a line welcoming them- if their position was "Engineer", it would say "So good to have an Engineer here".
 
-![](../images/11/name-and-position.png){ width=60% }
+![](../images/2.5/name-and-position.png){ width=60% }
 
 We won't make you cover all 4 possible cases of names and positions being specified or not specified- multiple optional parameters are not a pattern we'll want to use in our Phoenix apps.
 
@@ -219,7 +219,7 @@ end
 
  So if they're an Engineer, then it should say "So good to have an engineer here. Love your yellow shirt!"
 
-![](../images/11/shirt-color.png){ width=60% }
+![](../images/2.5/shirt-color.png){ width=60% }
 
 <!-- Answer:  There are many possible answers, of course, but I like this one because it allows an easy default statement and is easy to parse.  If the data had to be stored elsewhere (a database?) then a Map would be better, with a default of "grey" if nothing found in the map.
 

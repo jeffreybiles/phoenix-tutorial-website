@@ -92,19 +92,19 @@ Webpack is watching the files…
 
 Then visit `localhost:4000/materials`.
 
-![](../images/13/empty-table.png){ width=60% }
+![](../images/3.1/empty-table.png){ width=60% }
 
 We've got the "Listing Materials" header, an empty table with two columns (matching the two fields we put in the generator), and a "New material" button.
 
 Let's click the "New material" button.
 
-![](../images/13/new-material.png){ width=60% }
+![](../images/3.1/new-material.png){ width=60% }
 
 The route we're at now is `/materials/new`.  Here we've got a form with two fields -- once again, corresponding to what we put in the generator.
 
 Let's fill them out with "Hydrogen" for the name and 2000 as the amount.
 
-![](../images/13/filled-out-form.png){ width=60% }
+![](../images/3.1/filled-out-form.png){ width=60% }
 
 The name is self-explanatory, and in a move that will anger scientists the world over, we're not attaching any units to the amount.  Sorry.  Think of it as two thousand moles of Hydrogen, if that helps you cope.
 
@@ -112,19 +112,19 @@ The name is self-explanatory, and in a move that will anger scientists the world
 
 Click the "Submit" button and you'll find yourself at the route `/materials/1`.  It gives you a nice "Material created successfully" message, then shows the material you just created.
 
-![](../images/13/show-material-with-flash.png){ width=60% }
+![](../images/3.1/show-material-with-flash.png){ width=60% }
 
 We have two buttons at the bottom: `edit` and `back`.
 
 For now, let's hit the `back` button, which will take us to the materials index page at `/materials`.
 
-![](../images/13/table-with-one-item.png){ width=60% }
+![](../images/3.1/table-with-one-item.png){ width=60% }
 
 Now the table isn't empty- it's filled with the item you just created.
 
 Let's create more.
 
-![](../images/13/filled-out-table.png){ width=60% }
+![](../images/3.1/filled-out-table.png){ width=60% }
 
 Now that we've got our table filled out, let's check out those buttons to the right.
 
@@ -134,7 +134,7 @@ Now that we've got our table filled out, let's check out those buttons to the ri
 
 `show` takes you back `/materials/1`, which is sometimes colloquially called the "show page", because it shows us one item.
 
-![](../images/13/show-material.png){ width=60% }
+![](../images/3.1/show-material.png){ width=60% }
 
 If you visit the `show` page of another material you'll get a URL with a different number.  That number is the `id` of the material in the database- a unique identifier and therefore a great way to determine which resource we're talking about (unlike the name, which can change).
 
@@ -144,7 +144,7 @@ The contents of the `show` page is the displayed data for the resource.  Current
 
 Below that we have two links we can click: `Edit` and `Back`.  `Back` will take us back to our index page, so let's click the more interesting `Edit` link.
 
-![](../images/13/edit-material.png){ width=60% }
+![](../images/3.1/edit-material.png){ width=60% }
 
 The url here is `materials/1/edit`.  The `1` part is the id, determined the same way as in the `show` page.
 
@@ -152,7 +152,7 @@ You'll notice that the contents of this page are almost exactly like our `new` f
 
 Go ahead and change the update the `amount` to 3000 and click `Submit`.
 
-![](../images/13/updated-material.png){ width=60% }
+![](../images/3.1/updated-material.png){ width=60% }
 
 It automatically redirects us to the `show` page, with the `amount` changed and a nice "Material updated successfully" message.
 

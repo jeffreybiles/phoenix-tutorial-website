@@ -68,7 +68,7 @@ Let's delete all that, replace it with something simpler and more manageable:
 
 You'll notice that the page shown at `localhost:4000` has changed automatically- this is because Phoenix uses livereload, a cool tool that saves us time and a click each time we change something in development.
 
-![Picture of customized page](../images/08/basic-index.png){ width=60% }
+![Picture of customized page](../images/2.3/basic-index.png){ width=60% }
 
 Let's break down what's happening here.
 
@@ -173,7 +173,7 @@ To demonstrate that, let's put some marker text before and after the render bloc
 </main>
 ```
 
-![Index page wrapped](../images/08/wrapped-basic-index.png){ width=60% }
+![Index page wrapped](../images/2.3/wrapped-basic-index.png){ width=60% }
 
 So that's the basic layout of the page.  The only thing left to go over is the `<%= %>` construct.
 
@@ -190,7 +190,7 @@ It's okay if you don't understand all of that right now- in the upcoming chapter
 1. Update your app to what we have (except for the "Before Render" and "After Render" stuff... leave that out)
 2. After the lead paragraph element in the index page, add a new paragraph that says "Now with warp-speed mode... get light-years ahead of the competition".
 
-![](../images/08/exercise-results.png){ width=60% }
+![](../images/2.3/exercise-results.png){ width=60% }
 
 ## Extra Resources
 

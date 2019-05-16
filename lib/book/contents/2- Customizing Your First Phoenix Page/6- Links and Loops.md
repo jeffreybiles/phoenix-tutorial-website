@@ -21,7 +21,7 @@ We can add more of these to link to various versions of this page:
 
 At this point, you have a list of 3 names, clicking any of which takes you to a different version of the info page.
 
-![](../images/12/hello-jose.png){ width=40% }
+![](../images/2.6/hello-jose.png){ width=40% }
 
 This is pretty good right now, but if we had more names we wanted to include, a dynamic list of names, or a more complex definition for each link, then things would get unwieldy fast.  That's why we're introducing the `for` helper.
 
@@ -63,7 +63,7 @@ On the right side of the backwards arrow (`<-`) we have an array: `["José", "Ch
 
 And with that we'll be looping over all 3 names and displaying them dynamically.
 
-![](../images/12/list-no-links.png){ width=40% }
+![](../images/2.6/list-no-links.png){ width=40% }
 
 You'll notice that there are no longer links.  Let's fix that.
 
@@ -87,7 +87,7 @@ We'll see more benefits to this arrangement once we start pulling data from data
 </ul>
 ```
 
-![](../images/12/li-style.png){ width=40% }
+![](../images/2.6/li-style.png){ width=40% }
 
 We just had to add the `ul` tag around the `for` helper, and then the `li` tag around the anchor tag inside the block.  Without the `for` helper, we would have to add the `li` tag around each anchor tag individually- a bad situation if we had lots of items in the list or we wanted to do something more complex than just adding one tag.
 
@@ -160,7 +160,7 @@ We're done covering the building blocks that we can comfortably tackle in an iso
 2. Use the `for` helper to dynamically display the 3 reasons we have listed for creating this app ("Track our resources", "Learn Elixir and Phoenix", and "Inventory Management is its own reward").  Pass them in from the controller as `@reasons`.
 3. Start with your code from the chapter 2.5 exercises where you added a position variable.  Then use nested `for` helpers (one `for` helper inside another) to create 3 links for each name ("Chris the commander", "Chris the engineer", "Chris the scientist"), with each linking to the page with the name and position shown.
 
-![](../images/12/nested-for-loops.png){ width=40% }
+![](../images/2.6/nested-for-loops.png){ width=40% }
 
 <!-- Answer:
 

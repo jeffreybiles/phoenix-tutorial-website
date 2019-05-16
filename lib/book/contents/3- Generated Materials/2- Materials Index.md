@@ -4,7 +4,7 @@ In the last chapter we auto-generated the Material resource, added a couple type
 
 This chapter we're going to focus on only one of those pages -- the index page at `/materials` -- and dig in to the code that backs it.  Then we'll use our knowledge to customize the page and make it our own.
 
-![](../images/13/edited-table.png){ width=60% }
+![](../images/3.1/edited-table.png){ width=60% }
 
 We're going to start at the route and work our way down to the template.
 
