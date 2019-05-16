@@ -73,3 +73,11 @@ header.header {
 .book-chapter img {
   border: 1px solid black;
 }
+
+.book-chapter p {
+  font-size: 1.1em;
+}
+
+.book-chapter li {
+  font-size: 1.1.em;
+}
