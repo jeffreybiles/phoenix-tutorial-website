@@ -271,4 +271,3 @@ Finally we updated our templates: the edit form, the show page, and the index pa
   c. Add the field to the form.  Hint: look up the `textarea` input field.
   d. Display the field in the show page.
   e. Display a checkmark (html code: `&#10004` &#10004;) in the index page if a description is present;
-2.

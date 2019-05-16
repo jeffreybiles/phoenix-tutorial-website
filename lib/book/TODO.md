@@ -1,3 +1,2 @@
-Before next release:
-
-* Finish up exercises
+* Add lcars
+* Start on chapter 4

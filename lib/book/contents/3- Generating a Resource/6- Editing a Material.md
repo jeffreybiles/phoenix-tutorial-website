@@ -111,5 +111,19 @@ The biggest difference is that we were working with an already-existing material
 
 ## Exercises
 
-1.
-<!-- TODO: Come up with exercises -->
+Let's test some edge cases.
+
+1. In `update`, feed `Trade.update_material` an empty `%Material{}` instead of the material from the database for the first argument.  What errors occur?  Why?
+2. In `update`, feed `Trade.update_material` an empty `%{}` instead of the material_params from the POST call for the second argument.  What errors occur?  Why?
+3. In `edit`, feed `Trade.change_material` an empty `%Material{}` instead of the material from the database.  Leave everything else the same.  What errors occur?  Why? 
+
+<!--
+1: 
+
+Ecto.NoPrimaryKeyValueError at PUT /materials/4
+struct `%StarTracker.Trade.Material{__meta__: #Ecto.Schema.Metadata<:built, "materials">, amount: nil, id: nil, inserted_at: nil, name: nil, price: nil, updated_at: nil}` is missing primary key value
+
+2: It won't give you an error... it just doesn't update
+
+3: It will show a blank fieldset, then when submitted it will give "no route found for POST /materials/4"
+-->
