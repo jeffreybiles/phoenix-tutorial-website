@@ -83,6 +83,17 @@ eval("\n\n(function () {\n  var PolyfillEvent = eventConstructor();\n\n  functio
 
 /***/ }),
 
+/***/ "./css/app.css":
+/*!*********************!*\
+  !*** ./css/app.css ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./css/app.css?");
+
+/***/ }),
+
 /***/ "./js/app.js":
 /*!*******************!*\
   !*** ./js/app.js ***!
@@ -91,7 +102,7 @@ eval("\n\n(function () {\n  var PolyfillEvent = eventConstructor();\n\n  functio
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var phoenix_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! phoenix_html */ \"../deps/phoenix_html/priv/static/phoenix_html.js\");\n/* harmony import */ var phoenix_html__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(phoenix_html__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var highlight_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! highlight.js */ \"./node_modules/highlight.js/lib/index.js\");\n/* harmony import */ var highlight_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(highlight_js__WEBPACK_IMPORTED_MODULE_1__);\n// Brunch automatically concatenates all files in your\n// watched paths. Those paths can be configured at\n// config.paths.watched in \"brunch-config.js\".\n//\n// However, those files will only be executed if\n// explicitly imported. The only exception are files\n// in vendor, which are never wrapped in imports and\n// therefore are always executed.\n// Import dependencies\n//\n// If you no longer want to use a dependency, remember\n// to also remove its path from \"config.paths.watched\".\n\n\nhighlight_js__WEBPACK_IMPORTED_MODULE_1___default.a.initHighlightingOnLoad(); // Import local files\n//\n// Local files can be imported directly using relative\n// paths \"./socket\" or full ones \"web/static/js/socket\".\n// import socket from \"./socket\"\n\n//# sourceURL=webpack:///./js/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/app.css */ \"./css/app.css\");\n/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_app_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var phoenix_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! phoenix_html */ \"../deps/phoenix_html/priv/static/phoenix_html.js\");\n/* harmony import */ var phoenix_html__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(phoenix_html__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var highlight_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! highlight.js */ \"./node_modules/highlight.js/lib/index.js\");\n/* harmony import */ var highlight_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(highlight_js__WEBPACK_IMPORTED_MODULE_2__);\n // Brunch automatically concatenates all files in your\n// watched paths. Those paths can be configured at\n// config.paths.watched in \"brunch-config.js\".\n//\n// However, those files will only be executed if\n// explicitly imported. The only exception are files\n// in vendor, which are never wrapped in imports and\n// therefore are always executed.\n// Import dependencies\n//\n// If you no longer want to use a dependency, remember\n// to also remove its path from \"config.paths.watched\".\n\n\n\nhighlight_js__WEBPACK_IMPORTED_MODULE_2___default.a.initHighlightingOnLoad(); // Import local files\n//\n// Local files can be imported directly using relative\n// paths \"./socket\" or full ones \"web/static/js/socket\".\n// import socket from \"./socket\"\n\n//# sourceURL=webpack:///./js/app.js?");
 
 /***/ }),
 

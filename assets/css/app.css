@@ -1,4 +1,6 @@
 /* This file is for your main application css. */
+@import "./testimonials.scss";
+@import "./phoenix.css";
 
 .container {
   max-width: 900px !important;
@@ -17,19 +19,6 @@ html blockquote {
 
 .center {
   text-align: center;
-}
-
-li.not-ready a {
-  color: black;
-  cursor: default;
-}
-
-.nav > li.not-ready > a:hover {
-  background-color: inherit;
-}
-
-li.not-ready {
-  &:hover: inherit;
 }
 
 a.subtle_link {
@@ -78,4 +67,8 @@ header.header {
   margin-bottom: 10px;
   font-weight: bold;
   font-size: 2em;
+}
+
+.book-chapter img {
+  border: 1px solid black;
 }

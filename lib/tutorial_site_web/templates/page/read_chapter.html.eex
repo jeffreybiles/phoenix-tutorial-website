@@ -1,7 +1,9 @@
 <%= render TutorialSiteWeb.PageView, "book_navigation_links.html", conn: @conn, book: @book, chapter: @chapter %>
 <hr>
 <h4><u><%= unhyphenate @section %></u></h4>
-<%= content @chapter %>
+<div class="book-chapter">
+  <%= content @chapter %>
+</div>
 <hr>
 <%= render TutorialSiteWeb.PageView, "book_navigation_links.html", conn: @conn, book: @book, chapter: @chapter %>
 <hr>

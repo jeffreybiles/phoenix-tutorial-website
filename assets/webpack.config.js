@@ -39,8 +39,3 @@ module.exports = (env, options) => ({
     new CopyWebpackPlugin([{ from: 'static/', to: '../' }])
   ]
 });
-
-// npm: {
-//   enabled: true,
-//   styles: {"highlight.js": ["styles/atom-one-light.css"]}
-// }
