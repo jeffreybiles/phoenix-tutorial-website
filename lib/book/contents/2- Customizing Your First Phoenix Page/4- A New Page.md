@@ -234,7 +234,7 @@ This is all plain html, but it gets the job of filling out our page done.
 
 > "h3" is like "h2", but smaller.  "h1" through "h6" are available, with "h1" being the biggest and "h6" the smallest.
 
-> "em" stands for "emphasis".  It does the same thing as "bold".
+> "em" stands for "emphasis".  By default this does the same thing as italics (&lt;i&gt;).
 
 > "a" stands for "anchor".  It's a link. We won't often use the bare "a" tag in Phoenix -- we'll prefer the `link` helper we'll introduce in chapter 2.6 -- but this html is good enough to get our page working.
 
