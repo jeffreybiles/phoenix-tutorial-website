@@ -33,6 +33,18 @@ defmodule Book do
           %{ord: 6, title: "Links and Loops"}
         ]
       }, %{
+        ord: 3,
+        title: "Generating a Resource",
+        chapters: [
+          %{ord: 1, title: "Generating Materials"},
+          %{ord: 2, title: "Materials Index"},
+          %{ord: 3, title: "Materials Show"},
+          %{ord: 4, title: "Deleting a Material"},
+          %{ord: 5, title: "Creating a Material"},
+          %{ord: 6, title: "Editing a Material"},
+          %{ord: 7, title: "Adding a Field"}
+        ]
+      }, %{
         ord: 99,
         title: "Appendices",
         chapters: [
