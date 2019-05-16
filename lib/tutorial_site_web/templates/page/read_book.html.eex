@@ -4,7 +4,7 @@
 
 <p>There's also <%= link "a pdf version", to: "" %> and <%= link "a video course", to: "" %>.  Both are early-access and will get regular updates until they're done.</p>
 
-<p>The stuff here is about 20% of what I intend to write.  To get notified when the free version is updated, or when new versions are available, <a href="/mailing_list">sign up for the mailing list</a>.</p>
+<p>The stuff here is about 30% of what I intend to write.  To get notified when the free version is updated, or when new versions are available, <a href="/mailing_list">sign up for the mailing list</a>.</p>
 
 <%= for section <- @book do %>
   <h3><%= section.title %></h3>
