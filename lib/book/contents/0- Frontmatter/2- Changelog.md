@@ -1,6 +1,13 @@
 # Changelog
 
 
+### 0.3.0
+
+* **New Section Added: Generating a Resource**
+* **Fixed syntax highlighting**
+* Readability improvements, including increasing font size and adding a border around images
+* Fixed error with "em" tag
+* Updated text of "use, import, alias" to reflect that it's in an appendix
 
 ### 0.2.0
 
